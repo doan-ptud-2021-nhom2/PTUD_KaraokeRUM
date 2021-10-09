@@ -492,13 +492,21 @@ namespace KaraokeRUM
             {
                 string maTTBTam = KHACHHANG.LayDSKH().Last().MaKH.ToString();
                 int dem = Convert.ToInt32(maTTBTam.Split('K', 'H')[2]) + 1;
+                
                 if (dem < 10)
                 {
-                    maKH += "TB00" + dem;
+                    maKH += "KH00" + dem;
                 }
                 else
                 {
-                    maKH += "TB0" + dem;
+                    if (dem < 100)
+                    {
+                        maKH += "KH0" + dem;
+                    }
+                    else
+                    {
+                        maKH += "KH" + dem;
+                    }
                 }
             }
             return maKH;
