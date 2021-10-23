@@ -21,9 +21,9 @@ namespace KaraokeRUM
 
         private void lblDangNhap_Click(object sender, EventArgs e)
         {
+            this.Close();
             frmDangNhap frm = new frmDangNhap();
             frm.Show();
-            this.Hide();
         }
 
         private void btnXacNhan_Click(object sender, EventArgs e)
@@ -58,10 +58,6 @@ namespace KaraokeRUM
             if (luaChon == DialogResult.Yes)
             {
                 e.Cancel = false;
-            }
-            else
-            {
-                e.Cancel = true;
             }
         }
     }

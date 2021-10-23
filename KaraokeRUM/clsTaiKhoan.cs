@@ -53,8 +53,6 @@ namespace KaraokeRUM
                                    join nv in dt.NhanViens on tk.UserName equals nv.MaNV
                                    where tk.UserName.Equals(taiKhoan.UserName)
                                    select nv.MaLNV).FirstOrDefault();
-
-            //Console.WriteLine(strMaLoaiTaiKhoan);
             return strMaLoaiTaiKhoan;
         }
 
@@ -66,7 +64,7 @@ namespace KaraokeRUM
                            join nv in dt.NhanViens on tk.UserName equals nv.MaNV
                            where tk.UserName.Equals(tenDangNhap) && nv.SDT.Equals(sdt)
                            select tk).FirstOrDefault();
-            return taiKhoan == null ? "" : taiKhoan.PassWord ;//Nhập sai thông tin ra bug
+            return taiKhoan == null ? "" : taiKhoan.PassWord ;
         }
     }
 }

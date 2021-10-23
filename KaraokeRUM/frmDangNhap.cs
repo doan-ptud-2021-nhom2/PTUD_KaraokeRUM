@@ -21,6 +21,11 @@ namespace KaraokeRUM
         public frmDangNhap()
         {
             InitializeComponent();
+            
+        }
+
+        private void frmDangNhap_Load(object sender, EventArgs e)
+        {
             qlTaiKhoan = new clsTaiKhoan();
         }
 
@@ -34,24 +39,28 @@ namespace KaraokeRUM
                 PassWord = txtPassword.Text
             };
 
-            frmTrangChuQL frmQL = new frmTrangChuQL();
-            frmTrangChu frmNV = new frmTrangChu();
-            frmLayLaiMatKhau frmLLMK = new frmLayLaiMatKhau();
 
             if (qlTaiKhoan.KiemTraTaiKhoan(tk))
             {
                 
                 if (qlTaiKhoan.LayLoaiTaiKhoan(tk).Equals("LNV01"))
                 {
-                    
-                    frmQL.Show();
+                    frmTrangChuQL frmQL = new frmTrangChuQL();
                     this.Hide();
+                    if (frmQL.ShowDialog() == DialogResult.Yes)
+                        this.Close();
+                    else
+                        this.Show();
                 }
 
                 else if(qlTaiKhoan.LayLoaiTaiKhoan(tk).Equals("LNV02"))
                 {
-                    frmNV.Show();
+                    frmTrangChu frmNV = new frmTrangChu();
                     this.Hide();
+                    if (frmNV.ShowDialog() == DialogResult.Yes)
+                        this.Close();
+                    else
+                        this.Show();
                 }
 
                 else
@@ -79,21 +88,24 @@ namespace KaraokeRUM
                     , "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if(luaChon == DialogResult.Yes)
                 {
-                    frmLLMK.Show();
+                    frmLayLaiMatKhau frmLLMK = new frmLayLaiMatKhau();
                     this.Hide();
-                }
-                else
-                {
-                    this.Close();
+                    if (frmLLMK.ShowDialog() == DialogResult.Yes)
+                        this.Close();
+                    else
+                        this.Show();
                 }
             }
         }
 
         private void lblLayLaiMatKhau_Click(object sender, EventArgs e)
         {
-            frmLayLaiMatKhau frm = new frmLayLaiMatKhau();
-            frm.Show();
-            this.Hide();
+            using(frmLayLaiMatKhau frm = new frmLayLaiMatKhau())
+            {
+                this.Hide();
+                frm.ShowDialog();
+                this.Show();
+            }
         }
 
         private void frmDangNhap_FormClosing(object sender, FormClosingEventArgs e)
@@ -104,10 +116,8 @@ namespace KaraokeRUM
             {
                 e.Cancel = false;
             }
-            else
-            {
-                e.Cancel = true;
-            }
         }
+
+        
     }
 }

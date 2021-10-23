@@ -93,9 +93,13 @@ namespace KaraokeRUM
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            frmDangNhap frm = new frmDangNhap();
-            frm.Show();
-            this.Hide();
+            DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Thông báo", MessageBoxButtons.YesNo,
+                                   MessageBoxIcon.Question);
+            if(luaChon == DialogResult.Yes)
+            {
+                this.DialogResult = DialogResult.No;
+                this.Close();
+            }
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
@@ -107,5 +111,18 @@ namespace KaraokeRUM
         {
             OpenFormInPanel(new frmDoiMatKhau());
         }
+
+        private void frmTrangChuQL_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn thoát", "Thông báo"
+                                , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (luaChon == DialogResult.Yes)
+            {
+                this.DialogResult = DialogResult.Yes;
+                this.Close();
+            }
+        }
+
+        
     }
 }
