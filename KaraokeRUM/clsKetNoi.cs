@@ -11,7 +11,7 @@ namespace KaraokeRUM
         qlKaraokeDataContext qlKaraoke;
         public qlKaraokeDataContext LayData()
         {
-            string strKetNoi = @"Data Source=DESKTOP-AUH5LCA\SQLEXPRESS;Initial Catalog=db_karaoke;Integrated Security=True";
+            string strKetNoi = @"Data Source=.\SQLEXPRESS;Initial Catalog=db_karaoke;Integrated Security=True";
             qlKaraoke = new qlKaraokeDataContext(strKetNoi);
             qlKaraoke.Connection.Open();
             return qlKaraoke;
