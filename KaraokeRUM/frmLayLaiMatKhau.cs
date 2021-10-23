@@ -21,9 +21,8 @@ namespace KaraokeRUM
 
         private void lblDangNhap_Click(object sender, EventArgs e)
         {
-            frmDangNhap frm = new frmDangNhap();
-            frm.Show();
-            this.Hide();
+            this.DialogResult = DialogResult.No;
+            this.Close();
         }
 
         private void btnXacNhan_Click(object sender, EventArgs e)
@@ -51,18 +50,15 @@ namespace KaraokeRUM
             }
         }
 
-        private void frmLayLaiMatKhau_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnThoat_Click(object sender, EventArgs e)
         {
             DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn thoát", "Thông báo"
                                 , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (luaChon == DialogResult.Yes)
             {
-                e.Cancel = false;
+                this.DialogResult = DialogResult.Yes;
             }
-            else
-            {
-                e.Cancel = true;
-            }
+           
         }
     }
 }

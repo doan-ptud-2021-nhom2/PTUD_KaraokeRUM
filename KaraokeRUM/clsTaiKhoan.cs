@@ -32,16 +32,13 @@ namespace KaraokeRUM
             TaiKhoan tk = LayTaiKhoan(taiKhoan.UserName);
             if(tk == null)
             {
-                //throw new Exception("TK null");
                 return false;
             }
 
             if(taiKhoan.UserName.Equals(tk.UserName) && taiKhoan.PassWord.Equals(tk.PassWord.Trim()))
             {
-                //throw new Exception("TK yes");
                 return true;
             }
-            //throw new Exception("TK no");
             return false;
         }
 
@@ -53,8 +50,6 @@ namespace KaraokeRUM
                                    join nv in dt.NhanViens on tk.UserName equals nv.MaNV
                                    where tk.UserName.Equals(taiKhoan.UserName)
                                    select nv.MaLNV).FirstOrDefault();
-
-            //Console.WriteLine(strMaLoaiTaiKhoan);
             return strMaLoaiTaiKhoan;
         }
 
