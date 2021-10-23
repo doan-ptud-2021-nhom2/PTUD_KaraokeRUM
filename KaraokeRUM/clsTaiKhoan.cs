@@ -8,6 +8,6 @@ namespace KaraokeRUM
 {
     class clsTaiKhoan
     {
-
+        int a;
     }
 }
