@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace KaraokeRUM
 {
-    class clsTaiKhoan
+    class test1
     {
-        int a;
     }
 }

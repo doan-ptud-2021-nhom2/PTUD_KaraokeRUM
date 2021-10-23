@@ -160,6 +160,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>qlKaraoke.dbml</DependentUpon>
     </Compile>
+    <Compile Include="test1.cs" />
     <EmbeddedResource Include="frmLayLaiMatKhau.resx">
       <DependentUpon>frmLayLaiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
