@@ -10,5 +10,6 @@ namespace KaraokeRUM
     {
         int a;
         int b;
+        int c;
     }
 }
