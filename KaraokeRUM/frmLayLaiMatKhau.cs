@@ -21,9 +21,10 @@ namespace KaraokeRUM
 
         private void lblDangNhap_Click(object sender, EventArgs e)
         {
-            frmDangNhap frm = new frmDangNhap();
-            frm.Show();
-            this.Hide();
+            this.Close();
+            //frmDangNhap frm = new frmDangNhap();
+            //frm.Show();
+            //this.Hide();
         }
 
         private void btnXacNhan_Click(object sender, EventArgs e)

@@ -91,9 +91,12 @@ namespace KaraokeRUM
 
         private void lblLayLaiMatKhau_Click(object sender, EventArgs e)
         {
-            frmLayLaiMatKhau frm = new frmLayLaiMatKhau();
-            frm.Show();
-            this.Hide();
+            using (frmLayLaiMatKhau frm = new frmLayLaiMatKhau())
+            {
+                this.Hide(); // an form dang nhap hien tai
+                frm.ShowDialog(); // hien form lay lai mat khau va pause o dong code nay toi khi form laylaimk bi close
+                this.Show(); // khi form lay lai mk bi close thi no chay toi dong nay va hien form dang nhap len lai
+            }
         }
 
         private void frmDangNhap_FormClosing(object sender, FormClosingEventArgs e)
