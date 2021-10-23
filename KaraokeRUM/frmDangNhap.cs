@@ -33,9 +33,7 @@ namespace KaraokeRUM
                 UserName = txtUsername.Text,
                 PassWord = txtPassword.Text
             };
-
-            frmTrangChuQL frmQL = new frmTrangChuQL();
-            frmTrangChu frmNV = new frmTrangChu();
+ 
             frmLayLaiMatKhau frmLLMK = new frmLayLaiMatKhau();
 
             if (qlTaiKhoan.KiemTraTaiKhoan(tk))
@@ -43,15 +41,28 @@ namespace KaraokeRUM
                 
                 if (qlTaiKhoan.LayLoaiTaiKhoan(tk).Equals("LNV01"))
                 {
-                    
-                    frmQL.Show();
                     this.Hide();
+                    frmTrangChuQL frmQL = new frmTrangChuQL();
+                    if (frmQL.ShowDialog() == DialogResult.Yes)
+                        this.Close();
+                    else
+                    {
+                        this.Show();
+                        dem = 0;
+                    }    
                 }
 
                 else if(qlTaiKhoan.LayLoaiTaiKhoan(tk).Equals("LNV02"))
                 {
-                    frmNV.Show();
                     this.Hide();
+                    frmTrangChu frmNV = new frmTrangChu();
+                    if (frmNV.ShowDialog() == DialogResult.Yes)
+                        this.Close();
+                    else
+                    {
+                        this.Show();
+                        dem = 0;
+                    }
                 }
 
                 else
@@ -79,8 +90,8 @@ namespace KaraokeRUM
                     , "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if(luaChon == DialogResult.Yes)
                 {
-                    frmLLMK.Show();
-                    this.Hide();
+                    frmLayLaiMatKhau frm = new frmLayLaiMatKhau();
+                    DongForm(frm);
                 }
                 else
                 {
@@ -92,21 +103,27 @@ namespace KaraokeRUM
         private void lblLayLaiMatKhau_Click(object sender, EventArgs e)
         {
             frmLayLaiMatKhau frm = new frmLayLaiMatKhau();
-            frm.Show();
-            this.Hide();
+            DongForm(frm);
+            
         }
 
-        private void frmDangNhap_FormClosing(object sender, FormClosingEventArgs e)
+        private void DongForm(Form frm)
+        {
+            this.Hide();//this->FormDangNhap
+            DialogResult chonDong = frm.ShowDialog();
+            if (chonDong == DialogResult.Yes)
+                this.Close();//this->FormLayLaiMatKhau
+            else
+                this.Show();
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
         {
             DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn thoát", "Thông báo"
                                 , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(luaChon == DialogResult.Yes)
+            if (luaChon == DialogResult.Yes)
             {
-                e.Cancel = false;
-            }
-            else
-            {
-                e.Cancel = true;
+                this.Close();
             }
         }
     }
