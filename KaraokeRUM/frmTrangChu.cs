@@ -12,10 +12,12 @@ namespace KaraokeRUM
 {
     public partial class frmTrangChu : Form
     {
+        private string maQL;
         public frmTrangChu()
         {
             InitializeComponent();
         }
+
         private void OpenFormInPanel(object Formhijo)
         {
             if (this.panel_workarea.Controls.Count > 0)
@@ -33,6 +35,8 @@ namespace KaraokeRUM
         private void frmTrangChu_Load(object sender, EventArgs e)
         {
             OpenFormInPanel(new frmHome());
+            maQL = frmDangNhap.maQL;
+            Console.WriteLine(maQL);
         }
 
         private void btnPhong_Click(object sender, EventArgs e)
@@ -68,6 +72,13 @@ namespace KaraokeRUM
         private void btnDoiMatKhau_Click(object sender, EventArgs e)
         {
             OpenFormInPanel(new frmDoiMatKhau());
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            frmDangNhap frm = new frmDangNhap();
+            frm.Show();
+            this.Hide();
         }
     }
 }

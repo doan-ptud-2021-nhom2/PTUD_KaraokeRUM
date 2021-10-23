@@ -1,7 +1,7 @@
 ﻿
 namespace KaraokeRUM
 {
-    partial class frmTrangChuCQ
+    partial class frmTrangChuQL
     {
         /// <summary>
         /// Required designer variable.
