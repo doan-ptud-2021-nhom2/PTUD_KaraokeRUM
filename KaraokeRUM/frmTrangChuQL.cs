@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace KaraokeRUM
 {
-    public partial class frmTrangChuCQ : Form
+    public partial class frmTrangChuQL : Form
     {
-        public frmTrangChuCQ()
+        private string maQL;
+        public frmTrangChuQL()
         {
             InitializeComponent();
         }
@@ -34,6 +35,8 @@ namespace KaraokeRUM
         private void frmTrangChuCQ_Load(object sender, EventArgs e)
         {
             OpenFormInPanel(new frmHome());
+            maQL = frmDangNhap.maQL;
+            Console.WriteLine(maQL);
         }
 
         private void btnChuyenGiaoDien_Click(object sender, EventArgs e)
@@ -90,7 +93,9 @@ namespace KaraokeRUM
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-
+            frmDangNhap frm = new frmDangNhap();
+            frm.Show();
+            this.Hide();
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
