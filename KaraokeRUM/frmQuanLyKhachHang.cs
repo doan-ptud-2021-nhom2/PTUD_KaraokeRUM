@@ -19,7 +19,7 @@ namespace KaraokeRUM
 
         private void frmQuanLyKhachHang_Load(object sender, EventArgs e)
         {
-            
+           
         }
     }
 }
