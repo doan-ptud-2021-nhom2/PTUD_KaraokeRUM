@@ -8,5 +8,6 @@ namespace KaraokeRUM
 {
     class Class1
     {
+        int a;
     }
 }
