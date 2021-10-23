@@ -305,9 +305,10 @@ namespace KaraokeRUM
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTimKiem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmQuanLyKhachHang";
             this.Text = "frmQuanLyKhachHang";
+            this.Load += new System.EventHandler(this.frmQuanLyKhachHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
