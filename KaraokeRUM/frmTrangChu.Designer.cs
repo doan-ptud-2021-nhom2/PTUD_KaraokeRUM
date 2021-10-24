@@ -306,7 +306,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.panel_workarea);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmTrangChu";
-            this.Text = "Form15";
+            this.Text = "Karaoke Rum - Nhân Viên";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmTrangChu_Load);
             this.panel1.ResumeLayout(false);

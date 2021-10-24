@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsHonLoan.cs" />
     <Compile Include="clsKetNoi.cs" />
+    <Compile Include="clsLoaiPhong.cs" />
+    <Compile Include="clsPhong.cs" />
     <Compile Include="clsTaiKhoan.cs" />
     <Compile Include="frmLayLaiMatKhau.cs">
       <SubType>Form</SubType>
