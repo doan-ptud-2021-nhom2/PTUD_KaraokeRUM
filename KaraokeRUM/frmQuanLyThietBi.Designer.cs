@@ -338,6 +338,7 @@ namespace KaraokeRUM
             this.lwvThietBi.Size = new System.Drawing.Size(934, 346);
             this.lwvThietBi.TabIndex = 0;
             this.lwvThietBi.UseCompatibleStateImageBehavior = false;
+            this.lwvThietBi.SelectedIndexChanged += new System.EventHandler(this.lwvThietBi_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -522,6 +523,7 @@ namespace KaraokeRUM
             this.lwvThietBiTrongPhong.Size = new System.Drawing.Size(934, 223);
             this.lwvThietBiTrongPhong.TabIndex = 0;
             this.lwvThietBiTrongPhong.UseCompatibleStateImageBehavior = false;
+            this.lwvThietBiTrongPhong.SelectedIndexChanged += new System.EventHandler(this.lwvThietBiTrongPhong_SelectedIndexChanged);
             // 
             // frmQuanLyThietBi
             // 
@@ -541,7 +543,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.txtID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmQuanLyThietBi";
-            this.Text = "Quản lý thiết bị";
+            this.Text = "-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmQuanLyThietBi_Load);
             this.groupBox2.ResumeLayout(false);
