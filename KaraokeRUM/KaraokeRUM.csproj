@@ -49,9 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsHonLoan.cs" />
     <Compile Include="clsKetNoi.cs" />
     <Compile Include="clsPhongTrangThietBi.cs" />
     <Compile Include="clsKiemTra.cs" />
+    <Compile Include="clsLoaiPhong.cs" />
+    <Compile Include="clsPhong.cs" />
     <Compile Include="clsTaiKhoan.cs" />
     <Compile Include="clsThietBi.cs" />
     <Compile Include="frmLayLaiMatKhau.cs">
