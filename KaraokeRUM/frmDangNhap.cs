@@ -35,14 +35,16 @@ namespace KaraokeRUM
             };
  
             frmLayLaiMatKhau frmLLMK = new frmLayLaiMatKhau();
-
+            frmTrangChu frmNV = new frmTrangChu(maQL);
+            frmTrangChuQL frmQL = new frmTrangChuQL();
             if (qlTaiKhoan.KiemTraTaiKhoan(tk))
             {
                 
                 if (qlTaiKhoan.LayLoaiTaiKhoan(tk).Equals("LNV01"))
                 {
                     this.Hide();
-                    frmTrangChuQL frmQL = new frmTrangChuQL();
+                    
+                    
                     if (frmQL.ShowDialog() == DialogResult.Yes)
                         this.Close();
                     else
@@ -55,7 +57,7 @@ namespace KaraokeRUM
                 else if(qlTaiKhoan.LayLoaiTaiKhoan(tk).Equals("LNV02"))
                 {
                     this.Hide();
-                    frmTrangChu frmNV = new frmTrangChu();
+                    
                     if (frmNV.ShowDialog() == DialogResult.Yes)
                         this.Close();
                     else
@@ -107,12 +109,13 @@ namespace KaraokeRUM
             
         }
 
+        //Hàm hỗ trợ cho việc đóng form
         private void DongForm(Form frm)
         {
             this.Hide();//this->FormDangNhap
             DialogResult chonDong = frm.ShowDialog();
             if (chonDong == DialogResult.Yes)
-                this.Close();//this->FormLayLaiMatKhau
+                this.Close();//this->frm
             else
                 this.Show();
         }

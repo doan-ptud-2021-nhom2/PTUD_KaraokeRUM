@@ -304,6 +304,7 @@ namespace KaraokeRUM
             this.ClientSize = new System.Drawing.Size(1831, 1040);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_workarea);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmTrangChu";
             this.Text = "Form15";
