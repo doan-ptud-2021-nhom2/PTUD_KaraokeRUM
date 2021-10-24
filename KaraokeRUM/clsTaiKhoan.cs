@@ -61,7 +61,35 @@ namespace KaraokeRUM
                            join nv in dt.NhanViens on tk.UserName equals nv.MaNV
                            where tk.UserName.Equals(tenDangNhap) && nv.SDT.Equals(sdt)
                            select tk).FirstOrDefault();
-            return taiKhoan == null ? "" : taiKhoan.PassWord ;//Nhập sai thông tin ra bug
+            return taiKhoan == null ? "" : taiKhoan.PassWord.Trim();
+        }
+
+        public String TimMatKhau(String tenDangNhap)
+        {
+            var taiKhoan = (from tk in dt.TaiKhoans
+                            where tk.UserName.Equals(tenDangNhap) 
+                            select tk).FirstOrDefault();
+            return taiKhoan == null ? "" : taiKhoan.PassWord.Trim();
+        }
+
+        public int DoiMatKhau(TaiKhoan taiKhoan)
+        {
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = myTran;
+                IQueryable<TaiKhoan> tkTam = (from tk in dt.TaiKhoans
+                                              where tk.UserName == taiKhoan.UserName
+                                              select tk);
+                tkTam.First().PassWord = taiKhoan.PassWord;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return 1;
+            }catch(Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Lỗi đổi mật khẩu: " + ex.Message);
+            }
         }
     }
 }
