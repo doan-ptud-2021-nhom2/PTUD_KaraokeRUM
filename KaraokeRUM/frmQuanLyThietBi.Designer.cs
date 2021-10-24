@@ -332,6 +332,7 @@ namespace KaraokeRUM
             // 
             this.lwvThietBi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lwvThietBi.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lwvThietBi.HideSelection = false;
             this.lwvThietBi.Location = new System.Drawing.Point(26, 43);
             this.lwvThietBi.Name = "lwvThietBi";
@@ -517,6 +518,7 @@ namespace KaraokeRUM
             // 
             this.lwvThietBiTrongPhong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lwvThietBiTrongPhong.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lwvThietBiTrongPhong.HideSelection = false;
             this.lwvThietBiTrongPhong.Location = new System.Drawing.Point(26, 51);
             this.lwvThietBiTrongPhong.Name = "lwvThietBiTrongPhong";

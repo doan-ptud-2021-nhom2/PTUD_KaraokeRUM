@@ -15,30 +15,12 @@ namespace KaraokeRUM
             dt = LayData();
         }
         
-        public List<KhachHang> LayDSKH()
+        public IEnumerable<KhachHang> LayDSKH()
         {
-
-            var dataKH = from kh in dt.KhachHangs
-                         select new
-                         {
-                             ten = kh.TenKhach,
-                             makh = kh.MaKH,
-                             sld = kh.SoLanDen,
-                             sdt = kh.SDT
-                         };
-            List<KhachHang> lKH = new List<KhachHang>();
-            foreach(var data in dataKH)
-            {
-                KhachHang kh = new KhachHang()
-                {
-                    TenKhach = data.ten,
-                    MaKH = data.makh,
-                    SDT = data.sdt,
-                    SoLanDen = data.sld
-                }; 
-                lKH.Add(kh);
-            }
-            return lKH;
+            IEnumerable<KhachHang> kh = from n in dt.KhachHangs
+                                        select n;
+            return kh;
+           
         }
     }
 }
