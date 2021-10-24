@@ -41,10 +41,6 @@ namespace KaraokeRUM
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvwDSKH = new System.Windows.Forms.ListView();
-            this.clTen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clMa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clSDT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clSLD = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cboSapXep = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -153,11 +149,6 @@ namespace KaraokeRUM
             this.lvwDSKH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvwDSKH.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clTen,
-            this.clMa,
-            this.clSDT,
-            this.clSLD});
             this.lvwDSKH.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvwDSKH.HideSelection = false;
             this.lvwDSKH.Location = new System.Drawing.Point(23, 40);
@@ -166,26 +157,6 @@ namespace KaraokeRUM
             this.lvwDSKH.Size = new System.Drawing.Size(993, 727);
             this.lvwDSKH.TabIndex = 0;
             this.lvwDSKH.UseCompatibleStateImageBehavior = false;
-            // 
-            // clTen
-            // 
-            this.clTen.Text = "Tên";
-            this.clTen.Width = 80;
-            // 
-            // clMa
-            // 
-            this.clMa.Text = "Mã";
-            this.clMa.Width = 90;
-            // 
-            // clSDT
-            // 
-            this.clSDT.Text = "SDT";
-            this.clSDT.Width = 120;
-            // 
-            // clSLD
-            // 
-            this.clSLD.Text = "SLD";
-            this.clSLD.Width = 150;
             // 
             // cboSapXep
             // 
@@ -372,9 +343,5 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTimKiem;
-        private System.Windows.Forms.ColumnHeader clTen;
-        private System.Windows.Forms.ColumnHeader clMa;
-        private System.Windows.Forms.ColumnHeader clSDT;
-        private System.Windows.Forms.ColumnHeader clSLD;
     }
 }
