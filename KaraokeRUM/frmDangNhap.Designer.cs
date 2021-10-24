@@ -31,6 +31,7 @@ namespace KaraokeRUM
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnThoat = new System.Windows.Forms.Button();
             this.btnDN = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lblLayLaiMatKhau = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@ namespace KaraokeRUM
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnThoat);
             this.groupBox1.Controls.Add(this.btnDN);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.lblLayLaiMatKhau);
@@ -50,7 +52,7 @@ namespace KaraokeRUM
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.groupBox1.Location = new System.Drawing.Point(172, 45);
+            this.groupBox1.Location = new System.Drawing.Point(59, 58);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -69,15 +71,30 @@ namespace KaraokeRUM
             this.label3.Text = "Mật Khẩu:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnThoat
+            // 
+            this.btnThoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnThoat.Location = new System.Drawing.Point(311, 197);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(141, 45);
+            this.btnThoat.TabIndex = 3;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
             // btnDN
             // 
             this.btnDN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnDN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDN.ForeColor = System.Drawing.Color.White;
-            this.btnDN.Location = new System.Drawing.Point(166, 197);
+            this.btnDN.Location = new System.Drawing.Point(167, 197);
             this.btnDN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDN.Name = "btnDN";
-            this.btnDN.Size = new System.Drawing.Size(286, 46);
+            this.btnDN.Size = new System.Drawing.Size(141, 45);
             this.btnDN.TabIndex = 2;
             this.btnDN.Text = "Đăng Nhập";
             this.btnDN.UseVisualStyleBackColor = false;
@@ -97,10 +114,10 @@ namespace KaraokeRUM
             // 
             this.lblLayLaiMatKhau.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblLayLaiMatKhau.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLayLaiMatKhau.Location = new System.Drawing.Point(227, 263);
+            this.lblLayLaiMatKhau.Location = new System.Drawing.Point(241, 258);
             this.lblLayLaiMatKhau.Name = "lblLayLaiMatKhau";
             this.lblLayLaiMatKhau.Size = new System.Drawing.Size(155, 31);
-            this.lblLayLaiMatKhau.TabIndex = 3;
+            this.lblLayLaiMatKhau.TabIndex = 4;
             this.lblLayLaiMatKhau.Text = "Quên mật khẩu?";
             this.lblLayLaiMatKhau.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblLayLaiMatKhau.Click += new System.EventHandler(this.lblLayLaiMatKhau_Click);
@@ -132,13 +149,12 @@ namespace KaraokeRUM
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::KaraokeRUM.Properties.Resources._1610276918_Background_karaoke_dep;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(613, 443);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Karaoke RUM - Đăng nhập";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDangNhap_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -154,5 +170,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnThoat;
     }
 }

@@ -12,7 +12,7 @@ namespace KaraokeRUM
 {
     public partial class frmTrangChuQL : Form
     {
-        private string maQL;
+        protected static string MAQL;
         public frmTrangChuQL()
         {
             InitializeComponent();
@@ -35,15 +35,8 @@ namespace KaraokeRUM
         private void frmTrangChuCQ_Load(object sender, EventArgs e)
         {
             OpenFormInPanel(new frmHome());
-            maQL = frmDangNhap.maQL;
-            Console.WriteLine(maQL);
-        }
-
-        private void btnChuyenGiaoDien_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmTrangChu frm = new frmTrangChu();
-            frm.Show();
+            MAQL = frmDangNhap.maQL;
+            Console.WriteLine(MAQL);
         }
 
         private void btnQLNV_Click(object sender, EventArgs e)
@@ -93,9 +86,12 @@ namespace KaraokeRUM
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            frmDangNhap frm = new frmDangNhap();
-            frm.Show();
-            this.Hide();
+            DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Thông báo",
+                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (luaChon == DialogResult.Yes)
+            {
+                this.DialogResult = DialogResult.No;
+            }
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)

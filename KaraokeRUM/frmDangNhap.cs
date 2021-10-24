@@ -12,10 +12,14 @@ namespace KaraokeRUM
 {
     public partial class frmDangNhap : Form
     {
-        public TaiKhoan tk;
-        public static string maQL;//Lấy mã từ username để các form khác sử dụng.
+        /**
+         * Khai báo các biến trong class
+         * maQL: Lấy mã từ username để các form khác sử dụng.
+         * dem: dùng để đếm số lần đăng nhập sai, sai 3 lần thì gợi ý lấy lại mật khẩu.
+         */
+        private TaiKhoan tk;
+        public static string maQL;
         private clsTaiKhoan qlTaiKhoan;
-        //biến đếm dùng để đếm số lần đăng nhập sai, sai 3 lần thì gợi ý lấy lại mật khẩu.
         private int dem = 0;
 
         public frmDangNhap()
@@ -24,6 +28,10 @@ namespace KaraokeRUM
             qlTaiKhoan = new clsTaiKhoan();
         }
 
+
+        /**
+         * Sự kiện sử lý đăng nhập
+         */
         private void btnDN_Click(object sender, EventArgs e)
         {
             maQL = txtUsername.Text;
@@ -33,25 +41,38 @@ namespace KaraokeRUM
                 UserName = txtUsername.Text,
                 PassWord = txtPassword.Text
             };
-
-            frmTrangChuQL frmQL = new frmTrangChuQL();
-            frmTrangChu frmNV = new frmTrangChu();
+ 
             frmLayLaiMatKhau frmLLMK = new frmLayLaiMatKhau();
-
+            frmTrangChu frmNV = new frmTrangChu(maQL);
+            frmTrangChuQL frmQL = new frmTrangChuQL();
             if (qlTaiKhoan.KiemTraTaiKhoan(tk))
             {
                 
                 if (qlTaiKhoan.LayLoaiTaiKhoan(tk).Equals("LNV01"))
                 {
-                    
-                    frmQL.Show();
                     this.Hide();
+                    
+                    
+                    if (frmQL.ShowDialog() == DialogResult.Yes)
+                        this.Close();
+                    else
+                    {
+                        this.Show();
+                        dem = 0;
+                    }    
                 }
 
                 else if(qlTaiKhoan.LayLoaiTaiKhoan(tk).Equals("LNV02"))
                 {
-                    frmNV.Show();
                     this.Hide();
+                    
+                    if (frmNV.ShowDialog() == DialogResult.Yes)
+                        this.Close();
+                    else
+                    {
+                        this.Show();
+                        dem = 0;
+                    }
                 }
 
                 else
@@ -79,8 +100,8 @@ namespace KaraokeRUM
                     , "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if(luaChon == DialogResult.Yes)
                 {
-                    frmLLMK.Show();
-                    this.Hide();
+                    frmLayLaiMatKhau frm = new frmLayLaiMatKhau();
+                    DongForm(frm);
                 }
                 else
                 {
@@ -89,24 +110,40 @@ namespace KaraokeRUM
             }
         }
 
+        /**
+         * Sự kiện sử lý khi click vào label lấy lại mật khẩu.
+         */
+
         private void lblLayLaiMatKhau_Click(object sender, EventArgs e)
         {
             frmLayLaiMatKhau frm = new frmLayLaiMatKhau();
-            frm.Show();
-            this.Hide();
+            DongForm(frm);
+            
         }
 
-        private void frmDangNhap_FormClosing(object sender, FormClosingEventArgs e)
+        /**
+         * Hàm hỗ trợ cho việc đóng form
+         */
+        private void DongForm(Form frm)
+        {
+            this.Hide();//this->FormDangNhap
+            DialogResult chonDong = frm.ShowDialog();
+            if (chonDong == DialogResult.Yes)
+                this.Close();//this->frm
+            else
+                this.Show();
+        }
+
+        /**
+         * Sự kiện sử lý chức năng thoát.
+         */
+        private void btnThoat_Click(object sender, EventArgs e)
         {
             DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn thoát", "Thông báo"
                                 , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(luaChon == DialogResult.Yes)
+            if (luaChon == DialogResult.Yes)
             {
-                e.Cancel = false;
-            }
-            else
-            {
-                e.Cancel = true;
+                this.Close();
             }
         }
     }
