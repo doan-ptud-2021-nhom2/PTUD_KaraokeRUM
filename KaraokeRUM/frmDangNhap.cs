@@ -12,10 +12,14 @@ namespace KaraokeRUM
 {
     public partial class frmDangNhap : Form
     {
-        public TaiKhoan tk;
-        public static string maQL;//Lấy mã từ username để các form khác sử dụng.
+        /**
+         * Khai báo các biến trong class
+         * maQL: Lấy mã từ username để các form khác sử dụng.
+         * dem: dùng để đếm số lần đăng nhập sai, sai 3 lần thì gợi ý lấy lại mật khẩu.
+         */
+        private TaiKhoan tk;
+        public static string maQL;
         private clsTaiKhoan qlTaiKhoan;
-        //biến đếm dùng để đếm số lần đăng nhập sai, sai 3 lần thì gợi ý lấy lại mật khẩu.
         private int dem = 0;
 
         public frmDangNhap()
@@ -24,6 +28,10 @@ namespace KaraokeRUM
             qlTaiKhoan = new clsTaiKhoan();
         }
 
+
+        /**
+         * Sự kiện sử lý đăng nhập
+         */
         private void btnDN_Click(object sender, EventArgs e)
         {
             maQL = txtUsername.Text;
@@ -102,6 +110,10 @@ namespace KaraokeRUM
             }
         }
 
+        /**
+         * Sự kiện sử lý khi click vào label lấy lại mật khẩu.
+         */
+
         private void lblLayLaiMatKhau_Click(object sender, EventArgs e)
         {
             frmLayLaiMatKhau frm = new frmLayLaiMatKhau();
@@ -109,7 +121,9 @@ namespace KaraokeRUM
             
         }
 
-        //Hàm hỗ trợ cho việc đóng form
+        /**
+         * Hàm hỗ trợ cho việc đóng form
+         */
         private void DongForm(Form frm)
         {
             this.Hide();//this->FormDangNhap
@@ -120,6 +134,9 @@ namespace KaraokeRUM
                 this.Show();
         }
 
+        /**
+         * Sự kiện sử lý chức năng thoát.
+         */
         private void btnThoat_Click(object sender, EventArgs e)
         {
             DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn thoát", "Thông báo"

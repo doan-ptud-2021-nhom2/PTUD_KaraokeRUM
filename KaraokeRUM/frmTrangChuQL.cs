@@ -12,7 +12,7 @@ namespace KaraokeRUM
 {
     public partial class frmTrangChuQL : Form
     {
-        private string maQL;
+        protected static string MAQL;
         public frmTrangChuQL()
         {
             InitializeComponent();
@@ -35,8 +35,8 @@ namespace KaraokeRUM
         private void frmTrangChuCQ_Load(object sender, EventArgs e)
         {
             OpenFormInPanel(new frmHome());
-            maQL = frmDangNhap.maQL;
-            Console.WriteLine(maQL);
+            MAQL = frmDangNhap.maQL;
+            Console.WriteLine(MAQL);
         }
 
         private void btnQLNV_Click(object sender, EventArgs e)
