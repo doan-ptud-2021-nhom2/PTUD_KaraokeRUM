@@ -60,5 +60,10 @@ namespace KaraokeRUM
             }
            
         }
+
+        private void frmLayLaiMatKhau_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
