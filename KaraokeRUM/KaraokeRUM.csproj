@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsKetNoi.cs" />
+    <Compile Include="clsKhachHang.cs" />
     <Compile Include="clsTaiKhoan.cs" />
     <Compile Include="frmLayLaiMatKhau.cs">
       <SubType>Form</SubType>
