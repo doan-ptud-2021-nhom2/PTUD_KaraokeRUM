@@ -14,7 +14,7 @@ namespace KaraokeRUM
         {
             dt = LayData();
         }
-        //Hàm lấy thông tin khách hàng
+        
         public List<KhachHang> LayDSKH()
         {
 

@@ -16,7 +16,7 @@ namespace KaraokeRUM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmQuanLyKhachHang());
+            Application.Run(new frmQuanLyThietBi());
         }
     }
 }
