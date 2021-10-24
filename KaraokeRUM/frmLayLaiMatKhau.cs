@@ -12,19 +12,29 @@ namespace KaraokeRUM
 {
     public partial class frmLayLaiMatKhau : Form
     {
-        clsTaiKhoan qlTaiKhoan;
+        /**
+         * Khai báo các biến toàn cục sử dụng trong class
+         */
+        private clsTaiKhoan qlTaiKhoan;
+
         public frmLayLaiMatKhau()
         {
             InitializeComponent();
             qlTaiKhoan = new clsTaiKhoan();
         }
 
+        /**
+         * Sự kiện sử lý khi click vào label quay vềđăng nhập
+         */
         private void lblDangNhap_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.No;
             this.Close();
         }
 
+        /**
+         * Sự kiện sử lý Lấy lại mật khẩu.
+         */
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
             string tenDangNhap = txtTaiKhoan.Text;
@@ -50,6 +60,9 @@ namespace KaraokeRUM
             }
         }
 
+        /**
+         * Sự kiện sử lý chức năng thoát
+         */
         private void btnThoat_Click(object sender, EventArgs e)
         {
             DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn thoát", "Thông báo"
