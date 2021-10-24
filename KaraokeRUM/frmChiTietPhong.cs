@@ -28,5 +28,10 @@ namespace KaraokeRUM
             frmHoaDon frm = new frmHoaDon();
             frm.Show();
         }
+
+        private void frmChiTietPhong_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

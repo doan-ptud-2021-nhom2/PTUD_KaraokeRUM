@@ -49,12 +49,12 @@ namespace KaraokeRUM
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboMc = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblPhong = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.cboMc = new System.Windows.Forms.ComboBox();
             this.groupBox3.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -280,6 +280,14 @@ namespace KaraokeRUM
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin mặt hàng";
             // 
+            // cboMc
+            // 
+            this.cboMc.FormattingEnabled = true;
+            this.cboMc.Location = new System.Drawing.Point(203, 43);
+            this.cboMc.Name = "cboMc";
+            this.cboMc.Size = new System.Drawing.Size(250, 33);
+            this.cboMc.TabIndex = 10;
+            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -343,14 +351,6 @@ namespace KaraokeRUM
             this.label2.Text = "Phòng";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cboMc
-            // 
-            this.cboMc.FormattingEnabled = true;
-            this.cboMc.Location = new System.Drawing.Point(203, 43);
-            this.cboMc.Name = "cboMc";
-            this.cboMc.Size = new System.Drawing.Size(250, 33);
-            this.cboMc.TabIndex = 10;
-            // 
             // frmChiTietPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -364,6 +364,7 @@ namespace KaraokeRUM
             this.Name = "frmChiTietPhong";
             this.Text = "Chi tiết phòng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmChiTietPhong_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel3.ResumeLayout(false);
