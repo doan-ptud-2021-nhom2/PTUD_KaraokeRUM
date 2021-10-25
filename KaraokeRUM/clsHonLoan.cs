@@ -32,6 +32,13 @@ namespace KaraokeRUM
    * join 2 bảng: KhachHang với LoaiKhachHang
    * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
    */
-
+        public IEnumerable<dynamic> KhachHangVaLoaiKhachHang()
+        {
+            var kh = from n in dt.KhachHangs
+                     join x in dt.LoaiKhachHangs
+                     on n.MaLoaiKH equals x.MaLoaiKH
+                     select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
+            return kh;
+        }
     }
 }
