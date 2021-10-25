@@ -27,7 +27,20 @@ namespace KaraokeRUM
         private clsHonLoan hL;
         private void frmQuanLyKhachHang_Load(object sender, EventArgs e)
         {
-     
+            cboLoaiKhachHang.Items.Add("VIP");
+            cboLoaiKhachHang.Items.Add("TX");
+            cboLoaiKhachHang.Items.Add("THUONG");
+
+            cboLocTheoLoai.Items.Add("VIP");
+            cboLocTheoLoai.Items.Add("TX");
+            cboLocTheoLoai.Items.Add("THUONG");
+            cboLocTheoLoai.Items.Add("All");
+
+            cboSapXep.Items.Add("Mã khách hàng");
+            cboSapXep.Items.Add("Tên khách hàng");
+            cboSapXep.Items.Add("Số lần đến");
+            cboSapXep.Items.Add("Chiết khấu");
+
             TaoTieuDeCot(lvwDSKH);
             kH = new clsKhachHang();
             lK = new clsLoaiKhach();
@@ -35,7 +48,7 @@ namespace KaraokeRUM
             IEnumerable<dynamic> dsKH = hL.LayPhongVaLoaiPhong();
             TaiDuLieuLenListView(lvwDSKH, dsKH);
 
-           
+
         }
         /** 
          * Tạo tiêu đề cột
@@ -67,7 +80,7 @@ namespace KaraokeRUM
                 itemKhach = TaoItem(ds);
                 lsw.Items.Add(itemKhach);
             }
-           
+
         }
         ListViewItem TaoItem(dynamic itemKH)
         {
@@ -80,6 +93,49 @@ namespace KaraokeRUM
             lswItem.SubItems.Add(itemKH.ChietKhau.ToString());
             lswItem.Tag = itemKH;
             return lswItem;
+        }
+        private void lvwDSKH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dynamic dsKH = null;
+            if (lvwDSKH.SelectedItems.Count > 0)
+            {
+                dsKH = (dynamic)lvwDSKH.SelectedItems[0].Tag;
+                TaiDuLieuTuLstvDenTxtCbo(dsKH);
+
+            }
+        }
+        void TaiDuLieuTuLstvDenTxtCbo(dynamic dsKH)
+        {
+            cboLoaiKhachHang.Text = dsKH.TenLoaiKH;
+            txtCKC.Text = dsKH.ChietKhau.ToString();
+            cboLocTheoLoai.Text = dsKH.TenLoaiKH;
+        }
+
+        private void btnCapNhap_Click(object sender, EventArgs e)
+        {
+            LoaiKhachHang suaLk = SuaChietKhauLoaiKhach();
+            lK.CapNhatChietKhau(suaLk);
+            IEnumerable<dynamic> layDS = hL.KhachHangVaLoaiKhachHang();
+            XoaCacTxtCbo();
+            TaiDuLieuLenListView(lvwDSKH, layDS);
+        }
+        LoaiKhachHang SuaChietKhauLoaiKhach(){
+            LoaiKhachHang loaiKhachHang = new LoaiKhachHang();
+            loaiKhachHang.MaLoaiKH = lK.TimLoaiKhachHang(cboLoaiKhachHang.Text).First().MaLoaiKH;
+            loaiKhachHang.ChietKhau = Convert.ToInt32(txtCKM.Text);
+
+            return loaiKhachHang;
+        }
+        /** 
+       * Xóa trắng các ô textbox, combobox.
+       */
+        void XoaCacTxtCbo()
+        {
+            cboLoaiKhachHang.Text = "";
+            txtCKC.Text = "";
+            cboLocTheoLoai.Text = "";
+            txtCKM.Text = "";
+            cboSapXep.Text = "";
         }
     }
         
