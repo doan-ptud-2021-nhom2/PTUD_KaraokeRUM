@@ -29,6 +29,7 @@ namespace KaraokeRUM
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstvDanhSachPhong = new System.Windows.Forms.ListView();
@@ -58,9 +59,11 @@ namespace KaraokeRUM
             this.label3 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label11
@@ -194,6 +197,7 @@ namespace KaraokeRUM
             this.txtGiaPhongMoi.Name = "txtGiaPhongMoi";
             this.txtGiaPhongMoi.Size = new System.Drawing.Size(417, 30);
             this.txtGiaPhongMoi.TabIndex = 40;
+            this.txtGiaPhongMoi.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaPhongMoi_Validating);
             // 
             // label7
             // 
@@ -296,6 +300,7 @@ namespace KaraokeRUM
             this.btnTaiLai.TabIndex = 37;
             this.btnTaiLai.Text = "Tải lại";
             this.btnTaiLai.UseVisualStyleBackColor = false;
+            this.btnTaiLai.Click += new System.EventHandler(this.btnTaiLai_Click);
             // 
             // cboLoaiPhong
             // 
@@ -401,6 +406,7 @@ namespace KaraokeRUM
             this.btnSua.TabIndex = 33;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -415,6 +421,10 @@ namespace KaraokeRUM
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmQuanLyPhong
             // 
@@ -435,11 +445,13 @@ namespace KaraokeRUM
             this.Name = "frmQuanLyPhong";
             this.Text = "Quản lý phòng";
             this.Load += new System.EventHandler(this.frmQuanLyPhong_Load);
+            this.Click += new System.EventHandler(this.frmQuanLyPhong_Click);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,5 +487,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -18,5 +18,17 @@ namespace KaraokeRUM
             Match match = regex.Match(matKhau);
             return match.Success;
         }
+
+        /**
+         * Class KiemTra tạo những hàm dùng để kiểm tra input.
+         */
+        public static bool KiemTraSoTien(this string soTien)
+        {
+            //Regex(@"^(.{7,20}|[^0-9])$");
+            //Regex.Match(id, @"^\d{1,2}$").Success;
+            Regex regex = new Regex(@"^[1-9]{1}[0-9]*$");
+            Match match = regex.Match(soTien);
+            return match.Success;
+        }
     }
 }

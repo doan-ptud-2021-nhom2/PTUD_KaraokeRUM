@@ -157,7 +157,6 @@ namespace KaraokeRUM
             this.Name = "frmLayLaiMatKhau";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Karaoke RUM - Lấy lại mật khẩu";
-            this.Load += new System.EventHandler(this.frmLayLaiMatKhau_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
