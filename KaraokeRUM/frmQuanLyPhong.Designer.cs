@@ -207,11 +207,11 @@ namespace KaraokeRUM
             // 
             // cboLoaiPhong2
             // 
-            this.cboLoaiPhong2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboLoaiPhong2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLoaiPhong2.FormattingEnabled = true;
             this.cboLoaiPhong2.Location = new System.Drawing.Point(160, 62);
             this.cboLoaiPhong2.Name = "cboLoaiPhong2";
-            this.cboLoaiPhong2.Size = new System.Drawing.Size(417, 31);
+            this.cboLoaiPhong2.Size = new System.Drawing.Size(417, 30);
             this.cboLoaiPhong2.TabIndex = 36;
             this.cboLoaiPhong2.SelectedIndexChanged += new System.EventHandler(this.cboLoaiPhong2_SelectedIndexChanged);
             // 
@@ -299,21 +299,21 @@ namespace KaraokeRUM
             // 
             // cboLoaiPhong
             // 
-            this.cboLoaiPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboLoaiPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLoaiPhong.FormattingEnabled = true;
             this.cboLoaiPhong.Location = new System.Drawing.Point(166, 137);
             this.cboLoaiPhong.Name = "cboLoaiPhong";
-            this.cboLoaiPhong.Size = new System.Drawing.Size(417, 31);
+            this.cboLoaiPhong.Size = new System.Drawing.Size(417, 30);
             this.cboLoaiPhong.TabIndex = 36;
             this.cboLoaiPhong.SelectedIndexChanged += new System.EventHandler(this.cboLoaiPhong_SelectedIndexChanged);
             // 
             // cboTrangThai
             // 
-            this.cboTrangThai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTrangThai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTrangThai.FormattingEnabled = true;
             this.cboTrangThai.Location = new System.Drawing.Point(166, 97);
             this.cboTrangThai.Name = "cboTrangThai";
-            this.cboTrangThai.Size = new System.Drawing.Size(417, 31);
+            this.cboTrangThai.Size = new System.Drawing.Size(417, 30);
             this.cboTrangThai.TabIndex = 35;
             // 
             // btnThemPhong
