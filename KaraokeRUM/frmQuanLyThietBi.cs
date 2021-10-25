@@ -16,6 +16,8 @@ namespace KaraokeRUM
         {
             InitializeComponent();
         }
+        private clsPhong phong;
+        private IEnumerable<Phong> dsachPhong;
         private clsThietBi thietBi;
         private IEnumerable<TrangThietBi> danhSachThietBi;
         private clsPhongTrangThietBi phongTTB;
@@ -26,13 +28,26 @@ namespace KaraokeRUM
             btnSuaTP.Enabled = false;
             btnXoa.Enabled = false;
             btnXoaTP.Enabled = false;
-         
+            cboDonVi.Items.Add("Cặp");
+            cboDonVi.Items.Add("Cái");
+            cboLoaiPhong.Items.Add("VIP");
+            cboLoaiPhong.Items.Add("THƯỜNG");         
             TaoListView(lwvThietBi);
             thietBi = new clsThietBi();
             danhSachThietBi = thietBi.GetTrangThietBis();
+            foreach (TrangThietBi i in danhSachThietBi)
+            {
+                cboTenTTB.Items.Add(i.TenTTB);
+            }            
             TaiDuLieuLenLWV(lwvThietBi, danhSachThietBi);
-            TaoListView2(lwvThietBiTrongPhong);
+            TaoListView2(lwvThietBiTrongPhong);        
             phongTTB = new clsPhongTrangThietBi();
+            phong = new clsPhong();
+            dsachPhong = phong.LayTatCaPhong();
+            foreach (Phong i in dsachPhong)
+            {
+                cboSoPhong.Items.Add(i.TenPhong);
+            }
             dSachPhongTTB = phongTTB.TraDuLieu();
             TaiDuLieuLenLWV2(lwvThietBiTrongPhong, dSachPhongTTB);
         }
@@ -101,13 +116,7 @@ namespace KaraokeRUM
         }
         private void TaiDuLieuLenLWV2(ListView lwv, IEnumerable<dynamic> dSach)
         {
-            lwv.Items.Clear();
-            ListViewItem item;
-            foreach (dynamic i in dSach)
-            {
-                item = TaoItem(i);
-                lwv.Items.Add(item);
-            }
+           
         }
         #endregion
         #region DuLieulenText
@@ -149,6 +158,40 @@ namespace KaraokeRUM
             }
         }
         #endregion
+        #region ThietBi
+        #region ThemTTb
+        private string taoMaTTB()
+        {
+            string maTTB = "";
+            int dem = thietBi.GetTrangThietBis().Count() + 1;
+            if(dem < 10)
+            {
+                maTTB += "TB00" + dem; 
+            }
+            else
+            {
+                maTTB += "TB0" + dem;
+            }
+            return maTTB;
+        }
+        private TrangThietBi TaoTTB()
+        {
+            TrangThietBi ttb = new TrangThietBi();
+            ttb.MaTTB = taoMaTTB();
+            ttb.TenTTB = txtTen.Text;
+            ttb.SoLuongTon = (int)Convert.ToDecimal(txtSoLuongTon.Text);
+            ttb.DonVi = cboDonVi.Text;
+            ttb.Gia = Convert.ToDecimal(txtDonGia.Text);
+            ttb.MaQL = "NV002";
+            return ttb;
+        }
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            TrangThietBi ttb = TaoTTB();
+            thietBi.Them(ttb);
+            TaiDuLieuLenLWV(lwvThietBi, thietBi.GetTrangThietBis());
+        }
+        #endregion
         private void btnTaiLai_Click(object sender, EventArgs e)
         {
 
@@ -156,22 +199,38 @@ namespace KaraokeRUM
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-
+            DialogResult yn;
+            TrangThietBi ttb;
+            int index;
+            if (lwvThietBi.SelectedItems.Count > 0)
+            {
+                yn = MessageBox.Show("Bạn có chắc muốn xóa?", "Hỏi xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (yn == DialogResult.Yes)
+                {
+                    for (int i = 0; i < lwvThietBi.SelectedItems.Count; ++i)
+                    {
+                        index = lwvThietBi.SelectedIndices[i];
+                        ttb = (TrangThietBi)lwvThietBi.Items[index].Tag;
+                        thietBi.Xoa(ttb);
+                    }
+                    TaiDuLieuLenLWV(lwvThietBi, danhSachThietBi);
+                    btnXoa.Enabled = false;
+                    btnSua.Enabled = false;
+                }
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
-        {
-
+        {            
         }
-
-        private void btnThem_Click(object sender, EventArgs e)
+        #endregion     
+        private void Tao()
         {
-
+            
         }
-
         private void btnThemTP_Click(object sender, EventArgs e)
         {
-
+         
         }
 
         private void btnSuaTP_Click(object sender, EventArgs e)
