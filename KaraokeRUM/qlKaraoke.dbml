@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_karaoke" Class="qlKaraokeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-AUH5LCA\SQLEXPRESS;Initial Catalog=db_karaoke;Integrated Security=True" SettingsObjectName="KaraokeRUM.Properties.Settings" SettingsPropertyName="db_karaokeConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_karaoke_rum" Class="qlKaraokeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-J0DJ4SH\SQLEXPRESS;Initial Catalog=db_karaoke_rum;Integrated Security=True" SettingsObjectName="KaraokeRUM.Properties.Settings" SettingsPropertyName="db_karaoke_rumConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChiTietHoaDon" Member="ChiTietHoaDons">
     <Type Name="ChiTietHoaDon">
       <Column Name="MaMH" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -45,7 +45,7 @@
       <Column Name="MaKH" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenKhach" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SDT" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
-      <Column Name="SoLanDen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoLanDen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="MaLoaiKH" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
       <Association Name="KhachHang_DonDatPhong" Member="DonDatPhongs" ThisKey="MaKH" OtherKey="MaKH" Type="DonDatPhong" />
       <Association Name="KhachHang_HoaDon" Member="HoaDons" ThisKey="MaKH" OtherKey="MaKH" Type="HoaDon" />
@@ -80,7 +80,7 @@
     <Type Name="MatHang">
       <Column Name="MaMH" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenMh" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Loai" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="SoLuongTon" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DonVi" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Gia" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
@@ -97,7 +97,7 @@
       <Column Name="CMND" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
       <Column Name="SDT" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(70) NOT NULL" CanBeNull="false" />
-      <Column Name="TrangThai" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="TrangThai" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="MaLNV" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
       <Association Name="NhanVien_DonDatPhong" Member="DonDatPhongs" ThisKey="MaNV" OtherKey="MaQL" Type="DonDatPhong" />
       <Association Name="NhanVien_HoaDon" Member="HoaDons" ThisKey="MaNV" OtherKey="MaQL" Type="HoaDon" />
@@ -112,7 +112,7 @@
     <Type Name="Phong">
       <Column Name="MaPhong" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenPhong" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="TrangThaiPhong" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="TrangThaiPhong" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="MaLoaiPhong" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
       <Column Name="MaQL" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
       <Association Name="Phong_DonDatPhong" Member="DonDatPhongs" ThisKey="MaPhong" OtherKey="MaPhong" Type="DonDatPhong" />
@@ -143,7 +143,7 @@
       <Column Name="MaTTB" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenTTB" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SoLuongTon" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DonVi" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DonVi" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Gia" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="MaQL" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
       <Association Name="TrangThietBi_Phong_TrangThietBi" Member="Phong_TrangThietBis" ThisKey="MaTTB" OtherKey="MaTTB" Type="Phong_TrangThietBi" />
