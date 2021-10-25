@@ -35,5 +35,33 @@ namespace KaraokeRUM
                                            select n;
             return lk;
         }
+        public IQueryable<LoaiKhachHang> TimLoaiKhachHang(string tenLoaiKhach)
+        {
+            IQueryable<LoaiKhachHang> q = (from n in dt.LoaiKhachHangs
+                                       where n.TenLoaiKH.Equals(tenLoaiKhach)
+                                       select n);
+            return q;
+        }
+        public bool CapNhatChietKhau(LoaiKhachHang lk)
+        {
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = myTran;
+                IQueryable<LoaiKhachHang> tam = (from n in dt.LoaiKhachHangs
+                                                 where n.MaLoaiKH == lk.MaLoaiKH
+                                                 select n);
+                tam.First().ChietKhau = lk.ChietKhau;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Lỗi không thể sửa chiết khấu Khách hàng này!" + ex.Message);
+            }
+        }
     }
 }

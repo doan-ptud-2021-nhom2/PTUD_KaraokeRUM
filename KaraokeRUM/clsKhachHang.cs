@@ -22,5 +22,27 @@ namespace KaraokeRUM
             return kh;
            
         }
+
+        /**
+       * Thêm các thông tin Khách Hàng
+       */
+        public int ThemKhachHang(KhachHang khach)
+        {
+            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = br;
+                dt.KhachHangs.InsertOnSubmit(khach);
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception(ex.Message);
+            }
+        }
+        
     }
 }
