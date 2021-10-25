@@ -10,22 +10,23 @@ namespace KaraokeRUM
     {
 
         qlKaraokeDataContext dt;
-
+        clsLoaiPhong lp;
         public clsPhong()
         {
             dt = LayData();
+            lp = new clsLoaiPhong();
         }
 
         /**
         * Lấy thông tin phòng
         */
-        public Phong LayPhong(string maPhong)
+      /*  public Phong LayPhong(string maPhong)
         {
             var q = from d in dt.Phongs
                     where d.MaPhong == maPhong
                     select d;
             return q.FirstOrDefault();
-        }
+        }*/
         /**
         * Lấy tất cả các phòng
         */
@@ -36,9 +37,19 @@ namespace KaraokeRUM
             return q;
         }
 
+        /**
+        * Lấy các phòng VIP 
+        */
+        public IEnumerable<Phong> LayTatCaTheoLoai(string maLoaiPhong)
+        {
+            IEnumerable<Phong> q = from n in dt.Phongs
+                                   where n.MaLoaiPhong.Equals(lp.TimLoaiPhong(maLoaiPhong).First().MaLoaiPhong)
+                                   select n;
+            return q;
+        }
 
         /**
-        * Thêm các thông tin phòng
+        * Thêm các thông tin Phòng
         */
         public int ThemPhong(Phong phong)
         {
@@ -56,6 +67,43 @@ namespace KaraokeRUM
                 dt.Transaction.Rollback();
                 throw new Exception(ex.Message);
             }
+        }
+
+        /**
+        * Sửa thông tin phòng (Trạng thái, Loại phòng).
+        */
+        public bool SuaPhong(Phong phong)
+        {
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = myTran;
+                IQueryable<Phong> tam = (from n in dt.Phongs
+                                              where n.MaPhong == phong.MaPhong
+                                         select n);
+                tam.First().TrangThaiPhong = phong.TrangThaiPhong;
+                //truy vào khóa ngoại của bảng Phòng để đổi trạng thái (VIP, THƯỜNG) bên bảng Loại Phòng.
+                tam.First().MaLoaiPhong = phong.MaLoaiPhong;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Loi không sửa được!" + ex.Message);
+
+            }
+        }
+        /**
+        * Tìm kiếm phòng 
+        */
+        public IEnumerable<Phong> TimPhong(string tenPhong)
+        {
+            IEnumerable<Phong> q = from n in dt.Phongs
+                                   where n.TenPhong.Equals(tenPhong)
+                                   select n;
+            return q;
         }
 
         /**
@@ -91,17 +139,6 @@ namespace KaraokeRUM
                 dt.Transaction.Rollback();
                 throw new Exception("Lỗi!!" + ex.Message);
             }
-        }
-
-        /**
-        * Tìm kiếm phòng 
-        */
-        public IEnumerable<Phong> TimPhong(string maPhong)
-        {
-            IEnumerable<Phong> q = from n in dt.Phongs
-                                   where n.MaPhong.Equals(maPhong)
-                                   select n;
-            return q;
         }
 
 

@@ -22,7 +22,7 @@ namespace KaraokeRUM
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="db_karaoke")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="db_karaoke_rum")]
 	public partial class qlKaraokeDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -72,7 +72,7 @@ namespace KaraokeRUM
     #endregion
 		
 		public qlKaraokeDataContext() : 
-				base(global::KaraokeRUM.Properties.Settings.Default.db_karaokeConnectionString, mappingSource)
+				base(global::KaraokeRUM.Properties.Settings.Default.db_karaoke_rumConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1144,7 +1144,7 @@ namespace KaraokeRUM
 		
 		private string _SDT;
 		
-		private System.Nullable<int> _SoLanDen;
+		private int _SoLanDen;
 		
 		private string _MaLoaiKH;
 		
@@ -1164,7 +1164,7 @@ namespace KaraokeRUM
     partial void OnTenKhachChanged();
     partial void OnSDTChanging(string value);
     partial void OnSDTChanged();
-    partial void OnSoLanDenChanging(System.Nullable<int> value);
+    partial void OnSoLanDenChanging(int value);
     partial void OnSoLanDenChanged();
     partial void OnMaLoaiKHChanging(string value);
     partial void OnMaLoaiKHChanged();
@@ -1238,8 +1238,8 @@ namespace KaraokeRUM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLanDen", DbType="Int")]
-		public System.Nullable<int> SoLanDen
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLanDen", DbType="Int NOT NULL")]
+		public int SoLanDen
 		{
 			get
 			{
@@ -1892,7 +1892,7 @@ namespace KaraokeRUM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="NVarChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
 		public string Loai
 		{
 			get
@@ -2266,7 +2266,7 @@ namespace KaraokeRUM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="Char(3) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
 		public string TrangThai
 		{
 			get
@@ -2611,7 +2611,7 @@ namespace KaraokeRUM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThaiPhong", DbType="Char(5) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThaiPhong", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
 		public string TrangThaiPhong
 		{
 			get
@@ -3269,7 +3269,7 @@ namespace KaraokeRUM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonVi", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonVi", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
 		public string DonVi
 		{
 			get
