@@ -14,7 +14,7 @@ namespace KaraokeRUM
             string strKetNoi = @"Data Source=.\SQLEXPRESS;Initial Catalog=db_karaoke_rum;Integrated Security=True";
             qlKaraoke = new qlKaraokeDataContext(strKetNoi)
             {
-                CommandTimeout = 120
+                CommandTimeout = 121
              };
             qlKaraoke.Connection.Open();
             return qlKaraoke;
