@@ -65,6 +65,14 @@ namespace KaraokeRUM
             this.radTen = new System.Windows.Forms.RadioButton();
             this.imgAvatar = new System.Windows.Forms.ImageList(this.components);
             this.label11 = new System.Windows.Forms.Label();
+            this.clTenNV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clMaNV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clGioiTinh = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clCMND = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clSDT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clDiaChi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clTrangThai = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clMaLNV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -101,6 +109,15 @@ namespace KaraokeRUM
             this.lvwDSNV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvwDSNV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clTenNV,
+            this.clMaNV,
+            this.clGioiTinh,
+            this.clCMND,
+            this.clSDT,
+            this.clDiaChi,
+            this.clTrangThai,
+            this.clMaLNV});
             this.lvwDSNV.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvwDSNV.HideSelection = false;
             this.lvwDSNV.Location = new System.Drawing.Point(25, 40);
@@ -457,6 +474,46 @@ namespace KaraokeRUM
             this.label11.Text = "Nhân Viên";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // clTenNV
+            // 
+            this.clTenNV.Text = "Tên nhân viên";
+            this.clTenNV.Width = 170;
+            // 
+            // clMaNV
+            // 
+            this.clMaNV.Text = "Mã nhân viên";
+            this.clMaNV.Width = 140;
+            // 
+            // clGioiTinh
+            // 
+            this.clGioiTinh.Text = "Giới tính";
+            this.clGioiTinh.Width = 100;
+            // 
+            // clCMND
+            // 
+            this.clCMND.Text = "CMND";
+            this.clCMND.Width = 130;
+            // 
+            // clSDT
+            // 
+            this.clSDT.Text = "SDT";
+            this.clSDT.Width = 130;
+            // 
+            // clDiaChi
+            // 
+            this.clDiaChi.Text = "Địa chỉ";
+            this.clDiaChi.Width = 250;
+            // 
+            // clTrangThai
+            // 
+            this.clTrangThai.Text = "Trạng thái";
+            this.clTrangThai.Width = 130;
+            // 
+            // clMaLNV
+            // 
+            this.clMaLNV.Text = "Mã loại nhân viên";
+            this.clMaLNV.Width = 150;
+            // 
             // frmQuanLyNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -475,6 +532,7 @@ namespace KaraokeRUM
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmQuanLyNhanVien";
             this.Text = "Quản lý nhân viên";
+            this.Load += new System.EventHandler(this.frmQuanLyNhanVien_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -522,5 +580,13 @@ namespace KaraokeRUM
         private System.Windows.Forms.RadioButton radTen;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ImageList imgAvatar;
+        private System.Windows.Forms.ColumnHeader clTenNV;
+        private System.Windows.Forms.ColumnHeader clMaNV;
+        private System.Windows.Forms.ColumnHeader clGioiTinh;
+        private System.Windows.Forms.ColumnHeader clCMND;
+        private System.Windows.Forms.ColumnHeader clSDT;
+        private System.Windows.Forms.ColumnHeader clDiaChi;
+        private System.Windows.Forms.ColumnHeader clTrangThai;
+        private System.Windows.Forms.ColumnHeader clMaLNV;
     }
 }

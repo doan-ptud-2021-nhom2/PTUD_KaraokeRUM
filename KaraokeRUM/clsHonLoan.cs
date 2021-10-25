@@ -28,6 +28,10 @@ namespace KaraokeRUM
             return q;
         }
 
+        /**
+   * join 2 bảng: KhachHang với LoaiKhachHang
+   * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
+   */
 
     }
 }
