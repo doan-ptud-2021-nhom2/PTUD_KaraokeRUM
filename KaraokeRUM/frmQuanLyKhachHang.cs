@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,7 @@ namespace KaraokeRUM
         private clsKhachHang kH;
         private clsLoaiKhach lK;
         private clsHonLoan hL;
+        private int sortColumn = -1;
         private void frmQuanLyKhachHang_Load(object sender, EventArgs e)
         {
             cboLoaiKhachHang.Items.Add("VIP");
@@ -35,11 +37,6 @@ namespace KaraokeRUM
             cboLocTheoLoai.Items.Add("TX");
             cboLocTheoLoai.Items.Add("THUONG");
             cboLocTheoLoai.Items.Add("All");
-
-            cboSapXep.Items.Add("Mã khách hàng");
-            cboSapXep.Items.Add("Tên khách hàng");
-            cboSapXep.Items.Add("Số lần đến");
-            cboSapXep.Items.Add("Chiết khấu");
 
             TaoTieuDeCot(lvwDSKH);
             kH = new clsKhachHang();
@@ -135,22 +132,89 @@ namespace KaraokeRUM
             txtCKC.Text = "";
             cboLocTheoLoai.Text = "";
             txtCKM.Text = "";
-            cboSapXep.Text = "";
         }
-
+        /*
+        * sự kiện 
+        */
         private void cboLocTheoLoai_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selected = this.cboLocTheoLoai.GetItemText(this.cboLocTheoLoai.SelectedItem);
-            lvwDSKH.Clear();
-            TaoTieuDeCot(lvwDSKH);
-            hL = new clsHonLoan();
-            IEnumerable<dynamic> dsKH = hL.LayKhachHangVaLoaiKhachHangTheoLoai(selected);
-            lvwDSKH.Items.Clear();
-            TaoTieuDeCot(lvwDSKH);
-            TaiDuLieuLenListView(lvwDSKH, dsKH);
+            if (selected.Equals("All") == true)
+            {
+                TaoTieuDeCot(lvwDSKH);
+                hL = new clsHonLoan();
+                lvwDSKH.Items.Clear();
+                TaoTieuDeCot(lvwDSKH);
+                IEnumerable<dynamic> dsKHAll = hL.KhachHangVaLoaiKhachHang();
+                TaiDuLieuLenListView(lvwDSKH, dsKHAll);
+            }
+            else
+            {
+                TaoTieuDeCot(lvwDSKH);
+                hL = new clsHonLoan();
+                IEnumerable<dynamic> dsKH = hL.LayKhachHangVaLoaiKhachHangTheoLoai(selected);
+                lvwDSKH.Items.Clear();
+                TaoTieuDeCot(lvwDSKH);
+                TaiDuLieuLenListView(lvwDSKH, dsKH);
+            }
+            
+        }
+        /*
+        * sự kiện click vào cột để sắp xếp
+        */
+        private void lvwDSKH_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            
+            if (e.Column != sortColumn)
+            {
+                sortColumn = e.Column;
+                lvwDSKH.Sorting = SortOrder.Ascending;
+            }
+            else
+            {
+                if (lvwDSKH.Sorting == SortOrder.Ascending)
+                    lvwDSKH.Sorting = SortOrder.Descending;
+                else
+                    lvwDSKH.Sorting = SortOrder.Ascending;
+            }
+            lvwDSKH.Sort();
+            this.lvwDSKH.ListViewItemSorter = new ListViewItemComparer(e.Column,
+                                                              lvwDSKH.Sorting);
+        }
+    }
+
+    /*
+     * tạo 1 lớp sắp xếp kế thừa từ IComparer
+     */
+    public class ListViewItemComparer : IComparer
+    {
+
+        private int col;
+        private SortOrder order;
+        public ListViewItemComparer()
+        {
+            col = 0;
+            order = SortOrder.Ascending;
+        }
+        public ListViewItemComparer(int column, SortOrder order)
+        {
+            col = column;
+            this.order = order;
+        }
+        public int Compare(object x, object y)
+        {
+            int returnVal = -1;
+            returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text,
+                            ((ListViewItem)y).SubItems[col].Text);
+            // Determine whether the sort order is descending.
+            if (order == SortOrder.Descending)
+                // Invert the value returned by String.Compare.
+                returnVal *= -1;
+            return returnVal;
         }
 
+
     }
- }
+}
         
  
