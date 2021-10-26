@@ -24,7 +24,7 @@ namespace KaraokeRUM
             var q = from n in dt.Phongs
                     join x in dt.LoaiPhongs
                     on n.MaLoaiPhong equals x.MaLoaiPhong
-                    select new { n.MaPhong, n.TenPhong , n.TrangThaiPhong, x.TenLoaiPhong, x.Gia, n.MaQL };
+                    select new { n.MaPhong, n.TenPhong, n.TrangThaiPhong, x.TenLoaiPhong, x.Gia, n.MaQL };
             return q;
         }
 
@@ -40,5 +40,20 @@ namespace KaraokeRUM
                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
             return kh;
         }
+        /**
+* join 2 bảng: KhachHang với LoaiKhachHang
+* Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
+* Có điều kiện
+*/
+        public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoai(string loaiKH)
+        {
+            var kh = from n in dt.KhachHangs
+                     join x in dt.LoaiKhachHangs
+                     on n.MaLoaiKH equals x.MaLoaiKH
+                     where x.TenLoaiKH.Equals(loaiKH)
+                     select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
+            return kh;
+
+        }
     }
-}
+} 
