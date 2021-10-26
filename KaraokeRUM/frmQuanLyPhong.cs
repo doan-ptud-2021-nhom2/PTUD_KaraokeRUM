@@ -22,6 +22,8 @@ namespace KaraokeRUM
         * p: class Phòng.
         * lp: class Loại Phòng.
         * hl: class Hỗn Loạn.
+        * dsPhong: danh sách Phòng.
+        * dsLoaiPhong: danh sách Loại Phòng.
         */
         private clsPhong p;
         private clsLoaiPhong lp;
@@ -72,7 +74,6 @@ namespace KaraokeRUM
         {
             string loaiPhong = cboLoaiPhong.Text;
             string giaPhong = lp.TimLoaiPhong(loaiPhong).First().Gia.ToString("##,## VNĐ");
-            //string.Format("{ 0:0,0 vnđ}", lp.TimLoaiPhong(loaiPhong).First().Gia.ToString());
 
             txtGiaPhong.Text = giaPhong;
         }
@@ -103,11 +104,12 @@ namespace KaraokeRUM
         /** 
          * Load dữ liệu lên ListView
         */
-        void TaiDuLieuLenListView(ListView lstv, IEnumerable<dynamic> dsPhong)
+        void TaiDuLieuLenListView(ListView lstv, IEnumerable<dynamic> dsP)
         {
             lstv.Items.Clear();
             ListViewItem itemPhong;
-            foreach (dynamic ds in hl.LayPhongVaLoaiPhong())
+            dsP = hl.LayPhongVaLoaiPhong();
+            foreach (dynamic ds in dsP)
             {
                 itemPhong = TaoItem(ds);
                 lstv.Items.Add(itemPhong);
@@ -173,8 +175,6 @@ namespace KaraokeRUM
         */
         private void btnThemPhong_Click(object sender, EventArgs e)
         {
-
-            //MessageBox.Show(TaoMaPhong());
             Phong phong = TaoPhong();
 
             if (p.TimPhong(phong.TenPhong).Count() > 0)
@@ -294,6 +294,7 @@ namespace KaraokeRUM
                     p.XoaPhong(phong);
 
                     IEnumerable<dynamic> layDS = hl.LayPhongVaLoaiPhong();
+                    XoaCacTxtCbo();
                     TaiDuLieuLenListView(lstvDanhSachPhong, layDS);
                 }
             }

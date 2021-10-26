@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="clsHonLoan.cs" />
     <Compile Include="clsKetNoi.cs" />
+    <Compile Include="clsMatHang.cs" />
     <Compile Include="clsPhongTrangThietBi.cs" />
     <Compile Include="clsKiemTra.cs" />
     <Compile Include="clsLoaiPhong.cs" />

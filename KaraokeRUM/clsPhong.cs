@@ -11,22 +11,13 @@ namespace KaraokeRUM
 
         qlKaraokeDataContext dt;
         clsLoaiPhong lp;
+
         public clsPhong()
         {
             dt = LayData();
             lp = new clsLoaiPhong();
         }
 
-        /**
-        * Lấy thông tin phòng
-        */
-      /*  public Phong LayPhong(string maPhong)
-        {
-            var q = from d in dt.Phongs
-                    where d.MaPhong == maPhong
-                    select d;
-            return q.FirstOrDefault();
-        }*/
         /**
         * Lấy tất cả các phòng
         */
@@ -38,7 +29,7 @@ namespace KaraokeRUM
         }
 
         /**
-        * Lấy các phòng VIP 
+        * Lấy các phòng theo loại (VIP, THUONG).
         */
         public IEnumerable<Phong> LayTatCaTheoLoai(string maLoaiPhong)
         {

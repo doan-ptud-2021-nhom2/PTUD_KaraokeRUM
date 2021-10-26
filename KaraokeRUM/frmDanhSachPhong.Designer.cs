@@ -29,406 +29,82 @@ namespace KaraokeRUM
         /// </summary>
         private void InitializeComponent()
         {
-            this.button29 = new System.Windows.Forms.Button();
-            this.button28 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button27 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button26 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnV001 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnV002 = new System.Windows.Forms.Button();
+            this.btnV003 = new System.Windows.Forms.Button();
+            this.btnV004 = new System.Windows.Forms.Button();
+            this.btnV005 = new System.Windows.Forms.Button();
+            this.btnV006 = new System.Windows.Forms.Button();
+            this.btnV007 = new System.Windows.Forms.Button();
+            this.btnV008 = new System.Windows.Forms.Button();
+            this.btnV009 = new System.Windows.Forms.Button();
+            this.btnV010 = new System.Windows.Forms.Button();
+            this.btnV011 = new System.Windows.Forms.Button();
+            this.btnV012 = new System.Windows.Forms.Button();
+            this.btnV013 = new System.Windows.Forms.Button();
+            this.btnV014 = new System.Windows.Forms.Button();
+            this.btnT001 = new System.Windows.Forms.Button();
+            this.btnT002 = new System.Windows.Forms.Button();
+            this.btnT003 = new System.Windows.Forms.Button();
+            this.btnT004 = new System.Windows.Forms.Button();
+            this.btnT005 = new System.Windows.Forms.Button();
+            this.btnT006 = new System.Windows.Forms.Button();
+            this.btnT007 = new System.Windows.Forms.Button();
+            this.btnT008 = new System.Windows.Forms.Button();
+            this.btnT009 = new System.Windows.Forms.Button();
+            this.btnT010 = new System.Windows.Forms.Button();
+            this.btnT011 = new System.Windows.Forms.Button();
+            this.btnT012 = new System.Windows.Forms.Button();
+            this.btnT013 = new System.Windows.Forms.Button();
+            this.btnT014 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button29
+            // btnV001
             // 
-            this.button29.BackColor = System.Drawing.Color.Teal;
-            this.button29.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button29.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button29.Location = new System.Drawing.Point(450, 86);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(68, 51);
-            this.button29.TabIndex = 0;
-            this.button29.Text = "001";
-            this.button29.UseVisualStyleBackColor = false;
-            // 
-            // button28
-            // 
-            this.button28.BackColor = System.Drawing.Color.Teal;
-            this.button28.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button28.Location = new System.Drawing.Point(450, 29);
-            this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(68, 51);
-            this.button28.TabIndex = 0;
-            this.button28.Text = "001";
-            this.button28.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.Teal;
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(302, 29);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(68, 51);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "001";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button27
-            // 
-            this.button27.BackColor = System.Drawing.Color.Teal;
-            this.button27.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button27.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button27.Location = new System.Drawing.Point(376, 86);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(68, 51);
-            this.button27.TabIndex = 0;
-            this.button27.Text = "001";
-            this.button27.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Teal;
-            this.button8.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button8.Location = new System.Drawing.Point(228, 86);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(68, 51);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "001";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button25
-            // 
-            this.button25.BackColor = System.Drawing.Color.Teal;
-            this.button25.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button25.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button25.Location = new System.Drawing.Point(80, 86);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(68, 51);
-            this.button25.TabIndex = 0;
-            this.button25.Text = "001";
-            this.button25.UseVisualStyleBackColor = false;
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.Teal;
-            this.button11.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button11.Location = new System.Drawing.Point(6, 29);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(68, 51);
-            this.button11.TabIndex = 0;
-            this.button11.Text = "001";
-            this.button11.UseVisualStyleBackColor = false;
-            // 
-            // button19
-            // 
-            this.button19.BackColor = System.Drawing.Color.Teal;
-            this.button19.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button19.Location = new System.Drawing.Point(80, 29);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(68, 51);
-            this.button19.TabIndex = 0;
-            this.button19.Text = "001";
-            this.button19.UseVisualStyleBackColor = false;
-            // 
-            // button24
-            // 
-            this.button24.BackColor = System.Drawing.Color.Teal;
-            this.button24.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button24.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button24.Location = new System.Drawing.Point(6, 86);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(68, 51);
-            this.button24.TabIndex = 0;
-            this.button24.Text = "001";
-            this.button24.UseVisualStyleBackColor = false;
-            // 
-            // button18
-            // 
-            this.button18.BackColor = System.Drawing.Color.Teal;
-            this.button18.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button18.Location = new System.Drawing.Point(450, 86);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(68, 51);
-            this.button18.TabIndex = 0;
-            this.button18.Text = "001";
-            this.button18.UseVisualStyleBackColor = false;
-            // 
-            // button23
-            // 
-            this.button23.BackColor = System.Drawing.Color.Teal;
-            this.button23.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button23.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button23.Location = new System.Drawing.Point(302, 86);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(68, 51);
-            this.button23.TabIndex = 0;
-            this.button23.Text = "001";
-            this.button23.UseVisualStyleBackColor = false;
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.Teal;
-            this.button13.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button13.Location = new System.Drawing.Point(154, 29);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(68, 51);
-            this.button13.TabIndex = 0;
-            this.button13.Text = "001";
-            this.button13.UseVisualStyleBackColor = false;
-            // 
-            // button22
-            // 
-            this.button22.BackColor = System.Drawing.Color.Teal;
-            this.button22.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button22.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button22.Location = new System.Drawing.Point(154, 86);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(68, 51);
-            this.button22.TabIndex = 0;
-            this.button22.Text = "001";
-            this.button22.UseVisualStyleBackColor = false;
-            // 
-            // button16
-            // 
-            this.button16.BackColor = System.Drawing.Color.Teal;
-            this.button16.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button16.Location = new System.Drawing.Point(450, 29);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(68, 51);
-            this.button16.TabIndex = 0;
-            this.button16.Text = "001";
-            this.button16.UseVisualStyleBackColor = false;
-            // 
-            // button17
-            // 
-            this.button17.BackColor = System.Drawing.Color.Teal;
-            this.button17.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button17.Location = new System.Drawing.Point(302, 29);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(68, 51);
-            this.button17.TabIndex = 0;
-            this.button17.Text = "001";
-            this.button17.UseVisualStyleBackColor = false;
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.Teal;
-            this.button14.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button14.Location = new System.Drawing.Point(376, 86);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(68, 51);
-            this.button14.TabIndex = 0;
-            this.button14.Text = "001";
-            this.button14.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Teal;
-            this.button9.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button9.Location = new System.Drawing.Point(302, 86);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(68, 51);
-            this.button9.TabIndex = 0;
-            this.button9.Text = "001";
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // button26
-            // 
-            this.button26.BackColor = System.Drawing.Color.Teal;
-            this.button26.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button26.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button26.Location = new System.Drawing.Point(376, 29);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(68, 51);
-            this.button26.TabIndex = 0;
-            this.button26.Text = "001";
-            this.button26.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Teal;
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(228, 29);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(68, 51);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "001";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Teal;
-            this.button7.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(154, 86);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(68, 51);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "001";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Teal;
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(154, 29);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(68, 51);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "001";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Teal;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(6, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(68, 51);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "001";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button21
-            // 
-            this.button21.BackColor = System.Drawing.Color.Teal;
-            this.button21.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button21.Location = new System.Drawing.Point(228, 86);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(68, 51);
-            this.button21.TabIndex = 0;
-            this.button21.Text = "001";
-            this.button21.UseVisualStyleBackColor = false;
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.Teal;
-            this.button10.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button10.Location = new System.Drawing.Point(80, 86);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(68, 51);
-            this.button10.TabIndex = 0;
-            this.button10.Text = "001";
-            this.button10.UseVisualStyleBackColor = false;
+            this.btnV001.BackColor = System.Drawing.Color.Teal;
+            this.btnV001.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV001.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV001.Location = new System.Drawing.Point(6, 29);
+            this.btnV001.Name = "btnV001";
+            this.btnV001.Size = new System.Drawing.Size(74, 51);
+            this.btnV001.TabIndex = 0;
+            this.btnV001.Text = "V001";
+            this.btnV001.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.button10);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button29);
-            this.groupBox1.Controls.Add(this.button9);
-            this.groupBox1.Controls.Add(this.button28);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button27);
-            this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Controls.Add(this.button26);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnV002);
+            this.groupBox1.Controls.Add(this.btnV014);
+            this.groupBox1.Controls.Add(this.btnV013);
+            this.groupBox1.Controls.Add(this.btnV012);
+            this.groupBox1.Controls.Add(this.btnV011);
+            this.groupBox1.Controls.Add(this.btnV010);
+            this.groupBox1.Controls.Add(this.btnV009);
+            this.groupBox1.Controls.Add(this.btnV008);
+            this.groupBox1.Controls.Add(this.btnV007);
+            this.groupBox1.Controls.Add(this.btnV006);
+            this.groupBox1.Controls.Add(this.btnV005);
+            this.groupBox1.Controls.Add(this.btnV004);
+            this.groupBox1.Controls.Add(this.btnV003);
+            this.groupBox1.Controls.Add(this.btnV001);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(4, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(528, 150);
+            this.groupBox1.Size = new System.Drawing.Size(567, 152);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phòng VIP";
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Teal;
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(80, 29);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(68, 51);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "001";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Teal;
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button6.Location = new System.Drawing.Point(6, 86);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(68, 51);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "001";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.Color.Teal;
-            this.button12.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button12.Location = new System.Drawing.Point(376, 29);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(68, 51);
-            this.button12.TabIndex = 0;
-            this.button12.Text = "001";
-            this.button12.UseVisualStyleBackColor = false;
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.Color.Teal;
-            this.button15.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button15.Location = new System.Drawing.Point(228, 29);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(68, 51);
-            this.button15.TabIndex = 0;
-            this.button15.Text = "001";
-            this.button15.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -437,31 +113,31 @@ namespace KaraokeRUM
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Location = new System.Drawing.Point(12, 55);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(544, 316);
+            this.panel2.Size = new System.Drawing.Size(581, 345);
             this.panel2.TabIndex = 4;
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.button25);
-            this.groupBox2.Controls.Add(this.button11);
-            this.groupBox2.Controls.Add(this.button19);
-            this.groupBox2.Controls.Add(this.button24);
-            this.groupBox2.Controls.Add(this.button18);
-            this.groupBox2.Controls.Add(this.button23);
-            this.groupBox2.Controls.Add(this.button13);
-            this.groupBox2.Controls.Add(this.button22);
-            this.groupBox2.Controls.Add(this.button16);
-            this.groupBox2.Controls.Add(this.button17);
-            this.groupBox2.Controls.Add(this.button14);
-            this.groupBox2.Controls.Add(this.button21);
-            this.groupBox2.Controls.Add(this.button12);
-            this.groupBox2.Controls.Add(this.button15);
+            this.groupBox2.Controls.Add(this.btnT014);
+            this.groupBox2.Controls.Add(this.btnT013);
+            this.groupBox2.Controls.Add(this.btnT012);
+            this.groupBox2.Controls.Add(this.btnT011);
+            this.groupBox2.Controls.Add(this.btnT010);
+            this.groupBox2.Controls.Add(this.btnT009);
+            this.groupBox2.Controls.Add(this.btnT008);
+            this.groupBox2.Controls.Add(this.btnT007);
+            this.groupBox2.Controls.Add(this.btnT006);
+            this.groupBox2.Controls.Add(this.btnT005);
+            this.groupBox2.Controls.Add(this.btnT004);
+            this.groupBox2.Controls.Add(this.btnT003);
+            this.groupBox2.Controls.Add(this.btnT002);
+            this.groupBox2.Controls.Add(this.btnT001);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(4, 160);
+            this.groupBox2.Location = new System.Drawing.Point(4, 190);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(528, 149);
+            this.groupBox2.Size = new System.Drawing.Size(567, 148);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phòng THƯỜNG";
@@ -473,7 +149,7 @@ namespace KaraokeRUM
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(564, 48);
+            this.label1.Size = new System.Drawing.Size(638, 48);
             this.label1.TabIndex = 1;
             this.label1.Text = "Danh sách phòng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -485,15 +161,339 @@ namespace KaraokeRUM
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(561, 49);
+            this.panel1.Size = new System.Drawing.Size(600, 49);
             this.panel1.TabIndex = 3;
+            // 
+            // btnV002
+            // 
+            this.btnV002.BackColor = System.Drawing.Color.Teal;
+            this.btnV002.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV002.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV002.Location = new System.Drawing.Point(86, 29);
+            this.btnV002.Name = "btnV002";
+            this.btnV002.Size = new System.Drawing.Size(74, 51);
+            this.btnV002.TabIndex = 0;
+            this.btnV002.Text = "V002";
+            this.btnV002.UseVisualStyleBackColor = false;
+            // 
+            // btnV003
+            // 
+            this.btnV003.BackColor = System.Drawing.Color.Teal;
+            this.btnV003.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV003.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV003.Location = new System.Drawing.Point(166, 29);
+            this.btnV003.Name = "btnV003";
+            this.btnV003.Size = new System.Drawing.Size(74, 51);
+            this.btnV003.TabIndex = 0;
+            this.btnV003.Text = "V003";
+            this.btnV003.UseVisualStyleBackColor = false;
+            // 
+            // btnV004
+            // 
+            this.btnV004.BackColor = System.Drawing.Color.Teal;
+            this.btnV004.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV004.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV004.Location = new System.Drawing.Point(246, 29);
+            this.btnV004.Name = "btnV004";
+            this.btnV004.Size = new System.Drawing.Size(74, 51);
+            this.btnV004.TabIndex = 0;
+            this.btnV004.Text = "V004";
+            this.btnV004.UseVisualStyleBackColor = false;
+            // 
+            // btnV005
+            // 
+            this.btnV005.BackColor = System.Drawing.Color.Teal;
+            this.btnV005.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV005.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV005.Location = new System.Drawing.Point(326, 29);
+            this.btnV005.Name = "btnV005";
+            this.btnV005.Size = new System.Drawing.Size(74, 51);
+            this.btnV005.TabIndex = 0;
+            this.btnV005.Text = "V005";
+            this.btnV005.UseVisualStyleBackColor = false;
+            // 
+            // btnV006
+            // 
+            this.btnV006.BackColor = System.Drawing.Color.Teal;
+            this.btnV006.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV006.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV006.Location = new System.Drawing.Point(406, 29);
+            this.btnV006.Name = "btnV006";
+            this.btnV006.Size = new System.Drawing.Size(74, 51);
+            this.btnV006.TabIndex = 0;
+            this.btnV006.Text = "V006";
+            this.btnV006.UseVisualStyleBackColor = false;
+            // 
+            // btnV007
+            // 
+            this.btnV007.BackColor = System.Drawing.Color.Teal;
+            this.btnV007.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV007.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV007.Location = new System.Drawing.Point(486, 29);
+            this.btnV007.Name = "btnV007";
+            this.btnV007.Size = new System.Drawing.Size(74, 51);
+            this.btnV007.TabIndex = 0;
+            this.btnV007.Text = "V007";
+            this.btnV007.UseVisualStyleBackColor = false;
+            // 
+            // btnV008
+            // 
+            this.btnV008.BackColor = System.Drawing.Color.Teal;
+            this.btnV008.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV008.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV008.Location = new System.Drawing.Point(6, 86);
+            this.btnV008.Name = "btnV008";
+            this.btnV008.Size = new System.Drawing.Size(74, 51);
+            this.btnV008.TabIndex = 0;
+            this.btnV008.Text = "V008";
+            this.btnV008.UseVisualStyleBackColor = false;
+            // 
+            // btnV009
+            // 
+            this.btnV009.BackColor = System.Drawing.Color.Teal;
+            this.btnV009.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV009.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV009.Location = new System.Drawing.Point(86, 86);
+            this.btnV009.Name = "btnV009";
+            this.btnV009.Size = new System.Drawing.Size(74, 51);
+            this.btnV009.TabIndex = 0;
+            this.btnV009.Text = "V009";
+            this.btnV009.UseVisualStyleBackColor = false;
+            // 
+            // btnV010
+            // 
+            this.btnV010.BackColor = System.Drawing.Color.Teal;
+            this.btnV010.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV010.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV010.Location = new System.Drawing.Point(166, 86);
+            this.btnV010.Name = "btnV010";
+            this.btnV010.Size = new System.Drawing.Size(74, 51);
+            this.btnV010.TabIndex = 0;
+            this.btnV010.Text = "V010";
+            this.btnV010.UseVisualStyleBackColor = false;
+            // 
+            // btnV011
+            // 
+            this.btnV011.BackColor = System.Drawing.Color.Teal;
+            this.btnV011.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV011.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV011.Location = new System.Drawing.Point(246, 86);
+            this.btnV011.Name = "btnV011";
+            this.btnV011.Size = new System.Drawing.Size(74, 51);
+            this.btnV011.TabIndex = 0;
+            this.btnV011.Text = "V011";
+            this.btnV011.UseVisualStyleBackColor = false;
+            // 
+            // btnV012
+            // 
+            this.btnV012.BackColor = System.Drawing.Color.Teal;
+            this.btnV012.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV012.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV012.Location = new System.Drawing.Point(326, 86);
+            this.btnV012.Name = "btnV012";
+            this.btnV012.Size = new System.Drawing.Size(74, 51);
+            this.btnV012.TabIndex = 0;
+            this.btnV012.Text = "V012";
+            this.btnV012.UseVisualStyleBackColor = false;
+            // 
+            // btnV013
+            // 
+            this.btnV013.BackColor = System.Drawing.Color.Teal;
+            this.btnV013.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV013.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV013.Location = new System.Drawing.Point(406, 86);
+            this.btnV013.Name = "btnV013";
+            this.btnV013.Size = new System.Drawing.Size(74, 51);
+            this.btnV013.TabIndex = 0;
+            this.btnV013.Text = "V013";
+            this.btnV013.UseVisualStyleBackColor = false;
+            // 
+            // btnV014
+            // 
+            this.btnV014.BackColor = System.Drawing.Color.Teal;
+            this.btnV014.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnV014.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnV014.Location = new System.Drawing.Point(486, 86);
+            this.btnV014.Name = "btnV014";
+            this.btnV014.Size = new System.Drawing.Size(74, 51);
+            this.btnV014.TabIndex = 0;
+            this.btnV014.Text = "V014";
+            this.btnV014.UseVisualStyleBackColor = false;
+            // 
+            // btnT001
+            // 
+            this.btnT001.BackColor = System.Drawing.Color.Teal;
+            this.btnT001.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT001.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT001.Location = new System.Drawing.Point(6, 29);
+            this.btnT001.Name = "btnT001";
+            this.btnT001.Size = new System.Drawing.Size(74, 51);
+            this.btnT001.TabIndex = 0;
+            this.btnT001.Text = "T001";
+            this.btnT001.UseVisualStyleBackColor = false;
+            // 
+            // btnT002
+            // 
+            this.btnT002.BackColor = System.Drawing.Color.Teal;
+            this.btnT002.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT002.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT002.Location = new System.Drawing.Point(86, 29);
+            this.btnT002.Name = "btnT002";
+            this.btnT002.Size = new System.Drawing.Size(74, 51);
+            this.btnT002.TabIndex = 0;
+            this.btnT002.Text = "T002";
+            this.btnT002.UseVisualStyleBackColor = false;
+            // 
+            // btnT003
+            // 
+            this.btnT003.BackColor = System.Drawing.Color.Teal;
+            this.btnT003.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT003.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT003.Location = new System.Drawing.Point(166, 29);
+            this.btnT003.Name = "btnT003";
+            this.btnT003.Size = new System.Drawing.Size(74, 51);
+            this.btnT003.TabIndex = 0;
+            this.btnT003.Text = "T003";
+            this.btnT003.UseVisualStyleBackColor = false;
+            // 
+            // btnT004
+            // 
+            this.btnT004.BackColor = System.Drawing.Color.Teal;
+            this.btnT004.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT004.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT004.Location = new System.Drawing.Point(246, 29);
+            this.btnT004.Name = "btnT004";
+            this.btnT004.Size = new System.Drawing.Size(74, 51);
+            this.btnT004.TabIndex = 0;
+            this.btnT004.Text = "T004";
+            this.btnT004.UseVisualStyleBackColor = false;
+            // 
+            // btnT005
+            // 
+            this.btnT005.BackColor = System.Drawing.Color.Teal;
+            this.btnT005.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT005.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT005.Location = new System.Drawing.Point(326, 29);
+            this.btnT005.Name = "btnT005";
+            this.btnT005.Size = new System.Drawing.Size(74, 51);
+            this.btnT005.TabIndex = 0;
+            this.btnT005.Text = "T005";
+            this.btnT005.UseVisualStyleBackColor = false;
+            // 
+            // btnT006
+            // 
+            this.btnT006.BackColor = System.Drawing.Color.Teal;
+            this.btnT006.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT006.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT006.Location = new System.Drawing.Point(406, 29);
+            this.btnT006.Name = "btnT006";
+            this.btnT006.Size = new System.Drawing.Size(74, 51);
+            this.btnT006.TabIndex = 0;
+            this.btnT006.Text = "T006";
+            this.btnT006.UseVisualStyleBackColor = false;
+            // 
+            // btnT007
+            // 
+            this.btnT007.BackColor = System.Drawing.Color.Teal;
+            this.btnT007.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT007.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT007.Location = new System.Drawing.Point(486, 29);
+            this.btnT007.Name = "btnT007";
+            this.btnT007.Size = new System.Drawing.Size(74, 51);
+            this.btnT007.TabIndex = 0;
+            this.btnT007.Text = "T007";
+            this.btnT007.UseVisualStyleBackColor = false;
+            // 
+            // btnT008
+            // 
+            this.btnT008.BackColor = System.Drawing.Color.Teal;
+            this.btnT008.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT008.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT008.Location = new System.Drawing.Point(6, 86);
+            this.btnT008.Name = "btnT008";
+            this.btnT008.Size = new System.Drawing.Size(74, 51);
+            this.btnT008.TabIndex = 0;
+            this.btnT008.Text = "T008";
+            this.btnT008.UseVisualStyleBackColor = false;
+            // 
+            // btnT009
+            // 
+            this.btnT009.BackColor = System.Drawing.Color.Teal;
+            this.btnT009.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT009.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT009.Location = new System.Drawing.Point(86, 86);
+            this.btnT009.Name = "btnT009";
+            this.btnT009.Size = new System.Drawing.Size(74, 51);
+            this.btnT009.TabIndex = 0;
+            this.btnT009.Text = "T009";
+            this.btnT009.UseVisualStyleBackColor = false;
+            // 
+            // btnT010
+            // 
+            this.btnT010.BackColor = System.Drawing.Color.Teal;
+            this.btnT010.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT010.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT010.Location = new System.Drawing.Point(166, 86);
+            this.btnT010.Name = "btnT010";
+            this.btnT010.Size = new System.Drawing.Size(74, 51);
+            this.btnT010.TabIndex = 0;
+            this.btnT010.Text = "T010";
+            this.btnT010.UseVisualStyleBackColor = false;
+            // 
+            // btnT011
+            // 
+            this.btnT011.BackColor = System.Drawing.Color.Teal;
+            this.btnT011.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT011.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT011.Location = new System.Drawing.Point(246, 86);
+            this.btnT011.Name = "btnT011";
+            this.btnT011.Size = new System.Drawing.Size(74, 51);
+            this.btnT011.TabIndex = 0;
+            this.btnT011.Text = "T011";
+            this.btnT011.UseVisualStyleBackColor = false;
+            // 
+            // btnT012
+            // 
+            this.btnT012.BackColor = System.Drawing.Color.Teal;
+            this.btnT012.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT012.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT012.Location = new System.Drawing.Point(326, 86);
+            this.btnT012.Name = "btnT012";
+            this.btnT012.Size = new System.Drawing.Size(74, 51);
+            this.btnT012.TabIndex = 0;
+            this.btnT012.Text = "T012";
+            this.btnT012.UseVisualStyleBackColor = false;
+            // 
+            // btnT013
+            // 
+            this.btnT013.BackColor = System.Drawing.Color.Teal;
+            this.btnT013.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT013.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT013.Location = new System.Drawing.Point(406, 86);
+            this.btnT013.Name = "btnT013";
+            this.btnT013.Size = new System.Drawing.Size(74, 51);
+            this.btnT013.TabIndex = 0;
+            this.btnT013.Text = "T013";
+            this.btnT013.UseVisualStyleBackColor = false;
+            // 
+            // btnT014
+            // 
+            this.btnT014.BackColor = System.Drawing.Color.Teal;
+            this.btnT014.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnT014.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnT014.Location = new System.Drawing.Point(486, 86);
+            this.btnT014.Name = "btnT014";
+            this.btnT014.Size = new System.Drawing.Size(74, 51);
+            this.btnT014.TabIndex = 0;
+            this.btnT014.Text = "T014";
+            this.btnT014.UseVisualStyleBackColor = false;
             // 
             // frmDanhSachPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(561, 381);
+            this.ClientSize = new System.Drawing.Size(600, 409);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmDanhSachPhong";
@@ -507,39 +507,38 @@ namespace KaraokeRUM
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button29;
-        private System.Windows.Forms.Button button28;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button27;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnV001;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnV002;
+        private System.Windows.Forms.Button btnV004;
+        private System.Windows.Forms.Button btnV003;
+        private System.Windows.Forms.Button btnV007;
+        private System.Windows.Forms.Button btnV006;
+        private System.Windows.Forms.Button btnV005;
+        private System.Windows.Forms.Button btnV014;
+        private System.Windows.Forms.Button btnV013;
+        private System.Windows.Forms.Button btnV012;
+        private System.Windows.Forms.Button btnV011;
+        private System.Windows.Forms.Button btnV010;
+        private System.Windows.Forms.Button btnV009;
+        private System.Windows.Forms.Button btnV008;
+        private System.Windows.Forms.Button btnT014;
+        private System.Windows.Forms.Button btnT013;
+        private System.Windows.Forms.Button btnT012;
+        private System.Windows.Forms.Button btnT011;
+        private System.Windows.Forms.Button btnT010;
+        private System.Windows.Forms.Button btnT009;
+        private System.Windows.Forms.Button btnT008;
+        private System.Windows.Forms.Button btnT007;
+        private System.Windows.Forms.Button btnT006;
+        private System.Windows.Forms.Button btnT005;
+        private System.Windows.Forms.Button btnT004;
+        private System.Windows.Forms.Button btnT003;
+        private System.Windows.Forms.Button btnT002;
+        private System.Windows.Forms.Button btnT001;
     }
 }
