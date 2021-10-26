@@ -32,12 +32,6 @@ namespace KaraokeRUM
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel_workarea = new System.Windows.Forms.Panel();
             this.btnTrangChu = new System.Windows.Forms.Button();
             this.btnPhong = new System.Windows.Forms.Button();
             this.btnQLP = new System.Windows.Forms.Button();
@@ -46,11 +40,17 @@ namespace KaraokeRUM
             this.btnThongKe = new System.Windows.Forms.Button();
             this.btnDoiMatKhau = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblTenNV = new System.Windows.Forms.Label();
+            this.lblLoaiNV = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel_workarea = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -82,70 +82,6 @@ namespace KaraokeRUM
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(381, 726);
             this.flowLayoutPanel1.TabIndex = 10;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Snap ITC", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Teal;
-            this.label1.Location = new System.Drawing.Point(4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(383, 78);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Karaoke RUM";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(3, 130);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(380, 111);
-            this.panel3.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Teal;
-            this.label3.Location = new System.Drawing.Point(1, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(380, 30);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Nguyễn Đức Huy";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Teal;
-            this.label2.Location = new System.Drawing.Point(4, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(377, 30);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "NV001";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 15;
-            // 
-            // panel_workarea
-            // 
-            this.panel_workarea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_workarea.BackColor = System.Drawing.Color.White;
-            this.panel_workarea.Location = new System.Drawing.Point(388, 1);
-            this.panel_workarea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel_workarea.Name = "panel_workarea";
-            this.panel_workarea.Size = new System.Drawing.Size(1441, 1082);
-            this.panel_workarea.TabIndex = 5;
-            this.panel_workarea.UseWaitCursor = true;
             // 
             // btnTrangChu
             // 
@@ -283,6 +219,19 @@ namespace KaraokeRUM
             this.btnDangXuat.TabIndex = 9;
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.UseVisualStyleBackColor = false;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Snap ITC", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Teal;
+            this.label1.Location = new System.Drawing.Point(4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(383, 78);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Karaoke RUM";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -295,6 +244,58 @@ namespace KaraokeRUM
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.lblTenNV);
+            this.panel3.Controls.Add(this.lblLoaiNV);
+            this.panel3.Location = new System.Drawing.Point(3, 130);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(380, 111);
+            this.panel3.TabIndex = 1;
+            // 
+            // lblTenNV
+            // 
+            this.lblTenNV.BackColor = System.Drawing.Color.White;
+            this.lblTenNV.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenNV.ForeColor = System.Drawing.Color.Teal;
+            this.lblTenNV.Location = new System.Drawing.Point(1, 65);
+            this.lblTenNV.Name = "lblTenNV";
+            this.lblTenNV.Size = new System.Drawing.Size(380, 30);
+            this.lblTenNV.TabIndex = 1;
+            this.lblTenNV.Text = "Nguyễn Đức Huy";
+            this.lblTenNV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblLoaiNV
+            // 
+            this.lblLoaiNV.BackColor = System.Drawing.Color.White;
+            this.lblLoaiNV.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoaiNV.ForeColor = System.Drawing.Color.Teal;
+            this.lblLoaiNV.Location = new System.Drawing.Point(4, 34);
+            this.lblLoaiNV.Name = "lblLoaiNV";
+            this.lblLoaiNV.Size = new System.Drawing.Size(377, 30);
+            this.lblLoaiNV.TabIndex = 1;
+            this.lblLoaiNV.Text = "NV001";
+            this.lblLoaiNV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 15;
+            // 
+            // panel_workarea
+            // 
+            this.panel_workarea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_workarea.BackColor = System.Drawing.Color.White;
+            this.panel_workarea.Location = new System.Drawing.Point(388, 1);
+            this.panel_workarea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel_workarea.Name = "panel_workarea";
+            this.panel_workarea.Size = new System.Drawing.Size(1441, 1082);
+            this.panel_workarea.TabIndex = 5;
+            this.panel_workarea.UseWaitCursor = true;
+            // 
             // frmTrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -303,15 +304,16 @@ namespace KaraokeRUM
             this.ClientSize = new System.Drawing.Size(1831, 1040);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_workarea);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmTrangChu";
-            this.Text = "Form15";
+            this.Text = "Karaoke Rum - Nhân Viên";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmTrangChu_Load);
             this.panel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -322,8 +324,8 @@ namespace KaraokeRUM
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTenNV;
+        private System.Windows.Forms.Label lblLoaiNV;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel_workarea;
