@@ -21,5 +21,10 @@ namespace KaraokeRUM
         {
 
         }
+
+        private void frmQuanLyMatHang_Load(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

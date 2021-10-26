@@ -13,14 +13,28 @@ namespace KaraokeRUM
         {
             dt = LayData();
         }
-        public IEnumerable<dynamic> TraDuLieu()
+        public IEnumerable<Phong_TrangThietBi> TraDuLieu()
         {
-            var q = from d in dt.TrangThietBis
-                    join c in dt.Phong_TrangThietBis on d.MaTTB equals c.MaTTB
-                    join s in dt.Phongs on c.MaPhong equals s.MaPhong
-                    join z in dt.LoaiPhongs on s.MaLoaiPhong equals z.MaLoaiPhong
-                    select new {z.TenLoaiPhong,s.TenPhong,d.TenTTB,c.SoLuong};
+            var q = from d in dt.Phong_TrangThietBis
+                    select d;
             return q;
+        }    
+        public int Them(dynamic ttb)
+        {
+            System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = tran;
+                dt.Phong_TrangThietBis.InsertOnSubmit(ttb);
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

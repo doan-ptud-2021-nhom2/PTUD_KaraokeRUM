@@ -139,7 +139,7 @@ namespace KaraokeRUM
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(1016, 631);
+            this.groupBox2.Size = new System.Drawing.Size(1357, 786);
             this.groupBox2.TabIndex = 67;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách khách hàng";
@@ -151,10 +151,10 @@ namespace KaraokeRUM
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvwDSKH.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvwDSKH.HideSelection = false;
-            this.lvwDSKH.Location = new System.Drawing.Point(17, 39);
+            this.lvwDSKH.Location = new System.Drawing.Point(23, 40);
             this.lvwDSKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvwDSKH.Name = "lvwDSKH";
-            this.lvwDSKH.Size = new System.Drawing.Size(979, 572);
+            this.lvwDSKH.Size = new System.Drawing.Size(993, 727);
             this.lvwDSKH.TabIndex = 0;
             this.lvwDSKH.UseCompatibleStateImageBehavior = false;
             // 
@@ -305,9 +305,10 @@ namespace KaraokeRUM
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTimKiem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmQuanLyKhachHang";
             this.Text = "frmQuanLyKhachHang";
+            this.Load += new System.EventHandler(this.frmQuanLyKhachHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
