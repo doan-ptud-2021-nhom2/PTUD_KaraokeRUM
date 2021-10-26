@@ -33,8 +33,8 @@ namespace KaraokeRUM
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtLoaiPhong = new System.Windows.Forms.TextBox();
-            this.txtTrangThaiPhong = new System.Windows.Forms.TextBox();
+            this.cboLoaiPhong = new System.Windows.Forms.ComboBox();
+            this.cboTrangThaiPhong = new System.Windows.Forms.ComboBox();
             this.txtTenPhong = new System.Windows.Forms.TextBox();
             this.txtMaPhong = new System.Windows.Forms.TextBox();
             this.btnDoiPhong = new System.Windows.Forms.Button();
@@ -42,25 +42,25 @@ namespace KaraokeRUM
             this.label11 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.cboTenMatHang = new System.Windows.Forms.ListView();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.btnSua = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboMc = new System.Windows.Forms.ComboBox();
+            this.cboMatHang = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblPhong = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lstvDanhSachMatHang = new System.Windows.Forms.ListView();
             this.groupBox3.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label5
@@ -96,8 +96,8 @@ namespace KaraokeRUM
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.White;
-            this.groupBox3.Controls.Add(this.txtLoaiPhong);
-            this.groupBox3.Controls.Add(this.txtTrangThaiPhong);
+            this.groupBox3.Controls.Add(this.cboLoaiPhong);
+            this.groupBox3.Controls.Add(this.cboTrangThaiPhong);
             this.groupBox3.Controls.Add(this.txtTenPhong);
             this.groupBox3.Controls.Add(this.txtMaPhong);
             this.groupBox3.Controls.Add(this.label5);
@@ -114,19 +114,21 @@ namespace KaraokeRUM
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin Phòng";
             // 
-            // txtLoaiPhong
+            // cboLoaiPhong
             // 
-            this.txtLoaiPhong.Location = new System.Drawing.Point(349, 194);
-            this.txtLoaiPhong.Name = "txtLoaiPhong";
-            this.txtLoaiPhong.Size = new System.Drawing.Size(250, 34);
-            this.txtLoaiPhong.TabIndex = 15;
+            this.cboLoaiPhong.FormattingEnabled = true;
+            this.cboLoaiPhong.Location = new System.Drawing.Point(349, 195);
+            this.cboLoaiPhong.Name = "cboLoaiPhong";
+            this.cboLoaiPhong.Size = new System.Drawing.Size(250, 33);
+            this.cboLoaiPhong.TabIndex = 16;
             // 
-            // txtTrangThaiPhong
+            // cboTrangThaiPhong
             // 
-            this.txtTrangThaiPhong.Location = new System.Drawing.Point(349, 148);
-            this.txtTrangThaiPhong.Name = "txtTrangThaiPhong";
-            this.txtTrangThaiPhong.Size = new System.Drawing.Size(250, 34);
-            this.txtTrangThaiPhong.TabIndex = 14;
+            this.cboTrangThaiPhong.FormattingEnabled = true;
+            this.cboTrangThaiPhong.Location = new System.Drawing.Point(349, 149);
+            this.cboTrangThaiPhong.Name = "cboTrangThaiPhong";
+            this.cboTrangThaiPhong.Size = new System.Drawing.Size(250, 33);
+            this.cboTrangThaiPhong.TabIndex = 16;
             // 
             // txtTenPhong
             // 
@@ -199,18 +201,6 @@ namespace KaraokeRUM
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             // 
-            // cboTenMatHang
-            // 
-            this.cboTenMatHang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboTenMatHang.HideSelection = false;
-            this.cboTenMatHang.Location = new System.Drawing.Point(6, 48);
-            this.cboTenMatHang.Name = "cboTenMatHang";
-            this.cboTenMatHang.Size = new System.Drawing.Size(774, 616);
-            this.cboTenMatHang.TabIndex = 0;
-            this.cboTenMatHang.UseCompatibleStateImageBehavior = false;
-            // 
             // btnThem
             // 
             this.btnThem.BackColor = System.Drawing.Color.Teal;
@@ -225,7 +215,7 @@ namespace KaraokeRUM
             // 
             // txtSoLuong
             // 
-            this.txtSoLuong.Location = new System.Drawing.Point(203, 122);
+            this.txtSoLuong.Location = new System.Drawing.Point(203, 116);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(250, 34);
             this.txtSoLuong.TabIndex = 1;
@@ -246,7 +236,7 @@ namespace KaraokeRUM
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(48, 125);
+            this.label1.Location = new System.Drawing.Point(48, 128);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 22);
             this.label1.TabIndex = 0;
@@ -256,7 +246,7 @@ namespace KaraokeRUM
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(48, 53);
+            this.label3.Location = new System.Drawing.Point(48, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 22);
             this.label3.TabIndex = 0;
@@ -265,7 +255,7 @@ namespace KaraokeRUM
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.cboMc);
+            this.groupBox1.Controls.Add(this.cboMatHang);
             this.groupBox1.Controls.Add(this.btnThem);
             this.groupBox1.Controls.Add(this.btnXoa);
             this.groupBox1.Controls.Add(this.txtSoLuong);
@@ -280,13 +270,13 @@ namespace KaraokeRUM
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin mặt hàng";
             // 
-            // cboMc
+            // cboMatHang
             // 
-            this.cboMc.FormattingEnabled = true;
-            this.cboMc.Location = new System.Drawing.Point(203, 43);
-            this.cboMc.Name = "cboMc";
-            this.cboMc.Size = new System.Drawing.Size(250, 33);
-            this.cboMc.TabIndex = 10;
+            this.cboMatHang.FormattingEnabled = true;
+            this.cboMatHang.Location = new System.Drawing.Point(203, 53);
+            this.cboMatHang.Name = "cboMatHang";
+            this.cboMatHang.Size = new System.Drawing.Size(250, 33);
+            this.cboMatHang.TabIndex = 10;
             // 
             // panel2
             // 
@@ -306,24 +296,10 @@ namespace KaraokeRUM
             this.lblPhong.ForeColor = System.Drawing.Color.Black;
             this.lblPhong.Location = new System.Drawing.Point(0, 0);
             this.lblPhong.Name = "lblPhong";
-            this.lblPhong.Size = new System.Drawing.Size(1856, 48);
+            this.lblPhong.Size = new System.Drawing.Size(1939, 48);
             this.lblPhong.TabIndex = 2;
             this.lblPhong.Text = "Phòng";
             this.lblPhong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.cboTenMatHang);
-            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(999, 67);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(786, 670);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Danh sách mặt hàng";
             // 
             // panel1
             // 
@@ -334,7 +310,7 @@ namespace KaraokeRUM
             this.panel1.Controls.Add(this.lblPhong);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1859, 49);
+            this.panel1.Size = new System.Drawing.Size(1942, 49);
             this.panel1.TabIndex = 7;
             // 
             // label2
@@ -346,20 +322,40 @@ namespace KaraokeRUM
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1856, 50);
+            this.label2.Size = new System.Drawing.Size(1939, 50);
             this.label2.TabIndex = 2;
             this.label2.Text = "Phòng";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lstvDanhSachMatHang);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.groupBox2.Location = new System.Drawing.Point(973, 102);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(872, 632);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Danh sách mặt hàng";
+            // 
+            // lstvDanhSachMatHang
+            // 
+            this.lstvDanhSachMatHang.HideSelection = false;
+            this.lstvDanhSachMatHang.Location = new System.Drawing.Point(6, 29);
+            this.lstvDanhSachMatHang.Name = "lstvDanhSachMatHang";
+            this.lstvDanhSachMatHang.Size = new System.Drawing.Size(860, 597);
+            this.lstvDanhSachMatHang.TabIndex = 0;
+            this.lstvDanhSachMatHang.UseCompatibleStateImageBehavior = false;
             // 
             // frmChiTietPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1841, 763);
+            this.ClientSize = new System.Drawing.Size(1924, 763);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Name = "frmChiTietPhong";
             this.Text = "Chi tiết phòng";
@@ -371,8 +367,8 @@ namespace KaraokeRUM
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -387,7 +383,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnDoiPhong;
         private System.Windows.Forms.Button btnTaoHoaDon;
-        private System.Windows.Forms.ListView cboTenMatHang;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtSoLuong;
         private System.Windows.Forms.Button btnSua;
@@ -396,13 +391,14 @@ namespace KaraokeRUM
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblPhong;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtLoaiPhong;
-        private System.Windows.Forms.TextBox txtTrangThaiPhong;
         private System.Windows.Forms.TextBox txtTenPhong;
         private System.Windows.Forms.TextBox txtMaPhong;
-        private System.Windows.Forms.ComboBox cboMc;
+        private System.Windows.Forms.ComboBox cboMatHang;
+        private System.Windows.Forms.ComboBox cboTrangThaiPhong;
+        private System.Windows.Forms.ComboBox cboLoaiPhong;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListView lstvDanhSachMatHang;
     }
 }
