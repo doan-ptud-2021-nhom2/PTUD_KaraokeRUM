@@ -41,9 +41,7 @@ namespace KaraokeRUM
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvwDSKH = new System.Windows.Forms.ListView();
-            this.cboSapXep = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCKM = new System.Windows.Forms.TextBox();
             this.btnCapNhap = new System.Windows.Forms.Button();
@@ -52,6 +50,7 @@ namespace KaraokeRUM
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -158,22 +157,12 @@ namespace KaraokeRUM
             this.lvwDSKH.Size = new System.Drawing.Size(993, 727);
             this.lvwDSKH.TabIndex = 0;
             this.lvwDSKH.UseCompatibleStateImageBehavior = false;
+            this.lvwDSKH.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvwDSKH_ColumnClick);
             this.lvwDSKH.SelectedIndexChanged += new System.EventHandler(this.lvwDSKH_SelectedIndexChanged);
-            // 
-            // cboSapXep
-            // 
-            this.cboSapXep.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboSapXep.FormattingEnabled = true;
-            this.cboSapXep.Location = new System.Drawing.Point(192, 91);
-            this.cboSapXep.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cboSapXep.Name = "cboSapXep";
-            this.cboSapXep.Size = new System.Drawing.Size(346, 30);
-            this.cboSapXep.TabIndex = 3;
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.White;
-            this.groupBox3.Controls.Add(this.cboSapXep);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.cboLocTheoLoai);
             this.groupBox3.Controls.Add(this.label3);
@@ -186,16 +175,6 @@ namespace KaraokeRUM
             this.groupBox3.TabIndex = 71;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Lựa chọn xem danh sách khách hàng";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(39, 91);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 22);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Sắp xếp theo:";
             // 
             // groupBox1
             // 
@@ -294,6 +273,17 @@ namespace KaraokeRUM
             this.txtTimKiem.Size = new System.Drawing.Size(298, 30);
             this.txtTimKiem.TabIndex = 70;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(39, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(217, 22);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "*Nhấn vào cột để sắp xếp";
+            // 
             // frmQuanLyKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -330,8 +320,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView lvwDSKH;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox cboSapXep;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboLocTheoLoai;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -346,5 +334,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.Label label4;
     }
 }
