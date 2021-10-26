@@ -103,11 +103,12 @@ namespace KaraokeRUM
         /** 
          * Load dữ liệu lên ListView
         */
-        void TaiDuLieuLenListView(ListView lstv, IEnumerable<dynamic> dsPhong)
+        void TaiDuLieuLenListView(ListView lstv, IEnumerable<dynamic> dsP)
         {
             lstv.Items.Clear();
             ListViewItem itemPhong;
-            foreach (dynamic ds in hl.LayPhongVaLoaiPhong())
+            dsP = hl.LayPhongVaLoaiPhong();
+            foreach (dynamic ds in dsP)
             {
                 itemPhong = TaoItem(ds);
                 lstv.Items.Add(itemPhong);

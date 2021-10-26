@@ -45,7 +45,7 @@ namespace KaraokeRUM
             kH = new clsKhachHang();
             lK = new clsLoaiKhach();
             hL = new clsHonLoan();
-            IEnumerable<dynamic> dsKH = hL.LayPhongVaLoaiPhong();
+            IEnumerable<dynamic> dsKH = hL.KhachHangVaLoaiKhachHang();
             TaiDuLieuLenListView(lvwDSKH, dsKH);
 
 
@@ -75,7 +75,7 @@ namespace KaraokeRUM
         {
             lsw.Items.Clear();
             ListViewItem itemKhach;
-            foreach (dynamic ds in hL.KhachHangVaLoaiKhachHang())
+            foreach (dynamic ds in dsKhach)
             {
                 itemKhach = TaoItem(ds);
                 lsw.Items.Add(itemKhach);
@@ -108,7 +108,7 @@ namespace KaraokeRUM
         {
             cboLoaiKhachHang.Text = dsKH.TenLoaiKH;
             txtCKC.Text = dsKH.ChietKhau.ToString();
-            cboLocTheoLoai.Text = dsKH.TenLoaiKH;
+            //cboLocTheoLoai.Text = dsKH.TenLoaiKH;
         }
 
         private void btnCapNhap_Click(object sender, EventArgs e)
@@ -137,6 +137,20 @@ namespace KaraokeRUM
             txtCKM.Text = "";
             cboSapXep.Text = "";
         }
+
+        private void cboLocTheoLoai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selected = this.cboLocTheoLoai.GetItemText(this.cboLocTheoLoai.SelectedItem);
+            lvwDSKH.Clear();
+            TaoTieuDeCot(lvwDSKH);
+            hL = new clsHonLoan();
+            IEnumerable<dynamic> dsKH = hL.LayKhachHangVaLoaiKhachHangTheoLoai(selected);
+            lvwDSKH.Items.Clear();
+            TaoTieuDeCot(lvwDSKH);
+            TaiDuLieuLenListView(lvwDSKH, dsKH);
+        }
+
     }
-        
  }
+        
+ 

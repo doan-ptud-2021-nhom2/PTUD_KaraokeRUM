@@ -116,6 +116,7 @@ namespace KaraokeRUM
             this.cboLocTheoLoai.Name = "cboLocTheoLoai";
             this.cboLocTheoLoai.Size = new System.Drawing.Size(346, 30);
             this.cboLocTheoLoai.TabIndex = 3;
+            this.cboLocTheoLoai.SelectedIndexChanged += new System.EventHandler(this.cboLocTheoLoai_SelectedIndexChanged);
             // 
             // label3
             // 
