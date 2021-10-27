@@ -288,13 +288,10 @@ namespace KaraokeRUM
             this.panel_workarea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_workarea.BackColor = System.Drawing.Color.White;
             this.panel_workarea.Location = new System.Drawing.Point(388, 1);
-            this.panel_workarea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_workarea.Name = "panel_workarea";
-            this.panel_workarea.Size = new System.Drawing.Size(1441, 1082);
-            this.panel_workarea.TabIndex = 5;
-            this.panel_workarea.UseWaitCursor = true;
+            this.panel_workarea.Size = new System.Drawing.Size(1453, 1043);
+            this.panel_workarea.TabIndex = 11;
             // 
             // frmTrangChu
             // 
@@ -302,8 +299,8 @@ namespace KaraokeRUM
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1831, 1040);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_workarea);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmTrangChu";
@@ -328,7 +325,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label lblLoaiNV;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Panel panel_workarea;
         private System.Windows.Forms.Button btnQLP;
         private System.Windows.Forms.Button btnQLTB;
         private System.Windows.Forms.Button btnQLMH;
@@ -337,5 +333,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnDangXuat;
         private System.Windows.Forms.Button btnDoiMatKhau;
+        private System.Windows.Forms.Panel panel_workarea;
     }
 }

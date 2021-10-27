@@ -36,6 +36,8 @@ namespace KaraokeRUM
         }
         private void frmTrangChu_Load(object sender, EventArgs e)
         {
+
+            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
             OpenFormInPanel(new frmHome());
             Console.WriteLine(MAQL);
         }
