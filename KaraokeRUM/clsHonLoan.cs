@@ -42,9 +42,9 @@ namespace KaraokeRUM
         }
 
         /**
-   * join 2 bảng: KhachHang với LoaiKhachHang
-   * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
-   */
+       * join 2 bảng: KhachHang với LoaiKhachHang
+       * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
+       */
         public IEnumerable<dynamic> KhachHangVaLoaiKhachHang()
         {
             var kh = from n in dt.KhachHangs
@@ -54,10 +54,10 @@ namespace KaraokeRUM
             return kh;
         }
         /**
-* join 2 bảng: KhachHang với LoaiKhachHang
-* Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
-* Có điều kiện
-*/
+        * join 2 bảng: KhachHang với LoaiKhachHang
+        * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
+        * Có điều kiện
+        */
         public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoai(string loaiKH)
         {
             var kh = from n in dt.KhachHangs
@@ -67,6 +67,18 @@ namespace KaraokeRUM
                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
             return kh;
 
+        }
+        /**
+          * join 2 bảng: KhachHang với LoaiKhachHang
+          * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
+          */
+        public IEnumerable<dynamic> LayNhanVienVaLoaiNhanVien()
+        {
+            var kh = from n in dt.NhanViens
+                     join x in dt.LoaiNhanViens
+                     on n.MaLNV equals x.MaLNV
+                     select new { n.MaNV, n.TenNV, n.SDT};
+            return kh;
         }
     }
 } 
