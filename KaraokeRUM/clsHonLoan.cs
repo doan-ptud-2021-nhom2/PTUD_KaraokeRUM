@@ -80,5 +80,17 @@ namespace KaraokeRUM
                      select new { n.MaNV, n.TenNV, n.SDT};
             return kh;
         }
+        /*
+         * tìm kiếm khách hàng
+         */
+        public IEnumerable<dynamic> TimKhach(string timKiem)
+        {
+            IEnumerable<dynamic> kh = from n in dt.KhachHangs
+                                      join x in dt.LoaiKhachHangs
+                                      on n.MaLoaiKH equals x.MaLoaiKH
+                                      where n.TenKhach.Contains(timKiem) || n.MaKH.Contains(timKiem)
+                                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
+            return kh;
+        }
     }
 } 

@@ -26,7 +26,7 @@ namespace KaraokeRUM
         private clsKhachHang kH;
         private clsLoaiKhach lK;
         private clsHonLoan hL;
-        private IEnumerable<KhachHang> dsKH;
+        private IEnumerable<dynamic> dsKH;
         private int sortColumn = -1;
         private void frmQuanLyKhachHang_Load(object sender, EventArgs e)
         {
@@ -186,55 +186,48 @@ namespace KaraokeRUM
         /*
          * Tim kiem
          */
-
-
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            if (txtTimKiemKhachHang.Text.Length > 0)
+            dsKH = hL.TimKhach(txtTimKiemKhachHang.Text);
+            lvwDSKH.Items.Clear();
+            TaoTieuDeCot(lvwDSKH);
+            TaiDuLieuLenListView(lvwDSKH, dsKH);
+        }
+        /*
+         * auto complete tự động tải danh sách
+         */
+        private void txtTimKiemKhachHang_TextChanged(object sender, EventArgs e)
+        {
+            if(txtTimKiemKhachHang.ToString().Equals(String.Empty) )
             {
-                var lstkh = hL.KhachHangVaLoaiKhachHang();
-                if (!string.IsNullOrEmpty(txtTimKiemKhachHang.Text) && radTimTheoTen.Checked == true)
+                dsKH = kH.LayDSKH();
+                txtTimKiemKhachHang.AutoCompleteCustomSource.Clear();
+                foreach (KhachHang i in dsKH)
                 {
-                    var tenkhachhang = txtTimKiemKhachHang.Text.ToLower();
-                    lstkh = lstkh.Where(t => t.TenKhach.ToLower().Contains(tenkhachhang)).ToList();
+                    txtTimKiemKhachHang.AutoCompleteCustomSource.Add(i.MaKH);
+                    txtTimKiemKhachHang.AutoCompleteCustomSource.Add(i.TenKhach);
                 }
-                else
+                dsKH = hL.TimKhach(txtTimKiemKhachHang.Text);
+                lvwDSKH.Items.Clear();
+                TaoTieuDeCot(lvwDSKH);
+                TaiDuLieuLenListView(lvwDSKH, dsKH);
+            }
+            else
+            {
+                dsKH = kH.LayDSKH();
+                txtTimKiemKhachHang.AutoCompleteCustomSource.Clear();
+                foreach (KhachHang i in dsKH)
                 {
-
-                    var maKhachHang = txtTimKiemKhachHang.Text.ToLower();
-                    lstkh = lstkh.Where(t => t.MaKH.ToString().ToLower().Contains(maKhachHang)).ToList();
+                    txtTimKiemKhachHang.AutoCompleteCustomSource.Add(i.MaKH);
+                    txtTimKiemKhachHang.AutoCompleteCustomSource.Add(i.TenKhach);
                 }
                 lvwDSKH.Items.Clear();
                 TaoTieuDeCot(lvwDSKH);
-                TaiDuLieuLenListView(lvwDSKH, lstkh);
-                txtTimKiemKhachHang.Focus();
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng dữ liệu vào", "Thông báo");
+                IEnumerable<dynamic> dsKHAll = hL.KhachHangVaLoaiKhachHang();
+                TaiDuLieuLenListView(lvwDSKH, dsKHAll);
+                
             }
         }
-        private void radTimTheoTen_CheckedChanged(object sender, EventArgs e)
-        {
-            var lstkh = kH.LayDSKH();
-            if (radTimTheoTen.Checked)
-            {
-                txtTimKiemKhachHang.AutoCompleteCustomSource.Clear();
-                foreach (var kh in lstkh)
-                {
-                    txtTimKiemKhachHang.AutoCompleteCustomSource.Add(kh.TenKhach);
-                }
-            }
-            else
-            {
-                txtTimKiemKhachHang.AutoCompleteCustomSource.Clear();
-                foreach (var kh in lstkh)
-                {
-                    txtTimKiemKhachHang.AutoCompleteCustomSource.Add(kh.MaKH);
-                }
-            }    
-        }
-
     }
     }
 

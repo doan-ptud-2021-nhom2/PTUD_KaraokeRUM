@@ -51,8 +51,6 @@ namespace KaraokeRUM
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTimKiemKhachHang = new System.Windows.Forms.TextBox();
-            this.radTimTheoTen = new System.Windows.Forms.RadioButton();
-            this.radTimTheoMa = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -286,30 +284,7 @@ namespace KaraokeRUM
             this.txtTimKiemKhachHang.Name = "txtTimKiemKhachHang";
             this.txtTimKiemKhachHang.Size = new System.Drawing.Size(298, 30);
             this.txtTimKiemKhachHang.TabIndex = 70;
-            // 
-            // radTimTheoTen
-            // 
-            this.radTimTheoTen.AutoSize = true;
-            this.radTimTheoTen.Location = new System.Drawing.Point(209, 139);
-            this.radTimTheoTen.Name = "radTimTheoTen";
-            this.radTimTheoTen.Size = new System.Drawing.Size(108, 21);
-            this.radTimTheoTen.TabIndex = 72;
-            this.radTimTheoTen.TabStop = true;
-            this.radTimTheoTen.Text = "Tìm theo tên";
-            this.radTimTheoTen.UseVisualStyleBackColor = true;
-            this.radTimTheoTen.CheckedChanged += new System.EventHandler(this.radTimTheoTen_CheckedChanged);
-            // 
-            // radTimTheoMa
-            // 
-            this.radTimTheoMa.AutoSize = true;
-            this.radTimTheoMa.Location = new System.Drawing.Point(399, 139);
-            this.radTimTheoMa.Name = "radTimTheoMa";
-            this.radTimTheoMa.Size = new System.Drawing.Size(107, 21);
-            this.radTimTheoMa.TabIndex = 72;
-            this.radTimTheoMa.TabStop = true;
-            this.radTimTheoMa.Text = "Tìm theo mã";
-            this.radTimTheoMa.UseVisualStyleBackColor = true;
-            this.radTimTheoMa.CheckedChanged += new System.EventHandler(this.radTimTheoTen_CheckedChanged);
+            this.txtTimKiemKhachHang.TextChanged += new System.EventHandler(this.txtTimKiemKhachHang_TextChanged);
             // 
             // frmQuanLyKhachHang
             // 
@@ -317,8 +292,6 @@ namespace KaraokeRUM
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1704, 774);
-            this.Controls.Add(this.radTimTheoMa);
-            this.Controls.Add(this.radTimTheoTen);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -364,7 +337,5 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTimKiemKhachHang;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RadioButton radTimTheoTen;
-        private System.Windows.Forms.RadioButton radTimTheoMa;
     }
 }
