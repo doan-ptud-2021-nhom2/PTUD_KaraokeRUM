@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsHoaDon.cs" />
     <Compile Include="clsHonLoan.cs" />
     <Compile Include="clsKetNoi.cs" />
     <Compile Include="clsKhachHang.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="clsPhong.cs" />
     <Compile Include="clsTaiKhoan.cs" />
     <Compile Include="clsThietBi.cs" />
+    <Compile Include="clsThongKe.cs" />
     <Compile Include="frmLayLaiMatKhau.cs">
       <SubType>Form</SubType>
     </Compile>

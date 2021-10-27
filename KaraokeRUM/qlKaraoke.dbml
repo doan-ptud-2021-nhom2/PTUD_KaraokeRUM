@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_karaoke_rum" Class="qlKaraokeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-J0DJ4SH\SQLEXPRESS;Initial Catalog=db_karaoke_rum;Integrated Security=True" SettingsObjectName="KaraokeRUM.Properties.Settings" SettingsPropertyName="db_karaoke_rumConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-AUH5LCA\SQLEXPRESS;Initial Catalog=db_karaoke_rum;Integrated Security=True" SettingsObjectName="KaraokeRUM.Properties.Settings" SettingsPropertyName="db_karaoke_rumConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChiTietHoaDon" Member="ChiTietHoaDons">
     <Type Name="ChiTietHoaDon">
       <Column Name="MaMH" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -68,14 +68,6 @@
       <Association Name="LoaiNhanVien_NhanVien" Member="NhanViens" ThisKey="MaLNV" OtherKey="MaLNV" Type="NhanVien" />
     </Type>
   </Table>
-  <Table Name="dbo.LoaiPhong" Member="LoaiPhongs">
-    <Type Name="LoaiPhong">
-      <Column Name="MaLoaiPhong" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenLoaiPhong" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="Gia" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Association Name="LoaiPhong_Phong" Member="Phongs" ThisKey="MaLoaiPhong" OtherKey="MaLoaiPhong" Type="Phong" />
-    </Type>
-  </Table>
   <Table Name="dbo.MatHang" Member="MatHangs">
     <Type Name="MatHang">
       <Column Name="MaMH" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -85,8 +77,17 @@
       <Column Name="DonVi" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Gia" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="MaQL" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="TrangThai" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
       <Association Name="MatHang_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="MaMH" OtherKey="MaMH" Type="ChiTietHoaDon" />
       <Association Name="NhanVien_MatHang" Member="NhanVien" ThisKey="MaQL" OtherKey="MaNV" Type="NhanVien" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoaiPhong" Member="LoaiPhongs">
+    <Type Name="LoaiPhong">
+      <Column Name="MaLoaiPhong" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenLoaiPhong" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Gia" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="LoaiPhong_Phong" Member="Phongs" ThisKey="MaLoaiPhong" OtherKey="MaLoaiPhong" Type="Phong" />
     </Type>
   </Table>
   <Table Name="dbo.NhanVien" Member="NhanViens">
@@ -112,7 +113,7 @@
     <Type Name="Phong">
       <Column Name="MaPhong" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenPhong" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="TrangThaiPhong" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="TrangThaiPhong" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
       <Column Name="MaLoaiPhong" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
       <Column Name="MaQL" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
       <Association Name="Phong_DonDatPhong" Member="DonDatPhongs" ThisKey="MaPhong" OtherKey="MaPhong" Type="DonDatPhong" />
@@ -146,6 +147,7 @@
       <Column Name="DonVi" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Gia" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="MaQL" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="TrangThai" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
       <Association Name="TrangThietBi_Phong_TrangThietBi" Member="Phong_TrangThietBis" ThisKey="MaTTB" OtherKey="MaTTB" Type="Phong_TrangThietBi" />
       <Association Name="NhanVien_TrangThietBi" Member="NhanVien" ThisKey="MaQL" OtherKey="MaNV" Type="NhanVien" IsForeignKey="true" />
     </Type>
