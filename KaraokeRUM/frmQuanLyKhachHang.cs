@@ -26,6 +26,7 @@ namespace KaraokeRUM
         private clsKhachHang kH;
         private clsLoaiKhach lK;
         private clsHonLoan hL;
+        private IEnumerable<KhachHang> dsKH;
         private int sortColumn = -1;
         private void frmQuanLyKhachHang_Load(object sender, EventArgs e)
         {
@@ -44,6 +45,9 @@ namespace KaraokeRUM
             hL = new clsHonLoan();
             IEnumerable<dynamic> dsKH = hL.KhachHangVaLoaiKhachHang();
             TaiDuLieuLenListView(lvwDSKH, dsKH);
+
+            txtTimKiemKhachHang.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtTimKiemKhachHang.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
 
         }
@@ -181,6 +185,51 @@ namespace KaraokeRUM
             this.lvwDSKH.ListViewItemSorter = new ListViewItemComparer(e.Column,
                                                               lvwDSKH.Sorting);
         }
+        /*
+         * Tim kiem
+         */
+        private void txtTimKiemKhachHang_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTimKiemKhachHang.Text != "")
+            {
+                dsKH = kH.LayDSKH();
+                txtTimKiemKhachHang.AutoCompleteCustomSource.Clear();
+                foreach (KhachHang i in dsKH)
+                {
+                    txtTimKiemKhachHang.AutoCompleteCustomSource.Add(i.MaKH);
+                }
+                
+                for (int i = lvwDSKH.Items.Count - 1; i >= 0; i--)
+                {
+                    var item = lvwDSKH.Items[i];
+                    if (item.Text.ToLower().Contains(txtTimKiemKhachHang.Text.ToLower()))
+                    {
+                        item.BackColor = SystemColors.Highlight;
+                        item.ForeColor = SystemColors.HighlightText;
+                    }
+                    else
+                    {
+                        lvwDSKH.Items.Remove(item);
+                    }
+                }
+                if (lvwDSKH.SelectedItems.Count == 1)
+                {
+                    lvwDSKH.Focus();
+                   
+                }
+            }
+            else
+            {
+                TaoTieuDeCot(lvwDSKH);
+                hL = new clsHonLoan();
+                lvwDSKH.Items.Clear();
+                TaoTieuDeCot(lvwDSKH);
+                IEnumerable<dynamic> dsKHAll = hL.KhachHangVaLoaiKhachHang();
+                TaiDuLieuLenListView(lvwDSKH, dsKHAll);
+            }
+               
+        }
+    }
     }
 
     /*
@@ -215,6 +264,7 @@ namespace KaraokeRUM
 
 
     }
-}
+
+
         
  

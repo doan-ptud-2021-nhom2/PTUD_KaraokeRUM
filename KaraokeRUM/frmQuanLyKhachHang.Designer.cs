@@ -42,6 +42,7 @@ namespace KaraokeRUM
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvwDSKH = new System.Windows.Forms.ListView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCKM = new System.Windows.Forms.TextBox();
             this.btnCapNhap = new System.Windows.Forms.Button();
@@ -49,8 +50,7 @@ namespace KaraokeRUM
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.txtTimKiemKhachHang = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -176,6 +176,17 @@ namespace KaraokeRUM
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Lựa chọn xem danh sách khách hàng";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(39, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(217, 22);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "*Nhấn vào cột để sắp xếp";
+            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
@@ -264,25 +275,15 @@ namespace KaraokeRUM
             this.label1.TabIndex = 69;
             this.label1.Text = "Tìm kiếm :";
             // 
-            // txtTimKiem
+            // txtTimKiemKhachHang
             // 
-            this.txtTimKiem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(209, 104);
-            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(298, 30);
-            this.txtTimKiem.TabIndex = 70;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(39, 91);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(217, 22);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "*Nhấn vào cột để sắp xếp";
+            this.txtTimKiemKhachHang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiemKhachHang.Location = new System.Drawing.Point(209, 104);
+            this.txtTimKiemKhachHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTimKiemKhachHang.Name = "txtTimKiemKhachHang";
+            this.txtTimKiemKhachHang.Size = new System.Drawing.Size(298, 30);
+            this.txtTimKiemKhachHang.TabIndex = 70;
+            this.txtTimKiemKhachHang.TextChanged += new System.EventHandler(this.txtTimKiemKhachHang_TextChanged);
             // 
             // frmQuanLyKhachHang
             // 
@@ -296,7 +297,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtTimKiem);
+            this.Controls.Add(this.txtTimKiemKhachHang);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmQuanLyKhachHang";
@@ -333,7 +334,7 @@ namespace KaraokeRUM
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.TextBox txtTimKiemKhachHang;
         private System.Windows.Forms.Label label4;
     }
 }
