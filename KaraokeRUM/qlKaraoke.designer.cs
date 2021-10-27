@@ -48,12 +48,12 @@ namespace KaraokeRUM
     partial void InsertLoaiNhanVien(LoaiNhanVien instance);
     partial void UpdateLoaiNhanVien(LoaiNhanVien instance);
     partial void DeleteLoaiNhanVien(LoaiNhanVien instance);
-    partial void InsertLoaiPhong(LoaiPhong instance);
-    partial void UpdateLoaiPhong(LoaiPhong instance);
-    partial void DeleteLoaiPhong(LoaiPhong instance);
     partial void InsertMatHang(MatHang instance);
     partial void UpdateMatHang(MatHang instance);
     partial void DeleteMatHang(MatHang instance);
+    partial void InsertLoaiPhong(LoaiPhong instance);
+    partial void UpdateLoaiPhong(LoaiPhong instance);
+    partial void DeleteLoaiPhong(LoaiPhong instance);
     partial void InsertNhanVien(NhanVien instance);
     partial void UpdateNhanVien(NhanVien instance);
     partial void DeleteNhanVien(NhanVien instance);
@@ -72,7 +72,7 @@ namespace KaraokeRUM
     #endregion
 		
 		public qlKaraokeDataContext() : 
-				base(global::KaraokeRUM.Properties.Settings.Default.db_karaoke_rumConnectionString, mappingSource)
+				base(global::KaraokeRUM.Properties.Settings.Default.db_karaoke_rumConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -149,19 +149,19 @@ namespace KaraokeRUM
 			}
 		}
 		
-		public System.Data.Linq.Table<LoaiPhong> LoaiPhongs
-		{
-			get
-			{
-				return this.GetTable<LoaiPhong>();
-			}
-		}
-		
 		public System.Data.Linq.Table<MatHang> MatHangs
 		{
 			get
 			{
 				return this.GetTable<MatHang>();
+			}
+		}
+		
+		public System.Data.Linq.Table<LoaiPhong> LoaiPhongs
+		{
+			get
+			{
+				return this.GetTable<LoaiPhong>();
 			}
 		}
 		
@@ -1663,144 +1663,6 @@ namespace KaraokeRUM
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LoaiPhong")]
-	public partial class LoaiPhong : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _MaLoaiPhong;
-		
-		private string _TenLoaiPhong;
-		
-		private decimal _Gia;
-		
-		private EntitySet<Phong> _Phongs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaLoaiPhongChanging(string value);
-    partial void OnMaLoaiPhongChanged();
-    partial void OnTenLoaiPhongChanging(string value);
-    partial void OnTenLoaiPhongChanged();
-    partial void OnGiaChanging(decimal value);
-    partial void OnGiaChanged();
-    #endregion
-		
-		public LoaiPhong()
-		{
-			this._Phongs = new EntitySet<Phong>(new Action<Phong>(this.attach_Phongs), new Action<Phong>(this.detach_Phongs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLoaiPhong", DbType="Char(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaLoaiPhong
-		{
-			get
-			{
-				return this._MaLoaiPhong;
-			}
-			set
-			{
-				if ((this._MaLoaiPhong != value))
-				{
-					this.OnMaLoaiPhongChanging(value);
-					this.SendPropertyChanging();
-					this._MaLoaiPhong = value;
-					this.SendPropertyChanged("MaLoaiPhong");
-					this.OnMaLoaiPhongChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLoaiPhong", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
-		public string TenLoaiPhong
-		{
-			get
-			{
-				return this._TenLoaiPhong;
-			}
-			set
-			{
-				if ((this._TenLoaiPhong != value))
-				{
-					this.OnTenLoaiPhongChanging(value);
-					this.SendPropertyChanging();
-					this._TenLoaiPhong = value;
-					this.SendPropertyChanged("TenLoaiPhong");
-					this.OnTenLoaiPhongChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gia", DbType="Money NOT NULL")]
-		public decimal Gia
-		{
-			get
-			{
-				return this._Gia;
-			}
-			set
-			{
-				if ((this._Gia != value))
-				{
-					this.OnGiaChanging(value);
-					this.SendPropertyChanging();
-					this._Gia = value;
-					this.SendPropertyChanged("Gia");
-					this.OnGiaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiPhong_Phong", Storage="_Phongs", ThisKey="MaLoaiPhong", OtherKey="MaLoaiPhong")]
-		public EntitySet<Phong> Phongs
-		{
-			get
-			{
-				return this._Phongs;
-			}
-			set
-			{
-				this._Phongs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Phongs(Phong entity)
-		{
-			this.SendPropertyChanging();
-			entity.LoaiPhong = this;
-		}
-		
-		private void detach_Phongs(Phong entity)
-		{
-			this.SendPropertyChanging();
-			entity.LoaiPhong = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MatHang")]
 	public partial class MatHang : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1820,6 +1682,8 @@ namespace KaraokeRUM
 		private decimal _Gia;
 		
 		private string _MaQL;
+		
+		private string _TrangThai;
 		
 		private EntitySet<ChiTietHoaDon> _ChiTietHoaDons;
 		
@@ -1843,6 +1707,8 @@ namespace KaraokeRUM
     partial void OnGiaChanged();
     partial void OnMaQLChanging(string value);
     partial void OnMaQLChanged();
+    partial void OnTrangThaiChanging(string value);
+    partial void OnTrangThaiChanged();
     #endregion
 		
 		public MatHang()
@@ -1996,6 +1862,26 @@ namespace KaraokeRUM
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string TrangThai
+		{
+			get
+			{
+				return this._TrangThai;
+			}
+			set
+			{
+				if ((this._TrangThai != value))
+				{
+					this.OnTrangThaiChanging(value);
+					this.SendPropertyChanging();
+					this._TrangThai = value;
+					this.SendPropertyChanged("TrangThai");
+					this.OnTrangThaiChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MatHang_ChiTietHoaDon", Storage="_ChiTietHoaDons", ThisKey="MaMH", OtherKey="MaMH")]
 		public EntitySet<ChiTietHoaDon> ChiTietHoaDons
 		{
@@ -2073,6 +1959,144 @@ namespace KaraokeRUM
 		{
 			this.SendPropertyChanging();
 			entity.MatHang = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LoaiPhong")]
+	public partial class LoaiPhong : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _MaLoaiPhong;
+		
+		private string _TenLoaiPhong;
+		
+		private decimal _Gia;
+		
+		private EntitySet<Phong> _Phongs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaLoaiPhongChanging(string value);
+    partial void OnMaLoaiPhongChanged();
+    partial void OnTenLoaiPhongChanging(string value);
+    partial void OnTenLoaiPhongChanged();
+    partial void OnGiaChanging(decimal value);
+    partial void OnGiaChanged();
+    #endregion
+		
+		public LoaiPhong()
+		{
+			this._Phongs = new EntitySet<Phong>(new Action<Phong>(this.attach_Phongs), new Action<Phong>(this.detach_Phongs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLoaiPhong", DbType="Char(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MaLoaiPhong
+		{
+			get
+			{
+				return this._MaLoaiPhong;
+			}
+			set
+			{
+				if ((this._MaLoaiPhong != value))
+				{
+					this.OnMaLoaiPhongChanging(value);
+					this.SendPropertyChanging();
+					this._MaLoaiPhong = value;
+					this.SendPropertyChanged("MaLoaiPhong");
+					this.OnMaLoaiPhongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLoaiPhong", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
+		public string TenLoaiPhong
+		{
+			get
+			{
+				return this._TenLoaiPhong;
+			}
+			set
+			{
+				if ((this._TenLoaiPhong != value))
+				{
+					this.OnTenLoaiPhongChanging(value);
+					this.SendPropertyChanging();
+					this._TenLoaiPhong = value;
+					this.SendPropertyChanged("TenLoaiPhong");
+					this.OnTenLoaiPhongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gia", DbType="Money NOT NULL")]
+		public decimal Gia
+		{
+			get
+			{
+				return this._Gia;
+			}
+			set
+			{
+				if ((this._Gia != value))
+				{
+					this.OnGiaChanging(value);
+					this.SendPropertyChanging();
+					this._Gia = value;
+					this.SendPropertyChanged("Gia");
+					this.OnGiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiPhong_Phong", Storage="_Phongs", ThisKey="MaLoaiPhong", OtherKey="MaLoaiPhong")]
+		public EntitySet<Phong> Phongs
+		{
+			get
+			{
+				return this._Phongs;
+			}
+			set
+			{
+				this._Phongs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Phongs(Phong entity)
+		{
+			this.SendPropertyChanging();
+			entity.LoaiPhong = this;
+		}
+		
+		private void detach_Phongs(Phong entity)
+		{
+			this.SendPropertyChanging();
+			entity.LoaiPhong = null;
 		}
 	}
 	
@@ -2611,7 +2635,7 @@ namespace KaraokeRUM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThaiPhong", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThaiPhong", DbType="NVarChar(5) NOT NULL", CanBeNull=false)]
 		public string TrangThaiPhong
 		{
 			get
@@ -3180,6 +3204,8 @@ namespace KaraokeRUM
 		
 		private string _MaQL;
 		
+		private string _TrangThai;
+		
 		private EntitySet<Phong_TrangThietBi> _Phong_TrangThietBis;
 		
 		private EntityRef<NhanVien> _NhanVien;
@@ -3200,6 +3226,8 @@ namespace KaraokeRUM
     partial void OnGiaChanged();
     partial void OnMaQLChanging(string value);
     partial void OnMaQLChanged();
+    partial void OnTrangThaiChanging(string value);
+    partial void OnTrangThaiChanged();
     #endregion
 		
 		public TrangThietBi()
@@ -3329,6 +3357,26 @@ namespace KaraokeRUM
 					this._MaQL = value;
 					this.SendPropertyChanged("MaQL");
 					this.OnMaQLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string TrangThai
+		{
+			get
+			{
+				return this._TrangThai;
+			}
+			set
+			{
+				if ((this._TrangThai != value))
+				{
+					this.OnTrangThaiChanging(value);
+					this.SendPropertyChanging();
+					this._TrangThai = value;
+					this.SendPropertyChanged("TrangThai");
+					this.OnTrangThaiChanged();
 				}
 			}
 		}
