@@ -12,10 +12,11 @@ namespace KaraokeRUM
 {
     public partial class frmTrangChuQL : Form
     {
-        protected static string MANVQL;
-        public frmTrangChuQL()
+        protected static string MAQL;
+        public frmTrangChuQL(string maQL)
         {
             InitializeComponent();
+            MAQL = maQL;
         }
         public frmTrangChuQL(string maNVQL)
         {

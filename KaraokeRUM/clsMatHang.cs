@@ -24,5 +24,17 @@ namespace KaraokeRUM
                                    select n;
             return q;
         }
+
+        /**
+        * Lấy loại mặt hàng
+        */
+
+        public MatHang LayDonViMatHang(string tenMatHang)
+        {
+            var loaiMatHang = from n in dt.MatHangs
+                                 where n.TenMh.Equals(tenMatHang)
+                                 select n;
+            return loaiMatHang.First();
+        }
     }
 }
