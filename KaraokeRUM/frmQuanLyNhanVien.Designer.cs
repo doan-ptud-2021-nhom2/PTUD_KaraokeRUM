@@ -35,9 +35,9 @@ namespace KaraokeRUM
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvwDSNV = new System.Windows.Forms.ListView();
             this.cboLoaiNV = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboTrangThai = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboGioiTinh = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
@@ -45,11 +45,10 @@ namespace KaraokeRUM
             this.btnXoa = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.cboTrangTHai = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cboGioiTinh = new System.Windows.Forms.ComboBox();
+            this.cboLocTheoLoai = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -58,21 +57,11 @@ namespace KaraokeRUM
             this.label7 = new System.Windows.Forms.Label();
             this.btnViewList = new System.Windows.Forms.Button();
             this.txtTen = new System.Windows.Forms.TextBox();
-            this.radID = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.radTen = new System.Windows.Forms.RadioButton();
             this.imgAvatar = new System.Windows.Forms.ImageList(this.components);
             this.label11 = new System.Windows.Forms.Label();
-            this.clTenNV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clMaNV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clGioiTinh = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clCMND = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clSDT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clDiaChi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clTrangThai = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clMaLNV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -86,6 +75,7 @@ namespace KaraokeRUM
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(355, 36);
             this.txtTimKiem.TabIndex = 63;
+            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
             // groupBox2
             // 
@@ -109,15 +99,6 @@ namespace KaraokeRUM
             this.lvwDSNV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvwDSNV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clTenNV,
-            this.clMaNV,
-            this.clGioiTinh,
-            this.clCMND,
-            this.clSDT,
-            this.clDiaChi,
-            this.clTrangThai,
-            this.clMaLNV});
             this.lvwDSNV.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvwDSNV.HideSelection = false;
             this.lvwDSNV.Location = new System.Drawing.Point(25, 40);
@@ -126,6 +107,8 @@ namespace KaraokeRUM
             this.lvwDSNV.Size = new System.Drawing.Size(1490, 371);
             this.lvwDSNV.TabIndex = 0;
             this.lvwDSNV.UseCompatibleStateImageBehavior = false;
+            this.lvwDSNV.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvwDSNV_ColumnClick);
+            this.lvwDSNV.SelectedIndexChanged += new System.EventHandler(this.lvwDSNV_SelectedIndexChanged);
             // 
             // cboLoaiNV
             // 
@@ -137,15 +120,15 @@ namespace KaraokeRUM
             this.cboLoaiNV.Size = new System.Drawing.Size(248, 30);
             this.cboLoaiNV.TabIndex = 15;
             // 
-            // comboBox2
+            // cboTrangThai
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(596, 87);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(248, 30);
-            this.comboBox2.TabIndex = 15;
+            this.cboTrangThai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTrangThai.FormattingEnabled = true;
+            this.cboTrangThai.Location = new System.Drawing.Point(596, 87);
+            this.cboTrangThai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboTrangThai.Name = "cboTrangThai";
+            this.cboTrangThai.Size = new System.Drawing.Size(248, 30);
+            this.cboTrangThai.TabIndex = 15;
             // 
             // label3
             // 
@@ -157,15 +140,15 @@ namespace KaraokeRUM
             this.label3.TabIndex = 0;
             this.label3.Text = "Địa chỉ:";
             // 
-            // comboBox1
+            // cboGioiTinh
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(596, 49);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(248, 30);
-            this.comboBox1.TabIndex = 3;
+            this.cboGioiTinh.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboGioiTinh.FormattingEnabled = true;
+            this.cboGioiTinh.Location = new System.Drawing.Point(596, 49);
+            this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboGioiTinh.Name = "cboGioiTinh";
+            this.cboGioiTinh.Size = new System.Drawing.Size(248, 30);
+            this.cboGioiTinh.TabIndex = 3;
             // 
             // label4
             // 
@@ -241,25 +224,16 @@ namespace KaraokeRUM
             this.label6.TabIndex = 0;
             this.label6.Text = "Lọc theo loại:";
             // 
-            // cboTrangTHai
-            // 
-            this.cboTrangTHai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboTrangTHai.FormattingEnabled = true;
-            this.cboTrangTHai.Location = new System.Drawing.Point(147, 102);
-            this.cboTrangTHai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cboTrangTHai.Name = "cboTrangTHai";
-            this.cboTrangTHai.Size = new System.Drawing.Size(421, 30);
-            this.cboTrangTHai.TabIndex = 15;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(21, 106);
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(21, 136);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 22);
+            this.label5.Size = new System.Drawing.Size(312, 22);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Sắp xếp theo:";
+            this.label5.Text = "*Sắp xếp bằng cách nhấn vào các cột :";
             // 
             // btnThem
             // 
@@ -273,13 +247,13 @@ namespace KaraokeRUM
             this.btnThem.TabIndex = 1;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.cboTrangTHai);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.cboGioiTinh);
+            this.groupBox3.Controls.Add(this.cboLocTheoLoai);
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(27, 179);
             this.groupBox3.Name = "groupBox3";
@@ -288,15 +262,16 @@ namespace KaraokeRUM
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Lựa chọn xem danh sách nhân viên";
             // 
-            // cboGioiTinh
+            // cboLocTheoLoai
             // 
-            this.cboGioiTinh.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboGioiTinh.FormattingEnabled = true;
-            this.cboGioiTinh.Location = new System.Drawing.Point(147, 64);
-            this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cboGioiTinh.Name = "cboGioiTinh";
-            this.cboGioiTinh.Size = new System.Drawing.Size(421, 30);
-            this.cboGioiTinh.TabIndex = 3;
+            this.cboLocTheoLoai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboLocTheoLoai.FormattingEnabled = true;
+            this.cboLocTheoLoai.Location = new System.Drawing.Point(147, 64);
+            this.cboLocTheoLoai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboLocTheoLoai.Name = "cboLocTheoLoai";
+            this.cboLocTheoLoai.Size = new System.Drawing.Size(421, 30);
+            this.cboLocTheoLoai.TabIndex = 3;
+            this.cboLocTheoLoai.SelectedIndexChanged += new System.EventHandler(this.cboLocTheoLoai_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -305,11 +280,11 @@ namespace KaraokeRUM
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.cboLoaiNV);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.cboTrangThai);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cboGioiTinh);
             this.groupBox1.Controls.Add(this.txtCMND);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label4);
@@ -348,9 +323,9 @@ namespace KaraokeRUM
             this.label12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(483, 131);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(52, 22);
+            this.label12.Size = new System.Drawing.Size(88, 22);
             this.label12.TabIndex = 11;
-            this.label12.Text = "Loại:";
+            this.label12.Text = "Chức vụi:";
             // 
             // label10
             // 
@@ -403,19 +378,6 @@ namespace KaraokeRUM
             this.txtTen.Size = new System.Drawing.Size(265, 30);
             this.txtTen.TabIndex = 1;
             // 
-            // radID
-            // 
-            this.radID.AutoSize = true;
-            this.radID.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radID.Location = new System.Drawing.Point(168, 129);
-            this.radID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radID.Name = "radID";
-            this.radID.Size = new System.Drawing.Size(137, 26);
-            this.radID.TabIndex = 61;
-            this.radID.TabStop = true;
-            this.radID.Text = "Mã nhân viên";
-            this.radID.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold);
@@ -437,23 +399,11 @@ namespace KaraokeRUM
             this.btnTimKiem.TabIndex = 59;
             this.btnTimKiem.Text = "Tìm";
             this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // radTen
-            // 
-            this.radTen.AutoSize = true;
-            this.radTen.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTen.Location = new System.Drawing.Point(378, 129);
-            this.radTen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radTen.Name = "radTen";
-            this.radTen.Size = new System.Drawing.Size(141, 26);
-            this.radTen.TabIndex = 62;
-            this.radTen.TabStop = true;
-            this.radTen.Text = "Tên nhân viên";
-            this.radTen.UseVisualStyleBackColor = true;
             // 
             // imgAvatar
             // 
@@ -474,46 +424,6 @@ namespace KaraokeRUM
             this.label11.Text = "Nhân Viên";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // clTenNV
-            // 
-            this.clTenNV.Text = "Tên nhân viên";
-            this.clTenNV.Width = 170;
-            // 
-            // clMaNV
-            // 
-            this.clMaNV.Text = "Mã nhân viên";
-            this.clMaNV.Width = 140;
-            // 
-            // clGioiTinh
-            // 
-            this.clGioiTinh.Text = "Giới tính";
-            this.clGioiTinh.Width = 100;
-            // 
-            // clCMND
-            // 
-            this.clCMND.Text = "CMND";
-            this.clCMND.Width = 130;
-            // 
-            // clSDT
-            // 
-            this.clSDT.Text = "SDT";
-            this.clSDT.Width = 130;
-            // 
-            // clDiaChi
-            // 
-            this.clDiaChi.Text = "Địa chỉ";
-            this.clDiaChi.Width = 250;
-            // 
-            // clTrangThai
-            // 
-            this.clTrangThai.Text = "Trạng thái";
-            this.clTrangThai.Width = 130;
-            // 
-            // clMaLNV
-            // 
-            this.clMaLNV.Text = "Mã loại nhân viên";
-            this.clMaLNV.Width = 150;
-            // 
             // frmQuanLyNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -524,10 +434,8 @@ namespace KaraokeRUM
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.radID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnTimKiem);
-            this.Controls.Add(this.radTen);
             this.Controls.Add(this.label11);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmQuanLyNhanVien";
@@ -550,9 +458,9 @@ namespace KaraokeRUM
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView lvwDSNV;
         private System.Windows.Forms.ComboBox cboLoaiNV;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cboTrangThai;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboGioiTinh;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.TextBox txtSDT;
@@ -560,11 +468,10 @@ namespace KaraokeRUM
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cboTrangTHai;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox cboGioiTinh;
+        private System.Windows.Forms.ComboBox cboLocTheoLoai;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label12;
@@ -573,20 +480,10 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnViewList;
         private System.Windows.Forms.TextBox txtTen;
-        private System.Windows.Forms.RadioButton radID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.RadioButton radTen;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ImageList imgAvatar;
-        private System.Windows.Forms.ColumnHeader clTenNV;
-        private System.Windows.Forms.ColumnHeader clMaNV;
-        private System.Windows.Forms.ColumnHeader clGioiTinh;
-        private System.Windows.Forms.ColumnHeader clCMND;
-        private System.Windows.Forms.ColumnHeader clSDT;
-        private System.Windows.Forms.ColumnHeader clDiaChi;
-        private System.Windows.Forms.ColumnHeader clTrangThai;
-        private System.Windows.Forms.ColumnHeader clMaLNV;
     }
 }

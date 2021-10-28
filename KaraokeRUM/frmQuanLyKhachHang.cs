@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KaraokeRUM
@@ -22,6 +17,8 @@ namespace KaraokeRUM
        * kH: class khách hàng.
        * lK: class Loại khách.
        * hl: class Hỗn Loạn.
+       * dsKh danh sách khách hàng lấy từ 2 bảng
+       * sortColumn dùng để sắp xếp
        */
         private clsKhachHang kH;
         private clsLoaiKhach lK;
@@ -120,7 +117,8 @@ namespace KaraokeRUM
             XoaCacTxtCbo();
             TaiDuLieuLenListView(lvwDSKH, layDS);
         }
-        LoaiKhachHang SuaChietKhauLoaiKhach(){
+        LoaiKhachHang SuaChietKhauLoaiKhach()
+        {
             LoaiKhachHang loaiKhachHang = new LoaiKhachHang();
             loaiKhachHang.MaLoaiKH = lK.TimLoaiKhachHang(cboLoaiKhachHang.Text).First().MaLoaiKH;
             loaiKhachHang.ChietKhau = Convert.ToInt32(txtCKM.Text);
@@ -159,14 +157,14 @@ namespace KaraokeRUM
                 TaoTieuDeCot(lvwDSKH);
                 TaiDuLieuLenListView(lvwDSKH, dsKH);
             }
-            
+
         }
         /*
         * sự kiện click vào cột để sắp xếp
         */
         private void lvwDSKH_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            
+
             if (e.Column != sortColumn)
             {
                 sortColumn = e.Column;
@@ -198,38 +196,18 @@ namespace KaraokeRUM
          */
         private void txtTimKiemKhachHang_TextChanged(object sender, EventArgs e)
         {
-            if(txtTimKiemKhachHang.ToString().Equals(String.Empty) )
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            foreach (KhachHang i in kH.LayDSKH())
             {
-                dsKH = kH.LayDSKH();
-                txtTimKiemKhachHang.AutoCompleteCustomSource.Clear();
-                foreach (KhachHang i in dsKH)
-                {
-                    txtTimKiemKhachHang.AutoCompleteCustomSource.Add(i.MaKH);
-                    txtTimKiemKhachHang.AutoCompleteCustomSource.Add(i.TenKhach);
-                }
-                dsKH = hL.TimKhach(txtTimKiemKhachHang.Text);
-                lvwDSKH.Items.Clear();
-                TaoTieuDeCot(lvwDSKH);
-                TaiDuLieuLenListView(lvwDSKH, dsKH);
+                collection.Add(i.MaKH);
+                collection.Add(i.TenKhach);
             }
-            else
-            {
-                dsKH = kH.LayDSKH();
-                txtTimKiemKhachHang.AutoCompleteCustomSource.Clear();
-                foreach (KhachHang i in dsKH)
-                {
-                    txtTimKiemKhachHang.AutoCompleteCustomSource.Add(i.MaKH);
-                    txtTimKiemKhachHang.AutoCompleteCustomSource.Add(i.TenKhach);
-                }
-                lvwDSKH.Items.Clear();
-                TaoTieuDeCot(lvwDSKH);
-                IEnumerable<dynamic> dsKHAll = hL.KhachHangVaLoaiKhachHang();
-                TaiDuLieuLenListView(lvwDSKH, dsKHAll);
-                
-            }
+            txtTimKiemKhachHang.AutoCompleteCustomSource = collection;
+
         }
     }
-    }
+
+
 
     /*
      * tạo 1 lớp sắp xếp kế thừa từ IComparer
@@ -263,7 +241,8 @@ namespace KaraokeRUM
 
 
     }
+}
 
 
-        
- 
+
+

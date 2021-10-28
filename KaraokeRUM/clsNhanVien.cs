@@ -14,23 +14,25 @@ namespace KaraokeRUM
         {
             dt = LayData();
         }
-        public IEnumerable<NhanVien> LayDSNV()
+        public IEnumerable<NhanVien> LayDSNV(string MANVQL)
         {
             IEnumerable<NhanVien> nv = from n in dt.NhanViens
-                                        select n;
+                                       where !n.MaNV.Contains(MANVQL)
+                                       select n;
             return nv;
 
         }
         /**
-       * Thêm các thông tin Phòng
-      
-        public int ThemPhong(Phong phong)
+        * Thêm các thông tin Nhân Viên
+        * 
+        */
+        public int ThemNhanVien(NhanVien nhanVien)
         {
             System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
             try
             {
                 dt.Transaction = br;
-                dt.Phongs.InsertOnSubmit(phong);
+                dt.NhanViens.InsertOnSubmit(nhanVien);
                 dt.SubmitChanges();
                 dt.Transaction.Commit();
                 return 1;
@@ -41,7 +43,18 @@ namespace KaraokeRUM
                 throw new Exception(ex.Message);
             }
         }
-         */
+
+        /**
+       * Tìm kiếm Nhân Viên
+       */
+        public IEnumerable<NhanVien> TimNhanVien(string cmnd , string sdt)
+        {
+            IEnumerable<NhanVien> nv = from n in dt.NhanViens
+                                   where n.CMND.Equals(cmnd) || n.SDT.Equals(sdt)
+                                       select n;
+            return nv;
+        }
+
         /**
         * Sửa thông tin phòng (Trạng thái, Loại phòng).
   

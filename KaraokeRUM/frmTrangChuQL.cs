@@ -12,10 +12,15 @@ namespace KaraokeRUM
 {
     public partial class frmTrangChuQL : Form
     {
-        protected static string MAQL;
+        protected static string MANVQL;
         public frmTrangChuQL()
         {
             InitializeComponent();
+        }
+        public frmTrangChuQL(string maNVQL)
+        {
+            InitializeComponent();
+            MANVQL = maNVQL;
         }
         private void OpenFormInPanel(object Formhijo)
         {
@@ -35,13 +40,13 @@ namespace KaraokeRUM
         private void frmTrangChuCQ_Load(object sender, EventArgs e)
         {
             OpenFormInPanel(new frmHome());
-            MAQL = frmDangNhap.maQL;
-            Console.WriteLine(MAQL);
+            MANVQL = frmDangNhap.maQL;
+            Console.WriteLine(MANVQL);
         }
 
         private void btnQLNV_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel(new frmQuanLyNhanVien());
+            OpenFormInPanel(new frmQuanLyNhanVien(MANVQL));
         }
 
         private void btnTrangChu_Click(object sender, EventArgs e)

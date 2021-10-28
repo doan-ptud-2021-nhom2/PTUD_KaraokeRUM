@@ -52,6 +52,7 @@
     <Compile Include="clsHoaDon.cs" />
     <Compile Include="clsHonLoan.cs" />
     <Compile Include="clsKetNoi.cs" />
+    <Compile Include="clsLoaiNhanVien.cs" />
     <Compile Include="clsMatHang.cs" />
     <Compile Include="clsKhachHang.cs" />
     <Compile Include="clsLoaiKhach.cs" />
