@@ -18,11 +18,6 @@ namespace KaraokeRUM
             InitializeComponent();
             MAQL = maQL;
         }
-        public frmTrangChuQL(string maNVQL)
-        {
-            InitializeComponent();
-            MANVQL = maNVQL;
-        }
         private void OpenFormInPanel(object Formhijo)
         {
             if (this.panel_workarea.Controls.Count > 0)
@@ -41,13 +36,13 @@ namespace KaraokeRUM
         private void frmTrangChuCQ_Load(object sender, EventArgs e)
         {
             OpenFormInPanel(new frmHome());
-            MANVQL = frmDangNhap.maQL;
-            Console.WriteLine(MANVQL);
+            MAQL = frmDangNhap.maQL;
+            Console.WriteLine(MAQL);
         }
 
         private void btnQLNV_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel(new frmQuanLyNhanVien(MANVQL));
+            OpenFormInPanel(new frmQuanLyNhanVien(MAQL));
         }
 
         private void btnTrangChu_Click(object sender, EventArgs e)
