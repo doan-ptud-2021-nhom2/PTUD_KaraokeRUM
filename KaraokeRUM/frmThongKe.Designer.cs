@@ -87,7 +87,7 @@ namespace KaraokeRUM
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(777, 300);
+            this.groupBox1.Size = new System.Drawing.Size(800, 300);
             this.groupBox1.TabIndex = 82;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách hóa đơn";
@@ -99,7 +99,7 @@ namespace KaraokeRUM
             this.lstvDSHoaDon.Location = new System.Drawing.Point(5, 32);
             this.lstvDSHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstvDSHoaDon.Name = "lstvDSHoaDon";
-            this.lstvDSHoaDon.Size = new System.Drawing.Size(765, 254);
+            this.lstvDSHoaDon.Size = new System.Drawing.Size(788, 254);
             this.lstvDSHoaDon.TabIndex = 0;
             this.lstvDSHoaDon.UseCompatibleStateImageBehavior = false;
             // 
@@ -129,6 +129,7 @@ namespace KaraokeRUM
             this.cboNam.Name = "cboNam";
             this.cboNam.Size = new System.Drawing.Size(195, 30);
             this.cboNam.TabIndex = 4;
+            this.cboNam.SelectedIndexChanged += new System.EventHandler(this.cboNam_SelectedIndexChanged);
             // 
             // cboThang
             // 
@@ -138,6 +139,7 @@ namespace KaraokeRUM
             this.cboThang.Name = "cboThang";
             this.cboThang.Size = new System.Drawing.Size(195, 30);
             this.cboThang.TabIndex = 4;
+            this.cboThang.SelectedIndexChanged += new System.EventHandler(this.cboThang_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -159,6 +161,7 @@ namespace KaraokeRUM
             this.btnTKDoanhThu.TabIndex = 3;
             this.btnTKDoanhThu.Text = "Thống kê";
             this.btnTKDoanhThu.UseVisualStyleBackColor = false;
+            this.btnTKDoanhThu.Click += new System.EventHandler(this.btnTKDoanhThu_Click);
             // 
             // label2
             // 
@@ -195,7 +198,7 @@ namespace KaraokeRUM
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(345, 215);
+            this.groupBox3.Size = new System.Drawing.Size(373, 215);
             this.groupBox3.TabIndex = 84;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin";
@@ -205,8 +208,9 @@ namespace KaraokeRUM
             this.txtSMH.Location = new System.Drawing.Point(163, 110);
             this.txtSMH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSMH.Name = "txtSMH";
-            this.txtSMH.Size = new System.Drawing.Size(167, 30);
+            this.txtSMH.Size = new System.Drawing.Size(190, 30);
             this.txtSMH.TabIndex = 5;
+            this.txtSMH.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label5
             // 
@@ -222,8 +226,9 @@ namespace KaraokeRUM
             this.txtTDT.Location = new System.Drawing.Point(163, 165);
             this.txtTDT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTDT.Name = "txtTDT";
-            this.txtTDT.Size = new System.Drawing.Size(167, 30);
+            this.txtTDT.Size = new System.Drawing.Size(190, 30);
             this.txtTDT.TabIndex = 5;
+            this.txtTDT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
             // 
@@ -239,8 +244,9 @@ namespace KaraokeRUM
             this.txtSKH.Location = new System.Drawing.Point(163, 48);
             this.txtSKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSKH.Name = "txtSKH";
-            this.txtSKH.Size = new System.Drawing.Size(167, 30);
+            this.txtSKH.Size = new System.Drawing.Size(190, 30);
             this.txtSKH.TabIndex = 5;
+            this.txtSKH.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
@@ -279,9 +285,9 @@ namespace KaraokeRUM
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(865, 96);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(748, 543);
             this.groupBox4.TabIndex = 87;
             this.groupBox4.TabStop = false;

@@ -13,9 +13,10 @@ namespace KaraokeRUM
     public partial class frmTrangChuQL : Form
     {
         protected static string MAQL;
-        public frmTrangChuQL()
+        public frmTrangChuQL(string maQL)
         {
             InitializeComponent();
+            MAQL = maQL;
         }
         private void OpenFormInPanel(object Formhijo)
         {

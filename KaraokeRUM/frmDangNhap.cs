@@ -44,7 +44,7 @@ namespace KaraokeRUM
  
             frmLayLaiMatKhau frmLLMK = new frmLayLaiMatKhau();
             frmTrangChu frmNV = new frmTrangChu(maQL);
-            frmTrangChuQL frmQL = new frmTrangChuQL();
+            frmTrangChuQL frmQL = new frmTrangChuQL(maQL);
             if (qlTaiKhoan.KiemTraTaiKhoan(tk))
             {
                 

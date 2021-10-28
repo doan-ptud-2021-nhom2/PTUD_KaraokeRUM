@@ -22,6 +22,7 @@ namespace KaraokeRUM
             frmChiTietPhong frm = new frmChiTietPhong();
             frm.Show();
             //hien form
+            //MessageBox.Show(((Button)sender).Text);:
         }
 
         private void frmPhong_Load(object sender, EventArgs e)
