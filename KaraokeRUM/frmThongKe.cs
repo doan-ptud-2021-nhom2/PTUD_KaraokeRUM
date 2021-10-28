@@ -153,6 +153,7 @@ namespace KaraokeRUM
         {
             if (rdoHomNay.Checked)
             {
+                btnTKDoanhThu.Enabled = false;
                 cboThang.Text = "";
                 cboNam.Text = "";
                 //Thay thế biến bằng date.ToString format theo sql
@@ -209,6 +210,7 @@ namespace KaraokeRUM
         private void cboThang_SelectedIndexChanged(object sender, EventArgs e)
         {
             rdoHomNay.Checked = false;
+            btnTKDoanhThu.Enabled = true;
         }
 
         /**
@@ -217,6 +219,7 @@ namespace KaraokeRUM
         private void cboNam_SelectedIndexChanged(object sender, EventArgs e)
         {
             rdoHomNay.Checked = false;
+            btnTKDoanhThu.Enabled = true;
             if(Convert.ToInt32(cboNam.Text) > Convert.ToInt32(DateTime.Now.Year.ToString()))
             {
                 MessageBox.Show("Không được chọn năm lớn hơn năm hiện tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
