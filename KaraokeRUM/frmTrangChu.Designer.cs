@@ -289,6 +289,7 @@ namespace KaraokeRUM
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_workarea.BackColor = System.Drawing.Color.White;
+            this.panel_workarea.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.panel_workarea.Location = new System.Drawing.Point(388, 1);
             this.panel_workarea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_workarea.Name = "panel_workarea";
