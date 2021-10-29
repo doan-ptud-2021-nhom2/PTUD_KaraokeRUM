@@ -40,12 +40,23 @@ namespace KaraokeRUM
         /**
          * Lấy tên mặt hàng
          */
-        public String LayTenMatHang(string maMH)
+        public MatHang TimTheoMa(string maMH)
         {
             var matHang = from mh in dt.MatHangs
                           where mh.MaMH.Equals(maMH)
                           select mh;
-            return matHang.First().TenMh;
+            return matHang.First();
         }
+        /**
+         * Tìm mã mặt hàng
+         */
+        public MatHang TimMaTheoTen(string tenMH)
+        {
+            var matHang = from mh in dt.MatHangs
+                          where mh.TenMh.Equals(tenMH)
+                          select mh;
+            return matHang.First();
+        }
+
     }
 }
