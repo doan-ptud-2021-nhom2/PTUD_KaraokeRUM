@@ -231,7 +231,10 @@ namespace KaraokeRUM
         {
             var item = lstvDSHoaDon.SelectedItems[0];
             string maHD = item.SubItems[0].Text;
-            MessageBox.Show(maHD);
+            bool statusBtn = false;
+            //MessageBox.Show(maHD);
+            frmHoaDon frm = new frmHoaDon(maHD, statusBtn);
+            frm.Show();
         }
     }
 }
