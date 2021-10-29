@@ -91,5 +91,27 @@ namespace KaraokeRUM
                 throw new Exception("Lỗi đổi mật khẩu: " + ex.Message);
             }
         }
+        /**
+         * Thêm tài khoản mới
+         * 
+         */
+        public int ThemTaiKhoan(TaiKhoan taiKhoan)
+        {
+            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = br;
+                dt.TaiKhoans.InsertOnSubmit(taiKhoan);
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

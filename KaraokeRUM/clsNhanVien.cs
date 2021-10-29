@@ -22,6 +22,14 @@ namespace KaraokeRUM
             return nv;
 
         }
+        public IEnumerable<NhanVien> LayDSNVFULL(string MANVQL)
+        {
+            IEnumerable<NhanVien> nv = from n in dt.NhanViens
+                                       where !n.MaNV.Contains(MANVQL)
+                                       select n;
+            return nv;
+
+        }
         /**
         * Thêm các thông tin Nhân Viên
         * 
