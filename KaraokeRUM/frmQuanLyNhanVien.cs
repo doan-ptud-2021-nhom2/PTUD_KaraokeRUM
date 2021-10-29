@@ -29,7 +29,6 @@ namespace KaraokeRUM
         private IEnumerable<dynamic> dsNV;
         private int sortColumn = -1;
         private string MANVQL;
-        private string CheckSDT;
         public frmQuanLyNhanVien(string maNVQL)
         {
             InitializeComponent();
@@ -47,8 +46,8 @@ namespace KaraokeRUM
             tK = new clsTaiKhoan();
             IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
             TaiDuLieuLenListView(lvwDSNV, dsNV);
-            txtTimKiem.AutoCompleteMode = AutoCompleteMode.Suggest;
-            txtTimKiem.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtTimKiemNhanVien.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtTimKiemNhanVien.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
         /** 
          * Tạo tiêu đề cột
@@ -124,7 +123,6 @@ namespace KaraokeRUM
             {
                 dsNV = (dynamic)lvwDSNV.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsNV);
-                CheckSDT = (string)dsNV.SDT;
             }
         }
         void TaiDuLieuTuLstvDenTxtCbo(dynamic dsNV)
@@ -176,8 +174,7 @@ namespace KaraokeRUM
                     lvwDSNV.Sorting = SortOrder.Ascending;
             }
             lvwDSNV.Sort();
-            this.lvwDSNV.ListViewItemSorter = new ListViewItemComparer(e.Column,
-                                                              lvwDSNV.Sorting);
+            this.lvwDSNV.ListViewItemSorter = new clsListViewItemComparer(e.Column,lvwDSNV.Sorting);
         }
         /*
          * Tim kiem
@@ -185,25 +182,24 @@ namespace KaraokeRUM
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             IEnumerable<dynamic> dsNVTim;
-            dsNVTim = nV.TimNhanVienVaLoaiNhanVien(txtTimKiem.Text, MANVQL);
+            dsNVTim = nV.TimNhanVienVaLoaiNhanVien(txtTimKiemNhanVien.Text, MANVQL);
             lvwDSNV.Items.Clear();
-            txtTimKiem.Clear();
+            txtTimKiemNhanVien.Clear();
             TaoTieuDeCot(lvwDSNV);
             TaiDuLieuLenListView(lvwDSNV, dsNVTim);
         }
         /*
         * auto complete 
         */
-        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        private void txtTimKiemNhanVien_TextChanged(object sender, EventArgs e)
         {
-                AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-                foreach (NhanVien i in nV.LayDSNV(MANVQL))
-                {
-                    collection.Add(i.MaNV);
-                    collection.Add(i.TenNV);
-                }
-                txtTimKiem.AutoCompleteCustomSource = collection;
-                
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            foreach (NhanVien i in nV.LayDSNV(MANVQL))
+            {
+                collection.Add(i.MaNV);
+                collection.Add(i.TenNV);
+            }
+            txtTimKiemNhanVien.AutoCompleteCustomSource = collection;
         }
         void XoaCacTxtCbo()
         {
@@ -214,7 +210,7 @@ namespace KaraokeRUM
             txtSDT.Text = "";
             txtDiaChi.Text = "";
             cboLoaiNV.Text = "";
-            txtTimKiem.Text = "";
+            txtTimKiemNhanVien.Text = "";
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -353,37 +349,14 @@ namespace KaraokeRUM
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
-    }
-    }
 
-    
-    /*
-    * tạo 1 lớp sắp xếp kế thừa từ IComparer
-    */
-    public class ListViewItemComparer : IComparer
-    {
-
-        private int col;
-        private SortOrder order;
-        public ListViewItemComparer()
-        {
-            col = 0;
-            order = SortOrder.Ascending;
-        }
-        public ListViewItemComparer(int column, SortOrder order)
-        {
-            col = column;
-            this.order = order;
-        }
-        public int Compare(object x, object y)
-        {
-            int returnVal = -1;
-            returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text,
-                            ((ListViewItem)y).SubItems[col].Text);
-            // Determine whether the sort order is descending.
-            if (order == SortOrder.Descending)
-                // Invert the value returned by String.Compare.
-                returnVal *= -1;
-            return returnVal;
-        }
+        
     }
+  
+} 
+
+
+
+
+
+

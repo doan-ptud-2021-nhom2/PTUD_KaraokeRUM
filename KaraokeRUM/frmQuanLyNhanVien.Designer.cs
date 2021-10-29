@@ -31,7 +31,7 @@ namespace KaraokeRUM
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuanLyNhanVien));
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.txtTimKiemNhanVien = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvwDSNV = new System.Windows.Forms.ListView();
             this.cboLoaiNV = new System.Windows.Forms.ComboBox();
@@ -68,14 +68,14 @@ namespace KaraokeRUM
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtTimKiem
+            // txtTimKiemNhanVien
             // 
-            this.txtTimKiem.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(164, 81);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(355, 36);
-            this.txtTimKiem.TabIndex = 63;
-            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
+            this.txtTimKiemNhanVien.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiemNhanVien.Location = new System.Drawing.Point(164, 81);
+            this.txtTimKiemNhanVien.Name = "txtTimKiemNhanVien";
+            this.txtTimKiemNhanVien.Size = new System.Drawing.Size(355, 36);
+            this.txtTimKiemNhanVien.TabIndex = 63;
+            this.txtTimKiemNhanVien.TextChanged += new System.EventHandler(this.txtTimKiemNhanVien_TextChanged);
             // 
             // groupBox2
             // 
@@ -435,7 +435,7 @@ namespace KaraokeRUM
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1568, 820);
-            this.Controls.Add(this.txtTimKiem);
+            this.Controls.Add(this.txtTimKiemNhanVien);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -459,7 +459,7 @@ namespace KaraokeRUM
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.TextBox txtTimKiemNhanVien;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView lvwDSNV;
         private System.Windows.Forms.ComboBox cboLoaiNV;
