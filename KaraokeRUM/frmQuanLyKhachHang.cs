@@ -40,7 +40,7 @@ namespace KaraokeRUM
             kH = new clsKhachHang();
             lK = new clsLoaiKhach();
             hL = new clsHonLoan();
-            IEnumerable<dynamic> dsKH = hL.KhachHangVaLoaiKhachHang();
+            IEnumerable<dynamic> dsKH = kH.KhachHangVaLoaiKhachHang();
             TaiDuLieuLenListView(lvwDSKH, dsKH);
 
             txtTimKiemKhachHang.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -113,7 +113,7 @@ namespace KaraokeRUM
         {
             LoaiKhachHang suaLk = SuaChietKhauLoaiKhach();
             lK.CapNhatChietKhau(suaLk);
-            IEnumerable<dynamic> layDS = hL.KhachHangVaLoaiKhachHang();
+            IEnumerable<dynamic> layDS = kH.KhachHangVaLoaiKhachHang();
             XoaCacTxtCbo();
             TaiDuLieuLenListView(lvwDSKH, layDS);
         }
@@ -146,13 +146,13 @@ namespace KaraokeRUM
                 hL = new clsHonLoan();
                 lvwDSKH.Items.Clear();
                 TaoTieuDeCot(lvwDSKH);
-                IEnumerable<dynamic> dsKHAll = hL.KhachHangVaLoaiKhachHang();
+                IEnumerable<dynamic> dsKHAll = kH.KhachHangVaLoaiKhachHang();
                 TaiDuLieuLenListView(lvwDSKH, dsKHAll);
             }
             else
             {
                 hL = new clsHonLoan();
-                IEnumerable<dynamic> dsKH = hL.LayKhachHangVaLoaiKhachHangTheoLoai(selected);
+                IEnumerable<dynamic> dsKH = kH.LayKhachHangVaLoaiKhachHangTheoLoai(selected);
                 lvwDSKH.Items.Clear();
                 TaoTieuDeCot(lvwDSKH);
                 TaiDuLieuLenListView(lvwDSKH, dsKH);
@@ -186,7 +186,7 @@ namespace KaraokeRUM
          */
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            dsKH = hL.TimKhach(txtTimKiemKhachHang.Text);
+            dsKH = kH.TimKhach(txtTimKiemKhachHang.Text);
             lvwDSKH.Items.Clear();
             TaoTieuDeCot(lvwDSKH);
             TaiDuLieuLenListView(lvwDSKH, dsKH);

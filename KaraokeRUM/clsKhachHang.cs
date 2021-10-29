@@ -43,7 +43,46 @@ namespace KaraokeRUM
                 throw new Exception(ex.Message);
             }
         }
+        /**
+      * join 2 bảng: KhachHang với LoaiKhachHang
+      * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
+      */
+        public IEnumerable<dynamic> KhachHangVaLoaiKhachHang()
+        {
+            var kh = from n in dt.KhachHangs
+                     join x in dt.LoaiKhachHangs
+                     on n.MaLoaiKH equals x.MaLoaiKH
+                     select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
+            return kh;
+        }
+        /**
+        * join 2 bảng: KhachHang với LoaiKhachHang
+        * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
+        * Có điều kiện
+        */
+        public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoai(string loaiKH)
+        {
+            var kh = from n in dt.KhachHangs
+                     join x in dt.LoaiKhachHangs
+                     on n.MaLoaiKH equals x.MaLoaiKH
+                     where x.TenLoaiKH.Equals(loaiKH)
+                     select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
+            return kh;
 
-    
+        }
+        /*
+         * tìm kiếm khách hàng
+         */
+        public IEnumerable<dynamic> TimKhach(string timKiem)
+        {
+            IEnumerable<dynamic> kh = from n in dt.KhachHangs
+                                      join x in dt.LoaiKhachHangs
+                                      on n.MaLoaiKH equals x.MaLoaiKH
+                                      where n.TenKhach.Contains(timKiem) || n.MaKH.Contains(timKiem)
+                                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
+            return kh;
+        }
+
+
     }
 }

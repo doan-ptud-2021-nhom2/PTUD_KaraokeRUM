@@ -45,7 +45,7 @@ namespace KaraokeRUM
             lNV = new clsLoaiNhanVien();
             hL = new clsHonLoan();
             tK = new clsTaiKhoan();
-            IEnumerable<dynamic> dsNV = hL.LayNhanVienVaLoaiNhanVien(MANVQL);
+            IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
             TaiDuLieuLenListView(lvwDSNV, dsNV);
             txtTimKiem.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtTimKiem.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -146,13 +146,13 @@ namespace KaraokeRUM
                 hL = new clsHonLoan();
                 lvwDSNV.Items.Clear();
                 TaoTieuDeCot(lvwDSNV);
-                IEnumerable<dynamic> dsNVALL = hL.LayNhanVienVaLoaiNhanVien(MANVQL);
+                IEnumerable<dynamic> dsNVALL = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
                 TaiDuLieuLenListView(lvwDSNV, dsNVALL);
             }
             else
             {
                 hL = new clsHonLoan();
-                IEnumerable<dynamic> dsKH = hL.LayNhanVienVaLoaiNhanVienTheoLoai(selected, MANVQL);
+                IEnumerable<dynamic> dsKH = nV.LayNhanVienVaLoaiNhanVienTheoLoai(selected, MANVQL);
                 lvwDSNV.Items.Clear();
                 TaoTieuDeCot(lvwDSNV);
                 TaiDuLieuLenListView(lvwDSNV, dsKH);
@@ -185,7 +185,7 @@ namespace KaraokeRUM
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             IEnumerable<dynamic> dsNVTim;
-            dsNVTim = hL.TimNhanVien(txtTimKiem.Text, MANVQL);
+            dsNVTim = nV.TimNhanVienVaLoaiNhanVien(txtTimKiem.Text, MANVQL);
             lvwDSNV.Items.Clear();
             txtTimKiem.Clear();
             TaoTieuDeCot(lvwDSNV);
@@ -233,7 +233,7 @@ namespace KaraokeRUM
                     tK.ThemTaiKhoan(taiKhoan);
                 }
                 XoaCacTxtCbo();
-                TaiDuLieuLenListView(lvwDSNV, hL.LayNhanVienVaLoaiNhanVien(MANVQL));
+                TaiDuLieuLenListView(lvwDSNV, nV.LayNhanVienVaLoaiNhanVien(MANVQL));
             }
             
         }
@@ -288,7 +288,7 @@ namespace KaraokeRUM
         {
             NhanVien suaNhanVien = SuaThongTinNhanVien();
                     nV.SuaNhanVien(suaNhanVien);
-                    IEnumerable<dynamic> dsNV = hL.LayNhanVienVaLoaiNhanVien(MANVQL);
+                    IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
                     XoaCacTxtCbo();
                     TaiDuLieuLenListView(lvwDSNV, dsNV);
           
@@ -330,7 +330,7 @@ namespace KaraokeRUM
             {
                 NhanVien xoaNhanVien = XoaNhanVien();
                 nV.XoaNhanVien(xoaNhanVien);
-                IEnumerable<dynamic> dsNV = hL.LayNhanVienVaLoaiNhanVien(MANVQL);
+                IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
                 XoaCacTxtCbo();
                 TaiDuLieuLenListView(lvwDSNV, dsNV);
             }
@@ -338,9 +338,20 @@ namespace KaraokeRUM
 
         private void btnViewList_Click(object sender, EventArgs e)
         {
-            IEnumerable<dynamic> dsNV = hL.LayNhanVienVaLoaiNhanVien(MANVQL);
+            IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
             XoaCacTxtCbo();
             TaiDuLieuLenListView(lvwDSNV, dsNV);
+        }
+        /*
+         * chỉ nhập số
+         */
+        private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        private void txtCMND_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
     }

@@ -177,6 +177,7 @@ namespace KaraokeRUM
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(265, 30);
             this.txtSDT.TabIndex = 5;
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // btnSua
             // 
@@ -347,6 +348,7 @@ namespace KaraokeRUM
             this.txtCMND.Name = "txtCMND";
             this.txtCMND.Size = new System.Drawing.Size(265, 30);
             this.txtCMND.TabIndex = 8;
+            this.txtCMND.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCMND_KeyPress);
             // 
             // label7
             // 
