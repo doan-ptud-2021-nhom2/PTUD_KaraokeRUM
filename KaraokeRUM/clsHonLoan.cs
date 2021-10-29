@@ -86,11 +86,13 @@ namespace KaraokeRUM
           */
         public IEnumerable<dynamic> LayNhanVienVaLoaiNhanVien(string MANVQL)
         {
+            //Đã nghỉ
             var nv = from n in dt.NhanViens
                      join x in dt.LoaiNhanViens
                      on n.MaLNV equals x.MaLNV
-                     where !n.MaNV.Contains(MANVQL)
+                     where !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("đã nghỉ")
                      select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi ,n.TrangThai, x.TenLNV};
+                     
             return nv;
         }
         /**
@@ -102,7 +104,7 @@ namespace KaraokeRUM
             var nv = from n in dt.NhanViens
                      join x in dt.LoaiNhanViens
                      on n.MaLNV equals x.MaLNV
-                     where !n.MaNV.Contains(MANVQL) && x.TenLNV.Equals(loaiNV)
+                     where !n.MaNV.Contains(MANVQL) && x.TenLNV.Equals(loaiNV) && !n.TrangThai.ToLower().Contains("đã nghỉ")
                      select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV };
             return nv;
         }
@@ -113,8 +115,8 @@ namespace KaraokeRUM
         {
             IEnumerable<dynamic> nv = from n in dt.NhanViens
                                       join x in dt.LoaiNhanViens
-                                      on n.MaLNV equals x.MaLNV
-                                      where n.TenNV.Contains(timKiem) || n.MaNV.Contains(timKiem) && !n.MaNV.Contains(MANVQL)
+                                      on n.MaLNV equals x.MaLNV 
+                                      where n.TenNV.Contains(timKiem) || n.MaNV.Contains(timKiem) && !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("đã nghỉ")
                                       select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV };
             return nv;
         }

@@ -17,7 +17,7 @@ namespace KaraokeRUM
         public IEnumerable<NhanVien> LayDSNV(string MANVQL)
         {
             IEnumerable<NhanVien> nv = from n in dt.NhanViens
-                                       where !n.MaNV.Contains(MANVQL)
+                                       where !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("đã nghỉ")
                                        select n;
             return nv;
 
@@ -54,22 +54,21 @@ namespace KaraokeRUM
                                        select n;
             return nv;
         }
-
         /**
-        * Sửa thông tin phòng (Trạng thái, Loại phòng).
-  
-        public bool SuaPhong(Phong phong)
+         * Sửa thông tin nhân viên 
+         */
+        public bool SuaNhanVien(NhanVien nhanVien)
         {
             System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
             try
             {
                 dt.Transaction = myTran;
-                IQueryable<Phong> tam = (from n in dt.Phongs
-                                         where n.MaPhong == phong.MaPhong
+                IQueryable<NhanVien> tam = (from n in dt.NhanViens
+                                         where n.MaNV == nhanVien.MaNV
                                          select n);
-                tam.First().TrangThaiPhong = phong.TrangThaiPhong;
-                //truy vào khóa ngoại của bảng Phòng để đổi trạng thái (VIP, THƯỜNG) bên bảng Loại Phòng.
-                tam.First().MaLoaiPhong = phong.MaLoaiPhong;
+                tam.First().GioiTinh = nhanVien.GioiTinh;
+                tam.First().DiaChi = nhanVien.DiaChi;
+                tam.First().MaLNV = nhanVien.MaLNV;
                 dt.SubmitChanges();
                 dt.Transaction.Commit();
                 return true;
@@ -77,11 +76,34 @@ namespace KaraokeRUM
             catch (Exception ex)
             {
                 dt.Transaction.Rollback();
-                throw new Exception("Loi không sửa được!" + ex.Message);
+                throw new Exception("Lỗi không sửa được!" + ex.Message);
 
             }
-      
-    }
-                */
+        }
+        /**
+         * thay đổi trạng thái nhân viên thành đã nghỉ.
+         */
+        public bool XoaNhanVien(NhanVien nhanVien)
+        {
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = myTran;
+                IQueryable<NhanVien> tam = (from n in dt.NhanViens
+                                            where n.MaNV == nhanVien.MaNV
+                                            select n);
+                tam.First().TrangThai = nhanVien.TrangThai;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Lỗi không sửa được!" + ex.Message);
+
+            }
+        }
+
     }
 }
