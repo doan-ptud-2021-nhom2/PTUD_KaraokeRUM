@@ -52,7 +52,7 @@ namespace KaraokeRUM
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblPhong = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTenPhong = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstvDanhSachMatHang = new System.Windows.Forms.ListView();
             this.groupBox3.SuspendLayout();
@@ -200,6 +200,7 @@ namespace KaraokeRUM
             this.btnXoa.TabIndex = 9;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnThem
             // 
@@ -212,6 +213,7 @@ namespace KaraokeRUM
             this.btnThem.TabIndex = 2;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtSoLuong
             // 
@@ -231,6 +233,7 @@ namespace KaraokeRUM
             this.btnSua.TabIndex = 2;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // label1
             // 
@@ -306,26 +309,26 @@ namespace KaraokeRUM
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lblTenPhong);
             this.panel1.Controls.Add(this.lblPhong);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1942, 49);
             this.panel1.TabIndex = 7;
             // 
-            // label2
+            // lblTenPhong
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTenPhong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.BackColor = System.Drawing.Color.Teal;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1939, 50);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Phòng";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTenPhong.BackColor = System.Drawing.Color.Teal;
+            this.lblTenPhong.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenPhong.ForeColor = System.Drawing.Color.White;
+            this.lblTenPhong.Location = new System.Drawing.Point(0, 0);
+            this.lblTenPhong.Name = "lblTenPhong";
+            this.lblTenPhong.Size = new System.Drawing.Size(1939, 50);
+            this.lblTenPhong.TabIndex = 2;
+            this.lblTenPhong.Text = "Phòng";
+            this.lblTenPhong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox2
             // 
@@ -346,6 +349,7 @@ namespace KaraokeRUM
             this.lstvDanhSachMatHang.Size = new System.Drawing.Size(860, 597);
             this.lstvDanhSachMatHang.TabIndex = 0;
             this.lstvDanhSachMatHang.UseCompatibleStateImageBehavior = false;
+            this.lstvDanhSachMatHang.SelectedIndexChanged += new System.EventHandler(this.lstvDanhSachMatHang_SelectedIndexChanged);
             // 
             // frmChiTietPhong
             // 
@@ -392,7 +396,7 @@ namespace KaraokeRUM
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblPhong;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTenPhong;
         private System.Windows.Forms.TextBox txtTenPhong;
         private System.Windows.Forms.TextBox txtMaPhong;
         private System.Windows.Forms.ComboBox cboMatHang;

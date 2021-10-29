@@ -114,7 +114,7 @@ namespace KaraokeRUM
         {
             ListViewItem lstvItem;
             lstvItem = new ListViewItem((i++).ToString());
-            lstvItem.SubItems.Add(MatHang.LayTenMatHang(item.MaMH));
+            lstvItem.SubItems.Add(MatHang.TimTheoMa(item.MaMH).TenMh);
             lstvItem.SubItems.Add(item.SoLuong.ToString());
             lstvItem.SubItems.Add(item.ThanhTien.ToString("#,### VNĐ"));
 
