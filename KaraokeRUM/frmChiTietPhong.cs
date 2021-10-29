@@ -177,6 +177,7 @@ namespace KaraokeRUM
         {
             ChiTietHoaDon chiTietHoaDon = TaoChiTietHoaDon();
             cthd.ThemChiTietHoaDon(chiTietHoaDon);
+
             dsMatHang = HoaDon.LayChiTietHoaDon(maHoaDon);
             TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang);
         }
@@ -218,6 +219,7 @@ namespace KaraokeRUM
 
             return chiTietHoaDon;
         }
+
         private void btnSua_Click(object sender, EventArgs e)
         {
             ChiTietHoaDon suaSoLuong = SuaSoLuongMatHang();
