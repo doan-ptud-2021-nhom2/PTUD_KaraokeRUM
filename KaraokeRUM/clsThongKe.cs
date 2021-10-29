@@ -146,6 +146,8 @@ namespace KaraokeRUM
                          on cthd.MaHD equals hd.MaHD
                          where hd.NgayLap.ToString().Equals(homNay)
                          select new { SoLuong = cthd.SoLuong };
+            if (!dsCTHD.GetEnumerator().MoveNext())
+                return 0;
             return dsCTHD.Sum(a => a.SoLuong);
         }
 
