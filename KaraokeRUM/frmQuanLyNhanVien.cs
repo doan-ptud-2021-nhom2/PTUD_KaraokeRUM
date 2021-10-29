@@ -25,6 +25,7 @@ namespace KaraokeRUM
         private clsNhanVien nV;
         private clsLoaiNhanVien lNV;
         private clsHonLoan hL;
+        private clsTaiKhoan tK;
         private IEnumerable<dynamic> dsNV;
         private int sortColumn = -1;
         private string MANVQL;
@@ -43,6 +44,7 @@ namespace KaraokeRUM
             nV = new clsNhanVien();
             lNV = new clsLoaiNhanVien();
             hL = new clsHonLoan();
+            tK = new clsTaiKhoan();
             IEnumerable<dynamic> dsNV = hL.LayNhanVienVaLoaiNhanVien(MANVQL);
             TaiDuLieuLenListView(lvwDSNV, dsNV);
             txtTimKiem.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -218,7 +220,6 @@ namespace KaraokeRUM
         private void btnThem_Click(object sender, EventArgs e)
         {
             NhanVien nhanVien = ThemNhanVien();
-
             if (nV.TimNhanVien(nhanVien.CMND, nhanVien.SDT).Count() > 0 )
             {
                 MessageBox.Show("Lỗi! đã tồn tại nhân viên này rồi", "Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -226,9 +227,15 @@ namespace KaraokeRUM
             else
             {
                 nV.ThemNhanVien(nhanVien);
+                if (nhanVien.MaLNV.ToLower().Equals("lnv01") || nhanVien.MaLNV.ToLower().Equals("lnv02"))
+                {
+                    TaiKhoan taiKhoan = TaoTaiKhoan(nhanVien);
+                    tK.ThemTaiKhoan(taiKhoan);
+                }
                 XoaCacTxtCbo();
                 TaiDuLieuLenListView(lvwDSNV, hL.LayNhanVienVaLoaiNhanVien(MANVQL));
             }
+            
         }
    
         /** 
@@ -237,7 +244,7 @@ namespace KaraokeRUM
         private string TaoMaNhanVien()
         {
             string maNhanVien = "";
-            string maNhanVienTam = nV.LayDSNV(MANVQL).Last().MaNV.ToString();
+            string maNhanVienTam = nV.LayDSNVFULL(MANVQL).Last().MaNV.ToString();
             int dem = Convert.ToInt32(maNhanVienTam.Split('N','V')[2]) + 1;
             if (dem < 10)
             {
@@ -270,7 +277,13 @@ namespace KaraokeRUM
             nhanVien.SDT = txtSDT.Text;
             return nhanVien;
         }
-
+        TaiKhoan TaoTaiKhoan(NhanVien nhanVien)
+        {
+            TaiKhoan taiKhoan = new TaiKhoan();
+            taiKhoan.UserName = nhanVien.MaNV;
+            taiKhoan.PassWord = "123456";
+            return taiKhoan;
+        }
         private void btnSua_Click(object sender, EventArgs e)
         {
             NhanVien suaNhanVien = SuaThongTinNhanVien();
@@ -301,6 +314,7 @@ namespace KaraokeRUM
         */
         NhanVien XoaNhanVien()
         {
+            
             NhanVien nhanVien = new NhanVien();
             nhanVien.MaNV = nV.TimNhanVien(txtCMND.Text, txtSDT.Text).First().MaNV;
             nhanVien.TrangThai = "Đã nghỉ";
@@ -309,11 +323,17 @@ namespace KaraokeRUM
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            NhanVien xoaNhanVien = XoaNhanVien();
-            nV.XoaNhanVien(xoaNhanVien);
-            IEnumerable<dynamic> dsNV = hL.LayNhanVienVaLoaiNhanVien(MANVQL);
-            XoaCacTxtCbo();
-            TaiDuLieuLenListView(lvwDSNV, dsNV);
+            DialogResult hoiXoa;
+            hoiXoa = MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+
+            if (hoiXoa == DialogResult.Yes)
+            {
+                NhanVien xoaNhanVien = XoaNhanVien();
+                nV.XoaNhanVien(xoaNhanVien);
+                IEnumerable<dynamic> dsNV = hL.LayNhanVienVaLoaiNhanVien(MANVQL);
+                XoaCacTxtCbo();
+                TaiDuLieuLenListView(lvwDSNV, dsNV);
+            }
         }
 
         private void btnViewList_Click(object sender, EventArgs e)
