@@ -112,6 +112,8 @@ namespace KaraokeRUM
                 itemMH = TaoDanhSachItem(dsMatHang.ElementAt(i), i + 1);
                 lstv.Items.Add(itemMH);
             }
+
+            //MessageBox.Show("Tải lại");
         }
         ListViewItem TaoDanhSachItem(dynamic itemMH, int id)
         {
@@ -160,8 +162,8 @@ namespace KaraokeRUM
         */
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
-            //frmHoaDon frm = new frmHoaDon();
-            //frm.Show();
+            frmHoaDon frm = new frmHoaDon(this.maHoaDon, true);
+            frm.Show();
         }
 
         /** 
@@ -220,6 +222,7 @@ namespace KaraokeRUM
             return chiTietHoaDon;
         }
 
+        //Lỗi không load được chỗ listView
         private void btnSua_Click(object sender, EventArgs e)
         {
             ChiTietHoaDon suaSoLuong = SuaSoLuongMatHang();
@@ -235,7 +238,7 @@ namespace KaraokeRUM
         private void btnXoa_Click(object sender, EventArgs e)
         {
             DialogResult hoiXoa;
-            //ChiTietHoaDon chiTietHoaDon;
+            ChiTietHoaDon chiTietHoaDon;
 
             if (lstvDanhSachMatHang.SelectedItems.Count > 0)
             {
@@ -243,10 +246,9 @@ namespace KaraokeRUM
 
                 if (hoiXoa == DialogResult.Yes)
                 {
-
-                    //chiTietHoaDon = cthd.TimChiTietHoaDon(chiTietHoaDon.MaMH, chiTietHoaDon.MaHD).First();
-                    //chiTietHoaDon.MaHD = this.maHoaDon;
-                    //cthd.XoaChiTietHoaDon(chiTietHoaDon);
+                    
+                    chiTietHoaDon = cthd.TimChiTietHoaDon(mh.TimMaTheoTen(cboMatHang.Text).MaMH, this.maHoaDon).First();
+                    cthd.XoaChiTietHoaDon(chiTietHoaDon);
 
                     dsMatHang = HoaDon.LayChiTietHoaDon(maHoaDon);
                     TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang);
