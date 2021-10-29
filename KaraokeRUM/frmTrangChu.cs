@@ -59,7 +59,7 @@ namespace KaraokeRUM
 
         private void btnQLMH_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel(new frmQuanLyMatHang());
+            OpenFormInPanel(new frmQuanLyMatHang(MAQL));
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)

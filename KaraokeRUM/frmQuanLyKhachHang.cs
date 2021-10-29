@@ -143,15 +143,14 @@ namespace KaraokeRUM
             string selected = this.cboLocTheoLoai.GetItemText(this.cboLocTheoLoai.SelectedItem);
             if (selected.Equals("All") == true)
             {
-                hL = new clsHonLoan();
-                lvwDSKH.Items.Clear();
+               // no rename may cái instance ak, k phai rename theo kieu notepad dau, k an loz dau               lvwDSKH.Items.Clear();
                 TaoTieuDeCot(lvwDSKH);
                 IEnumerable<dynamic> dsKHAll = kH.KhachHangVaLoaiKhachHang();
                 TaiDuLieuLenListView(lvwDSKH, dsKHAll);
             }
             else
             {
-                hL = new clsHonLoan();
+                
                 IEnumerable<dynamic> dsKH = kH.LayKhachHangVaLoaiKhachHangTheoLoai(selected);
                 lvwDSKH.Items.Clear();
                 TaoTieuDeCot(lvwDSKH);
@@ -178,7 +177,7 @@ namespace KaraokeRUM
                     lvwDSKH.Sorting = SortOrder.Ascending;
             }
             lvwDSKH.Sort();
-            this.lvwDSKH.ListViewItemSorter = new ListViewItemComparer(e.Column,
+            this.lvwDSKH.ListViewItemSorter = new clsListViewItemComparer(e.Column,
                                                               lvwDSKH.Sorting);
         }
         /*
@@ -209,38 +208,8 @@ namespace KaraokeRUM
 
 
 
-    /*
-     * tạo 1 lớp sắp xếp kế thừa từ IComparer
-     */
-    public class ListViewItemComparer : IComparer
-    {
 
-        private int col;
-        private SortOrder order;
-        public ListViewItemComparer()
-        {
-            col = 0;
-            order = SortOrder.Ascending;
-        }
-        public ListViewItemComparer(int column, SortOrder order)
-        {
-            col = column;
-            this.order = order;
-        }
-        public int Compare(object x, object y)
-        {
-            int returnVal = -1;
-            returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text,
-                            ((ListViewItem)y).SubItems[col].Text);
-            // Determine whether the sort order is descending.
-            if (order == SortOrder.Descending)
-                // Invert the value returned by String.Compare.
-                returnVal *= -1;
-            return returnVal;
-        }
-
-
-    }
+    
 }
 
 
