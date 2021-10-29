@@ -22,6 +22,13 @@ namespace KaraokeRUM
             return kh;
            
         }
+        public KhachHang LayThongTinKhach(string maKH)
+        {
+            var in4_kh = from kh in dt.KhachHangs
+                     where kh.MaKH.Equals(maKH)
+                     select kh;
+            return in4_kh.First();
+        }
 
         /**
        * Thêm các thông tin Khách Hàng

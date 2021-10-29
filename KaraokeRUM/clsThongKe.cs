@@ -21,7 +21,7 @@ namespace KaraokeRUM
             var sltk = from cthd in dt.ChiTietHoaDons
                        join mh in dt.MatHangs on cthd.MaMH equals mh.MaMH
                        join hd in dt.HoaDons on cthd.MaHD equals hd.MaHD
-                       where hd.NgayLap.ToString().Equals(homNay)
+                       where hd.NgayLap.ToString().Equals(homNay) && !hd.TongTien.Equals(null)
                        group cthd.SoLuong by mh.TenMh into g
                        select new
                        {
@@ -40,7 +40,7 @@ namespace KaraokeRUM
                 sltk = from cthd in dt.ChiTietHoaDons
                            join mh in dt.MatHangs on cthd.MaMH equals mh.MaMH
                            join hd in dt.HoaDons on cthd.MaHD equals hd.MaHD
-                           where hd.NgayLap.Year.Equals(nam)
+                           where hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
                            group cthd.SoLuong by mh.TenMh into g
                            select new
                            {
@@ -53,7 +53,7 @@ namespace KaraokeRUM
                 sltk = from cthd in dt.ChiTietHoaDons
                        join mh in dt.MatHangs on cthd.MaMH equals mh.MaMH
                        join hd in dt.HoaDons on cthd.MaHD equals hd.MaHD
-                       where hd.NgayLap.Month.Equals(thang) && hd.NgayLap.Year.Equals(nam)
+                       where hd.NgayLap.Month.Equals(thang) && hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
                        group cthd.SoLuong by mh.TenMh into g
                        select new
                        {
@@ -71,7 +71,7 @@ namespace KaraokeRUM
             var dsHoaDon = from hd in dt.HoaDons
                            join kh in dt.KhachHangs on hd.MaKH equals kh.MaKH
                            join p in dt.Phongs on hd.MaPhong equals p.MaPhong
-                           where hd.NgayLap.ToString().Equals(homNay)
+                           where hd.NgayLap.ToString().Equals(homNay) && !hd.TongTien.Equals(null)
                            select new { hd.MaHD, p.TenPhong, kh.TenKhach, hd.TongTien, hd.NgayLap };
             return dsHoaDon;
         }
@@ -84,7 +84,7 @@ namespace KaraokeRUM
                 dsHoaDon = from hd in dt.HoaDons
                                join kh in dt.KhachHangs on hd.MaKH equals kh.MaKH
                                join p in dt.Phongs on hd.MaPhong equals p.MaPhong
-                               where hd.NgayLap.Year.Equals(nam)
+                               where hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
                                select new { hd.MaHD, p.TenPhong, kh.TenKhach, hd.TongTien, hd.NgayLap };
             }
             else
@@ -92,7 +92,7 @@ namespace KaraokeRUM
                 dsHoaDon = from hd in dt.HoaDons
                            join kh in dt.KhachHangs on hd.MaKH equals kh.MaKH
                            join p in dt.Phongs on hd.MaPhong equals p.MaPhong
-                           where hd.NgayLap.Month.Equals(thang) && hd.NgayLap.Year.Equals(nam)
+                           where hd.NgayLap.Month.Equals(thang) && hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
                            select new { hd.MaHD, p.TenPhong, kh.TenKhach, hd.TongTien, hd.NgayLap };
             }
             return dsHoaDon;
@@ -102,7 +102,7 @@ namespace KaraokeRUM
         public int LayTongSoKhachHangHomNay(string homNay)
         {
             var dsDem = from hd in dt.HoaDons
-                        where hd.NgayLap.ToString().Equals(homNay)
+                        where hd.NgayLap.ToString().Equals(homNay) && !hd.TongTien.Equals(null)
                         group hd by hd.MaKH into g
                         select new
                         {
@@ -118,7 +118,7 @@ namespace KaraokeRUM
             if (thang.Equals("") && !nam.Equals(""))
             {
                   dsDem = from hd in dt.HoaDons
-                  where hd.NgayLap.Year.Equals(nam)
+                  where hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
                   group hd by hd.MaKH into g
                   select new
                   {
@@ -129,7 +129,7 @@ namespace KaraokeRUM
             else
             {
                 dsDem = from hd in dt.HoaDons
-                        where hd.NgayLap.Month.Equals(thang) && hd.NgayLap.Year.Equals(nam)
+                        where hd.NgayLap.Month.Equals(thang) && hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
                         group hd by hd.MaKH into g
                         select new
                         {
@@ -144,7 +144,7 @@ namespace KaraokeRUM
         {
             var dsCTHD = from cthd in dt.ChiTietHoaDons join hd in dt.HoaDons
                          on cthd.MaHD equals hd.MaHD
-                         where hd.NgayLap.ToString().Equals(homNay)
+                         where hd.NgayLap.ToString().Equals(homNay) && !hd.TongTien.Equals(null)
                          select new { SoLuong = cthd.SoLuong };
             if (!dsCTHD.GetEnumerator().MoveNext())
                 return 0;
@@ -159,14 +159,14 @@ namespace KaraokeRUM
             {
                 dsCTHD = from cthd in dt.ChiTietHoaDons
                 join hd in dt.HoaDons on cthd.MaHD equals hd.MaHD
-                where hd.NgayLap.Year.Equals(nam)
+                where hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
                 select new { SoLuong = cthd.SoLuong };
             }
             else
             {
                 dsCTHD = from cthd in dt.ChiTietHoaDons
                          join hd in dt.HoaDons on cthd.MaHD equals hd.MaHD
-                         where hd.NgayLap.Month.Equals(thang) && hd.NgayLap.Year.Equals(nam)
+                         where hd.NgayLap.Month.Equals(thang) && hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
                          select new { SoLuong = cthd.SoLuong };
             }
             if (!dsCTHD.GetEnumerator().MoveNext())
@@ -177,7 +177,7 @@ namespace KaraokeRUM
         public double LayTongTienHomNay(string homNay)
         {
             var dsHD = from hd in dt.HoaDons
-                       where hd.NgayLap.ToString().Equals(homNay)
+                       where hd.NgayLap.ToString().Equals(homNay) && !hd.TongTien.Equals(null)
                        select new { TongTien = hd.TongTien };
             return Convert.ToDouble(dsHD.Sum(a => a.TongTien));
         }
@@ -188,14 +188,14 @@ namespace KaraokeRUM
             if (thang.Equals("") && !nam.Equals(""))
             {
                 dsHD = from hd in dt.HoaDons
-                           where hd.NgayLap.Year.Equals(nam)
-                           select new { TongTien = hd.TongTien };
+                           where hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
+                       select new { TongTien = hd.TongTien };
                
             }
             else
             {
                 dsHD = from hd in dt.HoaDons
-                       where hd.NgayLap.Month.Equals(thang) && hd.NgayLap.Year.Equals(nam)
+                       where hd.NgayLap.Month.Equals(thang) && hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
                        select new { TongTien = hd.TongTien };
             }
             return dsHD.Sum(a => (long)a.TongTien);

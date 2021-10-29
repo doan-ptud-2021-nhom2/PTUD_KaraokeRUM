@@ -107,8 +107,8 @@ namespace KaraokeRUM
         */
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
-            frmHoaDon frm = new frmHoaDon();
-            frm.Show();
+            //frmHoaDon frm = new frmHoaDon();
+            //frm.Show();
         }
 
     }

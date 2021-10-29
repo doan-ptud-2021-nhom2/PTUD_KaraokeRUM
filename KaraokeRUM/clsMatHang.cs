@@ -36,5 +36,16 @@ namespace KaraokeRUM
                                  select n;
             return loaiMatHang.First();
         }
+
+        /**
+         * Lấy tên mặt hàng
+         */
+        public String LayTenMatHang(string maMH)
+        {
+            var matHang = from mh in dt.MatHangs
+                          where mh.MaMH.Equals(maMH)
+                          select mh;
+            return matHang.First().TenMh;
+        }
     }
 }
