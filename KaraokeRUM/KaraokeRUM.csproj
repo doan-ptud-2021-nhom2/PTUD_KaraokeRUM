@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsChiTietPhong.cs" />
+    <Compile Include="clsChiTietHoaDon.cs" />
     <Compile Include="clsHoaDon.cs" />
     <Compile Include="clsHonLoan.cs" />
     <Compile Include="clsKetNoi.cs" />
