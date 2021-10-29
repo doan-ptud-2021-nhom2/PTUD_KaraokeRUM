@@ -20,6 +20,7 @@ namespace KaraokeRUM
          * hl: class Hỗn Loạn.
          * dsNV danh sách nhân viên lấy từ 2 bảng
          * sortColumn dùng để sắp xếp
+         * TextWasChanged dùng để kiểm tra xem text box có đổi hay không
          */
         private clsNhanVien nV;
         private clsLoaiNhanVien lNV;
@@ -27,7 +28,7 @@ namespace KaraokeRUM
         private IEnumerable<dynamic> dsNV;
         private int sortColumn = -1;
         private string MANVQL;
-        
+        private string CheckSDT;
         public frmQuanLyNhanVien(string maNVQL)
         {
             InitializeComponent();
@@ -37,27 +38,7 @@ namespace KaraokeRUM
 
         private void frmQuanLyNhanVien_Load(object sender, EventArgs e)
         {
-            cboGioiTinh.Items.Add("Nam");
-            cboGioiTinh.Items.Add("Nữ");
-
-
-            cboTrangThai.Items.Add("Đang làm");
-            cboTrangThai.Items.Add("Đã nghỉ");
-
-            cboLoaiNV.Items.Add("Quản lý");
-            cboLoaiNV.Items.Add("Thu ngân");
-            cboLoaiNV.Items.Add("Lễ tân");
-            cboLoaiNV.Items.Add("Phục vụ");
-            cboLoaiNV.Items.Add("Bảo vệ");
-
-            cboLocTheoLoai.Items.Add("Quản lý");
-            cboLocTheoLoai.Items.Add("Thu ngân");
-            cboLocTheoLoai.Items.Add("Lễ tân");
-            cboLocTheoLoai.Items.Add("Phục vụ");
-            cboLocTheoLoai.Items.Add("Bảo vệ");
-            cboLocTheoLoai.Items.Add("All");
-
-
+            loadCombobox();
             TaoTieuDeCot(lvwDSNV);
             nV = new clsNhanVien();
             lNV = new clsLoaiNhanVien();
@@ -113,6 +94,27 @@ namespace KaraokeRUM
             lswItem.Tag = itemNV;
             return lswItem;
         }
+        /*
+         * load combobox 
+         */
+        void loadCombobox()
+        {
+            cboGioiTinh.Items.Add("Nam");
+            cboGioiTinh.Items.Add("Nữ");
+
+            cboLoaiNV.Items.Add("Quản lý");
+            cboLoaiNV.Items.Add("Thu ngân");
+            cboLoaiNV.Items.Add("Lễ tân");
+            cboLoaiNV.Items.Add("Phục vụ");
+            cboLoaiNV.Items.Add("Bảo vệ");
+
+            cboLocTheoLoai.Items.Add("Quản lý");
+            cboLocTheoLoai.Items.Add("Thu ngân");
+            cboLocTheoLoai.Items.Add("Lễ tân");
+            cboLocTheoLoai.Items.Add("Phục vụ");
+            cboLocTheoLoai.Items.Add("Bảo vệ");
+            cboLocTheoLoai.Items.Add("All");
+        }
         private void lvwDSNV_SelectedIndexChanged(object sender, EventArgs e)
         {
             dynamic dsNV = null;
@@ -120,6 +122,7 @@ namespace KaraokeRUM
             {
                 dsNV = (dynamic)lvwDSNV.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsNV);
+                CheckSDT = (string)dsNV.SDT;
             }
         }
         void TaiDuLieuTuLstvDenTxtCbo(dynamic dsNV)
@@ -266,6 +269,58 @@ namespace KaraokeRUM
             nhanVien.TrangThai = cboTrangThai.Text;
             nhanVien.SDT = txtSDT.Text;
             return nhanVien;
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            NhanVien suaNhanVien = SuaThongTinNhanVien();
+                    nV.SuaNhanVien(suaNhanVien);
+                    IEnumerable<dynamic> dsNV = hL.LayNhanVienVaLoaiNhanVien(MANVQL);
+                    XoaCacTxtCbo();
+                    TaiDuLieuLenListView(lvwDSNV, dsNV);
+          
+
+
+        }
+
+        /** 
+        * Sửa chức vụ, địa chỉ, giới tính của nhân viên
+        */
+        NhanVien SuaThongTinNhanVien()
+        {
+            NhanVien nhanVien = new NhanVien();
+            nhanVien.MaNV = nV.TimNhanVien(txtCMND.Text, txtSDT.Text).First().MaNV;
+            nhanVien.MaLNV = lNV.LayLoaiNhanVien(cboLoaiNV.Text).First().MaLNV;
+            nhanVien.GioiTinh = cboGioiTinh.Text;
+            nhanVien.DiaChi = txtDiaChi.Text;
+
+            return nhanVien;
+        }
+        /** 
+        * Xoá nhân viên (Thay đổi trạng thái nhân viên)
+        */
+        NhanVien XoaNhanVien()
+        {
+            NhanVien nhanVien = new NhanVien();
+            nhanVien.MaNV = nV.TimNhanVien(txtCMND.Text, txtSDT.Text).First().MaNV;
+            nhanVien.TrangThai = "Đã nghỉ";
+            return nhanVien;
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            NhanVien xoaNhanVien = XoaNhanVien();
+            nV.XoaNhanVien(xoaNhanVien);
+            IEnumerable<dynamic> dsNV = hL.LayNhanVienVaLoaiNhanVien(MANVQL);
+            XoaCacTxtCbo();
+            TaiDuLieuLenListView(lvwDSNV, dsNV);
+        }
+
+        private void btnViewList_Click(object sender, EventArgs e)
+        {
+            IEnumerable<dynamic> dsNV = hL.LayNhanVienVaLoaiNhanVien(MANVQL);
+            XoaCacTxtCbo();
+            TaiDuLieuLenListView(lvwDSNV, dsNV);
         }
     }
     }

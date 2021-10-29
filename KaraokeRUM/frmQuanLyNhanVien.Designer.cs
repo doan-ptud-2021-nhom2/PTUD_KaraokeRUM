@@ -190,6 +190,7 @@ namespace KaraokeRUM
             this.btnSua.TabIndex = 2;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -203,6 +204,7 @@ namespace KaraokeRUM
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // label2
             // 
@@ -323,9 +325,9 @@ namespace KaraokeRUM
             this.label12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(483, 131);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(88, 22);
+            this.label12.Size = new System.Drawing.Size(82, 22);
             this.label12.TabIndex = 11;
-            this.label12.Text = "Chức vụi:";
+            this.label12.Text = "Chức vụ:";
             // 
             // label10
             // 
@@ -368,6 +370,7 @@ namespace KaraokeRUM
             this.btnViewList.TabIndex = 6;
             this.btnViewList.Text = "Tải Lại";
             this.btnViewList.UseVisualStyleBackColor = false;
+            this.btnViewList.Click += new System.EventHandler(this.btnViewList_Click);
             // 
             // txtTen
             // 
