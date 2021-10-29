@@ -30,10 +30,10 @@ namespace KaraokeRUM
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.label11 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -102,6 +102,7 @@ namespace KaraokeRUM
             this.lstvDSHoaDon.Size = new System.Drawing.Size(788, 254);
             this.lstvDSHoaDon.TabIndex = 0;
             this.lstvDSHoaDon.UseCompatibleStateImageBehavior = false;
+            this.lstvDSHoaDon.DoubleClick += new System.EventHandler(this.lstvDSHoaDon_DoubleClick);
             // 
             // groupBox2
             // 
@@ -259,25 +260,25 @@ namespace KaraokeRUM
             // 
             // chrThongKeDoanhThu
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chrThongKeDoanhThu.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chrThongKeDoanhThu.ChartAreas.Add(chartArea1);
             this.chrThongKeDoanhThu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            legend2.Name = "Legend1";
-            this.chrThongKeDoanhThu.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chrThongKeDoanhThu.Legends.Add(legend1);
             this.chrThongKeDoanhThu.Location = new System.Drawing.Point(19, 22);
             this.chrThongKeDoanhThu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chrThongKeDoanhThu.Name = "chrThongKeDoanhThu";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Legend = "Legend1";
-            series2.Name = "DoanhThu";
-            this.chrThongKeDoanhThu.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "DoanhThu";
+            this.chrThongKeDoanhThu.Series.Add(series1);
             this.chrThongKeDoanhThu.Size = new System.Drawing.Size(709, 497);
             this.chrThongKeDoanhThu.TabIndex = 86;
             this.chrThongKeDoanhThu.Text = "Chart";
-            title2.Name = "chart";
-            title2.Text = "Thống kê mặt hàng bán được";
-            this.chrThongKeDoanhThu.Titles.Add(title2);
+            title1.Name = "chart";
+            title1.Text = "Thống kê mặt hàng bán được";
+            this.chrThongKeDoanhThu.Titles.Add(title1);
             // 
             // groupBox4
             // 

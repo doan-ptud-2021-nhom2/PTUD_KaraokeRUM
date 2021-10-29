@@ -227,5 +227,11 @@ namespace KaraokeRUM
             }
         }
 
+        private void lstvDSHoaDon_DoubleClick(object sender, EventArgs e)
+        {
+            var item = lstvDSHoaDon.SelectedItems[0];
+            string maHD = item.SubItems[0].Text;
+            MessageBox.Show(maHD);
+        }
     }
 }
