@@ -142,7 +142,7 @@ namespace KaraokeRUM
             if (selected.Equals("All") == true)
             {
                 hL = new clsHonLoan();
-                lvwDSNV.Items.Clear();
+                lvwDSNV.Clear();
                 TaoTieuDeCot(lvwDSNV);
                 IEnumerable<dynamic> dsNVALL = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
                 TaiDuLieuLenListView(lvwDSNV, dsNVALL);
@@ -151,7 +151,7 @@ namespace KaraokeRUM
             {
                 hL = new clsHonLoan();
                 IEnumerable<dynamic> dsKH = nV.LayNhanVienVaLoaiNhanVienTheoLoai(selected, MANVQL);
-                lvwDSNV.Items.Clear();
+                lvwDSNV.Clear();
                 TaoTieuDeCot(lvwDSNV);
                 TaiDuLieuLenListView(lvwDSNV, dsKH);
             }
@@ -183,7 +183,7 @@ namespace KaraokeRUM
         {
             IEnumerable<dynamic> dsNVTim;
             dsNVTim = nV.TimNhanVienVaLoaiNhanVien(txtTimKiemNhanVien.Text, MANVQL);
-            lvwDSNV.Items.Clear();
+            lvwDSNV.Clear();
             txtTimKiemNhanVien.Clear();
             TaoTieuDeCot(lvwDSNV);
             TaiDuLieuLenListView(lvwDSNV, dsNVTim);
@@ -336,6 +336,8 @@ namespace KaraokeRUM
         {
             IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
             XoaCacTxtCbo();
+            lvwDSNV.Clear();
+            TaoTieuDeCot(lvwDSNV);
             TaiDuLieuLenListView(lvwDSNV, dsNV);
         }
         /*

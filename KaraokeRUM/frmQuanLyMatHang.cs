@@ -33,9 +33,9 @@ namespace KaraokeRUM
         void TaoTieuDeCot(ListView lstv)
         {
             lstv.Columns.Add("Mã MH", 100);
-            lstv.Columns.Add("Tên Mặt Hàng", 170);
+            lstv.Columns.Add("Tên Mặt Hàng", 230);
             lstv.Columns.Add("Số lượng", 100);
-            lstv.Columns.Add("Đơn vị", 130);
+            lstv.Columns.Add("Đơn vị", 100);
             lstv.Columns.Add("Giá", 130);
             lstv.View = View.Details;
             lstv.GridLines = true;
@@ -130,7 +130,6 @@ namespace KaraokeRUM
             dsMHTim = mH.TimMatHang(txtTimKiemMatHang.Text);
             lstvMatHang.Items.Clear();
             txtTimKiemMatHang.Clear();
-            TaoTieuDeCot(lstvMatHang);
             TaiDuLieuLenListView(lstvMatHang, dsMHTim);
         }
 
@@ -261,6 +260,7 @@ namespace KaraokeRUM
 
         private void btnView_Click(object sender, EventArgs e)
         {
+            lstvMatHang.Clear();
             loadCombobox();
             TaoTieuDeCot(lstvMatHang);
             mH = new clsMatHang();
