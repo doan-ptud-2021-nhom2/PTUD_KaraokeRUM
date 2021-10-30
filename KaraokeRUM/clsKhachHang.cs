@@ -29,7 +29,15 @@ namespace KaraokeRUM
                      select kh;
             return in4_kh.First();
         }
-
+        public KhachHang TimKhachHang(string sdt)
+        {
+            foreach (KhachHang i in dt.KhachHangs)
+            {
+                if (i.SDT == sdt)
+                    return i;
+            }
+            return null;
+        }
         /**
        * Thêm các thông tin Khách Hàng
        */
@@ -90,6 +98,26 @@ namespace KaraokeRUM
             return kh;
         }
 
+        public int SuaSoLanDen(KhachHang kh)
+        {
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = myTran;
+                IQueryable<KhachHang> temp = (from n in dt.KhachHangs
+                                              where n.MaKH == kh.MaKH
+                                              select n);
+                temp.First().SoLanDen = kh.SoLanDen;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Loi không sửa được!" + ex.Message);
 
+            }
+        }
     }
 }
