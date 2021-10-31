@@ -40,8 +40,26 @@ namespace KaraokeRUM
                     select new { n.MaMH, y.MaHD, x.SoLuong, x.ThanhTien };
             return q;
         }
+        public IEnumerable<dynamic> LayThongTinPhongTrangThietBi()
+        {
+            var pTTB = from n in dt.TrangThietBis
+                       join x in dt.Phong_TrangThietBis on n.MaTTB equals x.MaTTB
+                       join e in dt.Phongs on x.MaPhong equals e.MaPhong
+                       select new { n.TenTTB, x.SoLuong, e.TenPhong };
+            return pTTB;
+        }
+        /**
+        * join 3 bảng: Khách hàng và Đơn đặt phòng và Phòng
+        * Lấy dữ liệu ở Khách hàng và Đơn đặt phòng và Phòng      
+        **/
+        public IEnumerable<dynamic> LayThongTinDonDatPhong()
+        {
+            var ddp = from n in dt.KhachHangs
+                      join x in dt.DonDatPhongs on n.MaKH equals x.MaKH
+                      join e in dt.Phongs on x.MaPhong equals e.MaPhong
+                      select new { n.TenKhach, n.SDT, e.TenPhong, x.NgayDat, x.GioDat, x.NgayNhan };
+            return ddp;
+        }
 
-       
-        
     }
 } 

@@ -16,7 +16,7 @@ namespace KaraokeRUM
         /**
         * Lấy tất cả trang thiết bị
         */
-        public IEnumerable<TrangThietBi> GetTrangThietBis()
+        public IEnumerable<TrangThietBi> LayToanBoTrangThietBis()
         {
             IEnumerable<TrangThietBi> tb = from n in dt.TrangThietBis select n;
             return tb;
@@ -78,30 +78,30 @@ namespace KaraokeRUM
         /**
         * Sửa trang thiết bị
         */
-        /**
-        public int Sua(TrangThietBi trangTB)
+        public int SuaTrangThietBi(TrangThietBi tb)
         {
-            System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction();
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
             try
             {
-                dt.Transaction = tran;
-                IEnumerable<TrangThietBi> ttb = (from n in dt.TrangThietBis where n.MaTTB == trangTB.MaTTB select n);
-                ttb.First().MaTTB = trangTB.MaTTB;
-                ttb.First().TenTTB = trangTB.TenTTB;
-                ttb.First().SoLuongTon = trangTB.SoLuongTon;
-                ttb.First().Gia = trangTB.Gia;
-                ttb.First().MaQL = trangTB.MaQL;
+                dt.Transaction = myTran;
+                IQueryable<TrangThietBi> temp = (from n in dt.TrangThietBis
+                                                 where n.MaTTB == tb.MaTTB
+                                                 select n);
+                temp.First().TenTTB = tb.TenTTB;
+                temp.First().SoLuongTon = tb.SoLuongTon;
+                temp.First().DonVi = tb.DonVi;
+                temp.First().Gia = tb.Gia;
                 dt.SubmitChanges();
                 dt.Transaction.Commit();
                 return 1;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 dt.Transaction.Rollback();
-                throw new Exception("Loi" + ex.Message);
+                throw new Exception("Loi không sửa được!" + ex.Message);
+
             }
         }
-         */
         /**
         * tìm trang thiết bị
         */
@@ -110,6 +110,16 @@ namespace KaraokeRUM
             IEnumerable<TrangThietBi> q = from n in dt.TrangThietBis
                                    where n.MaTTB.Equals(maTTB)
                                    select n;
+            return q;
+        }
+        /**
+        * Tìm tên thiết bị
+        */
+        public IQueryable<TrangThietBi> TimTenTB(string tenTB)
+        {
+            IQueryable<TrangThietBi> q = (from n in dt.TrangThietBis
+                                          where n.TenTTB.Equals(tenTB)
+                                          select n);
             return q;
         }
     }

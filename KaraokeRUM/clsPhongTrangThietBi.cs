@@ -36,5 +36,50 @@ namespace KaraokeRUM
                 throw new Exception(ex.Message);
             }
         }
+        public int SuaTrangThietBi(Phong_TrangThietBi tb)
+        {
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = myTran;
+                IQueryable<Phong_TrangThietBi> temp = (from n in dt.Phong_TrangThietBis
+                                                       where n.MaTTB == tb.MaTTB && n.MaPhong == tb.MaPhong
+                                                       select n);
+                temp.First().SoLuong = tb.SoLuong;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Loi không sửa được!" + ex.Message);
+
+            }
+        }
+        public IEnumerable<Phong_TrangThietBi> TimPhongTTB(string maPhong, string maTTB)
+        {
+            IEnumerable<Phong_TrangThietBi> q = from n in dt.Phong_TrangThietBis
+                                                where n.MaPhong.Equals(maPhong) && n.MaTTB.Equals(maTTB)
+                                                select n;
+            return q;
+        }
+        public int Xoa(Phong_TrangThietBi ttb)
+        {
+            System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = tran;
+                dt.Phong_TrangThietBis.DeleteOnSubmit(ttb);
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Loi" + ex.Message);
+            }
+        }
     }
 }

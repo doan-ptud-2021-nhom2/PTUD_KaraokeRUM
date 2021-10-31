@@ -38,6 +38,13 @@ namespace KaraokeRUM
                                    select n;
             return q;
         }
+        public IEnumerable<Phong> LayDSPhongTheoLoai(string maLoaiPhong)
+        {
+            IEnumerable<Phong> q = from n in dt.Phongs
+                                   where n.MaLoaiPhong.Equals(maLoaiPhong)
+                                   select n;
+            return q;
+        }
 
         /**
         * Thêm các thông tin Phòng
@@ -96,7 +103,16 @@ namespace KaraokeRUM
                                    select n;
             return q;
         }
-
+        /**
+       * Tim ten phòng
+       */
+        public IQueryable<Phong> TimTenPhong(string tenPhong)
+        {
+            IQueryable<Phong> q = (from n in dt.Phongs
+                                   where n.TenPhong.Equals(tenPhong)
+                                   select n);
+            return q;
+        }
         /**
         * kiểm tra
         */
