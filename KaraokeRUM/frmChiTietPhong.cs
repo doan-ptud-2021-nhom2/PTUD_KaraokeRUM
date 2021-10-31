@@ -228,7 +228,7 @@ namespace KaraokeRUM
             ChiTietHoaDon suaSoLuong = SuaSoLuongMatHang();
             cthd.SuaThongTinMatHang(suaSoLuong);
 
-            dsMatHang = HoaDon.LayChiTietHoaDon(maHoaDon);
+            dsMatHang = HoaDon.LayChiTietHoaHoaTaiLenListView(maHoaDon);
             TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang);
         }
 

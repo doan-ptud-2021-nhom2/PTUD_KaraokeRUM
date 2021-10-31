@@ -29,6 +29,17 @@ namespace KaraokeRUM
         }
 
         /**
+        * Tìm kiếm theo mã phòng (trấn thêm)
+        */
+        public Phong LayThongTinPhong(string maPhong)
+        {
+            var phong = (from p in dt.Phongs
+                          where p.MaPhong.Equals(maPhong)
+                          select p).First();
+            return phong;
+        }
+
+        /**
         * Lấy các phòng theo loại (VIP, THUONG).
         */
         public IEnumerable<Phong> LayTatCaTheoLoai(string maLoaiPhong)

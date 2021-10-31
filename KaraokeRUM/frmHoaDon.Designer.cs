@@ -29,6 +29,7 @@ namespace KaraokeRUM
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHoaDon));
             this.label10 = new System.Windows.Forms.Label();
             this.btnInHoaDon = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,11 +49,13 @@ namespace KaraokeRUM
             this.lblDonGia = new System.Windows.Forms.Label();
             this.lblLoaiPhong = new System.Windows.Forms.Label();
             this.lblMaHD = new System.Windows.Forms.Label();
+            this.lblTenKhach = new System.Windows.Forms.Label();
             this.lblSoPhong = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -66,8 +69,8 @@ namespace KaraokeRUM
             this.lblVAT = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.lblChietKhau = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblTenKhach = new System.Windows.Forms.Label();
+            this.pdHoaDon = new System.Drawing.Printing.PrintDocument();
+            this.pddHoaDon = new System.Windows.Forms.PrintPreviewDialog();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -94,6 +97,7 @@ namespace KaraokeRUM
             this.btnInHoaDon.TabIndex = 23;
             this.btnInHoaDon.Text = "In hóa đơn";
             this.btnInHoaDon.UseVisualStyleBackColor = false;
+            this.btnInHoaDon.Click += new System.EventHandler(this.btnInHoaDon_Click);
             // 
             // label1
             // 
@@ -287,6 +291,16 @@ namespace KaraokeRUM
             this.lblMaHD.TabIndex = 18;
             this.lblMaHD.Text = "label17";
             // 
+            // lblTenKhach
+            // 
+            this.lblTenKhach.AutoSize = true;
+            this.lblTenKhach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenKhach.Location = new System.Drawing.Point(210, 61);
+            this.lblTenKhach.Name = "lblTenKhach";
+            this.lblTenKhach.Size = new System.Drawing.Size(70, 22);
+            this.lblTenKhach.TabIndex = 18;
+            this.lblTenKhach.Text = "label17";
+            // 
             // lblSoPhong
             // 
             this.lblSoPhong.AutoSize = true;
@@ -336,6 +350,16 @@ namespace KaraokeRUM
             this.label8.Size = new System.Drawing.Size(110, 22);
             this.label8.TabIndex = 17;
             this.label8.Text = "Mã hóa đơn:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(84, 61);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(96, 22);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "Tên khách:";
             // 
             // label16
             // 
@@ -474,25 +498,19 @@ namespace KaraokeRUM
             this.lblChietKhau.Text = "label7";
             this.lblChietKhau.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label12
+            // pdHoaDon
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(84, 61);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(120, 28);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Tên khách:";
+            this.pdHoaDon.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.pdHoaDon_PrintPage);
             // 
-            // lblTenKhach
+            // pddHoaDon
             // 
-            this.lblTenKhach.AutoSize = true;
-            this.lblTenKhach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenKhach.Location = new System.Drawing.Point(210, 61);
-            this.lblTenKhach.Name = "lblTenKhach";
-            this.lblTenKhach.Size = new System.Drawing.Size(70, 22);
-            this.lblTenKhach.TabIndex = 18;
-            this.lblTenKhach.Text = "label17";
+            this.pddHoaDon.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.pddHoaDon.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.pddHoaDon.ClientSize = new System.Drawing.Size(400, 300);
+            this.pddHoaDon.Enabled = true;
+            this.pddHoaDon.Icon = ((System.Drawing.Icon)(resources.GetObject("pddHoaDon.Icon")));
+            this.pddHoaDon.Name = "pddHoaDon";
+            this.pddHoaDon.Visible = false;
             // 
             // frmHoaDon
             // 
@@ -577,6 +595,8 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label lblChietKhau;
         private System.Windows.Forms.Label lblTenKhach;
         private System.Windows.Forms.Label label12;
+        private System.Drawing.Printing.PrintDocument pdHoaDon;
+        private System.Windows.Forms.PrintPreviewDialog pddHoaDon;
     }
 }
 

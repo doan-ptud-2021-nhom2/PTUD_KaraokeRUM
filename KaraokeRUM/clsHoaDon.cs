@@ -23,6 +23,18 @@ namespace KaraokeRUM
             return hoaDon;
         }
 
+        /*
+         * Thay thế hàm Lấy chi tiết hóa đơn của chức năng Sửa
+         */
+        public IEnumerable<dynamic> LayChiTietHoaHoaTaiLenListView(string maHD)
+        {
+            var ds = from n in dt.ChiTietHoaDons
+                     join y in dt.HoaDons on n.MaHD equals y.MaHD
+                     where y.MaHD.Equals(maHD)
+                     select new { n.MaMH, n.SoLuong, n.ThanhTien };
+            return ds;
+        }
+
         public IEnumerable<ChiTietHoaDon> LayChiTietHoaDon(string maHD)
         {
             var dsCTHD = from cthd in dt.ChiTietHoaDons
