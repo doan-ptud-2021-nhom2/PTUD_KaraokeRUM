@@ -35,6 +35,11 @@ namespace KaraokeRUM
             return ds;
         }
 
+        public IEnumerable<HoaDon> LayToanBoHoaDon()
+        {
+            IEnumerable<HoaDon> tb = from n in dt.HoaDons select n;
+            return tb;
+        }
         public IEnumerable<ChiTietHoaDon> LayChiTietHoaDon(string maHD)
         {
             var dsCTHD = from cthd in dt.ChiTietHoaDons
@@ -61,6 +66,23 @@ namespace KaraokeRUM
             int ts = (int)(gio.GioRa - gio.GioVao).Value.TotalMinutes;
 
             return ts;
+        }
+        public int ThemHoaDon(HoaDon hoaDon)
+        {
+            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = br;
+                dt.HoaDons.InsertOnSubmit(hoaDon);
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

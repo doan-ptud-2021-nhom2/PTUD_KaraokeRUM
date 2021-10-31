@@ -17,7 +17,16 @@ namespace KaraokeRUM
             dt = LayData();
             lp = new clsLoaiPhong();
         }
-
+        /*Tìm một phòng theo mã*/
+        public Phong TimMotPhongTheoMa(string maPhong)
+        {
+            foreach (Phong i in dt.Phongs)
+            {
+                if (i.MaPhong == maPhong)
+                    return i;
+            }
+            return null;
+        }
         /**
         * Lấy tất cả các phòng
         */
@@ -114,6 +123,22 @@ namespace KaraokeRUM
                                    select n;
             return q;
         }
+        public Phong TimMaPhong(string tenPhong)
+        {
+            Phong q = (from n in dt.Phongs
+                       where n.TenPhong.Equals(tenPhong)
+                       select n).First();
+            return q;
+        }
+        public Phong TimMotPhongTheoTen(string tenPhong)
+        {
+            foreach (Phong i in dt.Phongs)
+            {
+                if (i.TenPhong == tenPhong)
+                    return i;
+            }
+            return null;
+        }
         /**
        * Tim ten phòng
        */
@@ -158,7 +183,27 @@ namespace KaraokeRUM
                 throw new Exception("Lỗi!!" + ex.Message);
             }
         }
+        public int SuaTrangThaiPhong(Phong phong)
+        {
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = myTran;
+                IQueryable<Phong> temp = (from n in dt.Phongs
+                                          where n.MaPhong == phong.MaPhong
+                                          select n); ;
+                temp.First().TrangThaiPhong = phong.TrangThaiPhong;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Loi không sửa được!" + ex.Message);
 
+            }
+        }
 
 
     }
