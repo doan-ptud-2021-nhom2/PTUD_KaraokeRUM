@@ -77,7 +77,7 @@ namespace KaraokeRUM
             this.lvwDanhSachDP.Size = new System.Drawing.Size(801, 734);
             this.lvwDanhSachDP.TabIndex = 0;
             this.lvwDanhSachDP.UseCompatibleStateImageBehavior = false;
-            this.lvwDanhSachDP.SelectedIndexChanged += new System.EventHandler(this.lvwDanhSachDP_SelectedIndexChanged);
+            this.lvwDanhSachDP.SelectedIndexChanged += new System.EventHandler(this.lvwDanhSachDP_SelectedIndexChanged_1);
             // 
             // groupBox3
             // 
