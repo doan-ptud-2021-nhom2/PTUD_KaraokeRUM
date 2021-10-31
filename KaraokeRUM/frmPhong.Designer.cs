@@ -31,6 +31,7 @@ namespace KaraokeRUM
         {
             this.lvwDanhSachDP = new System.Windows.Forms.ListView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBOx = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,10 +56,9 @@ namespace KaraokeRUM
             this.btnTimPhong = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.radTatCa = new System.Windows.Forms.RadioButton();
             this.radHienTai = new System.Windows.Forms.RadioButton();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox3.SuspendLayout();
             this.groupBOx.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -78,6 +78,7 @@ namespace KaraokeRUM
             this.lvwDanhSachDP.Size = new System.Drawing.Size(801, 734);
             this.lvwDanhSachDP.TabIndex = 0;
             this.lvwDanhSachDP.UseCompatibleStateImageBehavior = false;
+            this.lvwDanhSachDP.SelectedIndexChanged += new System.EventHandler(this.lvwDanhSachDP_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -90,6 +91,13 @@ namespace KaraokeRUM
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Phòng VIP";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 29);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(645, 100);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // groupBOx
             // 
@@ -367,6 +375,13 @@ namespace KaraokeRUM
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phòng THƯỜNG";
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(8, 29);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(645, 100);
+            this.flowLayoutPanel2.TabIndex = 1;
+            // 
             // radTatCa
             // 
             this.radTatCa.AutoSize = true;
@@ -390,20 +405,6 @@ namespace KaraokeRUM
             this.radHienTai.TabStop = true;
             this.radHienTai.Text = "Hiện tại";
             this.radHienTai.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 29);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(645, 100);
-            this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(8, 29);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(645, 100);
-            this.flowLayoutPanel2.TabIndex = 1;
             // 
             // frmPhong
             // 

@@ -78,7 +78,7 @@ namespace KaraokeRUM
             {
                 dt.Transaction = myTran;
                 IQueryable<ChiTietHoaDon> tam = (from n in dt.ChiTietHoaDons
-                                                 where n.MaMH == chiTietHD.MaMH && n.MaHD == chiTietHD.MaHD
+                                                 where n.MaMH.Equals(chiTietHD.MaMH) && n.MaHD.Equals(chiTietHD.MaHD)
                                                  select n);
                 tam.First().SoLuong = chiTietHD.SoLuong;
                 tam.First().ThanhTien = chiTietHD.ThanhTien;
