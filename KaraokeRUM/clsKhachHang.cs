@@ -29,13 +29,13 @@ namespace KaraokeRUM
                                        select n);
             return q;
         }
-        public KhachHang TimKhachHang2(string sdt)
+      /*  public KhachHang TimKhachHangCu(string sdt)
         {
-            var i = from kh in dt.KhachHangs
+            KhachHang i = from kh in dt.KhachHangs
                     where kh.SDT.Equals(sdt)
                     select kh;
-            return i.First();
-        }
+            return i;
+        }*/
         public KhachHang LayThongTinKhach(string maKH)
         {
             var in4_kh = from kh in dt.KhachHangs
