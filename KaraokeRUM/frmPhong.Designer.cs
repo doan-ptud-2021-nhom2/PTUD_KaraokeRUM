@@ -77,6 +77,7 @@ namespace KaraokeRUM
             this.lvwDanhSachDP.Size = new System.Drawing.Size(801, 734);
             this.lvwDanhSachDP.TabIndex = 0;
             this.lvwDanhSachDP.UseCompatibleStateImageBehavior = false;
+            this.lvwDanhSachDP.SelectedIndexChanged += new System.EventHandler(this.lvwDanhSachDP_SelectedIndexChanged_1);
             // 
             // groupBox3
             // 
@@ -318,6 +319,7 @@ namespace KaraokeRUM
             this.btnMoPhong.TabIndex = 14;
             this.btnMoPhong.Text = "Mở Phòng";
             this.btnMoPhong.UseVisualStyleBackColor = false;
+            this.btnMoPhong.Click += new System.EventHandler(this.btnMoPhong_Click);
             // 
             // btnHuyPhong
             // 
@@ -343,6 +345,7 @@ namespace KaraokeRUM
             this.btnDatPhong.TabIndex = 14;
             this.btnDatPhong.Text = "Đặt Phòng";
             this.btnDatPhong.UseVisualStyleBackColor = false;
+            this.btnDatPhong.Click += new System.EventHandler(this.btnDatPhong_Click);
             // 
             // panel2
             // 

@@ -151,6 +151,10 @@ namespace KaraokeRUM
             {
                 MessageBox.Show("Phòng đã đặt, Vui lòng chọn phòng khác", "Thông báo");
             }
+            else if(btn.BackColor == Color.LightGreen)
+            {
+                btn.BackColor = Color.Gray;
+            }    
             else
             {
                 btn.BackColor = Color.LightGreen;
@@ -203,18 +207,7 @@ namespace KaraokeRUM
             txtTenPhong.Text = dp.TenPhong;
             dTimeDatPhong.Value = dp.NgayDat;
             dTimeNgayNhan.Value = dp.NgayNhan;
-        }
-        /** Sự kiện của lvwDanhSachDP **/
-        private void lvwDanhSachDP_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            dynamic dp = null;
-            if (lvwDanhSachDP.SelectedItems.Count > 0)
-            {
-                btnMoPhong.Enabled = true;
-                dp = lvwDanhSachDP.SelectedItems[0].Tag;
-                DuLieuLenTextBox(dp);
-            }
-        }
+        }       
         #endregion
         #region Đặt phòng
         /** Chức năng đặt phòng **/
@@ -506,6 +499,17 @@ namespace KaraokeRUM
                     TaoPhongVip(vip);
                     TaoPhongThuong(thuong);
                 }
+            }
+        }
+
+        private void lvwDanhSachDP_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            dynamic dp = null;
+            if (lvwDanhSachDP.SelectedItems.Count > 0)
+            {
+                btnMoPhong.Enabled = true;
+                dp = lvwDanhSachDP.SelectedItems[0].Tag;
+                DuLieuLenTextBox(dp);
             }
         }
     }
