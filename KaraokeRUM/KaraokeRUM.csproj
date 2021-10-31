@@ -32,6 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsChiTietHoaDon.cs" />
+    <Compile Include="clsChuyenSoThanhChu.cs" />
     <Compile Include="clsDonDatPhong.cs" />
     <Compile Include="clsHoaDon.cs" />
     <Compile Include="clsHonLoan.cs" />
