@@ -22,6 +22,9 @@ namespace KaraokeRUM
         private clsKhachHang kh;
         private clsDonDatPhong clsddp;
         private clsPhong p;
+        private clsHoaDon hd;
+        public string maHD;
+        public string maPhong;
         private void frmPhong_Load(object sender, EventArgs e)
         {
             kh = new clsKhachHang();
@@ -29,6 +32,8 @@ namespace KaraokeRUM
             tao = new clsTaoButton();
             p = new clsPhong();
             hl = new clsHonLoan();
+            hd = new clsHoaDon();
+            radDatPhong.Checked = true;
             MacDinhThoiGian();
             int vip = p.LayDSPhongTheoLoai("LH001").Count() + 1;
             int thuong = p.LayDSPhongTheoLoai("LH002").Count() + 1;
@@ -50,8 +55,8 @@ namespace KaraokeRUM
         {
             DateTime tgian = DateTime.Now;
             int soSanh = DateTime.Compare(dTimeNgayNhan.Value, tgian);
-            int soSanh2 = DateTime.Compare(dTimeDatPhong.Value, tgian);
-            if (soSanh < 0 || soSanh2 < 0)
+
+            if (soSanh < 0)
             {
                 Console.WriteLine("Ngày nhận không phù hợp");
                 return false;
@@ -72,11 +77,22 @@ namespace KaraokeRUM
                 btn.Height = 50;
                 btn.Text = "V00" + i.ToString();
                 btn.BackColor = Color.Teal;
-                foreach (var item in tao.TraSoPhong())
+                foreach (dynamic item in tao.LayTrangThaiPhong("LP001"))
                 {
                     if (btn.Text.Equals(item.TenPhong))
                     {
-                        btn.BackColor = Color.Red;
+                        if (item.TrangThaiPhong == "Mở")
+                        {
+                            btn.BackColor = Color.Teal;
+                        }
+                        else if (item.TrangThaiPhong == "Đặt")
+                        {
+                            btn.BackColor = Color.Yellow;
+                        }
+                        else if (item.TrangThaiPhong == "Đóng")
+                        {
+                            btn.BackColor = Color.Gray;
+                        }
                     }
                 }
                 btn.Click += new EventHandler(Chon);
@@ -96,37 +112,48 @@ namespace KaraokeRUM
                 btn.Height = 50;
                 btn.Text = "T00" + i.ToString();
                 btn.BackColor = Color.Teal;
-                foreach (var item in tao.TraSoPhong())
+                foreach (var item in tao.LayTrangThaiPhong("LP002"))
                 {
                     if (btn.Text.Equals(item.TenPhong))
                     {
-                        btn.BackColor = Color.Red;
+                        if (item.TrangThaiPhong == "Mở")
+                        {
+                            btn.BackColor = Color.Teal;
+                        }
+                        else if (item.TrangThaiPhong == "Đặt")
+                        {
+                            btn.BackColor = Color.Yellow;
+                        }
+                        else if (item.TrangThaiPhong == "Đóng")
+                        {
+                            btn.BackColor = Color.Gray;
+                        }
                     }
                 }
                 btn.Click += new EventHandler(Chon);
                 flowLayoutPanel2.Controls.Add(btn);
             }
         }
-        /** Cài đặt chú thích cho các phòng **/
+        /** Cài đặt chú thích cho các trạng thái phòng **/
         private void Chon(object sender, EventArgs e)
         {
             Button btn = (Button)sender;// ép kiểu;
-            if (btn.BackColor == Color.Teal)
+            if (btn.BackColor == Color.Gray)
             {
-                btn.BackColor = Color.Yellow;
+                btn.BackColor = Color.LightGreen;
                 txtTenPhong.Text = btn.Text;
             }
-            else if (btn.BackColor == Color.Red)
+            else if (btn.BackColor == Color.Teal)
             {
-                MessageBox.Show("Phòng đã đặt, Vui lòng chọn phòng khác", "Thông báo");
+                MessageBox.Show("Phòng đã mở, Vui lòng chọn phòng khác", "Thông báo");
             }
             else if (btn.BackColor == Color.Yellow)
             {
-                btn.BackColor = Color.Teal;
+                MessageBox.Show("Phòng đã đặt, Vui lòng chọn phòng khác", "Thông báo");
             }
             else
             {
-                btn.BackColor = Color.Teal;
+                btn.BackColor = Color.LightGreen;
                 txtTenPhong.Text = "";
             }
         }
@@ -157,12 +184,12 @@ namespace KaraokeRUM
         /** Tạo listView **/
         private void TaoListView(ListView lvwDSDatPhong)
         {
-            lvwDSDatPhong.Columns.Add("Tên Phòng", 130);
-            lvwDSDatPhong.Columns.Add("Tên khách hàng", 220);
-            lvwDSDatPhong.Columns.Add("Số điện thoại", 150);
-            lvwDSDatPhong.Columns.Add("Ngày đặt phòng", 250);
-            lvwDSDatPhong.Columns.Add("Ngày nhận phòng", 250);
-            lvwDSDatPhong.Columns.Add("Giờ đặt phòng", 150);
+            lvwDSDatPhong.Columns.Add("Tên Phòng", 60);
+            lvwDSDatPhong.Columns.Add("Tên khách hàng", 60);
+            lvwDSDatPhong.Columns.Add("Số điện thoại", 60);
+            lvwDSDatPhong.Columns.Add("Ngày đặt phòng", 140);
+            lvwDSDatPhong.Columns.Add("Ngày nhận phòng", 140);
+            lvwDSDatPhong.Columns.Add("Giờ đặt phòng", 140);
             lvwDSDatPhong.View = View.Details;
             lvwDSDatPhong.GridLines = true;
             lvwDSDatPhong.FullRowSelect = true;
@@ -200,42 +227,30 @@ namespace KaraokeRUM
             else
             {
                 KhachHang khc = kh.TimKhachHang(txtSoDienThoai.Text);
-                int dem = khc.SoLanDen;
+                string maKH = "";
                 if (khc != null)
                 {
-                    khc.SoLanDen = dem + 1;
-                    if (khc.SoLanDen >= 5)
-                    {
-                        khc.MaLoaiKH = "LKH02";
-                    }
-                    else if (khc.SoLanDen >= 10)
-                    {
-                        khc.MaLoaiKH = "LKH01";
-                    }
-                    else
-                    {
-                        khc.MaLoaiKH = "LKH03";
-                    }
-                    kh.SuaSoLanDen(khc);
-                    string maKH = khc.MaKH;
-                    DonDatPhong ddp = new DonDatPhong();
-                    ddp = TaoDonDatPhong(maKH);
-                    clsddp.ThemDonDatPhong(ddp);
+                    maKH = khc.MaKH;
                 }
                 else
                 {
                     KhachHang khm = new KhachHang();
                     khm = TaoKhachHang();
                     kh.ThemKhachHang(khm);
-                    string maKH = khm.MaKH;
-                    DonDatPhong ddp = new DonDatPhong();
-                    ddp = TaoDonDatPhong(maKH);
-                    clsddp.ThemDonDatPhong(ddp);
+                    maKH = khm.MaKH;
                 }
+                DonDatPhong ddp = new DonDatPhong();
+                ddp = TaoDonDatPhong(maKH);
+                clsddp.ThemDonDatPhong(ddp);
+                Phong phong = p.TimMotPhongTheoMa(ddp.MaPhong);
+                phong.TrangThaiPhong = "Đặt";
+                p.SuaTrangThaiPhong(phong);
                 flowLayoutPanel1.Controls.Clear();
                 flowLayoutPanel2.Controls.Clear();
-                TaoPhongThuong(12);
-                TaoPhongVip(12);
+                int vip = p.LayDSPhongTheoLoai("LH001").Count() + 1;
+                int thuong = p.LayDSPhongTheoLoai("LH002").Count() + 1;
+                TaoPhongVip(vip);
+                TaoPhongThuong(thuong);
                 IEnumerable<dynamic> danhsDP;
                 danhsDP = hl.LayThongTinDonDatPhong();
                 TaiDuLieuLenListView(lvwDanhSachDP, danhsDP);
@@ -277,7 +292,7 @@ namespace KaraokeRUM
             khm.MaKH = TaoMaKH();
             khm.TenKhach = txtHoTen.Text;
             khm.SDT = txtSoDienThoai.Text;
-            khm.SoLanDen = 1;
+            khm.SoLanDen = 0;
             khm.MaLoaiKH = "LKH03";
             return khm;
         }
@@ -300,7 +315,198 @@ namespace KaraokeRUM
 
         private void btnMoPhong_Click(object sender, EventArgs e)
         {
+            KhachHang khc = kh.TimKhachHang2(txtSoDienThoai.Text);
+            if (khc != null)
+            {
+                int dem = khc.SoLanDen;
+                khc.SoLanDen = dem + 1;
+                if (khc != null)
+                {
+                    if (khc.SoLanDen >= 5 && khc.SoLanDen < 10)
+                    {
+                        khc.MaLoaiKH = "LKH02";
+                    }
+                    else if (khc.SoLanDen >= 10)
+                    {
+                        khc.MaLoaiKH = "LKH01";
+                    }
+                    else
+                    {
+                        khc.MaLoaiKH = "LKH03";
+                    }
+                }
+                kh.SuaSoLanDen(khc);
+                HoaDon hoaDon = TaoHoaDonTrucTiep(khc.MaKH);
+                maHD = hoaDon.MaHD;
+                hd.ThemHoaDon(hoaDon);
+                Phong phong = p.TimMotPhongTheoTen(txtTenPhong.Text);
+                maPhong = phong.MaPhong;
+                phong.TrangThaiPhong = "Mở";
+                p.SuaTrangThaiPhong(phong);
+            }
+            else
+            {
+                KhachHang khm = new KhachHang();
+                khm = TaoKhachHang();
+                HoaDon hoaDon = TaoHoaDonTrucTiep(khm.MaKH);
+                maHD = hoaDon.MaHD;
+                hd.ThemHoaDon(hoaDon);
+                Phong phong = p.TimMotPhongTheoTen(txtTenPhong.Text);
+                maPhong = phong.MaPhong;
+                phong.TrangThaiPhong = "Mở";
+                p.SuaTrangThaiPhong(phong);
+            }
+            int vip = p.LayDSPhongTheoLoai("LH001").Count() + 1;
+            int thuong = p.LayDSPhongTheoLoai("LH002").Count() + 1;
+            flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel2.Controls.Clear();
+            TaoPhongVip(vip);
+            TaoPhongThuong(thuong);
+            MessageBox.Show(maHD, maPhong);
         }
-        
+        /** Tạo hóa đơn mới mở phòng qua đặt phòng **/
+        private HoaDon TaoHoaDon()
+        {
+            HoaDon hd = new HoaDon();
+            hd.MaHD = TaoMaHD();
+            TimeSpan dt = TimeSpan.Parse(txtGioDatPhong.Text);
+            hd.GioVao = dt;
+            hd.GioRa = null;
+            hd.NgayLap = DateTime.Now;
+            hd.TongTien = null;
+            hd.MaPhong = p.TimTenPhong(LayTenPhongTrongLVW()).First().MaPhong;
+            hd.MaKH = kh.TimTenKhachHang(LayTenKhach()).First().MaKH;
+            hd.MaQL = "NV002";
+            return hd;
+        }
+        /** Tạo hóa đơn mới mở phòng trực tiếp **/
+        private HoaDon TaoHoaDonTrucTiep(string maKH)
+        {
+            HoaDon hd = new HoaDon();
+            hd.MaHD = TaoMaHD();
+            DateTime dt = DateTime.Now;
+            TimeSpan tp = dt.TimeOfDay;
+            hd.GioVao = tp;
+            hd.GioRa = null;
+            hd.NgayLap = dt;
+            hd.TongTien = null;
+            hd.MaPhong = p.TimTenPhong(txtTenPhong.Text).First().MaPhong;
+            hd.MaKH = maKH;
+            hd.MaQL = "NV002";
+            return hd;
+        }
+        /** Tạo mã của hóa đơn mới **/
+        private string TaoMaHD()
+        {
+            string maHD = "";
+            int dem = hd.LayToanBoHoaDon().Count() + 1;
+            if (dem < 10)
+            {
+                maHD += "HD00" + dem;
+            }
+            else
+            {
+                maHD += "HD0" + dem;
+            }
+            return maHD;
+        }
+        private string LayTenPhongTrongLVW()
+        {
+            dynamic dp = null;
+            if (lvwDanhSachDP.SelectedItems.Count > 0)
+            {
+                btnMoPhong.Enabled = true;
+                dp = lvwDanhSachDP.SelectedItems[0].Tag;
+                return dp.TenPhong;
+            }
+            return null;
+        }
+        private DonDatPhong LayDonDatPhong()
+        {
+            DonDatPhong ddp = new DonDatPhong();
+            var tenPhong = LayTenPhongTrongLVW();
+            string maPhong = p.TimTenPhong(tenPhong).First().MaPhong;
+            ddp = clsddp.TimDDPhong(maPhong);
+            return ddp;
+        }
+        private string LayTenKhach()
+        {
+            dynamic dp = null;
+            if (lvwDanhSachDP.SelectedItems.Count > 0)
+            {
+                btnMoPhong.Enabled = true;
+                dp = lvwDanhSachDP.SelectedItems[0].Tag;
+                return dp.SDT;
+            }
+            return null;
+        }
+
+        private void radMoPhong_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radMoPhong.Checked)
+            {
+                txtGioDatPhong.Enabled = false;
+                dTimeDatPhong.Enabled = false;
+                dTimeNgayNhan.Enabled = false;
+                txtTenPhong.Enabled = false;
+            }
+            else if (radDatPhong.Checked)
+            {
+                txtGioDatPhong.Enabled = true;
+                dTimeDatPhong.Enabled = true;
+                dTimeNgayNhan.Enabled = true;
+                txtTenPhong.Enabled = false;
+            }
+
+        }
+
+        private void radTatCa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radTatCa.Checked)
+            {
+                TaiDuLieuLenListView(lvwDanhSachDP, hl.LayThongTinDonDatPhong());
+
+            }
+            else if (radHienTai.Checked)
+            {
+
+            }
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            DialogResult yn;
+            dynamic ddp;
+            DonDatPhong ddpdt = new DonDatPhong();
+            int index;
+            string maPhong;
+            Phong phong;
+            if (lvwDanhSachDP.SelectedItems.Count > 0)
+            {
+                yn = MessageBox.Show("Bạn có chắc muốn Hủy?", "Hỏi hủy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (yn == DialogResult.Yes)
+                {
+                    for (int i = 0; i < lvwDanhSachDP.SelectedItems.Count; ++i)
+                    {
+                        index = lvwDanhSachDP.SelectedIndices[i];
+                        ddp = (dynamic)lvwDanhSachDP.Items[index].Tag;
+                        maPhong = p.TimMaPhong(ddp.TenPhong).MaPhong;
+                        ddpdt = clsddp.TimDDPhong(maPhong);
+                        clsddp.Xoa(ddpdt);
+                        phong = p.TimMaPhong(ddp.TenPhong);
+                        phong.TrangThaiPhong = "Đóng";
+                        p.SuaTrangThaiPhong(phong);
+
+                    }
+                    TaiDuLieuLenListView(lvwDanhSachDP, hl.LayThongTinDonDatPhong());
+                    int vip = p.LayDSPhongTheoLoai("LH001").Count() + 1;
+                    int thuong = p.LayDSPhongTheoLoai("LH002").Count() + 1;
+                    flowLayoutPanel1.Controls.Clear();
+                    flowLayoutPanel2.Controls.Clear();
+                    TaoPhongVip(vip);
+                    TaoPhongThuong(thuong);
+                }
+            }
+        }
     }
 }
