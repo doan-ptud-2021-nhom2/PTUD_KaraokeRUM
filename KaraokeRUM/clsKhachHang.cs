@@ -22,6 +22,20 @@ namespace KaraokeRUM
             return kh;
            
         }
+        public IQueryable<KhachHang> TimTenKhachHang(string sdt)
+        {
+            IQueryable<KhachHang> q = (from n in dt.KhachHangs
+                                       where n.SDT.Equals(sdt)
+                                       select n);
+            return q;
+        }
+        public KhachHang TimKhachHang2(string sdt)
+        {
+            var i = from kh in dt.KhachHangs
+                    where kh.SDT.Equals(sdt)
+                    select kh;
+            return i.First();
+        }
         public KhachHang LayThongTinKhach(string maKH)
         {
             var in4_kh = from kh in dt.KhachHangs

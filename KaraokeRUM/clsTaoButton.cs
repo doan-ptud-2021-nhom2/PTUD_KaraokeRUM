@@ -21,5 +21,13 @@ namespace KaraokeRUM
                     select new { n.MaPhong, m.TenPhong };
             return q;
         }
+        /*Lấy trạng thái phòng*/
+        public IEnumerable<Phong> LayTrangThaiPhong(string maLoaiPhong)
+        {
+            IEnumerable<Phong> q = from n in dt.Phongs
+                                   where n.MaLoaiPhong.Equals(maLoaiPhong)
+                                   select n;
+            return q;
+        }
     }
 }

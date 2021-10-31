@@ -77,6 +77,16 @@ namespace KaraokeRUM
                 lwv.Items.Add(item);
             }
         }
+        private void TaiDuLieuLenLWV21(ListView lwv, IEnumerable<TrangThietBi> dSach)
+        {
+            lwv.Items.Clear();
+            ListViewItem item;
+            foreach (TrangThietBi i in dSach)
+            {
+                item = TaoItemTTB(i);
+                lwv.Items.Add(item);
+            }
+        }
         private ListViewItem TaoItemTTB(TrangThietBi tb)
         {
             ListViewItem lvwItem;
@@ -201,7 +211,7 @@ namespace KaraokeRUM
             danhSach = thietBi.LayToanBoTrangThietBis();
             lwvThietBi.Clear();
             TaoListView(lwvThietBi);
-            TaiDuLieuLenLWV(lwvThietBi, danhSachThietBi);
+            TaiDuLieuLenLWV21(lwvThietBi, danhSachThietBi);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -292,7 +302,9 @@ namespace KaraokeRUM
 
         private void btnTaiLaiTP_Click(object sender, EventArgs e)
         {
-
+            lwvThietBiTrongPhong.Clear();
+            dSachPhongTTB = phongTTB.TraDuLieu();
+            TaiDuLieuLenLWV2(lwvThietBiTrongPhong, dSachPhongTTB);
         }
 
         private void btnTim_Click(object sender, EventArgs e)
