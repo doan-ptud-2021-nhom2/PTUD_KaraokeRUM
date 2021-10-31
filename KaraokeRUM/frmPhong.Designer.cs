@@ -319,6 +319,7 @@ namespace KaraokeRUM
             this.btnMoPhong.TabIndex = 14;
             this.btnMoPhong.Text = "Mở Phòng";
             this.btnMoPhong.UseVisualStyleBackColor = false;
+            this.btnMoPhong.Click += new System.EventHandler(this.btnMoPhong_Click);
             // 
             // btnHuyPhong
             // 
@@ -344,6 +345,7 @@ namespace KaraokeRUM
             this.btnDatPhong.TabIndex = 14;
             this.btnDatPhong.Text = "Đặt Phòng";
             this.btnDatPhong.UseVisualStyleBackColor = false;
+            this.btnDatPhong.Click += new System.EventHandler(this.btnDatPhong_Click);
             // 
             // panel2
             // 
@@ -367,6 +369,13 @@ namespace KaraokeRUM
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phòng THƯỜNG";
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 29);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(645, 148);
+            this.flowLayoutPanel2.TabIndex = 0;
+            // 
             // radTatCa
             // 
             this.radTatCa.AutoSize = true;
@@ -378,6 +387,7 @@ namespace KaraokeRUM
             this.radTatCa.TabStop = true;
             this.radTatCa.Text = "Tất cả";
             this.radTatCa.UseVisualStyleBackColor = true;
+            this.radTatCa.CheckedChanged += new System.EventHandler(this.radTatCa_CheckedChanged);
             // 
             // radHienTai
             // 
@@ -390,6 +400,7 @@ namespace KaraokeRUM
             this.radHienTai.TabStop = true;
             this.radHienTai.Text = "Hiện tại";
             this.radHienTai.UseVisualStyleBackColor = true;
+            this.radHienTai.CheckedChanged += new System.EventHandler(this.radTatCa_CheckedChanged);
             // 
             // frmPhong
             // 
