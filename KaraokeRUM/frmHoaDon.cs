@@ -109,6 +109,9 @@ namespace KaraokeRUM
             lblTongTien.Text = TongTien.ToString("#,### VNĐ");
             lblTenKhach.Text = khachHang.TenKhach;
 
+            btnInHoaDon.Enabled = false;
+            btnInHoaDon.BackColor = Color.Gray;
+
             //ListView
             DsCTHD = HoaDon.LayChiTietHoaDon(MaHD);
             TaoListView(lstvChiTietHoaDon);
@@ -121,7 +124,7 @@ namespace KaraokeRUM
         private void TaoListView(ListView lstv)
         {
             lstv.Columns.Add("STT", 50);
-            lstv.Columns.Add("Tên Mặt Hằng", 250);
+            lstv.Columns.Add("Tên Mặt Hàng", 250);
             lstv.Columns.Add("Số Lượng", 93);
             lstv.Columns.Add("Thành Tiền", 200);
 
@@ -195,29 +198,29 @@ namespace KaraokeRUM
             //Lấy thông tin của Quán
             e.Graphics.DrawString(
                                 "Karaoke RUM",
-                                new Font("Courier New", 20, FontStyle.Regular),
+                                new Font("Courier New", 20, FontStyle.Bold),
                                 Brushes.Black,
                                 new Point(40, 20));
             e.Graphics.DrawString(
-                                "Địa chỉ: 977 Phạm Văn Đồng, Q.Gò Vấp, TP. Hồ Chí Minh",
-                                new Font("Courier New", 12, FontStyle.Regular),
+                                "Địa chỉ: 977 Phạm Văn Đồng, Q.Gò Vấp, TP. HCM",
+                                new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(40, 50));
             e.Graphics.DrawString(
                                 "Số điện thoại: 0982332001",
-                                new Font("Courier New", 12, FontStyle.Regular),
+                                new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(40, 70));
             //Lấy Mã hóa đơn
             e.Graphics.DrawString(
                                 String.Format("{0}", MaHD),
-                                new Font("Courier New", 12, FontStyle.Regular),
+                                new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(w / 2 + 220, 25));
             //Lấy ngày, giờ xuất hóa đơn
             e.Graphics.DrawString(
                                 String.Format("{0}", DateTime.Now.ToString("dd/MM/yyyy HH:mm")),
-                                new Font("Courier New", 12, FontStyle.Regular),
+                                new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(w / 2 + 220, 50));
 
@@ -228,73 +231,73 @@ namespace KaraokeRUM
             y += 20;
             e.Graphics.DrawString(
                                 String.Format("Tên khách hàng: {0}", khachHang),
-                                new Font("Courier New", 12, FontStyle.Regular),
+                                new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(40, y));
             //Lấy Số phòng của khách
             e.Graphics.DrawString(
                                 String.Format("Số phòng: {0}", phong),
-                                new Font("Courier New", 12, FontStyle.Regular),
+                                new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(w / 2 + 140, y));
             //Lấy Loại phòng
             y += 20;
             e.Graphics.DrawString(
                                 String.Format("Loại phòng: {0}", loaiPhong),
-                                new Font("Courier New", 12, FontStyle.Regular),
+                                new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(40, y));
             //Lấy Đơn giá
             e.Graphics.DrawString(
                                String.Format("Đơn giá: {0}", donGiaLoaiPhong.ToString("#,### VNĐ")),
-                               new Font("Courier New", 12, FontStyle.Regular),
+                               new Font("Courier New", 13, FontStyle.Regular),
                                Brushes.Black,
                                new Point(w / 2 + 140, y));
             //Lấy giờ sử dụng Phòng (Giờ vào, Giờ ra)
             y += 20;
             e.Graphics.DrawString(
                                 String.Format("Thời gian vào: {0}", GioVao),
-                                new Font("Courier New", 12, FontStyle.Regular),
+                                new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(40, y));
             e.Graphics.DrawString(
                                 String.Format("Thời gian ra: {0}", GioRa),
-                                new Font("Courier New", 12, FontStyle.Regular),
+                                new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(w / 2 + 140, y));
             //Hiển thị thời gian sử dụng Phòng
             y += 20;
             e.Graphics.DrawString(
                                 String.Format("Thời gian sử dụng Phòng: {0} phút", KhoangTG),
-                                new Font("Courier New", 12, FontStyle.Regular),
+                                new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(40, y));
             //Hiển thị tiền phòng
             e.Graphics.DrawString(
                                String.Format("Tiền phòng: {0}", TienPhong.ToString("#,### VNĐ")),
-                               new Font("Courier New", 12, FontStyle.Regular),
+                               new Font("Courier New", 13, FontStyle.Regular),
                                Brushes.Black,
                                new Point(w / 2 + 140, y));
             y += 55;
             //Tiêu đề
             e.Graphics.DrawString(
                                "STT",
-                               new Font("Courier New", 12, FontStyle.Regular),
+                               new Font("Courier New", 13, FontStyle.Regular),
                                Brushes.Black,
                                new Point(10, y)); 
             e.Graphics.DrawString(
                                "Mặt Hàng",
-                               new Font("Courier New", 12, FontStyle.Regular),
+                               new Font("Courier New", 13, FontStyle.Regular),
                                Brushes.Black,
                                new Point(80, y));
             e.Graphics.DrawString(
                                "Số Lượng",
-                               new Font("Courier New", 12, FontStyle.Regular),
+                               new Font("Courier New", 13, FontStyle.Regular),
                                Brushes.Black,
                                new Point(w / 2, y));
             e.Graphics.DrawString(
                                "Thành tiền",
-                               new Font("Courier New", 12, FontStyle.Regular),
+                               new Font("Courier New", 13, FontStyle.Regular),
                                Brushes.Black,
                                new Point(w - 200, y));
             //Canh lề trái, phải
@@ -310,22 +313,22 @@ namespace KaraokeRUM
             {
                 e.Graphics.DrawString(
                                    string.Format("{0}", i++),
-                                   new Font("Courier New", 12, FontStyle.Regular),
+                                   new Font("Courier New", 13, FontStyle.Regular),
                                    Brushes.Black,
                                    new Point(30, y));
                 e.Graphics.DrawString(
                                    string.Format("{0}", MatHang.TimTheoMa(danhSach.MaMH).TenMh),
-                                   new Font("Courier New", 12, FontStyle.Regular),
+                                   new Font("Courier New", 13, FontStyle.Regular),
                                    Brushes.Black,
                                    new Point(80, y));
                 e.Graphics.DrawString(
                                    string.Format("{0}", danhSach.SoLuong),
-                                   new Font("Courier New", 12, FontStyle.Regular),
+                                   new Font("Courier New", 13, FontStyle.Regular),
                                    Brushes.Black,
                                    new Point(w - 355, y));
                 e.Graphics.DrawString(
                                    string.Format("{0}", danhSach.ThanhTien.ToString("#,### VNĐ")),
-                                   new Font("Courier New", 12, FontStyle.Regular),
+                                   new Font("Courier New", 13, FontStyle.Regular),
                                    Brushes.Black,
                                    new Point(w - 200, y));
                 y += 20;
@@ -343,24 +346,43 @@ namespace KaraokeRUM
             //Tổng tiền
             e.Graphics.DrawString(
                                    string.Format("Tổng tiền: {0}", TongTien.ToString("#,### VNĐ")),
-                                   new Font("Courier New", 12, FontStyle.Regular),
+                                   new Font("Courier New", 13, FontStyle.Regular),
                                    Brushes.Black,
                                    new Point(w - 320, y + 8));
             //Đọc số tiền thành chữ
             y += 40;
             e.Graphics.DrawString(
                                    string.Format("Thành chữ: {0} đồng", SoThanhChu.DocTienBangChu((long)TongTien)),
-                                   new Font("Courier New", 12, FontStyle.Regular),
+                                   new Font("Courier New", 13, FontStyle.Regular),
                                    Brushes.Black,
                                    new Point(40, y));
             //Text: Cám ơn khách hàng
             y += 200;
             e.Graphics.DrawString(
                                    "Cảm ơn quý khách đã sử dụng dịch vụ của Quán, hẹn gặp lại quý khách!",
-                                   new Font("Courier New", 12, FontStyle.Regular),
+                                   new Font("Courier New", 13, FontStyle.Regular),
                                    Brushes.Black,
-                                   new Point(70, y));
+                                   new Point(40, y));
 
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            //Cập nhật thành tiền vào hóa đơn.
+            HoaDon hoaDon = HoaDon.LayHoaDon(MaHD);
+            hoaDon.TongTien = Convert.ToDecimal(TongTien);
+            HoaDon.CapNhapHoaDon(hoaDon);
+
+            //Cập nhật trạng thái phòng.
+            Phong phong = Phong.TimMotPhongTheoMa(hoaDon.MaPhong);
+            phong.TrangThaiPhong = "Đóng";
+            Phong.SuaTrangThaiPhong(phong);
+
+            MessageBox.Show("Hoàn tất thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //Tắt giao diện hóa đơn.
+            this.Close();
+
+            //Xử lý tắt giao diện này rồi mở giao diện Phòng lên.
         }
 
     }
