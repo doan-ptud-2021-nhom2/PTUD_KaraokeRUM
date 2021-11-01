@@ -708,13 +708,14 @@ namespace KaraokeRUM
         {
             string maHD = "";
             int dem = 0;
-            if (lstvDanhSachDP.Items.Count == 0)
+            // call mess voi t   AsyncCallback m
+            if (HOADON.LayToanBoHoaDon().Count() == 0)
             {
                 dem = HOADON.LayToanBoHoaDon().Count() + 1;
             }
             else
             {
-                dem = Convert.ToInt32(HOADON.LayToanBoHoaDon().Last().MaHD.ToString().Split('H','D')[2]) + 1;
+                dem = Convert.ToInt32(HOADON.LayToanBoHoaDon().Last().MaHD.ToString().Replace("HD",string.Empty)) + 1;
             }           
             if (dem < 10)
             {
