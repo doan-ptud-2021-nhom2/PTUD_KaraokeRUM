@@ -109,6 +109,9 @@ namespace KaraokeRUM
             lblTongTien.Text = TongTien.ToString("#,### VNĐ");
             lblTenKhach.Text = khachHang.TenKhach;
 
+            btnInHoaDon.Enabled = false;
+            btnInHoaDon.BackColor = Color.Gray;
+
             //ListView
             DsCTHD = HoaDon.LayChiTietHoaDon(MaHD);
             TaoListView(lstvChiTietHoaDon);
@@ -121,7 +124,7 @@ namespace KaraokeRUM
         private void TaoListView(ListView lstv)
         {
             lstv.Columns.Add("STT", 50);
-            lstv.Columns.Add("Tên Mặt Hằng", 250);
+            lstv.Columns.Add("Tên Mặt Hàng", 250);
             lstv.Columns.Add("Số Lượng", 93);
             lstv.Columns.Add("Thành Tiền", 200);
 
@@ -195,7 +198,7 @@ namespace KaraokeRUM
             //Lấy thông tin của Quán
             e.Graphics.DrawString(
                                 "Karaoke RUM",
-                                new Font("Courier New", 20, FontStyle.Regular),
+                                new Font("Courier New", 20, FontStyle.Bold),
                                 Brushes.Black,
                                 new Point(40, 20));
             e.Graphics.DrawString(
@@ -365,7 +368,7 @@ namespace KaraokeRUM
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            //Câợ nhật thành tiền vào hóa đơn.
+            //Cập nhật thành tiền vào hóa đơn.
             HoaDon hoaDon = HoaDon.LayHoaDon(MaHD);
             hoaDon.TongTien = Convert.ToDecimal(TongTien);
             HoaDon.CapNhapHoaDon(hoaDon);
@@ -378,7 +381,9 @@ namespace KaraokeRUM
             MessageBox.Show("Hoàn tất thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //Tắt giao diện hóa đơn.
             this.Close();
+
             //Xử lý tắt giao diện này rồi mở giao diện Phòng lên.
         }
+
     }
 }
