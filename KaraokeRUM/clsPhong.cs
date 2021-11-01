@@ -149,6 +149,13 @@ namespace KaraokeRUM
                                    select n);
             return q;
         }
+        public IQueryable<Phong> TimPhongTheoMa(string maPhong)
+        {
+            IQueryable<Phong> q = (from n in dt.Phongs
+                                   where n.MaPhong.Equals(maPhong)
+                                   select n);
+            return q;
+        }
         /**
         * kiểm tra
         */
