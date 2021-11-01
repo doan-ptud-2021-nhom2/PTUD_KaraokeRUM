@@ -75,7 +75,6 @@ namespace KaraokeRUM
                            select new { hd.MaHD, p.TenPhong, kh.TenKhach, hd.TongTien, hd.NgayLap };
             return dsHoaDon;
         }
-
         public IEnumerable<dynamic> LayDanhSachHoaDonTheoThangNam(string thang, string nam)
         {
             IEnumerable<dynamic> dsHoaDon;

@@ -22,6 +22,13 @@ namespace KaraokeRUM
                           select hd).First();
             return hoaDon;
         }
+        public HoaDon LayMaHoaDonTheoMaPhong(string maPhong)
+        {
+            var hoaDon = (from hd in dt.HoaDons
+                          where hd.MaPhong.Equals(maPhong) && hd.TongTien == null
+                          select hd).First();
+            return hoaDon;
+        }
 
         /*
          * Thay thế hàm Lấy chi tiết hóa đơn của chức năng Sửa
