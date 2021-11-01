@@ -60,6 +60,14 @@ namespace KaraokeRUM
                       select new { n.TenKhach, n.SDT, e.TenPhong, x.NgayDat, x.GioDat, x.NgayNhan };
             return ddp;
         }
-
+        public IEnumerable<dynamic> LayThongTinDonDatPhongTheoNgay(string homNay)
+        {
+            var ddp = from n in dt.KhachHangs
+                      join x in dt.DonDatPhongs on n.MaKH equals x.MaKH
+                      join e in dt.Phongs on x.MaPhong equals e.MaPhong
+                      where x.NgayNhan.ToString().Equals(homNay)
+                      select new { n.TenKhach, n.SDT, e.TenPhong, x.NgayDat, x.GioDat, x.NgayNhan };
+            return ddp;
+        }
     }
 } 
