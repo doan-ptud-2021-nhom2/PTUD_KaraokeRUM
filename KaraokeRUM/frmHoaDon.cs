@@ -12,6 +12,12 @@ namespace KaraokeRUM
 {
     public partial class frmHoaDon : Form
     {
+        /*
+         * Các biến toàn cục
+         * StatusBTN: trạng thái của nút
+         * DsCTHD: danh sách chi tiết hóa đơn
+         * KhoangTG: thời gian sử dụng phòng
+         */
         private string MaHD;
         private bool StatusBTN;
         private clsHoaDon HoaDon;
@@ -32,6 +38,9 @@ namespace KaraokeRUM
         private double TongTien;
         private int i = 1;
 
+        /*
+         * Constructor
+         */
         public frmHoaDon(string maHD, bool statusBtn)
         {
             InitializeComponent();
@@ -44,6 +53,9 @@ namespace KaraokeRUM
             StatusBTN = statusBtn;
         }
 
+        /*
+         * Form chính 
+         */
         private void frmHoaDon_Load(object sender, EventArgs e)
         {
             HoaDon = new clsHoaDon();
@@ -53,7 +65,7 @@ namespace KaraokeRUM
             KhachHang = new clsKhachHang();
             LoaiKhach = new clsLoaiKhach();
             SoThanhChu = new clsChuyenSoThanhChu();
-            //MessageBox.Show(MaHD);
+
             btnThanhToan.Enabled = StatusBTN;
             var hd = HoaDon.LayHoaDon(MaHD);
             var phong = Phong.KiemTra(hd.MaPhong);
@@ -67,8 +79,9 @@ namespace KaraokeRUM
             GiaPhong = (int)loaiPhong.Gia;
             KhoangTG = HoaDon.TinhGio(MaHD);
             TienPhong = (KhoangTG / 60) * GiaPhong;
-            GioVao = hd.GioVao.ToString();
-            GioRa = hd.GioRa.ToString();
+            GioVao = hd.GioVao.ToString(@"hh\:mm\:ss");
+            TimeSpan ts = TimeSpan.Parse(hd.GioRa.ToString());
+            GioRa = ts.ToString(@"hh\:mm\:ss");
             if (ChietKhau == 0)
             {
                 TongTien = (TienMatHang + TienPhong) * 1.1;
@@ -81,6 +94,7 @@ namespace KaraokeRUM
             {
                 TongTien = ((TienMatHang + TienPhong) * 1.1) * 0.9;
             }
+
             //Gán các giá trị
             lblMaHD.Text = hd.MaHD;
             lblGioVao.Text = GioVao;
@@ -94,6 +108,7 @@ namespace KaraokeRUM
             lblTienPhong.Text = TienPhong.ToString("#,### VNĐ");
             lblTongTien.Text = TongTien.ToString("#,### VNĐ");
             lblTenKhach.Text = khachHang.TenKhach;
+
             //ListView
             DsCTHD = HoaDon.LayChiTietHoaDon(MaHD);
             TaoListView(lstvChiTietHoaDon);
@@ -106,9 +121,9 @@ namespace KaraokeRUM
         private void TaoListView(ListView lstv)
         {
             lstv.Columns.Add("STT", 50);
-            lstv.Columns.Add("Tên mặt hằng", 250);
+            lstv.Columns.Add("Tên Mặt Hằng", 250);
             lstv.Columns.Add("Số Lượng", 93);
-            lstv.Columns.Add("ThanhTien", 200);
+            lstv.Columns.Add("Thành Tiền", 200);
 
             lstv.View = View.Details;
             lstv.GridLines = true;
@@ -129,7 +144,6 @@ namespace KaraokeRUM
             lstvItem.Tag = item;
             return lstvItem;
         }
-
         private void TaiDuLieuLenListView(ListView lstv, IEnumerable<dynamic> dsCTHD)
         {
             lstv.Items.Clear();
@@ -151,13 +165,6 @@ namespace KaraokeRUM
         }
         private void btnInHoaDon_Click(object sender, EventArgs e)
         {
-            /*if (cboChieuKhau.SelectedIndex == -1)
-            {
-                MessageBox.Show("Bạn chưa thanh toán!", "Thông báo");
-            } else
-            {
-                InHoaDon();
-            }*/
             InHoaDon();
         }
         private void pdHoaDon_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -262,7 +269,7 @@ namespace KaraokeRUM
                                 new Font("Courier New", 12, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(40, y));
-            //Hiển thị thành tiền
+            //Hiển thị tiền phòng
             e.Graphics.DrawString(
                                String.Format("Tiền phòng: {0}", TienPhong.ToString("#,### VNĐ")),
                                new Font("Courier New", 12, FontStyle.Regular),

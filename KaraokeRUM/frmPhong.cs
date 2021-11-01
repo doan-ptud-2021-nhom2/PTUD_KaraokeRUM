@@ -448,7 +448,12 @@ namespace KaraokeRUM
             flowLayoutPanel2.Controls.Clear();
             TaoPhongVip(vip);
             TaoPhongThuong(thuong);
-            MessageBox.Show(maHD, maPhong);
+
+            /**
+             * Mở form ChiTietPhong
+             */
+            frmChiTietPhong frmCTP = new frmChiTietPhong(maHD);
+            frmCTP.Show();
         }
         /** Tạo hóa đơn mới mở phòng qua đặt phòng **/
         private HoaDon TaoHoaDon()

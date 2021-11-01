@@ -21,9 +21,8 @@ namespace KaraokeRUM
 
         /** 
         * Các biến toàn cục.
-        * hl: class Hỗn Loạn.
-        * cthd: class Chi tiết hóa đơn.
         * mh: class Mặt Hàng.
+        * cthd: class Chi tiết hóa đơn.
         * dsMatHang: danh sách tất cả Mặt hàng.
         * dsTenMatHang: danh sách chỉ có tên Mặt hàng.
         * i: tăng tự động (Số thứ tự).
@@ -31,19 +30,20 @@ namespace KaraokeRUM
         private clsMatHang mh;
         private clsChiTietHoaDon cthd;
         private clsHoaDon HoaDon;
+        private clsPhong Phong;
         private IEnumerable<dynamic> dsMatHang;
         private IEnumerable<MatHang> dsTenMatHang;
         private string tenPhong;
         private string maHoaDon;
+
         /**
          * Tạo constructor có:
          * 1. Tên phòng.
          * 2. Mã hóa đơn.
         */
-        public frmChiTietPhong(string tenPhong, string maHoaDon)
+        public frmChiTietPhong(string maHoaDon)
         {
             InitializeComponent();
-            this.tenPhong = tenPhong;
             this.maHoaDon = maHoaDon;
         }
 
@@ -55,10 +55,15 @@ namespace KaraokeRUM
             mh = new clsMatHang();
             cthd = new clsChiTietHoaDon();
             HoaDon = new clsHoaDon();
+            Phong = new clsPhong();
 
             //Khởi tạo
-            this.tenPhong = "V001";
-            this.maHoaDon = "HD001";
+            HoaDon hoaDon = HoaDon.LayHoaDon(maHoaDon);
+            string _tenPhong = Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TenPhong;
+            this.tenPhong = _tenPhong;
+
+            //Test
+            //MessageBox.Show(maHoaDon, _tenPhong);
 
             //Lấy tên phòng
             lblTenPhong.Text = "Phòng - " + tenPhong;
@@ -112,8 +117,6 @@ namespace KaraokeRUM
                 itemMH = TaoDanhSachItem(dsMatHang.ElementAt(i), i + 1);
                 lstv.Items.Add(itemMH);
             }
-
-            //MessageBox.Show("Tải lại");
         }
         ListViewItem TaoDanhSachItem(dynamic itemMH, int id)
         {
@@ -162,6 +165,12 @@ namespace KaraokeRUM
         */
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
+            HoaDon hoaDon = HoaDon.LayHoaDon(maHoaDon);
+            DateTime dt = DateTime.Now;
+            TimeSpan tp = (TimeSpan)dt.TimeOfDay;
+            hoaDon.GioRa = tp;
+            HoaDon.CapNhapHoaDon(hoaDon);
+
             frmHoaDon frm = new frmHoaDon(this.maHoaDon, true);
             frm.Show();
         }

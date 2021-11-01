@@ -84,5 +84,26 @@ namespace KaraokeRUM
                 throw new Exception(ex.Message);
             }
         }
+
+        public bool CapNhapHoaDon(HoaDon hoaDon)
+        {
+            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = br;
+                IQueryable<HoaDon> tam = (from n in dt.HoaDons
+                                           where n.MaHD == hoaDon.MaHD
+                                           select n);
+                tam.First().GioRa = hoaDon.GioRa;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
