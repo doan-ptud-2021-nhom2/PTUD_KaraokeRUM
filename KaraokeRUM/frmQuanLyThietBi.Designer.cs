@@ -345,6 +345,7 @@ namespace KaraokeRUM
             this.cboSoPhong.Name = "cboSoPhong";
             this.cboSoPhong.Size = new System.Drawing.Size(357, 31);
             this.cboSoPhong.TabIndex = 35;
+            this.cboSoPhong.SelectedIndexChanged += new System.EventHandler(this.cboSoPhong_SelectedIndexChanged);
             // 
             // cboTenTTB
             // 

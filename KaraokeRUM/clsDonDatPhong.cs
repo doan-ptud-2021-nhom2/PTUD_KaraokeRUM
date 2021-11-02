@@ -55,6 +55,13 @@ namespace KaraokeRUM
                                 select n).FirstOrDefault();
             return temp;
         }
+        public IEnumerable<DonDatPhong> TimDonDatPhongTheoNgay(string ngay)
+        {
+            var temp = (from n in dt.DonDatPhongs
+                                where n.NgayNhan.ToString().Equals(ngay)
+                                select n);
+            return temp;
+        }
         public int Xoa(DonDatPhong ddp)
         {
             System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction();

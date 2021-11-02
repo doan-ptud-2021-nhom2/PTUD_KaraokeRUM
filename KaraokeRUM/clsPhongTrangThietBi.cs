@@ -64,6 +64,13 @@ namespace KaraokeRUM
                                                 select n;
             return q;
         }
+        public IEnumerable<Phong_TrangThietBi> TimPhongTTB(string maPhong)
+        {
+            IEnumerable<Phong_TrangThietBi> q = from n in dt.Phong_TrangThietBis
+                                                where n.MaPhong.Equals(maPhong) 
+                                                select n;
+            return q;
+        }
         public int Xoa(Phong_TrangThietBi ttb)
         {
             System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction();
