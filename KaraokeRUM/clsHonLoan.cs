@@ -15,23 +15,7 @@ namespace KaraokeRUM
             dt = LayData();
         }
 
-        /**
-        * join 2 bảng: Phòng với Loaị Phòng
-        * Lấy dữ liệu ở bảng Phòng và Loại Phòng 
-        */
-        public IEnumerable<dynamic> LayPhongVaLoaiPhong()
-        {
-            var q = from n in dt.Phongs
-                    join x in dt.LoaiPhongs
-                    on n.MaLoaiPhong equals x.MaLoaiPhong
-                    select new { n.MaPhong, n.TenPhong , n.TrangThaiPhong, x.TenLoaiPhong, x.Gia };
-            return q;
-        }
-
-        /**
-        * join các bảng: Mặt hàng - Chi tiết hóa đơn - Hóa đơn - Phòng.
-        * Lấy dữ liệu ở bảng Mặt hàng và Phòng.
-        */
+       
         public IEnumerable<dynamic> LayMatHangVaPhong()
         {
             var q = from n in dt.MatHangs

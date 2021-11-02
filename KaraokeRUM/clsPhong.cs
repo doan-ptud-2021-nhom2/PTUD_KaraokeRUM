@@ -99,7 +99,7 @@ namespace KaraokeRUM
                 IQueryable<Phong> tam = (from n in dt.Phongs
                                               where n.MaPhong == phong.MaPhong
                                          select n);
-                tam.First().TrangThaiPhong = phong.TrangThaiPhong;
+                tam.First().TenPhong = phong.TenPhong;
                 //truy vào khóa ngoại của bảng Phòng để đổi trạng thái (VIP, THƯỜNG) bên bảng Loại Phòng.
                 tam.First().MaLoaiPhong = phong.MaLoaiPhong;
                 dt.SubmitChanges();
@@ -139,6 +139,8 @@ namespace KaraokeRUM
             }
             return null;
         }
+
+       
         /**
        * Tim ten phòng
        */

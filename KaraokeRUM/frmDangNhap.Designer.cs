@@ -131,6 +131,7 @@ namespace KaraokeRUM
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(286, 34);
             this.txtUsername.TabIndex = 0;
+            this.txtUsername.Text = "NV002";
             // 
             // txtPassword
             // 
@@ -142,6 +143,7 @@ namespace KaraokeRUM
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(286, 34);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.Text = "123456";
             // 
             // frmDangNhap
             // 
