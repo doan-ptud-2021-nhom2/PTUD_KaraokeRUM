@@ -114,8 +114,8 @@ namespace KaraokeRUM
         private ListViewItem TaoItemPTTB(dynamic pTTB)
         {
             ListViewItem lvwItem;
-            lvwItem = new ListViewItem(pTTB.TenPhong);
-            lvwItem.SubItems.Add(pTTB.TenTTB);
+            lvwItem = new ListViewItem(phong.TimMotPhongTheoMa(pTTB.MaPhong).TenPhong);
+            lvwItem.SubItems.Add(thietBi.TimTTBTheoMa(pTTB.MaTTB).TenTTB);
             lvwItem.SubItems.Add(pTTB.SoLuong.ToString());
             lvwItem.Tag = pTTB;
             lvwItem.ImageIndex = 0;
@@ -125,7 +125,7 @@ namespace KaraokeRUM
         {
             lwv.Items.Clear();
             ListViewItem item;
-            dSach = hl.LayThongTinPhongTrangThietBi();
+            /*dSach = hl.LayThongTinPhongTrangThietBi();*/
             foreach (dynamic i in dSach)
             {
                 item = TaoItemPTTB(i);
@@ -322,6 +322,14 @@ namespace KaraokeRUM
                 txtTimKiem.AutoCompleteCustomSource.Add(i.TenTTB);
                 txtTimKiem.AutoCompleteCustomSource.Add(i.MaTTB);
             }
+        }
+
+        private void cboSoPhong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string soPhong = cboSoPhong.Text;
+            string maPhong = phong.TimTenPhong(soPhong).First().MaPhong;
+            dSachPhongTTB = phongTTB.TimPhongTTB(maPhong);           
+            TaiDuLieuLenLWV2(lwvThietBiTrongPhong, dSachPhongTTB);
         }
     }
 }

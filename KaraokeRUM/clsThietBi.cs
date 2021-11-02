@@ -112,6 +112,13 @@ namespace KaraokeRUM
                                    select n;
             return q;
         }
+        public TrangThietBi TimTTBTheoMa(string maTTB)
+        {
+            TrangThietBi q = (from n in dt.TrangThietBis
+                              where n.MaTTB.Equals(maTTB)
+                              select n).First();
+            return q;
+        }
         /**
         * Tìm tên thiết bị
         */
