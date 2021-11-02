@@ -32,7 +32,7 @@ namespace KaraokeRUM
         private string GioRa;
         private int KhoangTG;
         private int TienMatHang;
-        private int GiaPhong;
+        private double GiaPhong;
         private double TienPhong;
         private int ChietKhau;
         private double TongTien;
@@ -78,10 +78,12 @@ namespace KaraokeRUM
             ChietKhau = loaiKhach.ChietKhau;
             GiaPhong = (int)loaiPhong.Gia;
             KhoangTG = HoaDon.TinhGio(MaHD);
-            TienPhong = (KhoangTG / 60) * GiaPhong;
+            TienPhong = (KhoangTG / 60.0) * GiaPhong;
             GioVao = hd.GioVao.ToString(@"hh\:mm\:ss");
             TimeSpan ts = TimeSpan.Parse(hd.GioRa.ToString());
             GioRa = ts.ToString(@"hh\:mm\:ss");
+
+            //Thực hiện tính tổng tiền
             if (ChietKhau == 0)
             {
                 TongTien = (TienMatHang + TienPhong) * 1.1;
@@ -108,9 +110,6 @@ namespace KaraokeRUM
             lblTienPhong.Text = TienPhong.ToString("#,### VNĐ");
             lblTongTien.Text = TongTien.ToString("#,### VNĐ");
             lblTenKhach.Text = khachHang.TenKhach;
-
-            btnInHoaDon.Enabled = false;
-            btnInHoaDon.BackColor = Color.Gray;
 
             //ListView
             DsCTHD = HoaDon.LayChiTietHoaDon(MaHD);
@@ -170,6 +169,10 @@ namespace KaraokeRUM
         {
             InHoaDon();
         }
+
+        /**
+         * Sự kiện in hóa đơn.
+         */
         private void pdHoaDon_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             //Tìm để lấy thông tin hiển thị ra giao diện
@@ -300,6 +303,7 @@ namespace KaraokeRUM
                                new Font("Courier New", 13, FontStyle.Regular),
                                Brushes.Black,
                                new Point(w - 200, y));
+
             //Canh lề trái, phải
             y -= 15;
             p1 = new Point(10, y);
@@ -357,12 +361,12 @@ namespace KaraokeRUM
                                    Brushes.Black,
                                    new Point(40, y));
             //Text: Cám ơn khách hàng
-            y += 200;
+            y += 100;
             e.Graphics.DrawString(
                                    "Cảm ơn quý khách đã sử dụng dịch vụ của Quán, hẹn gặp lại quý khách!",
-                                   new Font("Courier New", 13, FontStyle.Regular),
+                                   new Font("Courier New", 14, FontStyle.Bold),
                                    Brushes.Black,
-                                   new Point(40, y));
+                                   new Point(15, y));
 
         }
 

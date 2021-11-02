@@ -31,6 +31,7 @@ namespace KaraokeRUM
         private clsChiTietHoaDon cthd;
         private clsHoaDon HoaDon;
         private clsPhong Phong;
+        private clsLoaiPhong LoaiPhong;
         private IEnumerable<dynamic> dsMatHang;
         private IEnumerable<MatHang> dsTenMatHang;
         private string tenPhong;
@@ -56,14 +57,15 @@ namespace KaraokeRUM
             cthd = new clsChiTietHoaDon();
             HoaDon = new clsHoaDon();
             Phong = new clsPhong();
+            LoaiPhong = new clsLoaiPhong();
 
             //Khởi tạo
             HoaDon hoaDon = HoaDon.LayHoaDon(maHoaDon);
-            string _tenPhong = Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TenPhong;
-            this.tenPhong = _tenPhong;
-
-            //Test
-            //MessageBox.Show(maHoaDon, _tenPhong);
+            Phong phong = Phong.LayThongTinPhong(hoaDon.MaPhong);
+            txtMaPhong.Text = hoaDon.MaPhong;
+            txtTenPhong.Text = Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TenPhong;
+            txtTTP.Text = Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TrangThaiPhong;
+            txtLoaiPhong.Text = LoaiPhong.LayLoaiPhong(phong.MaLoaiPhong).TenLoaiPhong;
 
             //Lấy tên phòng
             lblTenPhong.Text = "Phòng - " + tenPhong;

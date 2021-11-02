@@ -387,7 +387,9 @@ namespace KaraokeRUM
                 flowLayoutPanel2.Controls.Clear();
                 TaoPhongVip(vip);
                 TaoPhongThuong(thuong);
-                MessageBox.Show(maHD, maPhong);
+                //MessageBox.Show(maHD, maPhong);
+                frmChiTietPhong frmCTP = new frmChiTietPhong(maHD);
+                frmCTP.Show();
             }    
             else if (trangThaiPhong == "Đặt")
             {
@@ -463,16 +465,20 @@ namespace KaraokeRUM
                 flowLayoutPanel2.Controls.Clear();
                 TaoPhongVip(vip);
                 TaoPhongThuong(thuong);
-                MessageBox.Show(maHD, maPhong);
+                //MessageBox.Show(maHD, maPhong);
+                frmChiTietPhong frmCTP = new frmChiTietPhong(maHD);
+                frmCTP.Show();
             }
             else if(trangThaiPhong =="Mở")
             {
                 Phong phong = p.TimMotPhongTheoTen(txtTenPhong.Text);
                 maPhong = phong.MaPhong;
                 string maHD = hd.LayMaHoaDonTheoMaPhong(maPhong).MaHD;
-                MessageBox.Show(maHD, maPhong);
+                //MessageBox.Show(maHD, maPhong);
                 /*frmChiTietPhong frm = new frmChiTietPhong();
-                frm.Show();*/               
+                frm.Show();*/
+                frmChiTietPhong frmCTP = new frmChiTietPhong(maHD);
+                frmCTP.Show();
             }    
             
         }
