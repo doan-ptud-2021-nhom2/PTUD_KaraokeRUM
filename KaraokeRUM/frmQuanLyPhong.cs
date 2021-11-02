@@ -187,17 +187,23 @@ namespace KaraokeRUM
         */
         private void btnThemPhong_Click(object sender, EventArgs e)
         {
-            Phong phong = TaoPhong();
-
-            if (p.TimPhong(phong.TenPhong).Count() > 0)
+            if(TaoPhong() == null)
             {
-                MessageBox.Show("Tên phòng đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn cần nhập đầy đủ các thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                p.ThemPhong(phong);
-                XoaCacTxtCbo();
-                TaiDuLieuLenListView(lstvDanhSachPhong, p.LayTatCaPhong());
+                Phong phong = TaoPhong();
+                if (p.TimPhong(phong.TenPhong).Count() > 0)
+                {
+                    MessageBox.Show("Tên phòng đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    p.ThemPhong(phong);
+                    XoaCacTxtCbo();
+                    TaiDuLieuLenListView(lstvDanhSachPhong, p.LayTatCaPhong());
+                }
             }
         }
         /** 
@@ -224,23 +230,28 @@ namespace KaraokeRUM
             return maPhong;
         }
         /** 
-        * Tạo mã phòng (số phòng là tên của phòng)
+        * Tạo phòng (số phòng là tên của phòng)
         */
         dynamic TaoPhong()
         {
-            Phong phong = new Phong();
-            
-            phong.MaPhong = TaoMaPhong();
-            phong.TenPhong = txtSoPhong.Text; 
-            phong.TrangThaiPhong = cboTrangThai.Text;
-            phong.MaLoaiPhong = lp.TimLoaiPhong(cboLoaiPhong.Text).First().MaLoaiPhong;
-            phong.MaQL = "NV002";
+            if(txtSoPhong.Text != "" && cboLoaiPhong.SelectedIndex >= 0 && cboTrangThai.Text != "")
+            {
+                Phong phong = new Phong();
 
-            return phong;
+                phong.MaPhong = TaoMaPhong();
+                phong.TenPhong = txtSoPhong.Text;
+                phong.TrangThaiPhong = cboTrangThai.Text;
+                phong.MaLoaiPhong = lp.TimLoaiPhong(cboLoaiPhong.Text).First().MaLoaiPhong;
+                phong.MaQL = "NV002";
+
+                return phong;
+            }
+
+            return null;
         }
 
         /** 
-        * Sửa thông tin của phòng (Trạng thái, Loại phòng)
+        * Sửa thông tin của phòng (Tên, Loại phòng)
         */
         dynamic SuaTenVaLoaiPhong()
         {
