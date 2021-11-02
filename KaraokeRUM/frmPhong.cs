@@ -193,8 +193,8 @@ namespace KaraokeRUM
             lvwDSDatPhong.Columns.Add("Tên Phòng", 150);
             lvwDSDatPhong.Columns.Add("Tên khách hàng", 200);
             lvwDSDatPhong.Columns.Add("Số điện thoại", 200);
-            lvwDSDatPhong.Columns.Add("Ngày đặt phòng", 250);
-            lvwDSDatPhong.Columns.Add("Ngày nhận phòng", 250);
+            lvwDSDatPhong.Columns.Add("Ngày đặt phòng", 200);
+            lvwDSDatPhong.Columns.Add("Ngày nhận phòng", 200);
             lvwDSDatPhong.Columns.Add("Giờ đặt phòng", 200);
             lvwDSDatPhong.View = View.Details;
             lvwDSDatPhong.GridLines = true;
