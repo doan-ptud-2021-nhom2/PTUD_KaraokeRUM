@@ -61,38 +61,38 @@ namespace KaraokeRUM
             // 
             // label3
             // 
-            this.label3.BackColor = System.Drawing.Color.Teal;
+            this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.ForeColor = System.Drawing.Color.Teal;
             this.label3.Location = new System.Drawing.Point(-3, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(380, 30);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Mr.Tuan";
+            this.label3.Text = "Lê Tuấn";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.Teal;
+            this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.Teal;
             this.label2.Location = new System.Drawing.Point(0, 103);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(377, 30);
+            this.label2.Size = new System.Drawing.Size(380, 30);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Idol";
+            this.label2.Text = "NV002";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.Teal;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Snap ITC", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.Teal;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(377, 104);
+            this.label1.Size = new System.Drawing.Size(380, 104);
             this.label1.TabIndex = 0;
             this.label1.Text = "Karaoke RUM";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -100,7 +100,7 @@ namespace KaraokeRUM
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.Teal;
+            this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
@@ -113,8 +113,9 @@ namespace KaraokeRUM
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::KaraokeRUM.Properties.Resources._117127892_2760642600928826_8149084358870197726_n;
+            this.pictureBox1.Image = global::KaraokeRUM.Properties.Resources.Thay_the_hinh_dai_dien_tai_khoan_nguoi_dung_mac;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
