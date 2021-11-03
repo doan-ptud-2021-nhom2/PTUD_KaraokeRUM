@@ -54,14 +54,14 @@ namespace KaraokeRUM
             this.btnHuyPhong = new System.Windows.Forms.Button();
             this.btnDatPhong = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.radTatCa = new System.Windows.Forms.RadioButton();
             this.radHienTai = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBOx.SuspendLayout();
@@ -91,7 +91,7 @@ namespace KaraokeRUM
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
             this.groupBox3.Location = new System.Drawing.Point(12, 23);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(511, 170);
+            this.groupBox3.Size = new System.Drawing.Size(517, 170);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Phòng VIP";
@@ -101,7 +101,7 @@ namespace KaraokeRUM
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 29);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(494, 135);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(505, 135);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // groupBOx
@@ -139,7 +139,7 @@ namespace KaraokeRUM
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1628, 50);
+            this.label1.Size = new System.Drawing.Size(1628, 46);
             this.label1.TabIndex = 1;
             this.label1.Text = "Phòng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -211,7 +211,7 @@ namespace KaraokeRUM
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(404, 30);
             this.txtSoDienThoai.TabIndex = 1;
-            this.txtSoDienThoai.Text = "012356789";
+            this.txtSoDienThoai.Text = "0343220597";
             // 
             // txtTenPhong
             // 
@@ -229,7 +229,7 @@ namespace KaraokeRUM
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(404, 30);
             this.txtHoTen.TabIndex = 1;
-            this.txtHoTen.Text = "Lên Văn A";
+            this.txtHoTen.Text = "Lê Tuấn";
             // 
             // label20
             // 
@@ -367,6 +367,52 @@ namespace KaraokeRUM
             this.panel2.Size = new System.Drawing.Size(687, 419);
             this.panel2.TabIndex = 23;
             // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(529, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(151, 45);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Chú thích";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Teal;
+            this.button3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button3.Location = new System.Drawing.Point(535, 263);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(145, 54);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Mở";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Yellow;
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(535, 186);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(145, 54);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Đặt";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Gray;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(535, 109);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(145, 54);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Đóng";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.flowLayoutPanel2);
@@ -374,7 +420,7 @@ namespace KaraokeRUM
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(12, 215);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(511, 183);
+            this.groupBox2.Size = new System.Drawing.Size(517, 183);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phòng THƯỜNG";
@@ -384,7 +430,7 @@ namespace KaraokeRUM
             this.flowLayoutPanel2.AutoScroll = true;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 29);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(494, 148);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(505, 148);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // radTatCa
@@ -413,51 +459,6 @@ namespace KaraokeRUM
             this.radHienTai.UseVisualStyleBackColor = true;
             this.radHienTai.CheckedChanged += new System.EventHandler(this.radTatCa_CheckedChanged);
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(529, 127);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 40);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Đóng";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Yellow;
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(529, 186);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 40);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Đặt";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Teal;
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(529, 244);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(151, 40);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Mở";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(529, 52);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(151, 45);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Chú thích";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnLamMoi
             // 
             this.btnLamMoi.BackColor = System.Drawing.Color.Teal;
@@ -477,7 +478,7 @@ namespace KaraokeRUM
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1628, 1082);
+            this.ClientSize = new System.Drawing.Size(1628, 1100);
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.radHienTai);
             this.Controls.Add(this.radTatCa);
@@ -491,7 +492,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.btnDatPhong);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPhong";
-            this.Text = "Form3";
+            this.Text = "Phong";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPhong_Load);
             this.groupBox3.ResumeLayout(false);
