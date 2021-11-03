@@ -22,7 +22,7 @@ namespace KaraokeRUM
         public LoaiPhong LayLoaiPhong(string maLoaiPhong)
         {
             var q = from d in dt.LoaiPhongs
-                    where d.MaLoaiPhong == maLoaiPhong
+                    where d.MaLoaiPhong.Equals(maLoaiPhong)
                     select d;
             return q.FirstOrDefault();
         }

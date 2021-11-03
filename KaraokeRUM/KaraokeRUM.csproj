@@ -32,6 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,17 +53,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsChiTietHoaDon.cs" />
+    <Compile Include="clsChuyenSoThanhChu.cs" />
+    <Compile Include="clsDonDatPhong.cs" />
+    <Compile Include="clsHoaDon.cs" />
     <Compile Include="clsHonLoan.cs" />
     <Compile Include="clsKetNoi.cs" />
+    <Compile Include="clsLoaiNhanVien.cs" />
     <Compile Include="clsMatHang.cs" />
     <Compile Include="clsKhachHang.cs" />
     <Compile Include="clsLoaiKhach.cs" />
+    <Compile Include="clsNhanVien.cs" />
     <Compile Include="clsPhongTrangThietBi.cs" />
     <Compile Include="clsKiemTra.cs" />
     <Compile Include="clsLoaiPhong.cs" />
     <Compile Include="clsPhong.cs" />
     <Compile Include="clsTaiKhoan.cs" />
+    <Compile Include="clsTaoButton.cs" />
     <Compile Include="clsThietBi.cs" />
+    <Compile Include="clsThongKe.cs" />
     <Compile Include="frmLayLaiMatKhau.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +168,7 @@
     <Compile Include="frmThongKe.Designer.cs">
       <DependentUpon>frmThongKe.cs</DependentUpon>
     </Compile>
+    <Compile Include="clsListViewItemComparer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="qlKaraoke.cs">

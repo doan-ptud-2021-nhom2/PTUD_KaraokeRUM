@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KaraokeRUM
@@ -22,10 +17,13 @@ namespace KaraokeRUM
        * kH: class khách hàng.
        * lK: class Loại khách.
        * hl: class Hỗn Loạn.
+       * dsKh danh sách khách hàng lấy từ 2 bảng
+       * sortColumn dùng để sắp xếp
        */
         private clsKhachHang kH;
         private clsLoaiKhach lK;
         private clsHonLoan hL;
+        private IEnumerable<dynamic> dsKH;
         private int sortColumn = -1;
         private void frmQuanLyKhachHang_Load(object sender, EventArgs e)
         {
@@ -42,8 +40,11 @@ namespace KaraokeRUM
             kH = new clsKhachHang();
             lK = new clsLoaiKhach();
             hL = new clsHonLoan();
-            IEnumerable<dynamic> dsKH = hL.KhachHangVaLoaiKhachHang();
+            IEnumerable<dynamic> dsKH = kH.KhachHangVaLoaiKhachHang();
             TaiDuLieuLenListView(lvwDSKH, dsKH);
+
+            txtTimKiemKhachHang.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtTimKiemKhachHang.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
 
         }
@@ -112,11 +113,12 @@ namespace KaraokeRUM
         {
             LoaiKhachHang suaLk = SuaChietKhauLoaiKhach();
             lK.CapNhatChietKhau(suaLk);
-            IEnumerable<dynamic> layDS = hL.KhachHangVaLoaiKhachHang();
+            IEnumerable<dynamic> layDS = kH.KhachHangVaLoaiKhachHang();
             XoaCacTxtCbo();
             TaiDuLieuLenListView(lvwDSKH, layDS);
         }
-        LoaiKhachHang SuaChietKhauLoaiKhach(){
+        LoaiKhachHang SuaChietKhauLoaiKhach()
+        {
             LoaiKhachHang loaiKhachHang = new LoaiKhachHang();
             loaiKhachHang.MaLoaiKH = lK.TimLoaiKhachHang(cboLoaiKhachHang.Text).First().MaLoaiKH;
             loaiKhachHang.ChietKhau = Convert.ToInt32(txtCKM.Text);
@@ -141,30 +143,27 @@ namespace KaraokeRUM
             string selected = this.cboLocTheoLoai.GetItemText(this.cboLocTheoLoai.SelectedItem);
             if (selected.Equals("All") == true)
             {
+               // no rename may cái instance ak, k phai rename theo kieu notepad dau, k an loz dau               lvwDSKH.Items.Clear();
                 TaoTieuDeCot(lvwDSKH);
-                hL = new clsHonLoan();
-                lvwDSKH.Items.Clear();
-                TaoTieuDeCot(lvwDSKH);
-                IEnumerable<dynamic> dsKHAll = hL.KhachHangVaLoaiKhachHang();
+                IEnumerable<dynamic> dsKHAll = kH.KhachHangVaLoaiKhachHang();
                 TaiDuLieuLenListView(lvwDSKH, dsKHAll);
             }
             else
             {
-                TaoTieuDeCot(lvwDSKH);
-                hL = new clsHonLoan();
-                IEnumerable<dynamic> dsKH = hL.LayKhachHangVaLoaiKhachHangTheoLoai(selected);
+                
+                IEnumerable<dynamic> dsKH = kH.LayKhachHangVaLoaiKhachHangTheoLoai(selected);
                 lvwDSKH.Items.Clear();
                 TaoTieuDeCot(lvwDSKH);
                 TaiDuLieuLenListView(lvwDSKH, dsKH);
             }
-            
+
         }
         /*
         * sự kiện click vào cột để sắp xếp
         */
         private void lvwDSKH_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            
+
             if (e.Column != sortColumn)
             {
                 sortColumn = e.Column;
@@ -178,43 +177,41 @@ namespace KaraokeRUM
                     lvwDSKH.Sorting = SortOrder.Ascending;
             }
             lvwDSKH.Sort();
-            this.lvwDSKH.ListViewItemSorter = new ListViewItemComparer(e.Column,
+            this.lvwDSKH.ListViewItemSorter = new clsListViewItemComparer(e.Column,
                                                               lvwDSKH.Sorting);
         }
+        /*
+         * Tim kiem
+         */
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            dsKH = kH.TimKhach(txtTimKiemKhachHang.Text);
+            lvwDSKH.Items.Clear();
+            TaoTieuDeCot(lvwDSKH);
+            TaiDuLieuLenListView(lvwDSKH, dsKH);
+        }
+        /*
+         * auto complete tự động tải danh sách
+         */
+        private void txtTimKiemKhachHang_TextChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            foreach (KhachHang i in kH.LayDSKH())
+            {
+                collection.Add(i.MaKH);
+                collection.Add(i.TenKhach);
+            }
+            txtTimKiemKhachHang.AutoCompleteCustomSource = collection;
+
+        }
     }
 
-    /*
-     * tạo 1 lớp sắp xếp kế thừa từ IComparer
-     */
-    public class ListViewItemComparer : IComparer
-    {
-
-        private int col;
-        private SortOrder order;
-        public ListViewItemComparer()
-        {
-            col = 0;
-            order = SortOrder.Ascending;
-        }
-        public ListViewItemComparer(int column, SortOrder order)
-        {
-            col = column;
-            this.order = order;
-        }
-        public int Compare(object x, object y)
-        {
-            int returnVal = -1;
-            returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text,
-                            ((ListViewItem)y).SubItems[col].Text);
-            // Determine whether the sort order is descending.
-            if (order == SortOrder.Descending)
-                // Invert the value returned by String.Compare.
-                returnVal *= -1;
-            return returnVal;
-        }
 
 
-    }
+
+    
 }
-        
- 
+
+
+
+

@@ -15,23 +15,7 @@ namespace KaraokeRUM
             dt = LayData();
         }
 
-        /**
-        * join 2 bảng: Phòng với Loaị Phòng
-        * Lấy dữ liệu ở bảng Phòng và Loại Phòng 
-        */
-        public IEnumerable<dynamic> LayPhongVaLoaiPhong()
-        {
-            var q = from n in dt.Phongs
-                    join x in dt.LoaiPhongs
-                    on n.MaLoaiPhong equals x.MaLoaiPhong
-                    select new { n.MaPhong, n.TenPhong , n.TrangThaiPhong, x.TenLoaiPhong, x.Gia };
-            return q;
-        }
-
-        /**
-        * join các bảng: Mặt hàng - Chi tiết hóa đơn - Hóa đơn - Phòng.
-        * Lấy dữ liệu ở bảng Mặt hàng và Phòng.
-        */
+       
         public IEnumerable<dynamic> LayMatHangVaPhong()
         {
             var q = from n in dt.MatHangs
@@ -40,33 +24,34 @@ namespace KaraokeRUM
                     select new { n.MaMH, y.MaHD, x.SoLuong, x.ThanhTien };
             return q;
         }
-
-        /**
-   * join 2 bảng: KhachHang với LoaiKhachHang
-   * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
-   */
-        public IEnumerable<dynamic> KhachHangVaLoaiKhachHang()
+        public IEnumerable<dynamic> LayThongTinPhongTrangThietBi()
         {
-            var kh = from n in dt.KhachHangs
-                     join x in dt.LoaiKhachHangs
-                     on n.MaLoaiKH equals x.MaLoaiKH
-                     select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
-            return kh;
+            var pTTB = from n in dt.TrangThietBis
+                       join x in dt.Phong_TrangThietBis on n.MaTTB equals x.MaTTB
+                       join e in dt.Phongs on x.MaPhong equals e.MaPhong
+                       select new { n.TenTTB, x.SoLuong, e.TenPhong };
+            return pTTB;
         }
         /**
-* join 2 bảng: KhachHang với LoaiKhachHang
-* Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
-* Có điều kiện
-*/
-        public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoai(string loaiKH)
+        * join 3 bảng: Khách hàng và Đơn đặt phòng và Phòng
+        * Lấy dữ liệu ở Khách hàng và Đơn đặt phòng và Phòng      
+        **/
+        public IEnumerable<dynamic> LayThongTinDonDatPhong()
         {
-            var kh = from n in dt.KhachHangs
-                     join x in dt.LoaiKhachHangs
-                     on n.MaLoaiKH equals x.MaLoaiKH
-                     where x.TenLoaiKH.Equals(loaiKH)
-                     select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
-            return kh;
-
+            var ddp = from n in dt.KhachHangs
+                      join x in dt.DonDatPhongs on n.MaKH equals x.MaKH
+                      join e in dt.Phongs on x.MaPhong equals e.MaPhong
+                      select new { n.TenKhach, n.SDT, e.TenPhong, x.NgayDat, x.GioDat, x.NgayNhan };
+            return ddp;
+        }
+        public IEnumerable<dynamic> LayThongTinDonDatPhongTheoNgay(string homNay)
+        {
+            var ddp = from n in dt.KhachHangs
+                      join x in dt.DonDatPhongs on n.MaKH equals x.MaKH
+                      join e in dt.Phongs on x.MaPhong equals e.MaPhong
+                      where x.NgayNhan.ToString().Equals(homNay)
+                      select new { n.TenKhach, n.SDT, e.TenPhong, x.NgayDat, x.GioDat, x.NgayNhan };
+            return ddp;
         }
     }
 } 

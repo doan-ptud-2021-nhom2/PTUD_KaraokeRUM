@@ -36,8 +36,6 @@ namespace KaraokeRUM
             this.txtTimKiemThongTinPhong = new System.Windows.Forms.TextBox();
             this.lblTimKiem = new System.Windows.Forms.Label();
             this.btnTimKiemThongTinPhong = new System.Windows.Forms.Button();
-            this.rdoTHUONG = new System.Windows.Forms.RadioButton();
-            this.rdoVIP = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtGiaPhongMoi = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -81,8 +79,7 @@ namespace KaraokeRUM
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.lstvDanhSachPhong);
@@ -91,22 +88,21 @@ namespace KaraokeRUM
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(725, 762);
+            this.groupBox2.Size = new System.Drawing.Size(874, 762);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh Sách Phòng";
             // 
             // lstvDanhSachPhong
             // 
-            this.lstvDanhSachPhong.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lstvDanhSachPhong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstvDanhSachPhong.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstvDanhSachPhong.HideSelection = false;
             this.lstvDanhSachPhong.Location = new System.Drawing.Point(26, 38);
             this.lstvDanhSachPhong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstvDanhSachPhong.Name = "lstvDanhSachPhong";
-            this.lstvDanhSachPhong.Size = new System.Drawing.Size(676, 695);
+            this.lstvDanhSachPhong.Size = new System.Drawing.Size(825, 695);
             this.lstvDanhSachPhong.TabIndex = 0;
             this.lstvDanhSachPhong.UseCompatibleStateImageBehavior = false;
             this.lstvDanhSachPhong.SelectedIndexChanged += new System.EventHandler(this.lstvDanhSachPhong_SelectedIndexChanged_1);
@@ -142,32 +138,6 @@ namespace KaraokeRUM
             this.btnTimKiemThongTinPhong.Text = "Tìm";
             this.btnTimKiemThongTinPhong.UseVisualStyleBackColor = false;
             this.btnTimKiemThongTinPhong.Click += new System.EventHandler(this.btnTimKiemThongTinPhong_Click);
-            // 
-            // rdoTHUONG
-            // 
-            this.rdoTHUONG.AutoSize = true;
-            this.rdoTHUONG.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoTHUONG.Location = new System.Drawing.Point(504, 144);
-            this.rdoTHUONG.Name = "rdoTHUONG";
-            this.rdoTHUONG.Size = new System.Drawing.Size(115, 26);
-            this.rdoTHUONG.TabIndex = 61;
-            this.rdoTHUONG.TabStop = true;
-            this.rdoTHUONG.Text = "THƯỜNG";
-            this.rdoTHUONG.UseVisualStyleBackColor = true;
-            this.rdoTHUONG.CheckedChanged += new System.EventHandler(this.rdoTHUONG_CheckedChanged);
-            // 
-            // rdoVIP
-            // 
-            this.rdoVIP.AutoSize = true;
-            this.rdoVIP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoVIP.Location = new System.Drawing.Point(229, 144);
-            this.rdoVIP.Name = "rdoVIP";
-            this.rdoVIP.Size = new System.Drawing.Size(61, 26);
-            this.rdoVIP.TabIndex = 62;
-            this.rdoVIP.TabStop = true;
-            this.rdoVIP.Text = "VIP";
-            this.rdoVIP.UseVisualStyleBackColor = true;
-            this.rdoVIP.CheckedChanged += new System.EventHandler(this.rdoVIP_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -314,6 +284,7 @@ namespace KaraokeRUM
             // 
             // cboTrangThai
             // 
+            this.cboTrangThai.Enabled = false;
             this.cboTrangThai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTrangThai.FormattingEnabled = true;
             this.cboTrangThai.Location = new System.Drawing.Point(166, 97);
@@ -435,8 +406,6 @@ namespace KaraokeRUM
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.rdoVIP);
-            this.Controls.Add(this.rdoTHUONG);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtTimKiemThongTinPhong);
             this.Controls.Add(this.lblTimKiem);
@@ -444,6 +413,7 @@ namespace KaraokeRUM
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmQuanLyPhong";
             this.Text = "Quản lý phòng";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmQuanLyPhong_Load);
             this.Click += new System.EventHandler(this.frmQuanLyPhong_Click);
             this.groupBox2.ResumeLayout(false);
@@ -464,8 +434,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.TextBox txtTimKiemThongTinPhong;
         private System.Windows.Forms.Label lblTimKiem;
         private System.Windows.Forms.Button btnTimKiemThongTinPhong;
-        private System.Windows.Forms.RadioButton rdoTHUONG;
-        private System.Windows.Forms.RadioButton rdoVIP;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtGiaPhongMoi;
         private System.Windows.Forms.Label label7;

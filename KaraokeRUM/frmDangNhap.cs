@@ -44,17 +44,19 @@ namespace KaraokeRUM
  
             frmLayLaiMatKhau frmLLMK = new frmLayLaiMatKhau();
             frmTrangChu frmNV = new frmTrangChu(maQL);
-            frmTrangChuQL frmQL = new frmTrangChuQL();
+            frmTrangChuQL frmQL = new frmTrangChuQL(maQL);
             if (qlTaiKhoan.KiemTraTaiKhoan(tk))
             {
                 
                 if (qlTaiKhoan.LayLoaiTaiKhoan(tk).Equals("LNV01"))
                 {
                     this.Hide();
+
+
+                  
+                    if (frmQL.ShowDialog() == DialogResult.Yes) 
+                        this.Close(); 
                     
-                    
-                    if (frmQL.ShowDialog() == DialogResult.Yes)
-                        this.Close();
                     else
                     {
                         this.Show();

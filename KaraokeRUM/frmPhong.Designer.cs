@@ -31,22 +31,12 @@ namespace KaraokeRUM
         {
             this.lvwDanhSachDP = new System.Windows.Forms.ListView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button28 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBOx = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radDatPhong = new System.Windows.Forms.RadioButton();
             this.txtGioDatPhong = new System.Windows.Forms.TextBox();
             this.radMoPhong = new System.Windows.Forms.RadioButton();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
@@ -61,24 +51,11 @@ namespace KaraokeRUM
             this.label2 = new System.Windows.Forms.Label();
             this.dTimeDatPhong = new System.Windows.Forms.DateTimePicker();
             this.btnMoPhong = new System.Windows.Forms.Button();
-            this.btnDongPhong = new System.Windows.Forms.Button();
+            this.btnHuyPhong = new System.Windows.Forms.Button();
             this.btnDatPhong = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnTimPhong = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.radTatCa = new System.Windows.Forms.RadioButton();
             this.radHienTai = new System.Windows.Forms.RadioButton();
             this.groupBox3.SuspendLayout();
@@ -90,174 +67,41 @@ namespace KaraokeRUM
             // 
             // lvwDanhSachDP
             // 
+            this.lvwDanhSachDP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvwDanhSachDP.BackColor = System.Drawing.Color.White;
+            this.lvwDanhSachDP.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvwDanhSachDP.HideSelection = false;
             this.lvwDanhSachDP.Location = new System.Drawing.Point(19, 48);
             this.lvwDanhSachDP.Name = "lvwDanhSachDP";
             this.lvwDanhSachDP.Size = new System.Drawing.Size(801, 734);
             this.lvwDanhSachDP.TabIndex = 0;
             this.lvwDanhSachDP.UseCompatibleStateImageBehavior = false;
+            this.lvwDanhSachDP.SelectedIndexChanged += new System.EventHandler(this.lvwDanhSachDP_SelectedIndexChanged_1);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button10);
-            this.groupBox3.Controls.Add(this.button28);
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.button9);
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.button8);
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button7);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.button12);
+            this.groupBox3.Controls.Add(this.flowLayoutPanel1);
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
-            this.groupBox3.Location = new System.Drawing.Point(12, 62);
+            this.groupBox3.Location = new System.Drawing.Point(12, 23);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(657, 150);
+            this.groupBox3.Size = new System.Drawing.Size(657, 170);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Phòng VIP";
             // 
-            // button10
+            // flowLayoutPanel1
             // 
-            this.button10.BackColor = System.Drawing.Color.Teal;
-            this.button10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button10.Location = new System.Drawing.Point(136, 86);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(68, 51);
-            this.button10.TabIndex = 0;
-            this.button10.Text = "V008";
-            this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // button28
-            // 
-            this.button28.BackColor = System.Drawing.Color.Teal;
-            this.button28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button28.Location = new System.Drawing.Point(562, 86);
-            this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(68, 51);
-            this.button28.TabIndex = 0;
-            this.button28.Text = "V012";
-            this.button28.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Teal;
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(136, 29);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(68, 51);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "V002";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Teal;
-            this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button9.Location = new System.Drawing.Point(460, 86);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(68, 51);
-            this.button9.TabIndex = 0;
-            this.button9.Text = "V011";
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.Teal;
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(460, 29);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(68, 51);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "V005";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Teal;
-            this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button8.Location = new System.Drawing.Point(354, 86);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(68, 51);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "V010";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Teal;
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(354, 29);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(68, 51);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "V004";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Teal;
-            this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(245, 86);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(68, 51);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "V009";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Teal;
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(245, 29);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(68, 51);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "V003";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Teal;
-            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button6.Location = new System.Drawing.Point(18, 86);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(68, 51);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "V007";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Teal;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(18, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(68, 51);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "V001";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.Color.Teal;
-            this.button12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button12.Location = new System.Drawing.Point(562, 29);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(68, 51);
-            this.button12.TabIndex = 0;
-            this.button12.Text = "V006";
-            this.button12.UseVisualStyleBackColor = false;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 29);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(645, 135);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // groupBOx
             // 
+            this.groupBOx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBOx.BackColor = System.Drawing.Color.White;
             this.groupBOx.Controls.Add(this.lvwDanhSachDP);
             this.groupBOx.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -297,6 +141,7 @@ namespace KaraokeRUM
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.radDatPhong);
             this.groupBox1.Controls.Add(this.txtGioDatPhong);
             this.groupBox1.Controls.Add(this.radMoPhong);
             this.groupBox1.Controls.Add(this.txtSoDienThoai);
@@ -317,6 +162,19 @@ namespace KaraokeRUM
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin phòng";
+            // 
+            // radDatPhong
+            // 
+            this.radDatPhong.AutoSize = true;
+            this.radDatPhong.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radDatPhong.Location = new System.Drawing.Point(291, 33);
+            this.radDatPhong.Name = "radDatPhong";
+            this.radDatPhong.Size = new System.Drawing.Size(133, 31);
+            this.radDatPhong.TabIndex = 27;
+            this.radDatPhong.TabStop = true;
+            this.radDatPhong.Text = "Đặt phòng";
+            this.radDatPhong.UseVisualStyleBackColor = true;
+            this.radDatPhong.CheckedChanged += new System.EventHandler(this.radMoPhong_CheckedChanged);
             // 
             // txtGioDatPhong
             // 
@@ -461,18 +319,20 @@ namespace KaraokeRUM
             this.btnMoPhong.TabIndex = 14;
             this.btnMoPhong.Text = "Mở Phòng";
             this.btnMoPhong.UseVisualStyleBackColor = false;
+            this.btnMoPhong.Click += new System.EventHandler(this.btnMoPhong_Click);
             // 
-            // btnDongPhong
+            // btnHuyPhong
             // 
-            this.btnDongPhong.BackColor = System.Drawing.Color.Teal;
-            this.btnDongPhong.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDongPhong.ForeColor = System.Drawing.Color.White;
-            this.btnDongPhong.Location = new System.Drawing.Point(531, 903);
-            this.btnDongPhong.Name = "btnDongPhong";
-            this.btnDongPhong.Size = new System.Drawing.Size(203, 52);
-            this.btnDongPhong.TabIndex = 14;
-            this.btnDongPhong.Text = "Đóng Phòng";
-            this.btnDongPhong.UseVisualStyleBackColor = false;
+            this.btnHuyPhong.BackColor = System.Drawing.Color.Teal;
+            this.btnHuyPhong.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuyPhong.ForeColor = System.Drawing.Color.White;
+            this.btnHuyPhong.Location = new System.Drawing.Point(531, 903);
+            this.btnHuyPhong.Name = "btnHuyPhong";
+            this.btnHuyPhong.Size = new System.Drawing.Size(203, 52);
+            this.btnHuyPhong.TabIndex = 14;
+            this.btnHuyPhong.Text = "Hủy Đặt Phòng";
+            this.btnHuyPhong.UseVisualStyleBackColor = false;
+            this.btnHuyPhong.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnDatPhong
             // 
@@ -485,12 +345,11 @@ namespace KaraokeRUM
             this.btnDatPhong.TabIndex = 14;
             this.btnDatPhong.Text = "Đặt Phòng";
             this.btnDatPhong.UseVisualStyleBackColor = false;
+            this.btnDatPhong.Click += new System.EventHandler(this.btnDatPhong_Click);
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.btnTimPhong);
-            this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Location = new System.Drawing.Point(47, 98);
@@ -498,181 +357,24 @@ namespace KaraokeRUM
             this.panel2.Size = new System.Drawing.Size(687, 419);
             this.panel2.TabIndex = 23;
             // 
-            // btnTimPhong
-            // 
-            this.btnTimPhong.BackColor = System.Drawing.Color.Teal;
-            this.btnTimPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimPhong.ForeColor = System.Drawing.Color.White;
-            this.btnTimPhong.Location = new System.Drawing.Point(500, 14);
-            this.btnTimPhong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTimPhong.Name = "btnTimPhong";
-            this.btnTimPhong.Size = new System.Drawing.Size(142, 47);
-            this.btnTimPhong.TabIndex = 3;
-            this.btnTimPhong.Text = "Tìm kiếm";
-            this.btnTimPhong.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(10, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(484, 30);
-            this.textBox1.TabIndex = 1;
-            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button11);
-            this.groupBox2.Controls.Add(this.button13);
-            this.groupBox2.Controls.Add(this.button15);
-            this.groupBox2.Controls.Add(this.button16);
-            this.groupBox2.Controls.Add(this.button17);
-            this.groupBox2.Controls.Add(this.button18);
-            this.groupBox2.Controls.Add(this.button19);
-            this.groupBox2.Controls.Add(this.button20);
-            this.groupBox2.Controls.Add(this.button21);
-            this.groupBox2.Controls.Add(this.button22);
-            this.groupBox2.Controls.Add(this.button23);
-            this.groupBox2.Controls.Add(this.button24);
+            this.groupBox2.Controls.Add(this.flowLayoutPanel2);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(10, 240);
+            this.groupBox2.Location = new System.Drawing.Point(12, 215);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(659, 155);
+            this.groupBox2.Size = new System.Drawing.Size(659, 183);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phòng THƯỜNG";
             // 
-            // button11
+            // flowLayoutPanel2
             // 
-            this.button11.BackColor = System.Drawing.Color.Teal;
-            this.button11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button11.Location = new System.Drawing.Point(138, 80);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(68, 51);
-            this.button11.TabIndex = 1;
-            this.button11.Text = "T008";
-            this.button11.UseVisualStyleBackColor = false;
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.Teal;
-            this.button13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button13.Location = new System.Drawing.Point(564, 80);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(68, 51);
-            this.button13.TabIndex = 2;
-            this.button13.Text = "T012";
-            this.button13.UseVisualStyleBackColor = false;
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.Color.Teal;
-            this.button15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button15.Location = new System.Drawing.Point(138, 23);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(68, 51);
-            this.button15.TabIndex = 3;
-            this.button15.Text = "T002";
-            this.button15.UseVisualStyleBackColor = false;
-            // 
-            // button16
-            // 
-            this.button16.BackColor = System.Drawing.Color.Teal;
-            this.button16.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button16.Location = new System.Drawing.Point(462, 80);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(68, 51);
-            this.button16.TabIndex = 4;
-            this.button16.Text = "T011";
-            this.button16.UseVisualStyleBackColor = false;
-            // 
-            // button17
-            // 
-            this.button17.BackColor = System.Drawing.Color.Teal;
-            this.button17.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button17.Location = new System.Drawing.Point(462, 23);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(68, 51);
-            this.button17.TabIndex = 5;
-            this.button17.Text = "T005";
-            this.button17.UseVisualStyleBackColor = false;
-            // 
-            // button18
-            // 
-            this.button18.BackColor = System.Drawing.Color.Teal;
-            this.button18.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button18.Location = new System.Drawing.Point(356, 80);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(68, 51);
-            this.button18.TabIndex = 6;
-            this.button18.Text = "T010";
-            this.button18.UseVisualStyleBackColor = false;
-            // 
-            // button19
-            // 
-            this.button19.BackColor = System.Drawing.Color.Teal;
-            this.button19.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button19.Location = new System.Drawing.Point(356, 23);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(68, 51);
-            this.button19.TabIndex = 7;
-            this.button19.Text = "T004";
-            this.button19.UseVisualStyleBackColor = false;
-            // 
-            // button20
-            // 
-            this.button20.BackColor = System.Drawing.Color.Teal;
-            this.button20.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button20.Location = new System.Drawing.Point(247, 80);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(68, 51);
-            this.button20.TabIndex = 8;
-            this.button20.Text = "T009";
-            this.button20.UseVisualStyleBackColor = false;
-            // 
-            // button21
-            // 
-            this.button21.BackColor = System.Drawing.Color.Teal;
-            this.button21.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button21.Location = new System.Drawing.Point(247, 23);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(68, 51);
-            this.button21.TabIndex = 9;
-            this.button21.Text = "T003";
-            this.button21.UseVisualStyleBackColor = false;
-            // 
-            // button22
-            // 
-            this.button22.BackColor = System.Drawing.Color.Teal;
-            this.button22.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button22.Location = new System.Drawing.Point(20, 80);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(68, 51);
-            this.button22.TabIndex = 10;
-            this.button22.Text = "T007";
-            this.button22.UseVisualStyleBackColor = false;
-            // 
-            // button23
-            // 
-            this.button23.BackColor = System.Drawing.Color.Teal;
-            this.button23.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button23.Location = new System.Drawing.Point(20, 23);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(68, 51);
-            this.button23.TabIndex = 11;
-            this.button23.Text = "T001";
-            this.button23.UseVisualStyleBackColor = false;
-            // 
-            // button24
-            // 
-            this.button24.BackColor = System.Drawing.Color.Teal;
-            this.button24.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button24.Location = new System.Drawing.Point(564, 23);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(68, 51);
-            this.button24.TabIndex = 12;
-            this.button24.Text = "T006";
-            this.button24.UseVisualStyleBackColor = false;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 29);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(645, 148);
+            this.flowLayoutPanel2.TabIndex = 0;
             // 
             // radTatCa
             // 
@@ -685,6 +387,7 @@ namespace KaraokeRUM
             this.radTatCa.TabStop = true;
             this.radTatCa.Text = "Tất cả";
             this.radTatCa.UseVisualStyleBackColor = true;
+            this.radTatCa.CheckedChanged += new System.EventHandler(this.radTatCa_CheckedChanged);
             // 
             // radHienTai
             // 
@@ -697,6 +400,7 @@ namespace KaraokeRUM
             this.radHienTai.TabStop = true;
             this.radHienTai.Text = "Hiện tại";
             this.radHienTai.UseVisualStyleBackColor = true;
+            this.radHienTai.CheckedChanged += new System.EventHandler(this.radTatCa_CheckedChanged);
             // 
             // frmPhong
             // 
@@ -711,20 +415,20 @@ namespace KaraokeRUM
             this.Controls.Add(this.groupBOx);
             this.Controls.Add(this.btnMoPhong);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnDongPhong);
+            this.Controls.Add(this.btnHuyPhong);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnDatPhong);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPhong";
             this.Text = "Form3";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPhong_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBOx.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -734,25 +438,13 @@ namespace KaraokeRUM
         #endregion
         private System.Windows.Forms.ListView lvwDanhSachDP;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button28;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.GroupBox groupBOx;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtSoDienThoai;
         private System.Windows.Forms.Button btnMoPhong;
-        private System.Windows.Forms.Button btnDongPhong;
+        private System.Windows.Forms.Button btnHuyPhong;
         private System.Windows.Forms.TextBox txtTenPhong;
         private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.Label label20;
@@ -765,24 +457,13 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dTimeDatPhong;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnTimPhong;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtGioDatPhong;
         private System.Windows.Forms.RadioButton radTatCa;
         private System.Windows.Forms.RadioButton radHienTai;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button24;
         private System.Windows.Forms.RadioButton radMoPhong;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.RadioButton radDatPhong;
     }
 }

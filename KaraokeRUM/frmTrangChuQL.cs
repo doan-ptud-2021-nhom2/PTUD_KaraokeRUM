@@ -13,9 +13,10 @@ namespace KaraokeRUM
     public partial class frmTrangChuQL : Form
     {
         protected static string MAQL;
-        public frmTrangChuQL()
+        public frmTrangChuQL(string maQL)
         {
             InitializeComponent();
+            MAQL = maQL;
         }
         private void OpenFormInPanel(object Formhijo)
         {
@@ -41,7 +42,7 @@ namespace KaraokeRUM
 
         private void btnQLNV_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel(new frmQuanLyNhanVien());
+            OpenFormInPanel(new frmQuanLyNhanVien(MAQL));
         }
 
         private void btnTrangChu_Click(object sender, EventArgs e)
