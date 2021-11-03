@@ -413,7 +413,96 @@ namespace KaraokeRUM
             else if (trangThaiPhong == "Đặt")
             {
                 //mở phòng từ đơn đặt phòng
-                KhachHang khc = kh.TimKhachHang(txtSoDienThoai.Text);
+                string hienTai = DateTime.Now.Date.ToString("dd-MM-yyyy");       
+                TimeSpan gioHienTai = DateTime.Now.TimeOfDay;               
+                dynamic dp;
+                dp = lvwDanhSachDP.SelectedItems[0].Tag;
+                int thoiGian = (int)(dp.GioDat - gioHienTai).TotalHours;
+                if (dp.NgayNhan.ToString("dd-MM-yyyy") == hienTai)
+                {                   
+                    if(thoiGian <= 1)
+                    {
+                        KhachHang khc = kh.TimKhachHang(txtSoDienThoai.Text);
+                        if (khc != null)
+                        {
+                            int dem = khc.SoLanDen;
+                            khc.SoLanDen = dem + 1;
+                            if (khc != null)
+                            {
+                                if (khc.SoLanDen >= 5 && khc.SoLanDen < 10)
+                                {
+                                    khc.MaLoaiKH = "LKH02";
+                                }
+                                else if (khc.SoLanDen >= 10)
+                                {
+                                    khc.MaLoaiKH = "LKH01";
+                                }
+                                else
+                                {
+                                    khc.MaLoaiKH = "LKH03";
+                                }
+                            }
+                            kh.SuaSoLanDen(khc);
+                            HoaDon hoaDon = TaoHoaDon();
+                            maHD = hoaDon.MaHD;
+                            hd.ThemHoaDon(hoaDon);
+                            Phong phong = p.TimMotPhongTheoTen(txtTenPhong.Text);
+                            maPhong = phong.MaPhong;
+                            phong.TrangThaiPhong = "Mở";
+                            p.SuaTrangThaiPhong(phong);
+                            DonDatPhong ddp = new DonDatPhong();
+                            ddp = clsddp.TimDDPhong(maPhong);
+                            clsddp.Xoa(ddp);
+                            TaiDuLieuLenListView(lvwDanhSachDP, hl.LayThongTinDonDatPhong());
+                        }
+                        else
+                        {
+                            KhachHang khm = new KhachHang();
+                            khm = TaoKhachHang();
+                            kh.ThemKhachHang(khm);
+                            int dem = khm.SoLanDen;
+                            khm.SoLanDen = dem + 1;
+                            if (khm.SoLanDen >= 5 && khm.SoLanDen < 10)
+                            {
+                                khm.MaLoaiKH = "LKH02";
+                            }
+                            else if (khm.SoLanDen >= 10)
+                            {
+                                khm.MaLoaiKH = "LKH01";
+                            }
+                            else
+                            {
+                                khm.MaLoaiKH = "LKH03";
+                            }
+                            kh.SuaSoLanDen(khm);
+                            HoaDon hoaDon = TaoHoaDon();
+                            maHD = hoaDon.MaHD;
+                            hd.ThemHoaDon(hoaDon);
+                            Phong phong = p.TimMotPhongTheoTen(txtTenPhong.Text);
+                            maPhong = phong.MaPhong;
+                            phong.TrangThaiPhong = "Mở";
+                            p.SuaTrangThaiPhong(phong);
+                            DonDatPhong ddp = new DonDatPhong();
+                            ddp = clsddp.TimDDPhong(maPhong);
+                            clsddp.Xoa(ddp);
+                            TaiDuLieuLenListView(lvwDanhSachDP, hl.LayThongTinDonDatPhong());
+                        }
+                        dSachPVip = p.LayDSPhongTheoLoai("LP001");
+                        flowLayoutPanel1.Controls.Clear();
+                        flowLayoutPanel2.Controls.Clear();
+                        TaoPhongVip(dSachPVip);
+                        dSachPThuong = p.LayDSPhongTheoLoai("LP002");
+                        TaoPhongThuong(dSachPThuong);
+                        //MessageBox.Show(maHD, maPhong);
+                        frmChiTietPhong frmCTP = new frmChiTietPhong(maHD);
+                        frmCTP.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Phòng chưa tới giờ đặt", "Thông báo", MessageBoxButtons.OK);
+                    }
+                }                
+                /*KhachHang khc = kh.TimKhachHang(txtSoDienThoai.Text);
                 if (khc != null)
                 {
                     int dem = khc.SoLanDen;
@@ -486,7 +575,7 @@ namespace KaraokeRUM
                 TaoPhongThuong(dSachPThuong);
                 //MessageBox.Show(maHD, maPhong);
                 frmChiTietPhong frmCTP = new frmChiTietPhong(maHD);
-                frmCTP.Show();
+                frmCTP.Show();*/
             }
             else if(trangThaiPhong =="Mở")
             {
@@ -499,7 +588,6 @@ namespace KaraokeRUM
                 frmChiTietPhong frmCTP = new frmChiTietPhong(maHD);
                 frmCTP.Show();
             }    
-            
         }
         /** Tạo hóa đơn mới mở phòng qua đặt phòng **/
         private HoaDon TaoHoaDon()
