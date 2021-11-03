@@ -264,7 +264,7 @@ namespace KaraokeRUM
             this.lblTenNV.Name = "lblTenNV";
             this.lblTenNV.Size = new System.Drawing.Size(380, 30);
             this.lblTenNV.TabIndex = 1;
-            this.lblTenNV.Text = "Nguyễn Đức Huy";
+            this.lblTenNV.Text = "Lê Anh Thảo";
             this.lblTenNV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblLoaiNV
@@ -276,7 +276,7 @@ namespace KaraokeRUM
             this.lblLoaiNV.Name = "lblLoaiNV";
             this.lblLoaiNV.Size = new System.Drawing.Size(377, 30);
             this.lblLoaiNV.TabIndex = 1;
-            this.lblLoaiNV.Text = "NV001";
+            this.lblLoaiNV.Text = "NV002";
             this.lblLoaiNV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timer1

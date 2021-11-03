@@ -64,7 +64,7 @@ namespace KaraokeRUM
             lvw.Columns.Add("TenTTB", 350);
             lvw.Columns.Add("So Luong Ton", 150);
             lvw.Columns.Add("Don Vi", 130);
-            lvw.Columns.Add("Gia", 150);
+            lvw.Columns.Add("Gia", 180);
             lvw.Columns.Add("MaQL", 130);
         }
         private void TaiDuLieuLenLWV(ListView lwv, IEnumerable<TrangThietBi> dSach)
@@ -107,9 +107,9 @@ namespace KaraokeRUM
             lvw.View = View.Details;
             lvw.GridLines = true;
             lvw.FullRowSelect = true;
-            lvw.Columns.Add("So Phong", 350);
-            lvw.Columns.Add("Ten TTB", 150);
-            lvw.Columns.Add("So luong", 130);
+            lvw.Columns.Add("So Phong", 100);
+            lvw.Columns.Add("Ten TTB", 555);
+            lvw.Columns.Add("So luong", 100);
         }
         private ListViewItem TaoItemPTTB(dynamic pTTB)
         {
