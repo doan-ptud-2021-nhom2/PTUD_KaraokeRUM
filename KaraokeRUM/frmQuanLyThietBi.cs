@@ -105,9 +105,9 @@ namespace KaraokeRUM
             lvw.View = View.Details;
             lvw.GridLines = true;
             lvw.FullRowSelect = true;
-            lvw.Columns.Add("So Phong", 350);
-            lvw.Columns.Add("Ten TTB", 150);
-            lvw.Columns.Add("So luong", 130);
+            lvw.Columns.Add("Số Phòng", 150);
+            lvw.Columns.Add("Tên Trang Thiết Bị", 350);
+            lvw.Columns.Add("Số Lượng", 100);
         }
         private ListViewItem TaoItemPTTB(dynamic pTTB)
         {
