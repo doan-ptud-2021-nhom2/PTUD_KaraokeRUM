@@ -69,6 +69,7 @@ namespace KaraokeRUM
             // 
             // txtCKC
             // 
+            this.txtCKC.Enabled = false;
             this.txtCKC.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCKC.Location = new System.Drawing.Point(179, 103);
             this.txtCKC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -135,11 +136,11 @@ namespace KaraokeRUM
             this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.lvwDSKH);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(676, 86);
+            this.groupBox2.Location = new System.Drawing.Point(671, 104);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(1357, 786);
+            this.groupBox2.Size = new System.Drawing.Size(1357, 663);
             this.groupBox2.TabIndex = 67;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách khách hàng";
@@ -154,7 +155,7 @@ namespace KaraokeRUM
             this.lvwDSKH.Location = new System.Drawing.Point(23, 40);
             this.lvwDSKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvwDSKH.Name = "lvwDSKH";
-            this.lvwDSKH.Size = new System.Drawing.Size(993, 727);
+            this.lvwDSKH.Size = new System.Drawing.Size(993, 603);
             this.lvwDSKH.TabIndex = 0;
             this.lvwDSKH.UseCompatibleStateImageBehavior = false;
             this.lvwDSKH.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvwDSKH_ColumnClick);

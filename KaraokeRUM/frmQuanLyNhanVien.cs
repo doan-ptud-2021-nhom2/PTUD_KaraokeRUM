@@ -218,7 +218,7 @@ namespace KaraokeRUM
             NhanVien nhanVien = ThemNhanVien();
             if (nV.TimNhanVien(nhanVien.CMND, nhanVien.SDT).Count() > 0 )
             {
-                MessageBox.Show("Lỗi! đã tồn tại nhân viên này rồi", "Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Lỗi! đã tồn tại nhân viên này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {

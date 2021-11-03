@@ -54,7 +54,7 @@ namespace KaraokeRUM
         void TaoTieuDeCot(ListView lsw)
         {
             lsw.Columns.Add("Mã khách", 100);
-            lsw.Columns.Add("Tên khách hàng", 150);
+            lsw.Columns.Add("Tên khách hàng", 220);
             lsw.Columns.Add("SDT", 130);
             lsw.Columns.Add("Số lần đến", 110);
             lsw.Columns.Add("Tên loại khách", 150);
@@ -111,11 +111,20 @@ namespace KaraokeRUM
 
         private void btnCapNhap_Click(object sender, EventArgs e)
         {
-            LoaiKhachHang suaLk = SuaChietKhauLoaiKhach();
-            lK.CapNhatChietKhau(suaLk);
-            IEnumerable<dynamic> layDS = kH.KhachHangVaLoaiKhachHang();
-            XoaCacTxtCbo();
-            TaiDuLieuLenListView(lvwDSKH, layDS);
+            
+            if (!string.IsNullOrEmpty(txtCKM.Text.Trim()))
+            {
+                LoaiKhachHang suaLk = SuaChietKhauLoaiKhach();
+                lK.CapNhatChietKhau(suaLk);
+                IEnumerable<dynamic> layDS = kH.KhachHangVaLoaiKhachHang();
+                XoaCacTxtCbo();
+                TaiDuLieuLenListView(lvwDSKH, layDS);
+            }    
+            else
+            {
+                MessageBox.Show("Lỗi! Không được để trống!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }    
+           
         }
         LoaiKhachHang SuaChietKhauLoaiKhach()
         {
