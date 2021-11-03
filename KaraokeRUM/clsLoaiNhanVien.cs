@@ -35,5 +35,17 @@ namespace KaraokeRUM
                                             select n;
             return lnv;
         }
+
+        /**
+         * Tìm loại nhân viên theo mã
+         * - Tuấn
+         */
+        public LoaiNhanVien TimLoaiNVTheoMa(string maLoai)
+        {
+            var loaiNV = from lnv in dt.LoaiNhanViens
+                         where lnv.MaLNV.Equals(maLoai)
+                         select lnv;
+            return loaiNV.FirstOrDefault();
+        }
     }
 }

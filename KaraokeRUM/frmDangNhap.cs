@@ -17,54 +17,56 @@ namespace KaraokeRUM
          * maQL: Lấy mã từ username để các form khác sử dụng.
          * dem: dùng để đếm số lần đăng nhập sai, sai 3 lần thì gợi ý lấy lại mật khẩu.
          */
-        private TaiKhoan tk;
-        public static string maQL;
-        private clsTaiKhoan qlTaiKhoan;
-        private int dem = 0;
+        public static string MAQL;
+        private clsTaiKhoan TAIKHOAN;
+        private clsNhanVien NHANVIEN;
+        private int DEM = 0;
 
         public frmDangNhap()
         {
             InitializeComponent();
-            qlTaiKhoan = new clsTaiKhoan();
         }
 
+        private void frmDangNhap_Load(object sender, EventArgs e)
+        {
+            TAIKHOAN = new clsTaiKhoan();
+            NHANVIEN = new clsNhanVien();
+        }
 
         /**
          * Sự kiện sử lý đăng nhập
          */
         private void btnDN_Click(object sender, EventArgs e)
         {
-            maQL = txtUsername.Text;
-            dem++;
-            tk = new TaiKhoan()
+            TaiKhoan taiKhoan;
+            MAQL = txtUsername.Text;
+            DEM++;
+            taiKhoan = new TaiKhoan()
             {
                 UserName = txtUsername.Text,
                 PassWord = txtPassword.Text
             };
  
             frmLayLaiMatKhau frmLLMK = new frmLayLaiMatKhau();
-            frmTrangChu frmNV = new frmTrangChu(maQL);
-            frmTrangChuQL frmQL = new frmTrangChuQL(maQL);
-            if (qlTaiKhoan.KiemTraTaiKhoan(tk))
+            frmTrangChu frmNV = new frmTrangChu(MAQL);
+            frmTrangChuQL frmQL = new frmTrangChuQL(MAQL);
+            if (TAIKHOAN.KiemTraTaiKhoan(taiKhoan))
             {
                 
-                if (qlTaiKhoan.LayLoaiTaiKhoan(tk).Equals("LNV01"))
+                if (TAIKHOAN.LayLoaiTaiKhoan(taiKhoan).Equals("LNV01") && NHANVIEN.TimNhanVienTheoMa(MAQL).TrangThai.Equals("Đang làm"))
                 {
                     this.Hide();
 
-
-                  
                     if (frmQL.ShowDialog() == DialogResult.Yes) 
                         this.Close(); 
-                    
                     else
                     {
                         this.Show();
-                        dem = 0;
+                        DEM = 0;
                     }    
                 }
 
-                else if(qlTaiKhoan.LayLoaiTaiKhoan(tk).Equals("LNV02"))
+                else if(TAIKHOAN.LayLoaiTaiKhoan(taiKhoan).Equals("LNV02") && NHANVIEN.TimNhanVienTheoMa(MAQL).TrangThai.Equals("Đang làm"))
                 {
                     this.Hide();
                     
@@ -73,7 +75,7 @@ namespace KaraokeRUM
                     else
                     {
                         this.Show();
-                        dem = 0;
+                        DEM = 0;
                     }
                 }
 
@@ -96,7 +98,7 @@ namespace KaraokeRUM
             }
 
             //Xử lý đăng nhập sai quá 3 lần
-            if(dem == 3)
+            if(DEM == 3)
             {
                 DialogResult luaChon = MessageBox.Show("Số lần đăng nhập đã hết. Bạn có muốn lấy lại mật khẩu?"
                     , "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -148,5 +150,7 @@ namespace KaraokeRUM
                 this.Close();
             }
         }
+
+
     }
 }

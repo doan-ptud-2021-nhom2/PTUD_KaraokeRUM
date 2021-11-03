@@ -13,11 +13,15 @@ namespace KaraokeRUM
     public partial class frmTrangChuQL : Form
     {
         protected static string MAQL;
+        private clsNhanVien NHANVIEN;
+        private clsLoaiNhanVien LOAINV;
+
         public frmTrangChuQL(string maQL)
         {
             InitializeComponent();
             MAQL = maQL;
         }
+
         private void OpenFormInPanel(object Formhijo)
         {
             if (this.panel_workarea.Controls.Count > 0)
@@ -35,9 +39,21 @@ namespace KaraokeRUM
 
         private void frmTrangChuCQ_Load(object sender, EventArgs e)
         {
+            //Khai báo các biến
+            NHANVIEN = new clsNhanVien();
+            LOAINV = new clsLoaiNhanVien();
+
+            //Tự động mở form Home
             OpenFormInPanel(new frmHome());
-            MAQL = frmDangNhap.maQL;
-            Console.WriteLine(MAQL);
+
+            //Lấy thông tin nhân viên.
+            NhanVien quanLy = NHANVIEN.TimNhanVienTheoMa(MAQL);
+            string tenNhanVien = quanLy.TenNV;
+            string chucVu = LOAINV.TimLoaiNVTheoMa(quanLy.MaLNV).TenLNV;
+
+            //Cập nhật thông tin vào label
+            lblChucVu.Text = chucVu;
+            lblTenQL.Text = tenNhanVien;
         }
 
         private void btnQLNV_Click(object sender, EventArgs e)
@@ -48,36 +64,6 @@ namespace KaraokeRUM
         private void btnTrangChu_Click(object sender, EventArgs e)
         {
             OpenFormInPanel(new frmHome());
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnQLKH_Click(object sender, EventArgs e)
