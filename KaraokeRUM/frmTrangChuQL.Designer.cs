@@ -68,7 +68,7 @@ namespace KaraokeRUM
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(380, 30);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Lê Tuấn";
+            this.label3.Text = "Nguyễn Đức Huy";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
@@ -81,7 +81,7 @@ namespace KaraokeRUM
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(380, 30);
             this.label2.TabIndex = 1;
-            this.label2.Text = "NV002";
+            this.label2.Text = "NV001";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
