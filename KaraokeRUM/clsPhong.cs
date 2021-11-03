@@ -29,10 +29,12 @@ namespace KaraokeRUM
         }
         /**
         * Lấy tất cả các phòng
+        * fix load lên ListView (Trạng thái phòng đóng)
         */
         public IEnumerable<Phong> LayTatCaPhong()
         {
             IEnumerable<Phong> q = from n in dt.Phongs
+                                   where n.TrangThaiPhong.Equals("Đóng")
                                    select n;
             return q;
         }
