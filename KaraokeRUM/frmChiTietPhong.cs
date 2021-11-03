@@ -34,7 +34,6 @@ namespace KaraokeRUM
         private clsLoaiPhong LoaiPhong;
         private IEnumerable<dynamic> dsMatHang;
         private IEnumerable<MatHang> dsTenMatHang;
-        private string tenPhong;
         private string maHoaDon;
 
         /**
@@ -68,7 +67,7 @@ namespace KaraokeRUM
             txtLoaiPhong.Text = LoaiPhong.LayLoaiPhong(phong.MaLoaiPhong).TenLoaiPhong;
 
             //Lấy tên phòng
-            lblTenPhong.Text = "Phòng - " + tenPhong;
+            lblTenPhong.Text = "Phòng - " + Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TenPhong;
 
             //Tải tên mặt hàng lên combobox.
             TaiMatHangLenComboBox();
