@@ -171,9 +171,6 @@
     <Compile Include="clsListViewItemComparer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="qlKaraoke.cs">
-      <DependentUpon>qlKaraoke.dbml</DependentUpon>
-    </Compile>
     <Compile Include="qlKaraoke.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
