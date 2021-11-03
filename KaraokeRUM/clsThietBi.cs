@@ -91,6 +91,7 @@ namespace KaraokeRUM
                 temp.First().SoLuongTon = tb.SoLuongTon;
                 temp.First().DonVi = tb.DonVi;
                 temp.First().Gia = tb.Gia;
+                temp.First().TrangThai = tb.TrangThai;
                 dt.SubmitChanges();
                 dt.Transaction.Commit();
                 return 1;
@@ -102,6 +103,27 @@ namespace KaraokeRUM
 
             }
         }
+        /*public int SuaTrangThaiThietBi(TrangThietBi tb)
+        {
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = myTran;
+                IQueryable<TrangThietBi> temp = (from n in dt.TrangThietBis
+                                                 where n.MaTTB == tb.MaTTB
+                                                 select n);
+                temp.First().TrangThai = tb.TrangThai;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Loi không sửa được!" + ex.Message);
+
+            }
+        }*/
         /**
         * tìm trang thiết bị
         */

@@ -223,7 +223,7 @@ namespace KaraokeRUM
             this.btnTaiLai.Name = "btnTaiLai";
             this.btnTaiLai.Size = new System.Drawing.Size(107, 45);
             this.btnTaiLai.TabIndex = 28;
-            this.btnTaiLai.Text = "Tải lại";
+            this.btnTaiLai.Text = "Làm mới";
             this.btnTaiLai.UseVisualStyleBackColor = false;
             this.btnTaiLai.Click += new System.EventHandler(this.btnTaiLai_Click);
             // 
@@ -447,7 +447,7 @@ namespace KaraokeRUM
             this.btnTaiLaiTP.Name = "btnTaiLaiTP";
             this.btnTaiLaiTP.Size = new System.Drawing.Size(107, 45);
             this.btnTaiLaiTP.TabIndex = 28;
-            this.btnTaiLaiTP.Text = "Tải lại";
+            this.btnTaiLaiTP.Text = "Làm mới";
             this.btnTaiLaiTP.UseVisualStyleBackColor = false;
             this.btnTaiLaiTP.Click += new System.EventHandler(this.btnTaiLaiTP_Click);
             // 

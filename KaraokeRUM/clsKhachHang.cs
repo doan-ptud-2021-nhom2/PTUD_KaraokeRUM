@@ -45,7 +45,7 @@ namespace KaraokeRUM
         }
         public KhachHang TimKhachHang(string sdt)
         {
-            KhachHang k = (from n in dt.KhachHangs where n.SDT == sdt select n).First();
+            KhachHang k = (from n in dt.KhachHangs where n.SDT == sdt select n).FirstOrDefault();
             return k;
         }
         /**

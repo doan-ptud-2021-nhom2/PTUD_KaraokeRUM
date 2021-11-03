@@ -34,11 +34,11 @@ namespace KaraokeRUM
             TaoListView(lwvThietBi);
             thietBi = new clsThietBi();
             danhSachThietBi = thietBi.LayToanBoTrangThietBis();
+            TaiDuLieuLenLWV(lwvThietBi, danhSachThietBi);
             foreach (TrangThietBi i in danhSachThietBi)
             {
                 cboTenTTB.Items.Add(i.TenTTB);
-            }
-            TaiDuLieuLenLWV(lwvThietBi, danhSachThietBi);
+            }           
             TaoListView2(lwvThietBiTrongPhong);
             phongTTB = new clsPhongTrangThietBi();
             phong = new clsPhong();
@@ -66,6 +66,7 @@ namespace KaraokeRUM
             lvw.Columns.Add("Don Vi", 130);
             lvw.Columns.Add("Gia", 180);
             lvw.Columns.Add("MaQL", 130);
+            lvw.Columns.Add("Trạng Thái", 130);
         }
         private void TaiDuLieuLenLWV(ListView lwv, IEnumerable<TrangThietBi> dSach)
         {
@@ -96,6 +97,7 @@ namespace KaraokeRUM
             lvwItem.SubItems.Add(tb.DonVi);
             lvwItem.SubItems.Add(tb.Gia.ToString("#,###,000 VNĐ"));
             lvwItem.SubItems.Add(tb.MaQL);
+            lvwItem.SubItems.Add(tb.TrangThai);
             lvwItem.Tag = tb;
             lvwItem.ImageIndex = 0;
             return lvwItem;
@@ -155,8 +157,8 @@ namespace KaraokeRUM
         }
         private void DuLieuLenTextBox2(dynamic ptb)
         {
-            cboSoPhong.Text = ptb.TenPhong;
-            cboTenTTB.Text = ptb.TenTTB;
+            cboSoPhong.Text = phong.TimMotPhongTheoMa(ptb.MaPhong).TenPhong;
+            cboTenTTB.Text = thietBi.TimTTBTheoMa(ptb.MaTTB).TenTTB;
             txtSoLuongTP.Text = ptb.SoLuong.ToString();
         }
         private void lwvThietBiTrongPhong_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,11 +209,8 @@ namespace KaraokeRUM
         #endregion
         private void btnTaiLai_Click(object sender, EventArgs e)
         {
-            IEnumerable<TrangThietBi> danhSach;
-            danhSach = thietBi.LayToanBoTrangThietBis();
-            lwvThietBi.Clear();
-            TaoListView(lwvThietBi);
-            TaiDuLieuLenLWV21(lwvThietBi, danhSachThietBi);
+            danhSachThietBi = thietBi.LayToanBoTrangThietBis();
+            TaiDuLieuLenLWV(lwvThietBi, danhSachThietBi);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -228,7 +227,14 @@ namespace KaraokeRUM
                     {
                         index = lwvThietBi.SelectedIndices[i];
                         ttb = (TrangThietBi)lwvThietBi.Items[index].Tag;
-                        thietBi.Xoa(ttb);
+                        if(ttb.SoLuongTon == 0)
+                        {
+                            thietBi.Xoa(ttb);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thiết bị đang sử dụng không thể xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        }    
                     }
                     TaiDuLieuLenLWV(lwvThietBi, danhSachThietBi);
                     btnXoa.Enabled = false;
@@ -239,7 +245,15 @@ namespace KaraokeRUM
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            TrangThietBi tb = taoTBSua();
+            TrangThietBi tb = taoTBSua();                          
+            if (tb.SoLuongTon == 0)
+            {
+                tb.TrangThai = "Hết";
+            }
+            else
+            {
+                tb.TrangThai = "DSD";
+            }
             thietBi.SuaTrangThietBi(tb);
             TaiDuLieuLenLWV(lwvThietBi, danhSachThietBi);
         }
@@ -267,6 +281,8 @@ namespace KaraokeRUM
         {
             Phong_TrangThietBi pTTB = TaoPTTB();
             phongTTB.Them(pTTB);
+            danhSachThietBi = thietBi.LayToanBoTrangThietBis();
+            TaiDuLieuLenLWV(lwvThietBi, danhSachThietBi);
             TaiDuLieuLenLWV2(lwvThietBiTrongPhong, phongTTB.TraDuLieu());
         }
 
@@ -275,6 +291,8 @@ namespace KaraokeRUM
             Phong_TrangThietBi pTTB = TaoPTTB();
             phongTTB.SuaTrangThietBi(pTTB);
             TaiDuLieuLenLWV2(lwvThietBiTrongPhong, phongTTB.TraDuLieu());
+            danhSachThietBi = thietBi.LayToanBoTrangThietBis();
+            TaiDuLieuLenLWV(lwvThietBi, danhSachThietBi);
             btnSuaTP.Enabled = false;
             btnXoaTP.Enabled = false;
         }
@@ -294,7 +312,8 @@ namespace KaraokeRUM
                     phongTTB.Xoa(ttb);
                 }
                 TaiDuLieuLenLWV2(lwvThietBiTrongPhong, phongTTB.TraDuLieu());
-                TaiDuLieuLenLWV(lwvThietBi, thietBi.LayToanBoTrangThietBis());
+                danhSachThietBi = thietBi.LayToanBoTrangThietBis();
+                TaiDuLieuLenLWV(lwvThietBi, danhSachThietBi);
             }
             btnSuaTP.Enabled = false;
             btnXoaTP.Enabled = false;
@@ -302,7 +321,6 @@ namespace KaraokeRUM
 
         private void btnTaiLaiTP_Click(object sender, EventArgs e)
         {
-            lwvThietBiTrongPhong.Clear();
             dSachPhongTTB = phongTTB.TraDuLieu();
             TaiDuLieuLenLWV2(lwvThietBiTrongPhong, dSachPhongTTB);
         }
