@@ -60,12 +60,11 @@ namespace KaraokeRUM
             lvw.View = View.Details;
             lvw.GridLines = true;
             lvw.FullRowSelect = true;
-            lvw.Columns.Add("MaTTB", 130);
-            lvw.Columns.Add("TenTTB", 350);
-            lvw.Columns.Add("So Luong Ton", 150);
-            lvw.Columns.Add("Don Vi", 130);
-            lvw.Columns.Add("Gia", 180);
-            lvw.Columns.Add("MaQL", 130);
+            lvw.Columns.Add("Mã TTB", 130);
+            lvw.Columns.Add("Tên Trang Thiết Bị", 350);
+            lvw.Columns.Add("Số Lượng Tồn", 150);
+            lvw.Columns.Add("Đơn Vị", 130);
+            lvw.Columns.Add("Giá", 200);
         }
         private void TaiDuLieuLenLWV(ListView lwv, IEnumerable<TrangThietBi> dSach)
         {
@@ -95,7 +94,6 @@ namespace KaraokeRUM
             lvwItem.SubItems.Add(tb.SoLuongTon.ToString());
             lvwItem.SubItems.Add(tb.DonVi);
             lvwItem.SubItems.Add(tb.Gia.ToString("#,###,000 VNĐ"));
-            lvwItem.SubItems.Add(tb.MaQL);
             lvwItem.Tag = tb;
             lvwItem.ImageIndex = 0;
             return lvwItem;
@@ -107,9 +105,9 @@ namespace KaraokeRUM
             lvw.View = View.Details;
             lvw.GridLines = true;
             lvw.FullRowSelect = true;
-            lvw.Columns.Add("So Phong", 100);
-            lvw.Columns.Add("Ten TTB", 555);
-            lvw.Columns.Add("So luong", 100);
+            lvw.Columns.Add("So Phong", 350);
+            lvw.Columns.Add("Ten TTB", 150);
+            lvw.Columns.Add("So luong", 130);
         }
         private ListViewItem TaoItemPTTB(dynamic pTTB)
         {
@@ -282,6 +280,7 @@ namespace KaraokeRUM
         {
             DialogResult yn;
             Phong_TrangThietBi ttb;
+            TrangThietBi _ttb;
             string maTTB, maPhong;
             if (lwvThietBiTrongPhong.SelectedItems.Count > 0)
             {

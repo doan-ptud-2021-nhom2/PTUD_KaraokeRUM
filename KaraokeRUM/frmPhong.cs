@@ -35,7 +35,8 @@ namespace KaraokeRUM
             p = new clsPhong();
             hl = new clsHonLoan();
             hd = new clsHoaDon();
-            radDatPhong.Checked = true;
+
+            radMoPhong.Checked = true;
             MacDinhThoiGian();
             flowLayoutPanel1.Controls.Clear();
             flowLayoutPanel2.Controls.Clear();
@@ -195,12 +196,12 @@ namespace KaraokeRUM
         /** Tạo listView **/
         private void TaoListView(ListView lvwDSDatPhong)
         {
-            lvwDSDatPhong.Columns.Add("Tên Phòng", 100);
-            lvwDSDatPhong.Columns.Add("Tên khách hàng", 150);
-            lvwDSDatPhong.Columns.Add("Số điện thoại", 120);
+            lvwDSDatPhong.Columns.Add("Tên Phòng", 120);
+            lvwDSDatPhong.Columns.Add("Tên khách hàng", 200);
+            lvwDSDatPhong.Columns.Add("Số điện thoại", 150);
             lvwDSDatPhong.Columns.Add("Ngày đặt phòng", 150);
             lvwDSDatPhong.Columns.Add("Ngày nhận phòng", 150);
-            lvwDSDatPhong.Columns.Add("Giờ đặt phòng", 120);
+            lvwDSDatPhong.Columns.Add("Giờ đặt phòng", 150);
             lvwDSDatPhong.View = View.Details;
             lvwDSDatPhong.GridLines = true;
             lvwDSDatPhong.FullRowSelect = true;
@@ -672,7 +673,8 @@ namespace KaraokeRUM
         }
         private void XuLyDatPhong()
         {
-            string ngay = "2021-11-03";
+            //string ngay = "2021-11-03";
+            string ngay = DateTime.Now.ToString("yyyy-MM-dd");
             DateTime dt = DateTime.Now;
             TimeSpan tp = dt.TimeOfDay;
             IEnumerable<DonDatPhong> dpTheoNgay = clsddp.TimDonDatPhongTheoNgay(ngay);
