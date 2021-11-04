@@ -196,6 +196,8 @@ namespace KaraokeRUM
 
             dsMatHang = HoaDon.LayChiTietHoaDon(maHoaDon);
             TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang);
+            cboMatHang.Text = "";
+            txtSoLuong.Text = "";
         }
 
         /** 
@@ -244,6 +246,8 @@ namespace KaraokeRUM
 
             dsMatHang = HoaDon.LayChiTietHoaHoaTaiLenListView(maHoaDon);
             TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang);
+            cboMatHang.Text = "";
+            txtSoLuong.Text = "";
         }
 
         /** 
@@ -265,7 +269,9 @@ namespace KaraokeRUM
                     cthd.XoaChiTietHoaDon(chiTietHoaDon);
 
                     dsMatHang = HoaDon.LayChiTietHoaDon(maHoaDon);
-                    TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang);
+                    TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang); 
+                    cboMatHang.Text = "";
+                    txtSoLuong.Text = "";
                 }
             }
         }
