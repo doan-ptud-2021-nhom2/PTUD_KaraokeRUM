@@ -31,10 +31,10 @@ namespace KaraokeRUM
             TaoTieuDeCotDanhSachDen(lstvDanhSachDen);
             KH = new clsKhachHang();
             LK = new clsLoaiKhach();
-            IEnumerable<dynamic> dsKH = KH.KhachHangVaLoaiKhachHang();
+            IEnumerable<dynamic> dsKH = KH.LayKhachHangVaLoaiKhachHangTheoLoai("Vip");
             IEnumerable<dynamic> dsKHD = KH.KhachHangVaLoaiKhachHangDanhSachDen();
             TaiDuLieuLenListView(lstvDSKH, dsKH);
-            TaiDuLieuLenListView(lstvDanhSachDen, dsKHD);
+            TaiDuLieuLenListViewDanhSachDen(lstvDanhSachDen, dsKHD);
             txtTimKiemKhachHang.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtTimKiemKhachHang.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
@@ -86,6 +86,20 @@ namespace KaraokeRUM
             foreach (dynamic ds in dsKhach)
             {
                 itemKhach = TaoItem(ds);
+                lstv.Items.Add(itemKhach);
+            }
+
+        }
+        /** 
+         * Load dữ liệu lên ListView
+        */
+        void TaiDuLieuLenListViewDanhSachDen(ListView lstv, IEnumerable<dynamic> dsKhach)
+        {
+            lstv.Items.Clear();
+            ListViewItem itemKhach;
+            foreach (dynamic ds in dsKhach)
+            {
+                itemKhach = TaoItemDanhSachDen(ds);
                 lstv.Items.Add(itemKhach);
             }
 
@@ -170,8 +184,8 @@ namespace KaraokeRUM
         */
         private void cboLocTheoLoai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selected = this.cboLocTheoLoai.GetItemText(this.cboLocTheoLoai.SelectedItem);
-            if (selected.Equals("All") == true)
+            string selected = this.cboLocTheoLoai.Text;
+            if (selected.Equals("Tất cả") == true)
             {
                // no rename may cái instance ak, k phai rename theo kieu notepad dau, k an loz dau               lvwDSKH.Items.Clear();
                 TaoTieuDeCot(lstvDSKH);

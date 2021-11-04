@@ -77,7 +77,7 @@ namespace KaraokeRUM
             var kh = from n in dt.KhachHangs
                      join x in dt.LoaiKhachHangs
                      on n.MaLoaiKH equals x.MaLoaiKH
-                     where !n.GhiChu.ToLower().Contains("cảnh báo") || !n.GhiChu.ToLower().Contains("cấm")
+                     where n.GhiChu == null
                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
             return kh;
         }
@@ -88,18 +88,26 @@ namespace KaraokeRUM
         */
         public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoai(string loaiKH)
         {
-            var kh = from n in dt.KhachHangs
-                     join x in dt.LoaiKhachHangs
-                     on n.MaLoaiKH equals x.MaLoaiKH
-                     where x.TenLoaiKH.Equals(loaiKH) && !n.GhiChu.ToLower().Contains("cảnh báo") || !n.GhiChu.ToLower().Contains("cấm")
+            var kh = from x in dt.LoaiKhachHangs
+                     join n in dt.KhachHangs
+                     on x.MaLoaiKH equals n.MaLoaiKH
+                     where x.TenLoaiKH.Trim().Equals(loaiKH.Trim())
                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
             return kh;
 
         }
+
+        public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoai(string loaiKH)
+        {
+            var kh = from n in dt.LoaiKhachHangs
+                     join x in dt.KhachHangs
+                     on n.MaLoaiKH equals x.MaLoaiKH
+                     where n.t
+        }
         public IEnumerable<dynamic> KhachHangVaLoaiKhachHangDanhSachDen()
         {
             var kh = from n in dt.KhachHangs
-                     where n.GhiChu.ToLower().Contains("cảnh báo") || n.GhiChu.ToLower().Contains("cấm")
+                     where n.GhiChu != null
                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen,n.GhiChu};
             return kh;
         }
