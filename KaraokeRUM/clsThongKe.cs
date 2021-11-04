@@ -16,6 +16,9 @@ namespace KaraokeRUM
         }
 
         #region Lấy số liệu để vẽ biểu đồ
+        /**
+         * Các phương thức lấy số liệu thống kê mặt hàng
+         */
         public IEnumerable<dynamic> LaySoLieuThongKeHomNay(string homNay)
         {
             var sltk = from cthd in dt.ChiTietHoaDons
@@ -65,6 +68,53 @@ namespace KaraokeRUM
             return sltk;
         }
 
+        /**
+         * Các phương thức lấy số liệu thống kê phòng
+         */
+        public IEnumerable<dynamic> LaySoLieuThongKePhongHomNay(string homNay)
+        {
+            var sltkp = from hd in dt.HoaDons
+                        join p in dt.Phongs on hd.MaPhong equals p.MaPhong
+                        where hd.NgayLap.ToString().Equals(homNay) && !hd.TongTien.Equals(null)
+                        group hd.MaPhong by p.TenPhong into g
+                        select new
+                        {
+                            TenPhong = g.Key,
+                            SoLanSD = g.Count()
+                        };
+            return sltkp;
+        }
+
+        public IEnumerable<dynamic> LaySoLieuThongKePhongTheoThang(string thang, string nam)
+        {
+            IEnumerable<dynamic> sltkp;
+            if (thang.Equals("") && !nam.Equals(""))
+            {
+                sltkp = from hd in dt.HoaDons
+                        join p in dt.Phongs on hd.MaPhong equals p.MaPhong
+                        where hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
+                        group hd.MaPhong by p.TenPhong into g
+                        select new
+                        {
+                           TenPhong = g.Key,
+                           SoLanSD = g.Count()
+                        };
+            }
+            else
+            {
+                sltkp = from hd in dt.HoaDons
+                        join p in dt.Phongs on hd.MaPhong equals p.MaPhong
+                        where hd.NgayLap.Month.Equals(thang) && hd.NgayLap.Year.Equals(nam) && !hd.TongTien.Equals(null)
+                        group hd.MaPhong by p.TenPhong into g
+                        select new
+                        {
+                            TenPhong = g.Key,
+                            SoLanSD = g.Count()
+                        };
+            }
+
+            return sltkp;
+        }
         #endregion
         public IEnumerable<dynamic> LayDanhSachHoaDonHomNay(string homNay)
         {
