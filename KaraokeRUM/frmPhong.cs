@@ -36,6 +36,10 @@ namespace KaraokeRUM
             HONLOAN = new clsHonLoan();
             HOADON = new clsHoaDon();
 
+            dtmGioDatPhong.ShowUpDown = true;
+            dtmGioDatPhong.Format = DateTimePickerFormat.Custom;
+            dtmGioDatPhong.CustomFormat = "HH:mm:ss";
+
             MacDinhThoiGian();
             rdoMoPhong.Checked = true;            
             fpnlPhongVip.Controls.Clear();
@@ -210,7 +214,7 @@ namespace KaraokeRUM
         private void DuLieuLenTextBox(dynamic dp)
         {
             txtHoTen.Text = dp.TenKhach;
-            txtGioDatPhong.Text = dp.GioDat.ToString();
+            dtmGioDatPhong.Text = dp.GioDat.ToString();
             txtSoDienThoai.Text = dp.SDT;
             txtTenPhong.Text = dp.TenPhong;
             dTimeDatPhong.Value = dp.NgayDat;
@@ -220,7 +224,7 @@ namespace KaraokeRUM
         #region Đặt phòng
         private void XoaDuLieuTextBox()
         {
-            txtGioDatPhong.Text = "";
+            dtmGioDatPhong.Text = "";
             txtHoTen.Text = "";
             txtSoDienThoai.Text = "";
             txtTenPhong.Text = "";
@@ -235,10 +239,11 @@ namespace KaraokeRUM
             {
                 MessageBox.Show("Ngày nhận/Ngày đặt không phù hợp", "Thông báo", MessageBoxButtons.OK);
             }
-            else if(string.IsNullOrEmpty(txtGioDatPhong.Text)|| string.IsNullOrEmpty(txtHoTen.Text)|| string.IsNullOrEmpty(txtSoDienThoai.Text)|| string.IsNullOrEmpty(txtTenPhong.Text))
+            else if(/*string.IsNullOrEmpty(txtGioDatPhong.Text)||*/ string.IsNullOrEmpty(txtHoTen.Text)|| string.IsNullOrEmpty(txtSoDienThoai.Text)|| string.IsNullOrEmpty(txtTenPhong.Text))
             {
                 MessageBox.Show("Yêu cầu nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
             }    
+
             else
             {
                 KhachHang khc = KHACHHANG.TimKhachHang(txtSoDienThoai.Text);
@@ -260,7 +265,56 @@ namespace KaraokeRUM
 
                 if(trangThaiPhong == "Mở")
                 {
-                    MessageBox.Show("Phòng đã mở, Vui lòng chọn phòng khác", "Thông báo");
+                    string maPhong = PHONG.TimMaPhong(txtTenPhong.Text).MaPhong;
+                    DateTime ngay = DateTime.Parse(dTimeNgayNhan.Value.ToString("yyyy-MM-dd"));
+                    TimeSpan gio = TimeSpan.Parse(dtmGioDatPhong.Text);
+                    HoaDon hoaDon = HOADON.TimHoaDonTheoMaPhong(maPhong);
+                    double xetGio = (double)(hoaDon.GioVao - gio).TotalHours;
+                    if((hoaDon.NgayLap).Equals(ngay))
+                    {
+                        if (xetGio > 0 || xetGio == 0 || xetGio < 3)
+                        {
+                            MessageBox.Show("Lưu ý: Chỉ nhận đặt phòng sau 3 tiếng tính từ lúc phòng bắt đầu sử dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            DonDatPhong ddp = new DonDatPhong();
+                            ddp = TaoDonDatPhong(maKH);
+                            DONDATPHONG.ThemDonDatPhong(ddp);
+                            fpnlPhongVip.Controls.Clear();
+                            fpnlPhongThuong.Controls.Clear();
+                            DANHSACHPHONGVIP = PHONG.LayDSPhongTheoLoai("LP001");
+                            TaoPhongVip(DANHSACHPHONGVIP);
+                            DANHSACHPHONGTHUONG = PHONG.LayDSPhongTheoLoai("LP002");
+                            TaoPhongThuong(DANHSACHPHONGTHUONG);
+                            IEnumerable<dynamic> danhsDP;
+                            danhsDP = HONLOAN.LayThongTinDonDatPhong();
+                            TaiDuLieuLenListView(lstvDanhSachDP, danhsDP);
+                        }
+                    }    
+                    else
+                    {
+                        if (!KiemTraNgayGioDat())
+                        {
+                            MessageBox.Show("Phòng đã được đặt trong khoảng thời gian này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            DonDatPhong ddp = new DonDatPhong();
+                            ddp = TaoDonDatPhong(maKH);
+                            DONDATPHONG.ThemDonDatPhong(ddp);
+                            fpnlPhongVip.Controls.Clear();
+                            fpnlPhongThuong.Controls.Clear();
+                            DANHSACHPHONGVIP = PHONG.LayDSPhongTheoLoai("LP001");
+                            TaoPhongVip(DANHSACHPHONGVIP);
+                            DANHSACHPHONGTHUONG = PHONG.LayDSPhongTheoLoai("LP002");
+                            TaoPhongThuong(DANHSACHPHONGTHUONG);
+                            IEnumerable<dynamic> danhsDP;
+                            danhsDP = HONLOAN.LayThongTinDonDatPhong();
+                            TaiDuLieuLenListView(lstvDanhSachDP, danhsDP);
+                        }    
+                    }    
+                        
                 }    
                 else if(trangThaiPhong == "Đóng")
                 { 
@@ -286,16 +340,14 @@ namespace KaraokeRUM
                 }
                 XoaDuLieuTextBox();
             }
-        }
-
+        }        
         private bool KiemTraNgayGioDat()
         {
-            /*Tạm thời mới chỉ thành công với 1 đơn đặt phòng , 2 đơn trở lên trùng 1 phòng chưa được*/
             string maPhong = PHONG.TimMaPhong(txtTenPhong.Text).MaPhong;
-            dynamic dsach = HONLOAN.LayThongTinDonDatPhongThemMaPhong(maPhong);
+            dynamic dsach = HONLOAN.LayThongTinDonDatPhongTheoMaPhong(maPhong);
             DateTime ngay = DateTime.Parse(dTimeNgayNhan.Value.ToString("yyyy-MM-dd"));
-            TimeSpan gio = TimeSpan.Parse(txtGioDatPhong.Text);
-            foreach (dynamic i in HONLOAN.LayThongTinDonDatPhongThemMaPhong(maPhong))
+            TimeSpan gio = TimeSpan.Parse(dtmGioDatPhong.Text);
+            foreach (dynamic i in HONLOAN.LayThongTinDonDatPhongTheoMaPhong(maPhong))
             {                 
                 double xetGio = (double)(i.GioDat - gio).TotalHours;
                 MessageBox.Show(xetGio.ToString());
@@ -341,8 +393,9 @@ namespace KaraokeRUM
             dp.MaDDP = TaoMaDDP();
             dp.NgayDat = dTimeDatPhong.Value;
             dp.NgayNhan = dTimeNgayNhan.Value;
-            TimeSpan dt = TimeSpan.Parse(txtGioDatPhong.Text);
-            dp.GioDat = dt;
+            /*TimeSpan dt = TimeSpan.Parse(txtGioDatPhong.Text);*/
+            /*dp.GioDat = dt;*/
+            dp.GioDat = TimeSpan.Parse(dtmGioDatPhong.Text);
             dp.MaKH = maKH;
             dp.MaQL = "NV002";
             dp.MaPhong = PHONG.TimPhongTheoTen(txtTenPhong.Text).First().MaPhong;
@@ -555,7 +608,7 @@ namespace KaraokeRUM
         {
             HoaDon hd = new HoaDon();
             hd.MaHD = TaoMaHD();
-            TimeSpan dt = TimeSpan.Parse(txtGioDatPhong.Text);
+            TimeSpan dt = TimeSpan.Parse(dtmGioDatPhong.Text);
             hd.GioVao = dt;
             hd.GioRa = null;
             hd.NgayLap = DateTime.Now;
@@ -571,8 +624,8 @@ namespace KaraokeRUM
             HoaDon hd = new HoaDon();
             hd.MaHD = TaoMaHD();
             DateTime dt = DateTime.Now;
-            TimeSpan tp = dt.TimeOfDay;
-            hd.GioVao = tp;
+            /*TimeSpan tp = dt.TimeOfDay;*/
+            hd.GioVao = TimeSpan.Parse(dtmGioDatPhong.Text);
             hd.GioRa = null;
             hd.NgayLap = dt;
             hd.TongTien = null;
@@ -661,7 +714,7 @@ namespace KaraokeRUM
         {
             if (rdoMoPhong.Checked)
             {
-                txtGioDatPhong.Enabled = false;
+                dtmGioDatPhong.Enabled = false;
                 dTimeDatPhong.Enabled = false;
                 dTimeNgayNhan.Enabled = false;
                 txtTenPhong.Enabled = false;
@@ -671,7 +724,7 @@ namespace KaraokeRUM
             else if (rdoDatPhong.Checked)
             {
                 btnMoPhong.Enabled = false;
-                txtGioDatPhong.Enabled = true;
+                dtmGioDatPhong.Enabled = true;
                 dTimeDatPhong.Enabled = true;
                 dTimeNgayNhan.Enabled = true;
                 txtTenPhong.Enabled = false;

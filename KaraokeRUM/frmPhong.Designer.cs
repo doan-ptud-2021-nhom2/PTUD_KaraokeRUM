@@ -37,7 +37,6 @@ namespace KaraokeRUM
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdoDatPhong = new System.Windows.Forms.RadioButton();
-            this.txtGioDatPhong = new System.Windows.Forms.TextBox();
             this.rdoMoPhong = new System.Windows.Forms.RadioButton();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.txtTenPhong = new System.Windows.Forms.TextBox();
@@ -66,6 +65,7 @@ namespace KaraokeRUM
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnXemPhong = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
+            this.dtmGioDatPhong = new System.Windows.Forms.DateTimePicker();
             this.groupBox3.SuspendLayout();
             this.groupBOx.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -150,8 +150,8 @@ namespace KaraokeRUM
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.dtmGioDatPhong);
             this.groupBox1.Controls.Add(this.rdoDatPhong);
-            this.groupBox1.Controls.Add(this.txtGioDatPhong);
             this.groupBox1.Controls.Add(this.rdoMoPhong);
             this.groupBox1.Controls.Add(this.txtSoDienThoai);
             this.groupBox1.Controls.Add(this.txtTenPhong);
@@ -167,7 +167,7 @@ namespace KaraokeRUM
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(47, 523);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(710, 328);
+            this.groupBox1.Size = new System.Drawing.Size(710, 347);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin phòng";
@@ -184,14 +184,6 @@ namespace KaraokeRUM
             this.rdoDatPhong.Text = "Đặt phòng";
             this.rdoDatPhong.UseVisualStyleBackColor = true;
             this.rdoDatPhong.CheckedChanged += new System.EventHandler(this.rdoMoPhong_CheckedChanged);
-            // 
-            // txtGioDatPhong
-            // 
-            this.txtGioDatPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGioDatPhong.Location = new System.Drawing.Point(235, 273);
-            this.txtGioDatPhong.Name = "txtGioDatPhong";
-            this.txtGioDatPhong.Size = new System.Drawing.Size(404, 30);
-            this.txtGioDatPhong.TabIndex = 17;
             // 
             // rdoMoPhong
             // 
@@ -515,6 +507,14 @@ namespace KaraokeRUM
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
+            // dtmGioDatPhong
+            // 
+            this.dtmGioDatPhong.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtmGioDatPhong.Location = new System.Drawing.Point(235, 305);
+            this.dtmGioDatPhong.Name = "dtmGioDatPhong";
+            this.dtmGioDatPhong.Size = new System.Drawing.Size(403, 34);
+            this.dtmGioDatPhong.TabIndex = 28;
+            // 
             // frmPhong
             // 
             this.AllowDrop = true;
@@ -574,7 +574,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.DateTimePicker dTimeDatPhong;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtGioDatPhong;
         private System.Windows.Forms.RadioButton rdoTatCa;
         private System.Windows.Forms.RadioButton rdoHienTai;
         private System.Windows.Forms.RadioButton rdoMoPhong;
@@ -589,5 +588,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnXemPhong;
         private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.DateTimePicker dtmGioDatPhong;
     }
 }
