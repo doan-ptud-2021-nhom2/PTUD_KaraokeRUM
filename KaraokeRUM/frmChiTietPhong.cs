@@ -269,6 +269,29 @@ namespace KaraokeRUM
                 }
             }
         }
+
+        /*
+         * Hủy Phòng
+         */
+        private void btnHuyPhong_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /*
+         * Thoát: quay lại form Đặt phòng
+         */
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult hoiThoat;
+            hoiThoat = MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(hoiThoat == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
     }
 }
 
