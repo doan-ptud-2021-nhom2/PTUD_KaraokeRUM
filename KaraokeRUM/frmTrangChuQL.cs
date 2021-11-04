@@ -83,7 +83,7 @@ namespace KaraokeRUM
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel(new frmThongKe());
+            OpenFormInPanel(new frmThongKeQL());
         }
 
         private void btnDoiMatKhau_Click(object sender, EventArgs e)

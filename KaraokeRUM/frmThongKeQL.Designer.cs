@@ -30,72 +30,81 @@ namespace KaraokeRUM
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.chrThongKeSKhachHang = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chrThongKeMatHang = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtTDT = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtSoLuotDen = new System.Windows.Forms.TextBox();
+            this.txtSKH = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cboNam = new System.Windows.Forms.ComboBox();
             this.cboThang = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnTKKhachHang = new System.Windows.Forms.Button();
-            this.txtSoKhachVip = new System.Windows.Forms.TextBox();
+            this.btnThongKe = new System.Windows.Forms.Button();
+            this.txtSMH = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.rdoHomNay = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lstvDSKhachHang = new System.Windows.Forms.ListView();
+            this.lstvDSHoaDon = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chrPhong = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnTraCuu = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chrThongKeSKhachHang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chrThongKeMatHang)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chrPhong)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.chrThongKeSKhachHang);
+            this.groupBox4.Controls.Add(this.chrThongKeMatHang);
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(853, 77);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(748, 543);
+            this.groupBox4.Size = new System.Drawing.Size(759, 418);
             this.groupBox4.TabIndex = 92;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Biểu đồ";
+            this.groupBox4.Text = "Biểu đồ thống kê mặt hàng";
             // 
-            // chrThongKeSKhachHang
+            // chrThongKeMatHang
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chrThongKeSKhachHang.ChartAreas.Add(chartArea6);
-            this.chrThongKeSKhachHang.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            legend6.Name = "Legend1";
-            this.chrThongKeSKhachHang.Legends.Add(legend6);
-            this.chrThongKeSKhachHang.Location = new System.Drawing.Point(7, 29);
-            this.chrThongKeSKhachHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chrThongKeSKhachHang.Name = "chrThongKeSKhachHang";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series6.Legend = "Legend1";
-            series6.Name = "DoanhThu";
-            this.chrThongKeSKhachHang.Series.Add(series6);
-            this.chrThongKeSKhachHang.Size = new System.Drawing.Size(709, 497);
-            this.chrThongKeSKhachHang.TabIndex = 86;
-            title6.Name = "chart";
-            title6.Text = "Thống kê mặt hàng bán được";
-            this.chrThongKeSKhachHang.Titles.Add(title6);
+            chartArea3.Name = "ChartArea1";
+            this.chrThongKeMatHang.ChartAreas.Add(chartArea3);
+            this.chrThongKeMatHang.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            legend3.Name = "Legend1";
+            this.chrThongKeMatHang.Legends.Add(legend3);
+            this.chrThongKeMatHang.Location = new System.Drawing.Point(7, 29);
+            this.chrThongKeMatHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chrThongKeMatHang.Name = "chrThongKeMatHang";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.Legend = "Legend1";
+            series3.Name = "MatHang";
+            this.chrThongKeMatHang.Series.Add(series3);
+            this.chrThongKeMatHang.Size = new System.Drawing.Size(745, 375);
+            this.chrThongKeMatHang.TabIndex = 86;
+            title3.Name = "chart";
+            title3.Text = "Thống kê mặt hàng bán được";
+            this.chrThongKeMatHang.Titles.Add(title3);
             // 
             // txtTDT
             // 
@@ -115,23 +124,23 @@ namespace KaraokeRUM
             this.label4.TabIndex = 2;
             this.label4.Text = "Tổng doanh thu:";
             // 
-            // txtSoLuotDen
+            // txtSKH
             // 
-            this.txtSoLuotDen.Location = new System.Drawing.Point(163, 48);
-            this.txtSoLuotDen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtSoLuotDen.Name = "txtSoLuotDen";
-            this.txtSoLuotDen.Size = new System.Drawing.Size(190, 30);
-            this.txtSoLuotDen.TabIndex = 5;
-            this.txtSoLuotDen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSKH.Location = new System.Drawing.Point(163, 48);
+            this.txtSKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSKH.Name = "txtSKH";
+            this.txtSKH.Size = new System.Drawing.Size(190, 30);
+            this.txtSKH.TabIndex = 5;
+            this.txtSKH.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 52);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 22);
+            this.label3.Size = new System.Drawing.Size(128, 22);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Số lượt đến:";
+            this.label3.Text = "Số khách hàng:";
             // 
             // cboNam
             // 
@@ -141,6 +150,7 @@ namespace KaraokeRUM
             this.cboNam.Name = "cboNam";
             this.cboNam.Size = new System.Drawing.Size(195, 30);
             this.cboNam.TabIndex = 4;
+            this.cboNam.SelectedIndexChanged += new System.EventHandler(this.cboNam_SelectedIndexChanged);
             // 
             // cboThang
             // 
@@ -150,6 +160,7 @@ namespace KaraokeRUM
             this.cboThang.Name = "cboThang";
             this.cboThang.Size = new System.Drawing.Size(195, 30);
             this.cboThang.TabIndex = 4;
+            this.cboThang.SelectedIndexChanged += new System.EventHandler(this.cboThang_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -160,35 +171,36 @@ namespace KaraokeRUM
             this.label1.TabIndex = 1;
             this.label1.Text = "Năm:";
             // 
-            // btnTKKhachHang
+            // btnThongKe
             // 
-            this.btnTKKhachHang.BackColor = System.Drawing.Color.Teal;
-            this.btnTKKhachHang.ForeColor = System.Drawing.Color.White;
-            this.btnTKKhachHang.Location = new System.Drawing.Point(108, 169);
-            this.btnTKKhachHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTKKhachHang.Name = "btnTKKhachHang";
-            this.btnTKKhachHang.Size = new System.Drawing.Size(195, 39);
-            this.btnTKKhachHang.TabIndex = 3;
-            this.btnTKKhachHang.Text = "Thống kê";
-            this.btnTKKhachHang.UseVisualStyleBackColor = false;
+            this.btnThongKe.BackColor = System.Drawing.Color.Teal;
+            this.btnThongKe.ForeColor = System.Drawing.Color.White;
+            this.btnThongKe.Location = new System.Drawing.Point(108, 165);
+            this.btnThongKe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(195, 43);
+            this.btnThongKe.TabIndex = 3;
+            this.btnThongKe.Text = "Thống kê";
+            this.btnThongKe.UseVisualStyleBackColor = false;
+            this.btnThongKe.Click += new System.EventHandler(this.btnTKDoanhThu_Click);
             // 
-            // txtSoKhachVip
+            // txtSMH
             // 
-            this.txtSoKhachVip.Location = new System.Drawing.Point(163, 110);
-            this.txtSoKhachVip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtSoKhachVip.Name = "txtSoKhachVip";
-            this.txtSoKhachVip.Size = new System.Drawing.Size(190, 30);
-            this.txtSoKhachVip.TabIndex = 5;
-            this.txtSoKhachVip.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSMH.Location = new System.Drawing.Point(163, 110);
+            this.txtSMH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSMH.Name = "txtSMH";
+            this.txtSMH.Size = new System.Drawing.Size(190, 30);
+            this.txtSMH.TabIndex = 5;
+            this.txtSMH.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(16, 112);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(120, 22);
+            this.label5.Size = new System.Drawing.Size(111, 22);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Số khách Vip:";
+            this.label5.Text = "Số mặt hàng:";
             // 
             // label2
             // 
@@ -210,17 +222,18 @@ namespace KaraokeRUM
             this.rdoHomNay.TabStop = true;
             this.rdoHomNay.Text = "Hôm nay";
             this.rdoHomNay.UseVisualStyleBackColor = true;
+            this.rdoHomNay.CheckedChanged += new System.EventHandler(this.rdoHomNay_CheckedChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cboNam);
             this.groupBox2.Controls.Add(this.cboThang);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.btnTKKhachHang);
+            this.groupBox2.Controls.Add(this.btnThongKe);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.rdoHomNay);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(17, 404);
+            this.groupBox2.Location = new System.Drawing.Point(17, 522);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -229,26 +242,27 @@ namespace KaraokeRUM
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lựa chọn";
             // 
-            // lstvDSKhachHang
+            // lstvDSHoaDon
             // 
-            this.lstvDSKhachHang.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstvDSKhachHang.HideSelection = false;
-            this.lstvDSKhachHang.Location = new System.Drawing.Point(5, 32);
-            this.lstvDSKhachHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lstvDSKhachHang.Name = "lstvDSKhachHang";
-            this.lstvDSKhachHang.Size = new System.Drawing.Size(788, 254);
-            this.lstvDSKhachHang.TabIndex = 0;
-            this.lstvDSKhachHang.UseCompatibleStateImageBehavior = false;
+            this.lstvDSHoaDon.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstvDSHoaDon.HideSelection = false;
+            this.lstvDSHoaDon.Location = new System.Drawing.Point(5, 32);
+            this.lstvDSHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstvDSHoaDon.Name = "lstvDSHoaDon";
+            this.lstvDSHoaDon.Size = new System.Drawing.Size(788, 372);
+            this.lstvDSHoaDon.TabIndex = 0;
+            this.lstvDSHoaDon.UseCompatibleStateImageBehavior = false;
+            this.lstvDSHoaDon.DoubleClick += new System.EventHandler(this.lstvDSHoaDon_DoubleClick);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lstvDSKhachHang);
+            this.groupBox1.Controls.Add(this.lstvDSHoaDon);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 77);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(800, 300);
+            this.groupBox1.Size = new System.Drawing.Size(800, 418);
             this.groupBox1.TabIndex = 89;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách khách hàng ";
@@ -259,14 +273,14 @@ namespace KaraokeRUM
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtSoKhachVip);
+            this.groupBox3.Controls.Add(this.txtSMH);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.txtTDT);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.txtSoLuotDen);
+            this.groupBox3.Controls.Add(this.txtSKH);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(439, 404);
+            this.groupBox3.Location = new System.Drawing.Point(432, 522);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -288,14 +302,66 @@ namespace KaraokeRUM
             this.label11.Text = "Thống kê";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.chrPhong);
+            this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(853, 522);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(759, 448);
+            this.groupBox5.TabIndex = 92;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Biểu đồ thống kê phòng";
+            // 
+            // chrPhong
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chrPhong.ChartAreas.Add(chartArea4);
+            this.chrPhong.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            legend4.Name = "Legend1";
+            this.chrPhong.Legends.Add(legend4);
+            this.chrPhong.Location = new System.Drawing.Point(7, 29);
+            this.chrPhong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chrPhong.Name = "chrPhong";
+            this.chrPhong.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series4.Legend = "Legend1";
+            series4.Name = "Phong";
+            this.chrPhong.Series.Add(series4);
+            this.chrPhong.Size = new System.Drawing.Size(745, 391);
+            this.chrPhong.TabIndex = 86;
+            title4.Name = "chart";
+            title4.Text = "Thống kê mức độ ưa chuộng phòng";
+            this.chrPhong.Titles.Add(title4);
+            // 
+            // btnTraCuu
+            // 
+            this.btnTraCuu.BackColor = System.Drawing.Color.Teal;
+            this.btnTraCuu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTraCuu.ForeColor = System.Drawing.Color.White;
+            this.btnTraCuu.Location = new System.Drawing.Point(306, 782);
+            this.btnTraCuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTraCuu.Name = "btnTraCuu";
+            this.btnTraCuu.Size = new System.Drawing.Size(195, 52);
+            this.btnTraCuu.TabIndex = 3;
+            this.btnTraCuu.Text = "Tra Cứu";
+            this.btnTraCuu.UseVisualStyleBackColor = false;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
+            // 
             // frmThongKeQL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1625, 789);
+            this.ClientSize = new System.Drawing.Size(1625, 1011);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.btnTraCuu);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label11);
@@ -304,14 +370,17 @@ namespace KaraokeRUM
             this.RightToLeftLayout = true;
             this.ShowIcon = false;
             this.Text = "Thống kê - Quán Lý";
+            this.Load += new System.EventHandler(this.frmThongKeQL_Load);
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chrThongKeSKhachHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chrThongKeMatHang)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chrPhong)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -319,24 +388,27 @@ namespace KaraokeRUM
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chrThongKeSKhachHang;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chrThongKeMatHang;
         private System.Windows.Forms.TextBox txtTDT;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtSoLuotDen;
+        private System.Windows.Forms.TextBox txtSKH;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboNam;
         private System.Windows.Forms.ComboBox cboThang;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnTKKhachHang;
-        private System.Windows.Forms.TextBox txtSoKhachVip;
+        private System.Windows.Forms.Button btnThongKe;
+        private System.Windows.Forms.TextBox txtSMH;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton rdoHomNay;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListView lstvDSKhachHang;
+        private System.Windows.Forms.ListView lstvDSHoaDon;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chrPhong;
+        private System.Windows.Forms.Button btnTraCuu;
     }
 }
