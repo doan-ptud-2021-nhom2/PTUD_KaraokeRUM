@@ -120,5 +120,13 @@ namespace KaraokeRUM
                      select n;
             return kh.FirstOrDefault();
         }
+        /*Tìm hóa đơn theo mã phòng - Huy*/
+        public HoaDon TimHoaDonTheoMaPhong(string maPhong)
+        {
+            var kh = from n in dt.HoaDons
+                     where n.MaPhong.Equals(maPhong) && n.TongTien.Equals(null)
+                     select n;
+            return kh.FirstOrDefault();
+        }
     }
 }
