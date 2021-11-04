@@ -80,7 +80,7 @@ namespace KaraokeRUM
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 245);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(381, 726);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(381, 792);
             this.flowLayoutPanel1.TabIndex = 10;
             // 
             // btnTrangChu
