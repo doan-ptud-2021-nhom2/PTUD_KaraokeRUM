@@ -254,7 +254,7 @@ namespace KaraokeRUM
                 }    
                 else if(trangThaiPhong == "Đóng")
                 { 
-                    if(!KiemTraNgayGioDat())
+                    if(KiemTraNgayGioDat() == 1)
                     {
                         MessageBox.Show("Phòng đã được đặt trong khoảng thời gian này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }     
@@ -277,7 +277,7 @@ namespace KaraokeRUM
             }
         }
 
-        private bool KiemTraNgayGioDat()
+        private int KiemTraNgayGioDat()
         {
             /*Tạm thời mới chỉ thành công với 1 đơn đặt phòng , 2 đơn trở lên trùng 1 phòng chưa được*/
             string maPhong = PHONG.TimMaPhong(txtTenPhong.Text).MaPhong;
@@ -290,14 +290,14 @@ namespace KaraokeRUM
                 MessageBox.Show(xetGio.ToString());
                 if ((i.NgayNhan).Equals(ngay) && xetGio == 0)
                 {
-                    return false ;
+                    return 1 ;
                 }  
-                else if(i.NgayNhan.Date.Equals(ngay) && ((xetGio <= -3 ) || (xetGio >= 3) ))
+                else if(i.NgayNhan.Date.Equals(ngay) && (xetGio > -3 && xetGio < 3) )
                 {
-                    return true;
+                    return 1;
                 }    
             }
-            return false;
+            return 2;
         }
         /** Tạo mã đơn đặt phòng **/
         private string TaoMaDDP()
