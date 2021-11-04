@@ -13,12 +13,14 @@ namespace KaraokeRUM
         {
             dt = LayData();
         }
-        public IEnumerable<Phong_TrangThietBi> TraDuLieu()
+        /*Lấy toàn bộ dữ liệu thiết bị trong phòng*/
+        public IEnumerable<Phong_TrangThietBi> TraTatCaDuLieu()
         {
             var q = from d in dt.Phong_TrangThietBis
                     select d;
             return q;
         }    
+        /*Chức năng thêm thiết bị vào phòng*/
         public int Them(dynamic ttb)
         {
             System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction();
@@ -36,6 +38,7 @@ namespace KaraokeRUM
                 throw new Exception(ex.Message);
             }
         }
+       /* Chức năng sửa thông tin thiết bị trong phòng*/
         public int SuaTrangThietBi(Phong_TrangThietBi tb)
         {
             System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
@@ -57,13 +60,23 @@ namespace KaraokeRUM
 
             }
         }
-        public IEnumerable<Phong_TrangThietBi> TimPhongTTB(string maPhong, string maTTB)
+        /*Tìm thiết bị trong phòng theo tên thiết bị và mã phòng*/
+        public IEnumerable<Phong_TrangThietBi> TimTTBtrongPhongTheoTenVaMaTTB(string maPhong, string maTTB)
         {
             IEnumerable<Phong_TrangThietBi> q = from n in dt.Phong_TrangThietBis
                                                 where n.MaPhong.Equals(maPhong) && n.MaTTB.Equals(maTTB)
                                                 select n;
             return q;
         }
+        /*Tìm thiết bị trong phòng theo mã phòng*/
+        public IEnumerable<Phong_TrangThietBi> TimPhongTTB(string maPhong)
+        {
+            IEnumerable<Phong_TrangThietBi> q = from n in dt.Phong_TrangThietBis
+                                                where n.MaPhong.Equals(maPhong) 
+                                                select n;
+            return q;
+        }
+        /*Chức năng xóa thiết bị ra khỏi phòng*/
         public int Xoa(Phong_TrangThietBi ttb)
         {
             System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction();

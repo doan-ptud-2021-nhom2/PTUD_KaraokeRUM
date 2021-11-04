@@ -45,12 +45,8 @@ namespace KaraokeRUM
         }
         public KhachHang TimKhachHang(string sdt)
         {
-            foreach (KhachHang i in dt.KhachHangs)
-            {
-                if (i.SDT == sdt)
-                    return i;
-            }
-            return null;
+            KhachHang k = (from n in dt.KhachHangs where n.SDT == sdt select n).FirstOrDefault();
+            return k;
         }
         /**
        * Thêm các thông tin Khách Hàng

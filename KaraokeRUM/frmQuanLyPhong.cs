@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -298,22 +298,34 @@ namespace KaraokeRUM
         */
         LoaiPhong SuaGiaLoaiPhong()
         {
-            LoaiPhong loaiPhong = new LoaiPhong();
-            loaiPhong.MaLoaiPhong = lp.TimLoaiPhong(cboLoaiPhong2.Text).First().MaLoaiPhong;
-            loaiPhong.Gia = Convert.ToDecimal(txtGiaPhongMoi.Text);
+            if(cboLoaiPhong2.SelectedIndex >= 0 && txtGiaPhongMoi.Text != "")
+            {
+                LoaiPhong loaiPhong = new LoaiPhong();
+                loaiPhong.MaLoaiPhong = lp.TimLoaiPhong(cboLoaiPhong2.Text).First().MaLoaiPhong;
+                loaiPhong.Gia = Convert.ToDecimal(txtGiaPhongMoi.Text);
 
-            return loaiPhong;
+                return loaiPhong;
+            }
+
+            return null;
         }
         /** 
         * Cập nhật giá phòng cũ thành giá phòng mới
         */
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            LoaiPhong suaLP = SuaGiaLoaiPhong();
-            lp.CapNhatGiaLoaiPhong(suaLP);
-            dsPhong = p.LayTatCaPhong();
-            XoaCacTxtCbo();
-            TaiDuLieuLenListView(lstvDanhSachPhong, dsPhong);
+            if(SuaGiaLoaiPhong() == null) 
+            {
+                MessageBox.Show("Bạn phải chọn loại phòng và nhập giá mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                LoaiPhong suaLP = SuaGiaLoaiPhong();
+                lp.CapNhatGiaLoaiPhong(suaLP);
+                dsPhong = p.LayTatCaPhong();
+                XoaCacTxtCbo();
+                TaiDuLieuLenListView(lstvDanhSachPhong, dsPhong);
+            }
         }
 
 
@@ -333,13 +345,19 @@ namespace KaraokeRUM
 
                 if(hoiXoa == DialogResult.Yes)
                 {
-                    
-                    phong = p.TimPhong(txtSoPhong.Text).First();
-                    p.XoaPhong(phong);
+                    if(p.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Mở" || p.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Đặt")
+                    {
+                        MessageBox.Show("Phòng đang mở hoặc đặt, không được xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    } 
+                    else
+                    {
+                        phong = p.TimPhong(txtSoPhong.Text).First();
+                        p.XoaPhong(phong);
 
-                    dsPhong = p.LayTatCaPhong();
-                    XoaCacTxtCbo();
-                    TaiDuLieuLenListView(lstvDanhSachPhong, dsPhong);
+                        dsPhong = p.LayTatCaPhong();
+                        XoaCacTxtCbo();
+                        TaiDuLieuLenListView(lstvDanhSachPhong, dsPhong);
+                    }
                 }
             }
         }
