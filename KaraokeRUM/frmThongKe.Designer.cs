@@ -271,7 +271,7 @@ namespace KaraokeRUM
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series1.Legend = "Legend1";
-            series1.Name = "DoanhThu";
+            series1.Name = "MatHang";
             this.chrThongKeDoanhThu.Series.Add(series1);
             this.chrThongKeDoanhThu.Size = new System.Drawing.Size(709, 497);
             this.chrThongKeDoanhThu.TabIndex = 86;
