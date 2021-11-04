@@ -14,34 +14,31 @@ namespace KaraokeRUM
         }
         /** 
        * Các biến toàn cục.
-       * kH: class khách hàng.
-       * lK: class Loại khách.
-       * hl: class Hỗn Loạn.
+       * KH: class khách hàng.
+       * LK: class Loại khách.
        * dsKh danh sách khách hàng lấy từ 2 bảng
        * sortColumn dùng để sắp xếp
        */
-        private clsKhachHang kH;
-        private clsLoaiKhach lK;
-        private clsHonLoan hL;
-        private IEnumerable<dynamic> dsKH;
+        private clsKhachHang KH;
+        private clsLoaiKhach LK;
+        private IEnumerable<dynamic> DSKH;
         private int sortColumn = -1;
         private void frmQuanLyKhachHang_Load(object sender, EventArgs e)
         {
-            cboLoaiKhachHang.Items.Add("VIP");
-            cboLoaiKhachHang.Items.Add("TX");
-            cboLoaiKhachHang.Items.Add("THUONG");
+            cboLoaiKhachHang.Items.Add("Vip");
+            cboLoaiKhachHang.Items.Add("Thường xuyên");
+            cboLoaiKhachHang.Items.Add("Thường");
 
-            cboLocTheoLoai.Items.Add("VIP");
-            cboLocTheoLoai.Items.Add("TX");
-            cboLocTheoLoai.Items.Add("THUONG");
-            cboLocTheoLoai.Items.Add("All");
+            cboLocTheoLoai.Items.Add("Vip");
+            cboLocTheoLoai.Items.Add("Thường xuyên");
+            cboLocTheoLoai.Items.Add("Thường");
+            cboLocTheoLoai.Items.Add("Tất cả");
 
-            TaoTieuDeCot(lvwDSKH);
-            kH = new clsKhachHang();
-            lK = new clsLoaiKhach();
-            hL = new clsHonLoan();
-            IEnumerable<dynamic> dsKH = kH.KhachHangVaLoaiKhachHang();
-            TaiDuLieuLenListView(lvwDSKH, dsKH);
+            TaoTieuDeCot(lstvDSKH);
+            KH = new clsKhachHang();
+            LK = new clsLoaiKhach();
+            IEnumerable<dynamic> dsKH = KH.KhachHangVaLoaiKhachHang();
+            TaiDuLieuLenListView(lstvDSKH, dsKH);
 
             txtTimKiemKhachHang.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtTimKiemKhachHang.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -69,35 +66,35 @@ namespace KaraokeRUM
         /** 
          * Load dữ liệu lên ListView
         */
-        void TaiDuLieuLenListView(ListView lsw, IEnumerable<dynamic> dsKhach)
+        void TaiDuLieuLenListView(ListView lstv, IEnumerable<dynamic> dsKhach)
         {
-            lsw.Items.Clear();
+            lstv.Items.Clear();
             ListViewItem itemKhach;
             foreach (dynamic ds in dsKhach)
             {
                 itemKhach = TaoItem(ds);
-                lsw.Items.Add(itemKhach);
+                lstv.Items.Add(itemKhach);
             }
 
         }
         ListViewItem TaoItem(dynamic itemKH)
         {
-            ListViewItem lswItem;
-            lswItem = new ListViewItem(itemKH.MaKH);
-            lswItem.SubItems.Add(itemKH.TenKhach);
-            lswItem.SubItems.Add(itemKH.SDT);
-            lswItem.SubItems.Add(itemKH.SoLanDen.ToString());
-            lswItem.SubItems.Add(itemKH.TenLoaiKH);
-            lswItem.SubItems.Add(itemKH.ChietKhau.ToString());
-            lswItem.Tag = itemKH;
-            return lswItem;
+            ListViewItem lstvItem;
+            lstvItem = new ListViewItem(itemKH.MaKH);
+            lstvItem.SubItems.Add(itemKH.TenKhach);
+            lstvItem.SubItems.Add(itemKH.SDT);
+            lstvItem.SubItems.Add(itemKH.SoLanDen.ToString());
+            lstvItem.SubItems.Add(itemKH.TenLoaiKH);
+            lstvItem.SubItems.Add(itemKH.ChietKhau.ToString());
+            lstvItem.Tag = itemKH;
+            return lstvItem;
         }
-        private void lvwDSKH_SelectedIndexChanged(object sender, EventArgs e)
+        private void lstvDSKH_SelectedIndexChanged(object sender, EventArgs e)
         {
             dynamic dsKH = null;
-            if (lvwDSKH.SelectedItems.Count > 0)
+            if (lstvDSKH.SelectedItems.Count > 0)
             {
-                dsKH = (dynamic)lvwDSKH.SelectedItems[0].Tag;
+                dsKH = (dynamic)lstvDSKH.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsKH);
 
             }
@@ -106,7 +103,7 @@ namespace KaraokeRUM
         {
             cboLoaiKhachHang.Text = dsKH.TenLoaiKH;
             txtCKC.Text = dsKH.ChietKhau.ToString();
-            //cboLocTheoLoai.Text = dsKH.TenLoaiKH;
+            //cboLocTheoLoai.Text = DSKH.TenLoaiKH;
         }
 
         private void btnCapNhap_Click(object sender, EventArgs e)
@@ -115,10 +112,10 @@ namespace KaraokeRUM
             if (!string.IsNullOrEmpty(txtCKM.Text.Trim()))
             {
                 LoaiKhachHang suaLk = SuaChietKhauLoaiKhach();
-                lK.CapNhatChietKhau(suaLk);
-                IEnumerable<dynamic> layDS = kH.KhachHangVaLoaiKhachHang();
+                LK.CapNhatChietKhau(suaLk);
+                IEnumerable<dynamic> layDS = KH.KhachHangVaLoaiKhachHang();
                 XoaCacTxtCbo();
-                TaiDuLieuLenListView(lvwDSKH, layDS);
+                TaiDuLieuLenListView(lstvDSKH, layDS);
             }    
             else
             {
@@ -129,7 +126,7 @@ namespace KaraokeRUM
         LoaiKhachHang SuaChietKhauLoaiKhach()
         {
             LoaiKhachHang loaiKhachHang = new LoaiKhachHang();
-            loaiKhachHang.MaLoaiKH = lK.TimLoaiKhachHang(cboLoaiKhachHang.Text).First().MaLoaiKH;
+            loaiKhachHang.MaLoaiKH = LK.TimLoaiKhachHang(cboLoaiKhachHang.Text).First().MaLoaiKH;
             loaiKhachHang.ChietKhau = Convert.ToInt32(txtCKM.Text);
 
             return loaiKhachHang;
@@ -153,51 +150,50 @@ namespace KaraokeRUM
             if (selected.Equals("All") == true)
             {
                // no rename may cái instance ak, k phai rename theo kieu notepad dau, k an loz dau               lvwDSKH.Items.Clear();
-                TaoTieuDeCot(lvwDSKH);
-                IEnumerable<dynamic> dsKHAll = kH.KhachHangVaLoaiKhachHang();
-                TaiDuLieuLenListView(lvwDSKH, dsKHAll);
+                TaoTieuDeCot(lstvDSKH);
+                IEnumerable<dynamic> dsKHAll = KH.KhachHangVaLoaiKhachHang();
+                TaiDuLieuLenListView(lstvDSKH, dsKHAll);
             }
             else
             {
                 
-                IEnumerable<dynamic> dsKH = kH.LayKhachHangVaLoaiKhachHangTheoLoai(selected);
-                lvwDSKH.Items.Clear();
-                TaoTieuDeCot(lvwDSKH);
-                TaiDuLieuLenListView(lvwDSKH, dsKH);
+                IEnumerable<dynamic> dsKH = KH.LayKhachHangVaLoaiKhachHangTheoLoai(selected);
+                lstvDSKH.Items.Clear();
+                TaoTieuDeCot(lstvDSKH);
+                TaiDuLieuLenListView(lstvDSKH, dsKH);
             }
 
         }
         /*
         * sự kiện click vào cột để sắp xếp
         */
-        private void lvwDSKH_ColumnClick(object sender, ColumnClickEventArgs e)
+         private void lstvDSKH_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-
             if (e.Column != sortColumn)
             {
                 sortColumn = e.Column;
-                lvwDSKH.Sorting = SortOrder.Ascending;
+                lstvDSKH.Sorting = SortOrder.Ascending;
             }
             else
             {
-                if (lvwDSKH.Sorting == SortOrder.Ascending)
-                    lvwDSKH.Sorting = SortOrder.Descending;
+                if (lstvDSKH.Sorting == SortOrder.Ascending)
+                    lstvDSKH.Sorting = SortOrder.Descending;
                 else
-                    lvwDSKH.Sorting = SortOrder.Ascending;
+                    lstvDSKH.Sorting = SortOrder.Ascending;
             }
-            lvwDSKH.Sort();
-            this.lvwDSKH.ListViewItemSorter = new clsListViewItemComparer(e.Column,
-                                                              lvwDSKH.Sorting);
+            lstvDSKH.Sort();
+            this.lstvDSKH.ListViewItemSorter = new clsListViewItemComparer(e.Column,
+                                                              lstvDSKH.Sorting);
         }
         /*
          * Tim kiem
          */
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            dsKH = kH.TimKhach(txtTimKiemKhachHang.Text);
-            lvwDSKH.Items.Clear();
-            TaoTieuDeCot(lvwDSKH);
-            TaiDuLieuLenListView(lvwDSKH, dsKH);
+            DSKH = KH.TimKhach(txtTimKiemKhachHang.Text);
+            lstvDSKH.Items.Clear();
+            TaoTieuDeCot(lstvDSKH);
+            TaiDuLieuLenListView(lstvDSKH, DSKH);
         }
         /*
          * auto complete tự động tải danh sách
@@ -205,7 +201,7 @@ namespace KaraokeRUM
         private void txtTimKiemKhachHang_TextChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-            foreach (KhachHang i in kH.LayDSKH())
+            foreach (KhachHang i in KH.LayDSKH())
             {
                 collection.Add(i.MaKH);
                 collection.Add(i.TenKhach);
@@ -213,6 +209,8 @@ namespace KaraokeRUM
             txtTimKiemKhachHang.AutoCompleteCustomSource = collection;
 
         }
+
+       
     }
 
 

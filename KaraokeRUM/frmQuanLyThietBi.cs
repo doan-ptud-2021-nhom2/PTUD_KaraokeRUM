@@ -296,7 +296,7 @@ namespace KaraokeRUM
         {
             DialogResult yn;
             Phong_TrangThietBi ttb;
-            TrangThietBi _ttb;
+           
             string maTTB, maPhong;
             if (lwvThietBiTrongPhong.SelectedItems.Count > 0)
             {
