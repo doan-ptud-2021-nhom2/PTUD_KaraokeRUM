@@ -200,7 +200,7 @@ namespace KaraokeRUM
                 dt.Transaction = myTran;
                 IQueryable<Phong> temp = (from n in dt.Phongs
                                           where n.MaPhong == phong.MaPhong
-                                          select n); ;
+                                          select n);
                 temp.First().TrangThaiPhong = phong.TrangThaiPhong;
                 dt.SubmitChanges();
                 dt.Transaction.Commit();
