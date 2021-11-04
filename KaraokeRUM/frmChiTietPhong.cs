@@ -32,9 +32,9 @@ namespace KaraokeRUM
         private clsHoaDon HoaDon;
         private clsPhong Phong;
         private clsLoaiPhong LoaiPhong;
+        private clsKhachHang KhachHang;
         private IEnumerable<dynamic> dsMatHang;
         private IEnumerable<MatHang> dsTenMatHang;
-        private string tenPhong;
         private string maHoaDon;
 
         /**
@@ -58,17 +58,20 @@ namespace KaraokeRUM
             HoaDon = new clsHoaDon();
             Phong = new clsPhong();
             LoaiPhong = new clsLoaiPhong();
+            KhachHang = new clsKhachHang();
 
             //Khởi tạo
             HoaDon hoaDon = HoaDon.LayHoaDon(maHoaDon);
             Phong phong = Phong.LayThongTinPhong(hoaDon.MaPhong);
-            txtMaPhong.Text = hoaDon.MaPhong;
+            txtTenKhachHang.Text = KhachHang.LayThongTinKhach(hoaDon.MaKH).TenKhach;
+            txtSoDienThoai.Text = KhachHang.LayThongTinKhach(hoaDon.MaKH).SDT;
+            txtGioVao.Text = hoaDon.GioVao.ToString(@"hh\:mm\:ss");
             txtTenPhong.Text = Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TenPhong;
-            txtTTP.Text = Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TrangThaiPhong;
             txtLoaiPhong.Text = LoaiPhong.LayLoaiPhong(phong.MaLoaiPhong).TenLoaiPhong;
+            txtTTP.Text = Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TrangThaiPhong;
 
             //Lấy tên phòng
-            lblTenPhong.Text = "Phòng - " + tenPhong;
+            lblTenPhong.Text = "Phòng - " + Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TenPhong;
 
             //Tải tên mặt hàng lên combobox.
             TaiMatHangLenComboBox();

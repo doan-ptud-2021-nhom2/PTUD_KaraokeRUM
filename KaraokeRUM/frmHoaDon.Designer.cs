@@ -50,7 +50,7 @@ namespace KaraokeRUM
             this.lblLoaiPhong = new System.Windows.Forms.Label();
             this.lblMaHD = new System.Windows.Forms.Label();
             this.lblTenKhach = new System.Windows.Forms.Label();
-            this.lblSoPhong = new System.Windows.Forms.Label();
+            this.lblTenPhong = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -71,6 +71,8 @@ namespace KaraokeRUM
             this.lblChietKhau = new System.Windows.Forms.Label();
             this.pdHoaDon = new System.Drawing.Printing.PrintDocument();
             this.pddHoaDon = new System.Windows.Forms.PrintPreviewDialog();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lblSoDienThoai = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -178,9 +180,9 @@ namespace KaraokeRUM
             // 
             this.groupBox2.Controls.Add(this.lstvChiTietHoaDon);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(18, 466);
+            this.groupBox2.Location = new System.Drawing.Point(15, 481);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(811, 263);
+            this.groupBox2.Size = new System.Drawing.Size(811, 257);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chi tiết hóa đơn";
@@ -196,17 +198,19 @@ namespace KaraokeRUM
             this.groupBox1.Controls.Add(this.lblLoaiPhong);
             this.groupBox1.Controls.Add(this.lblMaHD);
             this.groupBox1.Controls.Add(this.lblTenKhach);
-            this.groupBox1.Controls.Add(this.lblSoPhong);
+            this.groupBox1.Controls.Add(this.lblSoDienThoai);
+            this.groupBox1.Controls.Add(this.lblTenPhong);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(27, 295);
+            this.groupBox1.Location = new System.Drawing.Point(27, 281);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(811, 165);
+            this.groupBox1.Size = new System.Drawing.Size(811, 194);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hóa đơn";
@@ -215,7 +219,7 @@ namespace KaraokeRUM
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(481, 90);
+            this.label13.Location = new System.Drawing.Point(479, 90);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(87, 22);
             this.label13.TabIndex = 29;
@@ -265,7 +269,7 @@ namespace KaraokeRUM
             // 
             this.lblDonGia.AutoSize = true;
             this.lblDonGia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDonGia.Location = new System.Drawing.Point(607, 126);
+            this.lblDonGia.Location = new System.Drawing.Point(605, 121);
             this.lblDonGia.Name = "lblDonGia";
             this.lblDonGia.Size = new System.Drawing.Size(70, 22);
             this.lblDonGia.TabIndex = 21;
@@ -275,7 +279,7 @@ namespace KaraokeRUM
             // 
             this.lblLoaiPhong.AutoSize = true;
             this.lblLoaiPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoaiPhong.Location = new System.Drawing.Point(210, 126);
+            this.lblLoaiPhong.Location = new System.Drawing.Point(210, 154);
             this.lblLoaiPhong.Name = "lblLoaiPhong";
             this.lblLoaiPhong.Size = new System.Drawing.Size(70, 22);
             this.lblLoaiPhong.TabIndex = 26;
@@ -301,15 +305,15 @@ namespace KaraokeRUM
             this.lblTenKhach.TabIndex = 18;
             this.lblTenKhach.Text = "label17";
             // 
-            // lblSoPhong
+            // lblTenPhong
             // 
-            this.lblSoPhong.AutoSize = true;
-            this.lblSoPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSoPhong.Location = new System.Drawing.Point(210, 90);
-            this.lblSoPhong.Name = "lblSoPhong";
-            this.lblSoPhong.Size = new System.Drawing.Size(70, 22);
-            this.lblSoPhong.TabIndex = 18;
-            this.lblSoPhong.Text = "label17";
+            this.lblTenPhong.AutoSize = true;
+            this.lblTenPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenPhong.Location = new System.Drawing.Point(210, 121);
+            this.lblTenPhong.Name = "lblTenPhong";
+            this.lblTenPhong.Size = new System.Drawing.Size(70, 22);
+            this.lblTenPhong.TabIndex = 18;
+            this.lblTenPhong.Text = "label17";
             // 
             // label23
             // 
@@ -325,7 +329,7 @@ namespace KaraokeRUM
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(481, 126);
+            this.label22.Location = new System.Drawing.Point(479, 121);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(79, 22);
             this.label22.TabIndex = 12;
@@ -335,7 +339,7 @@ namespace KaraokeRUM
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(84, 126);
+            this.label21.Location = new System.Drawing.Point(84, 154);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(104, 22);
             this.label21.TabIndex = 11;
@@ -365,11 +369,11 @@ namespace KaraokeRUM
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(84, 90);
+            this.label16.Location = new System.Drawing.Point(82, 121);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(89, 22);
+            this.label16.Size = new System.Drawing.Size(98, 22);
             this.label16.TabIndex = 17;
-            this.label16.Text = "Số phòng:";
+            this.label16.Text = "Tên phòng:";
             // 
             // label4
             // 
@@ -395,7 +399,7 @@ namespace KaraokeRUM
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Teal;
-            this.label3.Location = new System.Drawing.Point(270, 188);
+            this.label3.Location = new System.Drawing.Point(270, 185);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(186, 26);
             this.label3.TabIndex = 10;
@@ -428,7 +432,7 @@ namespace KaraokeRUM
             this.pictureBox1.Image = global::KaraokeRUM.Properties.Resources._3254f43743ff8aa1d3ee;
             this.pictureBox1.Location = new System.Drawing.Point(39, 74);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(206, 204);
+            this.pictureBox1.Size = new System.Drawing.Size(206, 191);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
@@ -513,6 +517,26 @@ namespace KaraokeRUM
             this.pddHoaDon.Name = "pddHoaDon";
             this.pddHoaDon.Visible = false;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(84, 90);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(120, 22);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "Số điện thoại:";
+            // 
+            // lblSoDienThoai
+            // 
+            this.lblSoDienThoai.AutoSize = true;
+            this.lblSoDienThoai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoDienThoai.Location = new System.Drawing.Point(210, 90);
+            this.lblSoDienThoai.Name = "lblSoDienThoai";
+            this.lblSoDienThoai.Size = new System.Drawing.Size(70, 22);
+            this.lblSoDienThoai.TabIndex = 18;
+            this.lblSoDienThoai.Text = "label17";
+            // 
             // frmHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -585,7 +609,7 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblNgayLap;
         private System.Windows.Forms.Label lblMaHD;
-        private System.Windows.Forms.Label lblSoPhong;
+        private System.Windows.Forms.Label lblTenPhong;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
@@ -598,6 +622,8 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label12;
         private System.Drawing.Printing.PrintDocument pdHoaDon;
         private System.Windows.Forms.PrintPreviewDialog pddHoaDon;
+        private System.Windows.Forms.Label lblSoDienThoai;
+        private System.Windows.Forms.Label label14;
     }
 }
 

@@ -13,7 +13,9 @@ namespace KaraokeRUM
     public partial class frmTrangChu : Form
     {
         public static string MAQL;
-        
+        private clsNhanVien NHANVIEN;
+        private clsLoaiNhanVien LOAINV;
+
         public frmTrangChu(string maQL)
         {
             InitializeComponent();
@@ -36,10 +38,21 @@ namespace KaraokeRUM
         }
         private void frmTrangChu_Load(object sender, EventArgs e)
         {
+            //Khai báo các biến
+            NHANVIEN = new clsNhanVien();
+            LOAINV = new clsLoaiNhanVien();
 
-           
+            //Tự động mở form Home
             OpenFormInPanel(new frmHome());
-            Console.WriteLine(MAQL);
+
+            //Lấy thông tin nhân viên.
+            NhanVien thuNgan = NHANVIEN.TimNhanVienTheoMa(MAQL);
+            string tenNhanVien = thuNgan.TenNV;
+            string chucVu = LOAINV.TimLoaiNVTheoMa(thuNgan.MaLNV).TenLNV;
+
+            //Cập nhật thông tin vào label
+            lblChucVu.Text = chucVu;
+            lblTenNV.Text = tenNhanVien;
         }
 
         private void btnPhong_Click(object sender, EventArgs e)

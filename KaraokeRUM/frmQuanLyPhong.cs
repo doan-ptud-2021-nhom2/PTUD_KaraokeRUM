@@ -105,7 +105,7 @@ namespace KaraokeRUM
         void TaoTieuDeCot(ListView lstv)
         {
             lstv.Columns.Add("Mã Phòng", 100);
-            lstv.Columns.Add("Số Phòng", 100);
+            lstv.Columns.Add("Tên Phòng", 110);
             lstv.Columns.Add("Trạng thái", 100);
             lstv.Columns.Add("Loại Phòng", 120);
             lstv.Columns.Add("Giá Phòng", 150);
@@ -212,8 +212,9 @@ namespace KaraokeRUM
         private string TaoMaPhong()
         {
             string maPhong = "";
-            string maPhongTam  = p.LayTatCaPhong().Last().MaPhong.ToString();
-            int dem = Convert.ToInt32(maPhongTam.Split('P')[1]) + 1;
+            //string maPhongTam  = p.LayTatCaPhong().Last().MaPhong.ToString();
+            // int dem = Convert.ToInt32(maPhongTam.Split('P')[1]) + 1;
+            int dem = p.LayTatCaPhong().Count() + 1;
             if(dem < 10)
             {
                 maPhong += "P00" + dem;
@@ -359,6 +360,10 @@ namespace KaraokeRUM
                         TaiDuLieuLenListView(lstvDanhSachPhong, dsPhong);
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một phòng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

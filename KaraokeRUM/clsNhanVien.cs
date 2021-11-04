@@ -14,14 +14,15 @@ namespace KaraokeRUM
         {
             dt = LayData();
         }
+
         public IEnumerable<NhanVien> LayDSNV(string MANVQL)
         {
             IEnumerable<NhanVien> nv = from n in dt.NhanViens
-                                       where !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("đã nghỉ")
+                                       where !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("Đã nghỉ")
                                        select n;
             return nv;
-
         }
+
         public IEnumerable<NhanVien> LayDSNVFULL(string MANVQL)
         {
             IEnumerable<NhanVien> nv = from n in dt.NhanViens
@@ -152,6 +153,19 @@ namespace KaraokeRUM
                                       where n.TenNV.Contains(timKiem) || n.MaNV.Contains(timKiem) && !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("đã nghỉ")
                                       select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV };
             return nv;
+        }
+
+        /**
+         * Tìm nhân viên theo mã
+         * Lấy trạng thái nhân viên
+         * -Tuấn
+         */
+        public NhanVien TimNhanVienTheoMa(string maNV)
+        {
+            var nhanVien = from nv in dt.NhanViens
+                           where nv.MaNV.Equals(maNV)
+                           select nv;
+            return nhanVien.FirstOrDefault();
         }
 
     }

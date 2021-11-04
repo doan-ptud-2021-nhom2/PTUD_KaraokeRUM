@@ -102,7 +102,7 @@ namespace KaraokeRUM
             lblGioVao.Text = GioVao;
             lblGioRa.Text = GioRa;
             lblNgayLap.Text = hd.NgayLap.ToString("dd/MM/yyyy");
-            lblSoPhong.Text = phong.TenPhong;
+            lblTenPhong.Text = phong.TenPhong;
             lblLoaiPhong.Text = loaiPhong.TenLoaiPhong;
             lblDonGia.Text = GiaPhong.ToString("#,### VNĐ");
             lblChietKhau.Text = ChietKhau.ToString() + " %";
@@ -110,6 +110,7 @@ namespace KaraokeRUM
             lblTienPhong.Text = TienPhong.ToString("#,### VNĐ");
             lblTongTien.Text = TongTien.ToString("#,### VNĐ");
             lblTenKhach.Text = khachHang.TenKhach;
+            lblSoDienThoai.Text = khachHang.SDT;
 
             //ListView
             DsCTHD = HoaDon.LayChiTietHoaDon(MaHD);
@@ -178,7 +179,8 @@ namespace KaraokeRUM
             //Tìm để lấy thông tin hiển thị ra giao diện
             var danhSachHoaDon = HoaDon.LayChiTietHoaDon(MaHD);
             var hd = HoaDon.LayHoaDon(MaHD);
-            var khachHang = KhachHang.LayThongTinKhach(hd.MaKH).TenKhach;
+            var tenKhachHang = KhachHang.LayThongTinKhach(hd.MaKH).TenKhach;
+            var soDienThoai = KhachHang.LayThongTinKhach(hd.MaKH).SDT;
             var phong = Phong.LayThongTinPhong(hd.MaPhong).TenPhong;
             var tam = Phong.LayThongTinPhong(hd.MaPhong);
             var loaiPhong = LoaiPhong.LayLoaiPhong(tam.MaLoaiPhong).TenLoaiPhong;
@@ -233,7 +235,14 @@ namespace KaraokeRUM
             //Lấy tên Khách hàng
             y += 20;
             e.Graphics.DrawString(
-                                String.Format("Tên khách hàng: {0}", khachHang),
+                                String.Format("Tên khách hàng: {0}", tenKhachHang),
+                                new Font("Courier New", 13, FontStyle.Regular),
+                                Brushes.Black,
+                                new Point(40, y));
+            //Lấy số điện thoại Khách hàng
+            y += 20;
+            e.Graphics.DrawString(
+                                String.Format("SĐT khách hàng: {0}", soDienThoai),
                                 new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(40, y));
@@ -357,9 +366,9 @@ namespace KaraokeRUM
             y += 40;
             e.Graphics.DrawString(
                                    string.Format("Thành chữ: {0} đồng", SoThanhChu.DocTienBangChu((long)TongTien)),
-                                   new Font("Courier New", 13, FontStyle.Regular),
+                                   new Font("Courier New", 12, FontStyle.Regular),
                                    Brushes.Black,
-                                   new Point(40, y));
+                                   new Point(15, y));
             //Text: Cám ơn khách hàng
             y += 100;
             e.Graphics.DrawString(
