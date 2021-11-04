@@ -29,12 +29,19 @@ namespace KaraokeRUM
         {
             string sdt = txtSDT.Text;
             KhachHang khachHang = KHACHHANG.TimKhachHang(sdt);
-            HoaDon hoaDon = HOADON.TimHoaDonTheoMaKhachHang(khachHang.MaKH);
-            Phong phong = PHONG.TimMotPhongTheoMa(hoaDon.MaPhong);
-            string tenKhachHang = khachHang.TenKhach;
-            string tenPhong = phong.TenPhong;
-            string kqua = "Khách hàng:" + tenKhachHang + "\nPhòng sử dụng :"+ tenPhong;
-            MessageBox.Show(kqua, "Thông tin tìm kiếm", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            if(khachHang == null)
+            {              
+                MessageBox.Show("Không tìm thấy khách hàng", "Thông tin tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }  
+            else
+            {
+                HoaDon hoaDon = HOADON.TimHoaDonTheoMaKhachHang(khachHang.MaKH);
+                Phong phong = PHONG.TimMotPhongTheoMa(hoaDon.MaPhong);
+                string tenKhachHang = khachHang.TenKhach;
+                string tenPhong = phong.TenPhong;
+                string kqua = "Khách hàng:" + tenKhachHang + "\nPhòng sử dụng :" + tenPhong;
+                MessageBox.Show(kqua, "Thông tin tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }               
         }
 
     }

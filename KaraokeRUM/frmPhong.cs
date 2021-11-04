@@ -218,6 +218,16 @@ namespace KaraokeRUM
         }       
         #endregion
         #region Đặt phòng
+        private void XoaDuLieuTextBox()
+        {
+            txtGioDatPhong.Text = "";
+            txtHoTen.Text = "";
+            txtSoDienThoai.Text = "";
+            txtTenPhong.Text = "";
+            dTimeDatPhong.Text = "";
+            dTimeNgayNhan.Text = "";
+
+        }    
         /** Chức năng đặt phòng **/
         private void btnDatPhong_Click(object sender, EventArgs e)
         {
@@ -254,7 +264,7 @@ namespace KaraokeRUM
                 }    
                 else if(trangThaiPhong == "Đóng")
                 { 
-                    if(KiemTraNgayGioDat() == 1)
+                    if(!KiemTraNgayGioDat())
                     {
                         MessageBox.Show("Phòng đã được đặt trong khoảng thời gian này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }     
@@ -273,11 +283,12 @@ namespace KaraokeRUM
                         danhsDP = HONLOAN.LayThongTinDonDatPhong();
                         TaiDuLieuLenListView(lstvDanhSachDP, danhsDP);
                     }                       
-                }    
+                }
+                XoaDuLieuTextBox();
             }
         }
 
-        private int KiemTraNgayGioDat()
+        private bool KiemTraNgayGioDat()
         {
             /*Tạm thời mới chỉ thành công với 1 đơn đặt phòng , 2 đơn trở lên trùng 1 phòng chưa được*/
             string maPhong = PHONG.TimMaPhong(txtTenPhong.Text).MaPhong;
@@ -290,14 +301,14 @@ namespace KaraokeRUM
                 MessageBox.Show(xetGio.ToString());
                 if ((i.NgayNhan).Equals(ngay) && xetGio == 0)
                 {
-                    return 1 ;
+                    return false ;
                 }  
                 else if(i.NgayNhan.Date.Equals(ngay) && (xetGio > -3 && xetGio < 3) )
                 {
-                    return 1;
+                    return false;
                 }    
             }
-            return 2;
+            return true;
         }
         /** Tạo mã đơn đặt phòng **/
         private string TaoMaDDP()
@@ -531,7 +542,8 @@ namespace KaraokeRUM
                     {
                         MessageBox.Show("Phòng chưa tới giờ đặt", "Thông báo", MessageBoxButtons.OK);
                     }
-                }                                
+                }
+                XoaDuLieuTextBox();
             }
             else if(trangThaiPhong =="Mở")
             {
@@ -716,6 +728,7 @@ namespace KaraokeRUM
                     TaoPhongThuong(DANHSACHPHONGTHUONG);
                 }
             }
+            XoaDuLieuTextBox();
         }
         /*Chức năng nhấn vào lstv hiển thị thông tin lên textbox*/
         private void lvwDanhSachDP_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -744,6 +757,7 @@ namespace KaraokeRUM
             fpnlPhongThuong.Controls.Clear();          
             TaoPhongVip(DANHSACHPHONGVIP);
             TaoPhongThuong(DANHSACHPHONGTHUONG);
+            XoaDuLieuTextBox();
         }
         /*Xử lý màu hiển thị của button theo lịch đặt phòng*/
         private void XuLyDatPhong()
@@ -779,7 +793,8 @@ namespace KaraokeRUM
             else
             {
                 MessageBox.Show("Phòng chưa mở, không thể xem", "Thông báo", MessageBoxButtons.OK);
-            }    
+            }
+            XoaDuLieuTextBox();
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
