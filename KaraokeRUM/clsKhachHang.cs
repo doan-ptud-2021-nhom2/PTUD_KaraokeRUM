@@ -77,6 +77,7 @@ namespace KaraokeRUM
             var kh = from n in dt.KhachHangs
                      join x in dt.LoaiKhachHangs
                      on n.MaLoaiKH equals x.MaLoaiKH
+                     where !n.GhiChu.ToLower().Contains("cảnh báo") || !n.GhiChu.ToLower().Contains("cấm")
                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
             return kh;
         }
@@ -90,11 +91,23 @@ namespace KaraokeRUM
             var kh = from n in dt.KhachHangs
                      join x in dt.LoaiKhachHangs
                      on n.MaLoaiKH equals x.MaLoaiKH
-                     where x.TenLoaiKH.Equals(loaiKH)
+                     where x.TenLoaiKH.Equals(loaiKH) && !n.GhiChu.ToLower().Contains("cảnh báo") || !n.GhiChu.ToLower().Contains("cấm")
                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
             return kh;
 
         }
+        public IEnumerable<dynamic> KhachHangVaLoaiKhachHangDanhSachDen()
+        {
+            var kh = from n in dt.KhachHangs
+                     where n.GhiChu.ToLower().Contains("cảnh báo") || n.GhiChu.ToLower().Contains("cấm")
+                     select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen,n.GhiChu};
+            return kh;
+        }
+        /**
+        * join 2 bảng: KhachHang với LoaiKhachHang
+        * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
+        * Có điều kiện
+        */
         /*
          * tìm kiếm khách hàng
          */

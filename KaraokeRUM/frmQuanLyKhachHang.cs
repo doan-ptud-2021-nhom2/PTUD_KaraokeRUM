@@ -25,6 +25,22 @@ namespace KaraokeRUM
         private int sortColumn = -1;
         private void frmQuanLyKhachHang_Load(object sender, EventArgs e)
         {
+            
+            TaiCombobox();
+            TaoTieuDeCot(lstvDSKH);
+            TaoTieuDeCotDanhSachDen(lstvDanhSachDen);
+            KH = new clsKhachHang();
+            LK = new clsLoaiKhach();
+            IEnumerable<dynamic> dsKH = KH.KhachHangVaLoaiKhachHang();
+            IEnumerable<dynamic> dsKHD = KH.KhachHangVaLoaiKhachHangDanhSachDen();
+            TaiDuLieuLenListView(lstvDSKH, dsKH);
+            TaiDuLieuLenListView(lstvDanhSachDen, dsKHD);
+            txtTimKiemKhachHang.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtTimKiemKhachHang.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
+        /* Tải thông tin vào combobox */
+        void TaiCombobox()
+        {
             cboLoaiKhachHang.Items.Add("Vip");
             cboLoaiKhachHang.Items.Add("Thường xuyên");
             cboLoaiKhachHang.Items.Add("Thường");
@@ -33,17 +49,6 @@ namespace KaraokeRUM
             cboLocTheoLoai.Items.Add("Thường xuyên");
             cboLocTheoLoai.Items.Add("Thường");
             cboLocTheoLoai.Items.Add("Tất cả");
-
-            TaoTieuDeCot(lstvDSKH);
-            KH = new clsKhachHang();
-            LK = new clsLoaiKhach();
-            IEnumerable<dynamic> dsKH = KH.KhachHangVaLoaiKhachHang();
-            TaiDuLieuLenListView(lstvDSKH, dsKH);
-
-            txtTimKiemKhachHang.AutoCompleteMode = AutoCompleteMode.Suggest;
-            txtTimKiemKhachHang.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-
         }
         /** 
          * Tạo tiêu đề cột
@@ -56,13 +61,21 @@ namespace KaraokeRUM
             lsw.Columns.Add("Số lần đến", 110);
             lsw.Columns.Add("Tên loại khách", 150);
             lsw.Columns.Add("Chiết khấu", 120);
-
-
             lsw.View = View.Details;
             lsw.GridLines = true;
             lsw.FullRowSelect = true;
         }
-
+        void TaoTieuDeCotDanhSachDen(ListView lsw)
+        {
+            lsw.Columns.Add("Mã khách", 100);
+            lsw.Columns.Add("Tên khách hàng", 220);
+            lsw.Columns.Add("SDT", 130);
+            lsw.Columns.Add("Số lần đến", 110);
+            lsw.Columns.Add("GhiChú", 150);
+            lsw.View = View.Details;
+            lsw.GridLines = true;
+            lsw.FullRowSelect = true;
+        }
         /** 
          * Load dữ liệu lên ListView
         */
@@ -86,6 +99,17 @@ namespace KaraokeRUM
             lstvItem.SubItems.Add(itemKH.SoLanDen.ToString());
             lstvItem.SubItems.Add(itemKH.TenLoaiKH);
             lstvItem.SubItems.Add(itemKH.ChietKhau.ToString());
+            lstvItem.Tag = itemKH;
+            return lstvItem;
+        }
+        ListViewItem TaoItemDanhSachDen(dynamic itemKH)
+        {
+            ListViewItem lstvItem;
+            lstvItem = new ListViewItem(itemKH.MaKH);
+            lstvItem.SubItems.Add(itemKH.TenKhach);
+            lstvItem.SubItems.Add(itemKH.SDT);
+            lstvItem.SubItems.Add(itemKH.SoLanDen.ToString());
+            lstvItem.SubItems.Add(itemKH.GhiChu);
             lstvItem.Tag = itemKH;
             return lstvItem;
         }
