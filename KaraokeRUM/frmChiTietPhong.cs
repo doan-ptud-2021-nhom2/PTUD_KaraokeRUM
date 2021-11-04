@@ -275,7 +275,20 @@ namespace KaraokeRUM
          */
         private void btnHuyPhong_Click(object sender, EventArgs e)
         {
+            HoaDon hoaDon = HoaDon.LayHoaDon(maHoaDon);
+            Phong phong = Phong.LayThongTinPhong(hoaDon.MaPhong);
+            DialogResult hoiHuy;
+            hoiHuy = MessageBox.Show("Bạn có muốn hủy phòng không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
+            if (hoiHuy == DialogResult.Yes)
+            {
+                if (txtTenPhong.Text == phong.TenPhong)
+                {
+                    phong.TrangThaiPhong = "Đóng";
+                    Phong.SuaTrangThaiPhong(phong);
+                    this.Close();
+                }
+            }
         }
 
         /*
