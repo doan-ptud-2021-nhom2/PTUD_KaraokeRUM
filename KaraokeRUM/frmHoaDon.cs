@@ -386,6 +386,19 @@ namespace KaraokeRUM
             hoaDon.TongTien = Convert.ToDecimal(TongTien);
             HoaDon.CapNhapHoaDon(hoaDon);
 
+            //Cập nhật tổng tiền cho khách hàng (để thống kê).
+            KhachHang maKhachHang = KhachHang.LayThongTinKhach(hoaDon.MaKH);
+            if(maKhachHang.SoLanDen == 1)
+            {
+                maKhachHang.TongTien = Convert.ToDecimal(TongTien);
+                KhachHang.CapNhatTongTienChoKhach(maKhachHang);
+            }
+            else
+            {
+                maKhachHang.TongTien +=  Convert.ToDecimal(hoaDon.TongTien);
+                KhachHang.CapNhatTongTienChoKhach(maKhachHang);
+            }
+
             //Cập nhật trạng thái phòng.
             Phong phong = Phong.TimMotPhongTheoMa(hoaDon.MaPhong);
             phong.TrangThaiPhong = "Đóng";
