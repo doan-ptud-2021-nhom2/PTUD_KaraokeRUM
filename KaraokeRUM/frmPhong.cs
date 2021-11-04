@@ -59,12 +59,10 @@ namespace KaraokeRUM
         /** Kiểm tra thời gian ngày nhận **/
         private Boolean KiemTraThoiGian()
         {
-            DateTime tgian = DateTime.Now;
-            int soSanh = DateTime.Compare(dTimeNgayNhan.Value, tgian);
-
+            DateTime tgian = DateTime.Now.Date;
+            int soSanh = DateTime.Compare(dTimeNgayNhan.Value.Date, tgian);
             if (soSanh < 0)
             {
-                Console.WriteLine("Ngày nhận không phù hợp");
                 return false;
             }
             return true;
@@ -83,6 +81,7 @@ namespace KaraokeRUM
                 btn.Height = 50;
                 btn.Text = n.ElementAt(i).TenPhong;
                 btn.BackColor = Color.Teal;
+                btn.ForeColor = Color.White;
                 foreach (dynamic item in TAOBUTTON.LayTrangThaiPhong("LP001"))
                 {
                     if (btn.Text.Equals(item.TenPhong))
@@ -93,7 +92,7 @@ namespace KaraokeRUM
                         }
                         else if (item.TrangThaiPhong == "Đặt")
                         {
-                            btn.BackColor = Color.Yellow;
+                            btn.BackColor = Color.Orange;
                         }
                         else if (item.TrangThaiPhong == "Đóng")
                         {
@@ -116,6 +115,7 @@ namespace KaraokeRUM
                 btn.Name = "btnThuong" + (i+1).ToString();
                 btn.Width = 65;
                 btn.Height = 50;
+                btn.ForeColor = Color.White;
                 btn.Text = n.ElementAt(i).TenPhong;
                 btn.BackColor = Color.Teal;
                 foreach (var item in TAOBUTTON.LayTrangThaiPhong("LP002"))
@@ -128,7 +128,7 @@ namespace KaraokeRUM
                         }
                         else if (item.TrangThaiPhong == "Đặt")
                         {
-                            btn.BackColor = Color.Yellow;
+                            btn.BackColor = Color.Orange;
                         }
                         else if (item.TrangThaiPhong == "Đóng")
                         {
@@ -147,7 +147,7 @@ namespace KaraokeRUM
             if (btn.BackColor == Color.Gray)
             {
                 btnMoPhong.Enabled = true;
-                btn.BackColor = Color.LightGreen;
+                btn.BackColor = Color.Green;
                 txtTenPhong.Text = btn.Text;
             }
             else if (btn.BackColor == Color.Teal)
@@ -155,17 +155,17 @@ namespace KaraokeRUM
                 txtTenPhong.Text = btn.Text;
                 btnMoPhong.Enabled = true;
             }          
-            else if (btn.BackColor == Color.Yellow)
+            else if (btn.BackColor == Color.Orange)
             {
                 MessageBox.Show("Phòng đã đặt, Vui lòng chọn phòng khác", "Thông báo");
             }
-            else if(btn.BackColor == Color.LightGreen)
+            else if(btn.BackColor == Color.Green)
             {
                 btn.BackColor = Color.Gray;
             }    
             else
             {
-                btn.BackColor = Color.LightGreen;
+                btn.BackColor = Color.Green;
                 txtTenPhong.Text = "";
             }
         }
@@ -244,32 +244,60 @@ namespace KaraokeRUM
                     KHACHHANG.ThemKhachHang(khm);
                     maKH = khm.MaKH;
                 }
+
                 string maP = PHONG.TimPhongTheoTen(txtTenPhong.Text).First().MaPhong;
                 string trangThaiPhong = PHONG.TimPhongTheoMa(maP).First().TrangThaiPhong;
+
                 if(trangThaiPhong == "Mở")
                 {
                     MessageBox.Show("Phòng đã mở, Vui lòng chọn phòng khác", "Thông báo");
                 }    
                 else if(trangThaiPhong == "Đóng")
-                {
-                    DonDatPhong ddp = new DonDatPhong();
-                    ddp = TaoDonDatPhong(maKH);
-                    DONDATPHONG.ThemDonDatPhong(ddp);
-                    /*Phong phong = p.TimMotPhongTheoMa(ddp.MaPhong);
-                    phong.TrangThaiPhong = "Đặt";
-                    p.SuaTrangThaiPhong(phong);*/
-
-                    fpnlPhongVip.Controls.Clear();
-                    fpnlPhongThuong.Controls.Clear();
-                    DANHSACHPHONGVIP = PHONG.LayDSPhongTheoLoai("LP001");
-                    TaoPhongVip(DANHSACHPHONGVIP);
-                    DANHSACHPHONGTHUONG = PHONG.LayDSPhongTheoLoai("LP002");
-                    TaoPhongThuong(DANHSACHPHONGTHUONG);
-                    IEnumerable<dynamic> danhsDP;
-                    danhsDP = HONLOAN.LayThongTinDonDatPhong();
-                    TaiDuLieuLenListView(lstvDanhSachDP, danhsDP);
+                { 
+                    if(!KiemTraNgayGioDat())
+                    {
+                        MessageBox.Show("Phòng đã được đặt trong khoảng thời gian này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }     
+                    else
+                    {
+                        DonDatPhong ddp = new DonDatPhong();
+                        ddp = TaoDonDatPhong(maKH);
+                        DONDATPHONG.ThemDonDatPhong(ddp);
+                        fpnlPhongVip.Controls.Clear();
+                        fpnlPhongThuong.Controls.Clear();
+                        DANHSACHPHONGVIP = PHONG.LayDSPhongTheoLoai("LP001");
+                        TaoPhongVip(DANHSACHPHONGVIP);
+                        DANHSACHPHONGTHUONG = PHONG.LayDSPhongTheoLoai("LP002");
+                        TaoPhongThuong(DANHSACHPHONGTHUONG);
+                        IEnumerable<dynamic> danhsDP;
+                        danhsDP = HONLOAN.LayThongTinDonDatPhong();
+                        TaiDuLieuLenListView(lstvDanhSachDP, danhsDP);
+                    }                       
                 }    
             }
+        }
+
+        private bool KiemTraNgayGioDat()
+        {
+            /*Tạm thời mới chỉ thành công với 1 đơn đặt phòng , 2 đơn trở lên trùng 1 phòng chưa được*/
+            string maPhong = PHONG.TimMaPhong(txtTenPhong.Text).MaPhong;
+            dynamic dsach = HONLOAN.LayThongTinDonDatPhongThemMaPhong(maPhong);
+            DateTime ngay = DateTime.Parse(dTimeNgayNhan.Value.ToString("yyyy-MM-dd"));
+            TimeSpan gio = TimeSpan.Parse(txtGioDatPhong.Text);
+            foreach (dynamic i in HONLOAN.LayThongTinDonDatPhongThemMaPhong(maPhong))
+            {                 
+                double xetGio = (double)(i.GioDat - gio).TotalHours;
+                MessageBox.Show(xetGio.ToString());
+                if ((i.NgayNhan).Equals(ngay) && xetGio == 0)
+                {
+                    return false ;
+                }  
+                else if(i.NgayNhan.Date.Equals(ngay) && ((xetGio <= -3 ) || (xetGio >= 3) ))
+                {
+                    return true;
+                }    
+            }
+            return false;
         }
         /** Tạo mã đơn đặt phòng **/
         private string TaoMaDDP()
@@ -283,6 +311,7 @@ namespace KaraokeRUM
             {
                 string maDDPTam = DONDATPHONG.TraTatCaDDP().Last().MaDDP.ToString();
                 int dem = Convert.ToInt32(maDDPTam.Split('D', 'P')[2]) + 1;
+                MessageBox.Show(dem.ToString());
                 if (dem < 10)
                 {
                     maDDP += "DP00" + dem;
@@ -334,8 +363,9 @@ namespace KaraokeRUM
             }
             return maKH;
         }
-        #endregion
 
+        #endregion
+        /*Chức năng mở phòng*/
         private void btnMoPhong_Click(object sender, EventArgs e)
         {
             string maPhong = PHONG.TimPhongTheoTen(txtTenPhong.Text).First().MaPhong;
@@ -501,92 +531,11 @@ namespace KaraokeRUM
                     {
                         MessageBox.Show("Phòng chưa tới giờ đặt", "Thông báo", MessageBoxButtons.OK);
                     }
-                }                
-                /*KhachHang khc = kh.TimKhachHang(txtSoDienThoai.Text);
-                if (khc != null)
-                {
-                    int dem = khc.SoLanDen;
-                    khc.SoLanDen = dem + 1;
-                    if (khc != null)
-                    {
-                        if (khc.SoLanDen >= 5 && khc.SoLanDen < 10)
-                        {
-                            khc.MaLoaiKH = "LKH02";
-                        }
-                        else if (khc.SoLanDen >= 10)
-                        {
-                            khc.MaLoaiKH = "LKH01";
-                        }
-                        else
-                        {
-                            khc.MaLoaiKH = "LKH03";
-                        }
-                    }
-                    kh.SuaSoLanDen(khc);
-                    HoaDon hoaDon = TaoHoaDon();
-                    maHD = hoaDon.MaHD;
-                    hd.ThemHoaDon(hoaDon);
-                    Phong phong = p.TimMotPhongTheoTen(txtTenPhong.Text);
-                    maPhong = phong.MaPhong;
-                    phong.TrangThaiPhong = "Mở";
-                    p.SuaTrangThaiPhong(phong);
-                    DonDatPhong ddp = new DonDatPhong();
-                    ddp = clsddp.TimDDPhong(maPhong);
-                    clsddp.Xoa(ddp);
-                    TaiDuLieuLenListView(lvwDanhSachDP, hl.LayThongTinDonDatPhong());
-                }
-                else
-                {
-                    KhachHang khm = new KhachHang();
-                    khm = TaoKhachHang();
-                    kh.ThemKhachHang(khm);
-                    int dem = khm.SoLanDen;
-                    khm.SoLanDen = dem + 1;
-                    if (khm.SoLanDen >= 5 && khm.SoLanDen < 10)
-                    {
-                        khm.MaLoaiKH = "LKH02";
-                    }
-                    else if (khm.SoLanDen >= 10)
-                    {
-                        khm.MaLoaiKH = "LKH01";
-                    }
-                    else
-                    {
-                        khm.MaLoaiKH = "LKH03";
-                    }
-                    kh.SuaSoLanDen(khm);
-                    HoaDon hoaDon = TaoHoaDon();
-                    maHD = hoaDon.MaHD;
-                    hd.ThemHoaDon(hoaDon);
-                    Phong phong = p.TimMotPhongTheoTen(txtTenPhong.Text);
-                    maPhong = phong.MaPhong;
-                    phong.TrangThaiPhong = "Mở";
-                    p.SuaTrangThaiPhong(phong);
-                    DonDatPhong ddp = new DonDatPhong();
-                    ddp = clsddp.TimDDPhong(maPhong);
-                    clsddp.Xoa(ddp);
-                    TaiDuLieuLenListView(lvwDanhSachDP, hl.LayThongTinDonDatPhong());
-                }
-                dSachPVip = p.LayDSPhongTheoLoai("LP001");              
-                flowLayoutPanel1.Controls.Clear();
-                flowLayoutPanel2.Controls.Clear();
-                TaoPhongVip(dSachPVip);
-                dSachPThuong = p.LayDSPhongTheoLoai("LP002");
-                TaoPhongThuong(dSachPThuong);
-                //MessageBox.Show(maHD, maPhong);
-                frmChiTietPhong frmCTP = new frmChiTietPhong(maHD);
-                frmCTP.Show();*/
+                }                                
             }
             else if(trangThaiPhong =="Mở")
             {
-                Phong phong = PHONG.TimMotPhongTheoTen(txtTenPhong.Text);
-                maPhong = phong.MaPhong;
-                string maHD = HOADON.LayMaHoaDonTheoMaPhong(maPhong).MaHD;
-                //MessageBox.Show(maHD, maPhong);
-                /*frmChiTietPhong frm = new frmChiTietPhong();
-                frm.Show();*/
-                frmChiTietPhong frmCTP = new frmChiTietPhong(maHD);
-                frmCTP.Show();
+                MessageBox.Show("Phòng đã mở ", "Thông báo", MessageBoxButtons.OK);
             }    
         }
         /** Tạo hóa đơn mới mở phòng qua đặt phòng **/
@@ -624,14 +573,41 @@ namespace KaraokeRUM
         private string TaoMaHD()
         {
             string maHD = "";
-            int dem = HOADON.LayToanBoHoaDon().Count() + 1;
-            if (dem < 10)
+            int dem = 0;
+            if (lstvDanhSachDP.Items.Count == 0)
             {
-                maHD += "HD00" + dem;
+                dem = HOADON.LayToanBoHoaDon().Count() + 1;
             }
             else
             {
+                dem = Convert.ToInt32(HOADON.LayToanBoHoaDon().Last().MaHD.ToString().Split('H','D')[2]) + 1;
+            }           
+            if (dem < 10)
+            {
+                maHD += "HD000000" + dem;
+            }
+            else if(dem<100 && dem >= 10)
+            {
+                maHD += "HD00000" + dem;
+            }
+            else if (dem < 1000 && dem >= 100)
+            {
+                maHD += "HD0000" + dem;
+            }
+            else if (dem < 10000 && dem >= 1000)
+            {
+                maHD += "HD000" + dem;
+            }
+            else if (dem < 100000 && dem >= 10000)
+            {
+                maHD += "HD000" + dem;
+            }
+            else if (dem < 1000000 && dem >= 100000)
+            {
                 maHD += "HD0" + dem;
+            }
+            else {
+                maHD += "HD" + dem;
             }
             return maHD;
         }
@@ -749,9 +725,15 @@ namespace KaraokeRUM
             {
                 btnMoPhong.Enabled = true;
                 dp = lstvDanhSachDP.SelectedItems[0].Tag;
-                DuLieuLenTextBox(dp);
+                TimeSpan gio = DateTime.Now.TimeOfDay;
+                double xetGio = (double)(dp.GioDat - gio).TotalHours;
+                if(dp.NgayNhan.Date.Equals(DateTime.Now.Date) &&( xetGio <= 1 && xetGio > 0))
+                {
+                    DuLieuLenTextBox(dp);
+                }    
             }
         }
+        /*Chức năng làm mới lại danh sách đặt phòng*/
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
@@ -782,6 +764,28 @@ namespace KaraokeRUM
                     PHONG.SuaTrangThaiPhong(phong);
                 }                  
             }    
+        }
+
+        private void btnXemPhong_Click(object sender, EventArgs e)
+        {
+            Phong phong = PHONG.TimMotPhongTheoTen(txtTenPhong.Text);
+            if(phong.TrangThaiPhong.Equals("Mở"))
+            {
+                maPhong = phong.MaPhong;
+                string maHD = HOADON.LayMaHoaDonTheoMaPhong(maPhong).MaHD;
+                frmChiTietPhong frmCTP = new frmChiTietPhong(maHD);
+                frmCTP.Show();
+            }               
+            else
+            {
+                MessageBox.Show("Phòng chưa mở, không thể xem", "Thông báo", MessageBoxButtons.OK);
+            }    
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            frmTimKiemKhachHang frm = new frmTimKiemKhachHang();
+            frm.Show();
         }
     }
 }
