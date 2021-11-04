@@ -13,14 +13,13 @@ namespace KaraokeRUM
         {
             dt = LayData();
         }
+        /*Lấy tất cả danh sách đơn đặt phòng*/
         public IEnumerable<DonDatPhong> TraTatCaDDP()
         {
             IEnumerable<DonDatPhong> ddp = from n in dt.DonDatPhongs select n;
             return ddp;
         }
-        /**
-        * Tim mã đơn đặt phòng
-        */
+        /*Tim đơn đặt phòng theo mã*/
         public DonDatPhong TimDDPhong(string maPhong)
         {
 
@@ -31,6 +30,7 @@ namespace KaraokeRUM
             }
             return null;
         }
+        /*Chức năng thêm đơn đặt phòng*/
         public int ThemDonDatPhong(DonDatPhong donDatPhong)
         {
             System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
@@ -48,6 +48,7 @@ namespace KaraokeRUM
                 throw new Exception(ex.Message);
             }
         }
+        /*Kiểm tra mã đơn đặt phòng có trùng hay không*/
         public DonDatPhong KiemTra(string id)
         {
             DonDatPhong temp = (from n in dt.DonDatPhongs
@@ -55,6 +56,7 @@ namespace KaraokeRUM
                                 select n).FirstOrDefault();
             return temp;
         }
+        /*Tìm đơn đặt phòng theo ngày*/
         public IEnumerable<DonDatPhong> TimDonDatPhongTheoNgay(string ngay)
         {
             var temp = (from n in dt.DonDatPhongs
@@ -62,6 +64,7 @@ namespace KaraokeRUM
                                 select n);
             return temp;
         }
+        /*Chức năng xóa đơn đặt phòng*/
         public int Xoa(DonDatPhong ddp)
         {
             System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction();

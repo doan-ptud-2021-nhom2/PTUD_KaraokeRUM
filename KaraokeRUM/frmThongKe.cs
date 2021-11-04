@@ -15,9 +15,9 @@ namespace KaraokeRUM
         /**
          * Các biến được sử dụng trong chương trình
          */
-        private clsThongKe ThongKe;
-        private clsMatHang MatHang;
-        private IEnumerable<dynamic> DSHoaDon;
+        private clsThongKe THONGKE;
+        private clsMatHang MATHANG;
+        private IEnumerable<dynamic> DSHOADON;
 
         public frmThongKe()
         {
@@ -29,8 +29,8 @@ namespace KaraokeRUM
          */
         private void frmThongKe_Load(object sender, EventArgs e)
         {
-            ThongKe = new clsThongKe();
-            MatHang = new clsMatHang();
+            THONGKE = new clsThongKe();
+            MATHANG = new clsMatHang();
 
             rdoHomNay.Checked = true;
             TaoComboBox();
@@ -66,8 +66,8 @@ namespace KaraokeRUM
          */
         private void TaoListView(ListView lstv)
         {
-            lstv.Columns.Add("Mã HD", 100);
-            lstv.Columns.Add("Số phòng", 100);
+            lstv.Columns.Add("Mã HD", 130);
+            lstv.Columns.Add("Tên phòng", 100);
             lstv.Columns.Add("Tên khách hàng", 200);
             lstv.Columns.Add("Tổng tiền", 200);
             lstv.Columns.Add("Ngày lập", 150);
@@ -114,34 +114,34 @@ namespace KaraokeRUM
         private void TaiBieuDoHomNay(string homNay)
         {
             //Xóa biểu đồ để vẽ lại
-            chrThongKeDoanhThu.Series["DoanhThu"].Points.Clear();
+            chrThongKeDoanhThu.Series["MatHang"].Points.Clear();
             //Load dữ liệu vào data
-            dynamic data = ThongKe.LaySoLieuThongKeHomNay(homNay);
+            dynamic data = THONGKE.LaySoLieuThongKeHomNay(homNay);
             //Hiển thị thông số của trường dữ liệu
-            chrThongKeDoanhThu.Series["DoanhThu"].IsValueShownAsLabel = true;
+            chrThongKeDoanhThu.Series["MatHang"].IsValueShownAsLabel = true;
             
             //Chạy vòng lặp để show dữ liệu
             foreach (dynamic item in data)
             {
                 //Đối với các loại nước có đơn vị là lon thì / 24 để tính bằng thùng
-                if(MatHang.LayDonViMatHang(item.MatHang).DonVi.Equals("Lon"))
-                    chrThongKeDoanhThu.Series["DoanhThu"].Points.AddXY(item.MatHang, item.SoLuong / 24);
+                if(MATHANG.LayDonViMatHang(item.MatHang).DonVi.Equals("Lon"))
+                    chrThongKeDoanhThu.Series["MatHang"].Points.AddXY(item.MatHang, item.SoLuong / 24);
                 else
-                    chrThongKeDoanhThu.Series["DoanhThu"].Points.AddXY(item.MatHang, item.SoLuong);
+                    chrThongKeDoanhThu.Series["MatHang"].Points.AddXY(item.MatHang, item.SoLuong);
             }
         }
 
         private void TaiBieuTheoThang(string thang, string nam)
         {
-            chrThongKeDoanhThu.Series["DoanhThu"].Points.Clear();
-            dynamic data = ThongKe.LaySoLieuThongKeTheoThang(thang, nam);
-            chrThongKeDoanhThu.Series["DoanhThu"].IsValueShownAsLabel = true;
+            chrThongKeDoanhThu.Series["MatHang"].Points.Clear();
+            dynamic data = THONGKE.LaySoLieuThongKeTheoThang(thang, nam);
+            chrThongKeDoanhThu.Series["MatHang"].IsValueShownAsLabel = true;
             foreach (dynamic item in data)
             {
-                if (MatHang.LayDonViMatHang(item.MatHang).DonVi.Equals("Lon"))
-                    chrThongKeDoanhThu.Series["DoanhThu"].Points.AddXY(item.MatHang, (item.SoLuong / 24));
+                if (MATHANG.LayDonViMatHang(item.MatHang).DonVi.Equals("Lon"))
+                    chrThongKeDoanhThu.Series["MatHang"].Points.AddXY(item.MatHang, (item.SoLuong / 24));
                 else
-                    chrThongKeDoanhThu.Series["DoanhThu"].Points.AddXY(item.MatHang, item.SoLuong);
+                    chrThongKeDoanhThu.Series["MatHang"].Points.AddXY(item.MatHang, item.SoLuong);
             }
         }
 
@@ -164,14 +164,14 @@ namespace KaraokeRUM
 
                 //Load danh sách
                 lstvDSHoaDon.Clear();
-                DSHoaDon = ThongKe.LayDanhSachHoaDonHomNay(homNay);
+                DSHOADON = THONGKE.LayDanhSachHoaDonHomNay(homNay);
                 TaoListView(lstvDSHoaDon);
-                TaiDuLieuLenListView(lstvDSHoaDon, DSHoaDon);
+                TaiDuLieuLenListView(lstvDSHoaDon, DSHOADON);
 
                 //Load thông tin lên các text box
-                txtSKH.Text = ThongKe.LayTongSoKhachHangHomNay(homNay).ToString();
-                txtSMH.Text = ThongKe.LayTongSanPhamBanHomNay(homNay).ToString();
-                txtTDT.Text = ThongKe.LayTongTienHomNay(homNay).ToString("#,### VNĐ");
+                txtSKH.Text = THONGKE.LayTongSoKhachHangHomNay(homNay).ToString();
+                txtSMH.Text = THONGKE.LayTongSanPhamBanHomNay(homNay).ToString();
+                txtTDT.Text = THONGKE.LayTongTienHomNay(homNay).ToString("#,### VNĐ");
             }
         }
 
@@ -193,15 +193,14 @@ namespace KaraokeRUM
 
             //Load danh sách
             lstvDSHoaDon.Clear();
-            DSHoaDon = ThongKe.LayDanhSachHoaDonTheoThangNam(thang, nam);
+            DSHOADON = THONGKE.LayDanhSachHoaDonTheoThangNam(thang, nam);
             TaoListView(lstvDSHoaDon);
-            TaiDuLieuLenListView(lstvDSHoaDon, DSHoaDon);
+            TaiDuLieuLenListView(lstvDSHoaDon, DSHOADON);
 
             //Load thông tin lên các text box
-            txtSKH.Text = ThongKe.LayTongSoKhachHangTheoThangNam(thang, nam).ToString();
-            txtSMH.Text = ThongKe.LayTongSanPhamBanTheoThangNam(thang, nam).ToString();
-            txtTDT.Text = ThongKe.LayTongTienTheoThangNam(thang, nam).ToString("#,### VNĐ");
-
+            txtSKH.Text = THONGKE.LayTongSoKhachHangTheoThangNam(thang, nam).ToString();
+            txtSMH.Text = THONGKE.LayTongSanPhamBanTheoThangNam(thang, nam).ToString();
+            txtTDT.Text = THONGKE.LayTongTienTheoThangNam(thang, nam).ToString("#,### VNĐ");
         }
 
         /**

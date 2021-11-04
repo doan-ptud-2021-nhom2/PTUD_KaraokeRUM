@@ -41,7 +41,7 @@ namespace KaraokeRUM
             var in4_kh = from kh in dt.KhachHangs
                      where kh.MaKH.Equals(maKH)
                      select kh;
-            return in4_kh.First();
+            return in4_kh.FirstOrDefault();
         }
         public KhachHang TimKhachHang(string sdt)
         {

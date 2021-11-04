@@ -16,6 +16,13 @@ namespace KaraokeRUM
         {
             dt = LayData();
             lp = new clsLoaiPhong();
+        }        
+        /*Lấy tất cả các phòng*/
+        public IEnumerable<Phong> LayTatCaPhong()
+        {
+            IEnumerable<Phong> q = from n in dt.Phongs
+                                   select n;
+            return q;
         }
         /*Tìm một phòng theo mã*/
         public Phong TimMotPhongTheoMa(string maPhong)
@@ -31,7 +38,7 @@ namespace KaraokeRUM
         * Lấy tất cả các phòng
         * fix load lên ListView (Trạng thái phòng đóng)
         */
-        public IEnumerable<Phong> LayTatCaPhong()
+        public IEnumerable<Phong> LayTatCaPhongDong()
         {
             IEnumerable<Phong> q = from n in dt.Phongs
                                    where n.TrangThaiPhong.Equals("Đóng")
@@ -39,9 +46,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /**
-        * Tìm kiếm theo mã phòng (trấn thêm)
-        */
+        /*Tìm kiếm theo mã phòng (trấn thêm)*/
         public Phong LayThongTinPhong(string maPhong)
         {
             var phong = (from p in dt.Phongs
@@ -49,10 +54,7 @@ namespace KaraokeRUM
                           select p).First();
             return phong;
         }
-
-        /**
-        * Lấy các phòng theo loại (VIP, THUONG).
-        */
+        /*Lấy các phòng theo loại (VIP, THUONG)*/
         public IEnumerable<Phong> LayTatCaTheoLoai(string maLoaiPhong)
         {
             IEnumerable<Phong> q = from n in dt.Phongs
@@ -60,6 +62,7 @@ namespace KaraokeRUM
                                    select n;
             return q;
         }
+        /*Lấy danh sách phòng theo loại*/
         public IEnumerable<Phong> LayDSPhongTheoLoai(string maLoaiPhong)
         {
             IEnumerable<Phong> q = from n in dt.Phongs
@@ -68,9 +71,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /**
-        * Thêm các thông tin Phòng
-        */
+        /*Thêm các thông tin Phòng*/
         public int ThemPhong(Phong phong)
         {
             System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
@@ -89,9 +90,7 @@ namespace KaraokeRUM
             }
         }
 
-        /**
-        * Sửa thông tin phòng (Trạng thái, Loại phòng).
-        */
+        /*Sửa thông tin phòng (Trạng thái, Loại phòng)*/
         public bool SuaPhong(Phong phong)
         {
             System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
@@ -115,9 +114,7 @@ namespace KaraokeRUM
 
             }
         }
-        /**
-        * Tìm kiếm phòng 
-        */
+        /*Tìm kiếm phòng */
         public IEnumerable<Phong> TimPhong(string tenPhong)
         {
             IEnumerable<Phong> q = from n in dt.Phongs
@@ -125,6 +122,7 @@ namespace KaraokeRUM
                                    select n;
             return q;
         }
+
         public Phong TimMaPhong(string tenPhong)
         {
             Phong q = (from n in dt.Phongs
@@ -146,7 +144,7 @@ namespace KaraokeRUM
         /**
        * Tim ten phòng
        */
-        public IQueryable<Phong> TimTenPhong(string tenPhong)
+        public IQueryable<Phong> TimPhongTheoTen(string tenPhong)
         {
             IQueryable<Phong> q = (from n in dt.Phongs
                                    where n.TenPhong.Equals(tenPhong)
@@ -202,7 +200,7 @@ namespace KaraokeRUM
                 dt.Transaction = myTran;
                 IQueryable<Phong> temp = (from n in dt.Phongs
                                           where n.MaPhong == phong.MaPhong
-                                          select n); ;
+                                          select n);
                 temp.First().TrangThaiPhong = phong.TrangThaiPhong;
                 dt.SubmitChanges();
                 dt.Transaction.Commit();

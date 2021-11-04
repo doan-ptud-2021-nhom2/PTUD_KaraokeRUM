@@ -26,7 +26,7 @@ namespace KaraokeRUM
         {
             var hoaDon = (from hd in dt.HoaDons
                           where hd.MaPhong.Equals(maPhong) && hd.TongTien == null
-                          select hd).First();
+                          select hd).FirstOrDefault();
             return hoaDon;
         }
 
@@ -111,6 +111,58 @@ namespace KaraokeRUM
                 dt.Transaction.Rollback();
                 throw new Exception(ex.Message);
             }
+        }
+        /*Tìm hóa đơn theo mã khách hàng - Huy*/
+        public HoaDon TimHoaDonTheoMaKhachHang(string maKH)
+        {
+            var kh = from n in dt.HoaDons
+                     where n.MaKH.Equals(maKH) && n.TongTien.Equals(null)
+                     select n;
+            return kh.FirstOrDefault();
+        }
+
+        /*
+        * Kiểm tra hóa đơn theo mã
+        */
+        public HoaDon KiemTraMaHoaDon(string maHoaDon)
+        {
+            var q = (from hd in dt.HoaDons
+                     where hd.MaHD.Equals(maHoaDon)
+                     select hd).FirstOrDefault();
+            return q;
+        }
+
+        /*
+         * Xóa hóa đơn
+         */
+        public int XoaHoaDon(HoaDon hoaDon)
+        {
+            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = br;
+                if (KiemTraMaHoaDon(hoaDon.MaHD) != null)
+                {
+                    dt.HoaDons.DeleteOnSubmit(hoaDon);
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Lỗi!!" + ex.Message);
+            }
+        }
+        /*Tìm hóa đơn theo mã phòng - Huy*/
+        public HoaDon TimHoaDonTheoMaPhong(string maPhong)
+        {
+            var kh = from n in dt.HoaDons
+                     where n.MaPhong.Equals(maPhong) && n.TongTien.Equals(null)
+                     select n;
+            return kh.FirstOrDefault();
         }
     }
 }

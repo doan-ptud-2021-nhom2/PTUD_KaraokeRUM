@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -51,7 +51,7 @@ namespace KaraokeRUM
             dsPhong = p.LayTatCaPhong();
             dsLoaiPhong = lp.LayTatCaLoaiPhong();
 
-            IEnumerable<dynamic> dsP = p.LayTatCaPhong();
+            IEnumerable<dynamic> dsP = p.LayTatCaPhongDong();
             TaiDuLieuLenListView(lstvDanhSachPhong, dsP);
 
             txtTimKiemThongTinPhong.AutoCompleteMode = AutoCompleteMode.Suggest;
