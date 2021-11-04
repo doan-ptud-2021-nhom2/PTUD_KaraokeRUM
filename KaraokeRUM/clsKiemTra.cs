@@ -28,5 +28,6 @@ namespace KaraokeRUM
             Match match = regex.Match(soTien);
             return match.Success;
         }
+
     }
 }
