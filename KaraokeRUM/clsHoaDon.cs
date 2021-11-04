@@ -120,5 +120,41 @@ namespace KaraokeRUM
                      select n;
             return kh.FirstOrDefault();
         }
+
+        /*
+        * Kiểm tra hóa đơn theo mã
+        */
+        public HoaDon KiemTraMaHoaDon(string maHoaDon)
+        {
+            var q = (from hd in dt.HoaDons
+                     where hd.MaHD.Equals(maHoaDon)
+                     select hd).FirstOrDefault();
+            return q;
+        }
+
+        /*
+         * Xóa hóa đơn
+         */
+        public int XoaHoaDon(HoaDon hoaDon)
+        {
+            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = br;
+                if (KiemTraMaHoaDon(hoaDon.MaHD) != null)
+                {
+                    dt.HoaDons.DeleteOnSubmit(hoaDon);
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Lỗi!!" + ex.Message);
+            }
+        }
     }
 }

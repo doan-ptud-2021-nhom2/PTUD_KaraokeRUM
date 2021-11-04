@@ -39,6 +39,8 @@ namespace KaraokeRUM
             this.txtTenPhong = new System.Windows.Forms.TextBox();
             this.txtGioVao = new System.Windows.Forms.TextBox();
             this.txtTenKhachHang = new System.Windows.Forms.TextBox();
+            this.btnThoat = new System.Windows.Forms.Button();
+            this.btnHuyPhong = new System.Windows.Forms.Button();
             this.btnDoiPhong = new System.Windows.Forms.Button();
             this.btnTaoHoaDon = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@ namespace KaraokeRUM
             this.lblTenPhong = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstvDanhSachMatHang = new System.Windows.Forms.ListView();
-            this.btnHuyPhong = new System.Windows.Forms.Button();
-            this.btnThoat = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -179,6 +179,32 @@ namespace KaraokeRUM
             this.txtTenKhachHang.Name = "txtTenKhachHang";
             this.txtTenKhachHang.Size = new System.Drawing.Size(202, 34);
             this.txtTenKhachHang.TabIndex = 12;
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.BackColor = System.Drawing.Color.Teal;
+            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnThoat.Location = new System.Drawing.Point(669, 251);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(192, 52);
+            this.btnThoat.TabIndex = 10;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // btnHuyPhong
+            // 
+            this.btnHuyPhong.BackColor = System.Drawing.Color.Teal;
+            this.btnHuyPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuyPhong.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnHuyPhong.Location = new System.Drawing.Point(251, 251);
+            this.btnHuyPhong.Name = "btnHuyPhong";
+            this.btnHuyPhong.Size = new System.Drawing.Size(192, 52);
+            this.btnHuyPhong.TabIndex = 10;
+            this.btnHuyPhong.Text = "Hủy Phòng";
+            this.btnHuyPhong.UseVisualStyleBackColor = false;
+            this.btnHuyPhong.Click += new System.EventHandler(this.btnHuyPhong_Click);
             // 
             // btnDoiPhong
             // 
@@ -409,32 +435,6 @@ namespace KaraokeRUM
             this.lstvDanhSachMatHang.UseCompatibleStateImageBehavior = false;
             this.lstvDanhSachMatHang.SelectedIndexChanged += new System.EventHandler(this.lstvDanhSachMatHang_SelectedIndexChanged);
             // 
-            // btnHuyPhong
-            // 
-            this.btnHuyPhong.BackColor = System.Drawing.Color.Teal;
-            this.btnHuyPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuyPhong.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnHuyPhong.Location = new System.Drawing.Point(251, 251);
-            this.btnHuyPhong.Name = "btnHuyPhong";
-            this.btnHuyPhong.Size = new System.Drawing.Size(192, 52);
-            this.btnHuyPhong.TabIndex = 10;
-            this.btnHuyPhong.Text = "Hủy Phòng";
-            this.btnHuyPhong.UseVisualStyleBackColor = false;
-            this.btnHuyPhong.Click += new System.EventHandler(this.btnHuyPhong_Click);
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.BackColor = System.Drawing.Color.Teal;
-            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnThoat.Location = new System.Drawing.Point(669, 251);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(192, 52);
-            this.btnThoat.TabIndex = 10;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = false;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-            // 
             // frmChiTietPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -445,7 +445,9 @@ namespace KaraokeRUM
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmChiTietPhong";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Chi tiết phòng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmChiTietPhong_Load);
