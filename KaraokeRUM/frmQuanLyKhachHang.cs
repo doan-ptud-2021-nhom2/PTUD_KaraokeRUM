@@ -31,7 +31,7 @@ namespace KaraokeRUM
             TaoTieuDeCotDanhSachDen(lstvDanhSachDen);
             KH = new clsKhachHang();
             LK = new clsLoaiKhach();
-            IEnumerable<dynamic> dsKH = KH.LayKhachHangVaLoaiKhachHangTheoLoai("Vip");
+            IEnumerable<dynamic> dsKH = KH.LayKhachHangVaLoaiKhachHangTheoLoaiA("Vip");
             IEnumerable<dynamic> dsKHD = KH.KhachHangVaLoaiKhachHangDanhSachDen();
             TaiDuLieuLenListView(lstvDSKH, dsKH);
             TaiDuLieuLenListViewDanhSachDen(lstvDanhSachDen, dsKHD);

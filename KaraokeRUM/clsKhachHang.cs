@@ -97,12 +97,14 @@ namespace KaraokeRUM
 
         }
 
-        public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoai(string loaiKH)
+        public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoaiA(string loaiKH)
         {
             var kh = from n in dt.LoaiKhachHangs
                      join x in dt.KhachHangs
                      on n.MaLoaiKH equals x.MaLoaiKH
-                     where n.t
+                     where n.TenLoaiKH.Contains(loaiKH)
+                     select new { x.MaKH, x.TenKhach, x.SDT, x.SoLanDen, n.TenLoaiKH, n.ChietKhau };
+            return kh;
         }
         public IEnumerable<dynamic> KhachHangVaLoaiKhachHangDanhSachDen()
         {
