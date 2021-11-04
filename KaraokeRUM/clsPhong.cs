@@ -38,7 +38,7 @@ namespace KaraokeRUM
         * Lấy tất cả các phòng
         * fix load lên ListView (Trạng thái phòng đóng)
         */
-        public IEnumerable<Phong> LayTatCaPhong()
+        public IEnumerable<Phong> LayTatCaPhongDong()
         {
             IEnumerable<Phong> q = from n in dt.Phongs
                                    where n.TrangThaiPhong.Equals("Đóng")

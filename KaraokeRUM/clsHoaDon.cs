@@ -26,7 +26,7 @@ namespace KaraokeRUM
         {
             var hoaDon = (from hd in dt.HoaDons
                           where hd.MaPhong.Equals(maPhong) && hd.TongTien == null
-                          select hd).First();
+                          select hd).FirstOrDefault();
             return hoaDon;
         }
 
@@ -111,6 +111,14 @@ namespace KaraokeRUM
                 dt.Transaction.Rollback();
                 throw new Exception(ex.Message);
             }
+        }
+        /*Tìm hóa đơn theo mã khách hàng - Huy*/
+        public HoaDon TimHoaDonTheoMaKhachHang(string maKH)
+        {
+            var kh = from n in dt.HoaDons
+                     where n.MaKH.Equals(maKH) && n.TongTien.Equals(null)
+                     select n;
+            return kh.FirstOrDefault();
         }
     }
 }

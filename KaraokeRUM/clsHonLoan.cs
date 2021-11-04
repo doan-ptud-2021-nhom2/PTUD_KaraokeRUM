@@ -42,7 +42,16 @@ namespace KaraokeRUM
                       join x in dt.DonDatPhongs on n.MaKH equals x.MaKH
                       join e in dt.Phongs on x.MaPhong equals e.MaPhong
                       select new { n.TenKhach, n.SDT, e.TenPhong, x.NgayDat, x.GioDat, x.NgayNhan };
-            return ddp;
+            return ddp/*.OrderByDescending(x => x.NgayNhan.Date).ThenByDescending(x => x.GioDat.TotalHours)*/;
+        }
+        public IEnumerable<dynamic> LayThongTinDonDatPhongThemMaPhong(string maPhong)
+        {
+            var ddp = from n in dt.KhachHangs
+                      join x in dt.DonDatPhongs on n.MaKH equals x.MaKH
+                      join e in dt.Phongs on x.MaPhong equals e.MaPhong
+                      where x.MaPhong.Equals(maPhong)
+                      select new { n.TenKhach, n.SDT, e.TenPhong, x.NgayDat, x.GioDat, x.NgayNhan };
+            return ddp/*.OrderByDescending(x => x.NgayNhan.Date).ThenByDescending(x => x.GioDat.TotalHours)*/;
         }
         public IEnumerable<dynamic> LayThongTinDonDatPhongTheoNgay(string homNay)
         {
