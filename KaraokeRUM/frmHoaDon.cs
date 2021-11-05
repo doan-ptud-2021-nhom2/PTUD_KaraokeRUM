@@ -381,34 +381,41 @@ namespace KaraokeRUM
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            //Cập nhật thành tiền vào hóa đơn.
-            HoaDon hoaDon = HoaDon.LayHoaDon(MaHD);
-            hoaDon.TongTien = Convert.ToDecimal(TongTien);
-            HoaDon.CapNhapHoaDon(hoaDon);
+            DialogResult hoiThanhToan;
+            hoiThanhToan = MessageBox.Show("Bạn có muốn thanh toán không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            //Cập nhật tổng tiền cho khách hàng (để thống kê).
-            KhachHang maKhachHang = KhachHang.LayThongTinKhach(hoaDon.MaKH);
-            if(maKhachHang.SoLanDen == 1)
+            if(hoiThanhToan == DialogResult.Yes)
             {
-                maKhachHang.TongTien = Convert.ToDecimal(TongTien);
-                KhachHang.CapNhatTongTienChoKhach(maKhachHang);
+                //Cập nhật thành tiền vào hóa đơn.
+                HoaDon hoaDon = HoaDon.LayHoaDon(MaHD);
+                hoaDon.TongTien = Convert.ToDecimal(TongTien);
+                HoaDon.CapNhapHoaDon(hoaDon);
+
+                //Cập nhật tổng tiền cho khách hàng (để thống kê).
+                KhachHang maKhachHang = KhachHang.LayThongTinKhach(hoaDon.MaKH);
+                if (maKhachHang.SoLanDen == 1)
+                {
+                    maKhachHang.TongTien = Convert.ToDecimal(TongTien);
+                    KhachHang.CapNhatTongTienChoKhach(maKhachHang);
+                }
+                else
+                {
+                    maKhachHang.TongTien += Convert.ToDecimal(hoaDon.TongTien);
+                    KhachHang.CapNhatTongTienChoKhach(maKhachHang);
+                }
+
+                //Cập nhật trạng thái phòng.
+                Phong phong = Phong.TimMotPhongTheoMa(hoaDon.MaPhong);
+                phong.TrangThaiPhong = "Đóng";
+                Phong.SuaTrangThaiPhong(phong);
+
+                MessageBox.Show("Hoàn tất thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Tắt giao diện hóa đơn.
+                this.Close();
+
+                //Xử lý tắt giao diện này rồi mở giao diện Phòng lên.
             }
-            else
-            {
-                maKhachHang.TongTien +=  Convert.ToDecimal(hoaDon.TongTien);
-                KhachHang.CapNhatTongTienChoKhach(maKhachHang);
-            }
-
-            //Cập nhật trạng thái phòng.
-            Phong phong = Phong.TimMotPhongTheoMa(hoaDon.MaPhong);
-            phong.TrangThaiPhong = "Đóng";
-            Phong.SuaTrangThaiPhong(phong);
-
-            MessageBox.Show("Hoàn tất thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //Tắt giao diện hóa đơn.
-            this.Close();
-
-            //Xử lý tắt giao diện này rồi mở giao diện Phòng lên.
+           
         }
 
     }
