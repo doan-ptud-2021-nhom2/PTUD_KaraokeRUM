@@ -81,7 +81,7 @@ namespace KaraokeRUM
             lsw.Columns.Add("Tên khách hàng", 220);
             lsw.Columns.Add("SDT", 130);
             lsw.Columns.Add("Số lần đến", 110);
-            lsw.Columns.Add("GhiChú", 150);
+            lsw.Columns.Add("Ghi chú", 150);
             lsw.View = View.Details;
             lsw.GridLines = true;
             lsw.FullRowSelect = true;
