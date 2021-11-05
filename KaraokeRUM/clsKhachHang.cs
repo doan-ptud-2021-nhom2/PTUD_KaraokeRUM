@@ -86,23 +86,13 @@ namespace KaraokeRUM
         * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
         * Có điều kiện
         */
-        public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoai(string loaiKH)
-        {
-            var kh = from x in dt.LoaiKhachHangs
-                     join n in dt.KhachHangs
-                     on x.MaLoaiKH equals n.MaLoaiKH
-                     where x.TenLoaiKH.Trim().Equals(loaiKH.Trim())
-                     select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
-            return kh;
 
-        }
-
-        public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoaiA(string loaiKH)
+        public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoai(string maLoaiKH)
         {
             var kh = from n in dt.LoaiKhachHangs
                      join x in dt.KhachHangs
                      on n.MaLoaiKH equals x.MaLoaiKH
-                     where n.TenLoaiKH.Contains(loaiKH)
+                     where n.MaLoaiKH.Equals(maLoaiKH) && x.GhiChu == null
                      select new { x.MaKH, x.TenKhach, x.SDT, x.SoLanDen, n.TenLoaiKH, n.ChietKhau };
             return kh;
         }
@@ -127,8 +117,18 @@ namespace KaraokeRUM
                                       join x in dt.LoaiKhachHangs
                                       on n.MaLoaiKH equals x.MaLoaiKH
                                       where n.TenKhach.Contains(timKiem) || n.MaKH.Contains(timKiem)
-                                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
+                                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau , n.GhiChu};
             return kh;
+        }
+        /*
+       * tìm kiếm khách hàng theo mã
+       */
+        public IQueryable<KhachHang> TimKhachHangTheoMa(string maKH)
+        {
+            IQueryable<KhachHang> q = (from n in dt.KhachHangs
+                                       where n.MaKH.Equals(maKH)
+                                       select n);
+            return q;
         }
 
         public int SuaSoLanDen(KhachHang kh)
@@ -150,6 +150,28 @@ namespace KaraokeRUM
                 dt.Transaction.Rollback();
                 throw new Exception("Loi không sửa được!" + ex.Message);
 
+            }
+        }
+        /*cập nhập ghi chú của khách hàng*/
+        public bool CapNhatGhiChu(KhachHang kh)
+        {
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = myTran;
+                IQueryable<KhachHang> tam = (from n in dt.KhachHangs
+                                                 where n.MaKH == kh.MaKH
+                                                 select n);
+                tam.First().GhiChu = kh.GhiChu;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Lỗi không thể sửa chiết khấu Khách hàng này!" + ex.Message);
             }
         }
     }

@@ -26,7 +26,6 @@ namespace KaraokeRUM
         private clsLoaiNhanVien lNV;
         private clsHonLoan hL;
         private clsTaiKhoan tK;
-        private IEnumerable<dynamic> dsNV;
         private int sortColumn = -1;
         private string MANVQL;
         public frmQuanLyNhanVien(string maNVQL)

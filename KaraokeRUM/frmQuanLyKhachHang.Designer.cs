@@ -58,7 +58,7 @@ namespace KaraokeRUM
             this.label5 = new System.Windows.Forms.Label();
             this.cboGhiChu = new System.Windows.Forms.ComboBox();
             this.txtTenKhachHang = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCapNhapGhiChu = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -308,7 +308,7 @@ namespace KaraokeRUM
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.cboGhiChu);
             this.groupBox4.Controls.Add(this.txtTenKhachHang);
-            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.btnCapNhapGhiChu);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -373,6 +373,7 @@ namespace KaraokeRUM
             // 
             // txtTenKhachHang
             // 
+            this.txtTenKhachHang.Enabled = false;
             this.txtTenKhachHang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenKhachHang.Location = new System.Drawing.Point(176, 78);
             this.txtTenKhachHang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -380,18 +381,19 @@ namespace KaraokeRUM
             this.txtTenKhachHang.Size = new System.Drawing.Size(359, 30);
             this.txtTenKhachHang.TabIndex = 5;
             // 
-            // button1
+            // btnCapNhapGhiChu
             // 
-            this.button1.BackColor = System.Drawing.Color.Teal;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(176, 198);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(362, 46);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Cập nhập";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnCapNhapGhiChu.BackColor = System.Drawing.Color.Teal;
+            this.btnCapNhapGhiChu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapNhapGhiChu.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCapNhapGhiChu.Location = new System.Drawing.Point(176, 198);
+            this.btnCapNhapGhiChu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCapNhapGhiChu.Name = "btnCapNhapGhiChu";
+            this.btnCapNhapGhiChu.Size = new System.Drawing.Size(362, 46);
+            this.btnCapNhapGhiChu.TabIndex = 2;
+            this.btnCapNhapGhiChu.Text = "Cập nhập";
+            this.btnCapNhapGhiChu.UseVisualStyleBackColor = false;
+            this.btnCapNhapGhiChu.Click += new System.EventHandler(this.btnCapNhapGhiChu_Click);
             // 
             // label10
             // 
@@ -442,6 +444,7 @@ namespace KaraokeRUM
             this.lstvDanhSachDen.Size = new System.Drawing.Size(1023, 419);
             this.lstvDanhSachDen.TabIndex = 0;
             this.lstvDanhSachDen.UseCompatibleStateImageBehavior = false;
+            this.lstvDanhSachDen.SelectedIndexChanged += new System.EventHandler(this.lstvDanhSachDen_SelectedIndexChanged);
             // 
             // frmQuanLyKhachHang
             // 
@@ -503,7 +506,7 @@ namespace KaraokeRUM
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTenKhachHang;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCapNhapGhiChu;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ListView lstvDanhSachDen;
