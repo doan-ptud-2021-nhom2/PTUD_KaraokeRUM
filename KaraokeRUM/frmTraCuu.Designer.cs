@@ -61,7 +61,6 @@ namespace KaraokeRUM
             this.txtSDT.Size = new System.Drawing.Size(845, 30);
             this.txtSDT.TabIndex = 1;
             this.txtSDT.TextChanged += new System.EventHandler(this.txtSDT_TextChanged);
-            this.txtSDT.Validating += new System.ComponentModel.CancelEventHandler(this.txtSDT_Validating);
             // 
             // label1
             // 

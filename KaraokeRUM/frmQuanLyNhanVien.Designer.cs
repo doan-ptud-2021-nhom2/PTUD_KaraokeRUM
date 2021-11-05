@@ -177,6 +177,7 @@ namespace KaraokeRUM
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(265, 30);
             this.txtSDT.TabIndex = 5;
+            this.txtSDT.TextChanged += new System.EventHandler(this.txtSDT_TextChanged);
             this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // btnSua

@@ -92,11 +92,6 @@ namespace KaraokeRUM
             
         }
 
-        private void txtSDT_Validating(object sender, CancelEventArgs e)
-        {
-            
-        }
-
         private void txtSDT_TextChanged(object sender, EventArgs e)
         {
             string sdt = txtSDT.Text;

@@ -241,6 +241,7 @@ namespace KaraokeRUM
                 }
                 XoaCacTxtCbo();
                 TaiDuLieuLenListView(lvwDSNV, nV.LayNhanVienVaLoaiNhanVien(MANVQL));
+
             }
             
         }
@@ -363,7 +364,23 @@ namespace KaraokeRUM
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        
+        private void txtSDT_TextChanged(object sender, EventArgs e)
+        {
+            string sdt = txtSDT.Text;
+            if (!clsKiemTra.KiemTraSDT(sdt))
+            {
+                txtSDT.Focus();
+                errorProvider1.SetError(txtSDT, "Số điện thoại phải bắt đầu từ đầu số hợp lệ. VD: 09XXXXXXXX");
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+            }
+            else
+            {
+                errorProvider1.SetError(txtSDT, null);
+                btnThem.Enabled = true;
+                btnSua.Enabled = true;
+            }
+        }
     }
   
 } 

@@ -251,10 +251,18 @@ namespace KaraokeRUM
 
             if (hoiXoa == DialogResult.Yes)
             {
-                MatHang xoaMatHang = XoaMatHang();
-                mH.XoaMatHang(xoaMatHang);
-                XoaCacTxtCbo();
-                TaiDuLieuLenListView(lstvMatHang, mH.LayTatCaMatHang());
+                if(txtSoLuongTon.Text.Equals("0"))
+                {
+                    MatHang xoaMatHang = XoaMatHang();
+                    mH.XoaMatHang(xoaMatHang);
+                    XoaCacTxtCbo();
+                    TaiDuLieuLenListView(lstvMatHang, mH.LayTatCaMatHang());
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi! số lượng mặt hàng này vẫn còn, không xoá được", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
             }
         }
 
