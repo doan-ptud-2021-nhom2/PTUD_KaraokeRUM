@@ -47,9 +47,9 @@ namespace KaraokeRUM
                 PassWord = txtPassword.Text
             };
  
-            frmLayLaiMatKhau frmLLMK = new frmLayLaiMatKhau();
             frmTrangChu frmNV = new frmTrangChu(MAQL);
             frmTrangChuQL frmQL = new frmTrangChuQL(MAQL);
+
             if (TAIKHOAN.KiemTraTaiKhoan(taiKhoan))
             {
                 
@@ -87,21 +87,28 @@ namespace KaraokeRUM
             }
             else
             {
-                if (txtUsername.Text.Trim().Equals("") || txtPassword.Text.Trim().Equals(""))
+                if (txtUsername.Text.Trim().Equals("") && !txtPassword.Text.Trim().Equals(""))
                 {
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không được để trống!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tài khoản không được để trống. Vui lòng nhập đầy đủ thông tin!!",
+                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if(!txtUsername.Text.Trim().Equals("") && txtPassword.Text.Trim().Equals(""))
+                {
+                    MessageBox.Show("Mật khẩu không được để trống. Vui lòng nhập đầy đủ thông tin!!",
+                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!!", 
+                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
             //Xử lý đăng nhập sai quá 3 lần
             if(DEM == 3)
             {
-                DialogResult luaChon = MessageBox.Show("Số lần đăng nhập đã hết. Bạn có muốn lấy lại mật khẩu?"
-                    , "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult luaChon = MessageBox.Show("Số lần đăng nhập đã hết. Bạn có muốn lấy lại mật khẩu?",
+                                       "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if(luaChon == DialogResult.Yes)
                 {
                     frmLayLaiMatKhau frm = new frmLayLaiMatKhau();
