@@ -232,7 +232,7 @@ namespace KaraokeRUM
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(21, 136);
+            this.label5.Location = new System.Drawing.Point(21, 125);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(312, 22);
             this.label5.TabIndex = 0;
@@ -370,7 +370,7 @@ namespace KaraokeRUM
             this.btnViewList.Name = "btnViewList";
             this.btnViewList.Size = new System.Drawing.Size(145, 45);
             this.btnViewList.TabIndex = 6;
-            this.btnViewList.Text = "Tải Lại";
+            this.btnViewList.Text = "Làm mới";
             this.btnViewList.UseVisualStyleBackColor = false;
             this.btnViewList.Click += new System.EventHandler(this.btnViewList_Click);
             // 

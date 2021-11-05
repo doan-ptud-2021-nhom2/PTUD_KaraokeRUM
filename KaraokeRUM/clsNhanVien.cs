@@ -119,11 +119,41 @@ namespace KaraokeRUM
           */
         public IEnumerable<dynamic> LayNhanVienVaLoaiNhanVien(string MANVQL)
         {
-            //Đã nghỉ
+            //Đang làm
             var nv = from n in dt.NhanViens
                      join x in dt.LoaiNhanViens
                      on n.MaLNV equals x.MaLNV
                      where !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("đã nghỉ")
+                     select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV };
+
+            return nv;
+        }
+        /**
+          * join 2 bảng: NhanVien với LoaiNhanVien
+          * Lấy dữ liệu ở Nhân viên và Loại Nhân Viên
+          */
+        public IEnumerable<dynamic> LayToanBoNhanVienVaLoaiNhanVien(string MANVQL)
+        {
+            //Toàn bộ
+            var nv = from n in dt.NhanViens
+                     join x in dt.LoaiNhanViens
+                     on n.MaLNV equals x.MaLNV
+                     where !n.MaNV.Contains(MANVQL)
+                     select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV };
+
+            return nv;
+        }
+        /**
+          * join 2 bảng: NhanVien với LoaiNhanVien
+          * Lấy dữ liệu ở Nhân viên và Loại Nhân Viên
+          */
+        public IEnumerable<dynamic> LayNhanVienVaLoaiNhanVienDaNghi(string MANVQL)
+        {
+            //chỉ đã nghỉ
+            var nv = from n in dt.NhanViens
+                     join x in dt.LoaiNhanViens
+                     on n.MaLNV equals x.MaLNV
+                     where !n.MaNV.Contains(MANVQL) && n.TrangThai.ToLower().Contains("đã nghỉ")
                      select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV };
 
             return nv;

@@ -43,7 +43,7 @@ namespace KaraokeRUM
             lNV = new clsLoaiNhanVien();
             hL = new clsHonLoan();
             tK = new clsTaiKhoan();
-            IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
+            IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVienTheoLoai("thu ngân",MANVQL);
             TaiDuLieuLenListView(lvwDSNV, dsNV);
             txtTimKiemNhanVien.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtTimKiemNhanVien.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -59,8 +59,8 @@ namespace KaraokeRUM
             lsw.Columns.Add("CMND", 130);
             lsw.Columns.Add("SDT", 130);
             lsw.Columns.Add("Địa chỉ", 400);
-            lsw.Columns.Add("Trạng thái", 150);
             lsw.Columns.Add("Chức vụ", 130);
+            lsw.Columns.Add("Trạng thái", 150);
             lsw.View = View.Details;
             lsw.GridLines = true;
             lsw.FullRowSelect = true;
@@ -89,8 +89,8 @@ namespace KaraokeRUM
             lswItem.SubItems.Add(itemNV.CMND);
             lswItem.SubItems.Add(itemNV.SDT);
             lswItem.SubItems.Add(itemNV.DiaChi);
-            lswItem.SubItems.Add(itemNV.TrangThai);
             lswItem.SubItems.Add(itemNV.TenLNV);
+            lswItem.SubItems.Add(itemNV.TrangThai);
             lswItem.Tag = itemNV;
             return lswItem;
         }
@@ -113,7 +113,8 @@ namespace KaraokeRUM
             cboLocTheoLoai.Items.Add("Lễ tân");
             cboLocTheoLoai.Items.Add("Phục vụ");
             cboLocTheoLoai.Items.Add("Bảo vệ");
-            cboLocTheoLoai.Items.Add("All");
+            cboLocTheoLoai.Items.Add("Đã nghỉ");
+            cboLocTheoLoai.Items.Add("Tất cả");
         }
         private void lvwDSNV_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -138,22 +139,33 @@ namespace KaraokeRUM
         private void cboLocTheoLoai_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selected = this.cboLocTheoLoai.GetItemText(this.cboLocTheoLoai.SelectedItem);
-            if (selected.Equals("All") == true)
+            if (selected.Equals("Tất cả") == true)
             {
-                hL = new clsHonLoan();
                 lvwDSNV.Clear();
                 TaoTieuDeCot(lvwDSNV);
-                IEnumerable<dynamic> dsNVALL = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
+                IEnumerable<dynamic> dsNVALL = nV.LayToanBoNhanVienVaLoaiNhanVien(MANVQL);
                 TaiDuLieuLenListView(lvwDSNV, dsNVALL);
             }
             else
             {
-                hL = new clsHonLoan();
-                IEnumerable<dynamic> dsKH = nV.LayNhanVienVaLoaiNhanVienTheoLoai(selected, MANVQL);
-                lvwDSNV.Clear();
-                TaoTieuDeCot(lvwDSNV);
-                TaiDuLieuLenListView(lvwDSNV, dsKH);
+                if (selected.Equals("Đã nghỉ") == true)
+                {
+
+                    lvwDSNV.Clear();
+                    TaoTieuDeCot(lvwDSNV);
+                    IEnumerable<dynamic> dsNVDaNghi = nV.LayNhanVienVaLoaiNhanVienDaNghi(MANVQL);
+                    TaiDuLieuLenListView(lvwDSNV, dsNVDaNghi);
+                }
+                else
+                {
+
+                    IEnumerable<dynamic> dsKH = nV.LayNhanVienVaLoaiNhanVienTheoLoai(selected, MANVQL);
+                    lvwDSNV.Clear();
+                    TaoTieuDeCot(lvwDSNV);
+                    TaiDuLieuLenListView(lvwDSNV, dsKH);
+                }
             }
+            
         }
         /*
        * sự kiện click vào cột để sắp xếp
