@@ -112,6 +112,31 @@ namespace KaraokeRUM
                 throw new Exception(ex.Message);
             }
         }
+
+        /*
+         * Cập nhật đổi phòng
+         */
+        public bool CapNhatDoiPhong(HoaDon hoaDon)
+        {
+            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = br;
+                IQueryable<HoaDon> tam = (from n in dt.HoaDons
+                                          where n.MaHD == hoaDon.MaHD
+                                          select n);
+                tam.First().MaPhong = hoaDon.MaPhong;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception(ex.Message);
+            }
+        } 
+
         /*Tìm hóa đơn theo mã khách hàng - Huy*/
         public HoaDon TimHoaDonTheoMaKhachHang(string maKH)
         {
