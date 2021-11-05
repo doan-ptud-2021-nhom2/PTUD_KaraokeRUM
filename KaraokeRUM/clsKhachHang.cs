@@ -152,6 +152,31 @@ namespace KaraokeRUM
 
             }
         }
+
+        /*
+         * Cập nhật tổng tiền cho khách hàng
+         */
+        public int CapNhatTongTienChoKhach(KhachHang khachHang)
+        {
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = myTran;
+                IQueryable<KhachHang> temp = (from n in dt.KhachHangs
+                                          where n.MaKH == khachHang.MaKH
+                                          select n);
+                temp.First().TongTien = khachHang.TongTien;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Loi không sửa được!" + ex.Message);
+
+            }
+        }
         /*cập nhập ghi chú của khách hàng*/
         public bool CapNhatGhiChu(KhachHang kh)
         {
