@@ -57,7 +57,7 @@ namespace KaraokeRUM
 
         private void btnPhong_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel(new frmPhong());
+            OpenFormInPanel(new frmPhong(MAQL));
         }
 
         private void btnQLP_Click(object sender, EventArgs e)

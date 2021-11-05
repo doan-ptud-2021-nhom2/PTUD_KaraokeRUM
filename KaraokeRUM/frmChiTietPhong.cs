@@ -161,8 +161,13 @@ namespace KaraokeRUM
         */
         private void btnDoiPhong_Click(object sender, EventArgs e)
         {
-            frmDanhSachPhong frm = new frmDanhSachPhong();
+            frmDanhSachPhong frm = new frmDanhSachPhong(maHoaDon);
             frm.Show();
+            //Cập nhật phòng cũ
+            Phong phong;
+            phong = Phong.TimPhong(txtTenPhong.Text).First();
+            phong.TrangThaiPhong = "Đóng";
+            Phong.SuaTrangThaiPhong(phong);
         }
 
         /** 

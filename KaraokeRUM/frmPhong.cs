@@ -13,10 +13,6 @@ namespace KaraokeRUM
     public partial class frmPhong : Form
     {
 
-        public frmPhong()
-        {
-            InitializeComponent();
-        }
         private clsHonLoan HONLOAN;
         private clsTaoButton TAOBUTTON;
         private clsKhachHang KHACHHANG;
@@ -27,6 +23,15 @@ namespace KaraokeRUM
         public string maPhong;
         private IEnumerable<Phong> DANHSACHPHONGVIP;
         private IEnumerable<Phong> DANHSACHPHONGTHUONG;
+        protected string MAQL;
+
+        public frmPhong(string maQL)
+        {
+            InitializeComponent();
+            this.MAQL = maQL;
+        }
+
+
         private void frmPhong_Load(object sender, EventArgs e)
         {
             KHACHHANG = new clsKhachHang();
@@ -397,7 +402,7 @@ namespace KaraokeRUM
             /*dp.GioDat = dt;*/
             dp.GioDat = TimeSpan.Parse(dtmGioDatPhong.Text);
             dp.MaKH = maKH;
-            dp.MaQL = "NV002";
+            dp.MaQL = MAQL;
             dp.MaPhong = PHONG.TimPhongTheoTen(txtTenPhong.Text).First().MaPhong;
             return dp;
         }
@@ -615,7 +620,7 @@ namespace KaraokeRUM
             hd.TongTien = null;
             hd.MaPhong = PHONG.TimPhongTheoTen(LayTenPhongTrongLstv()).First().MaPhong;
             hd.MaKH = KHACHHANG.TimTenKhachHang(LayTenKhach()).First().MaKH;
-            hd.MaQL = "NV002";
+            hd.MaQL = MAQL;
             return hd;
         }
         /** Tạo hóa đơn mới mở phòng trực tiếp **/
@@ -631,7 +636,7 @@ namespace KaraokeRUM
             hd.TongTien = null;
             hd.MaPhong = PHONG.TimPhongTheoTen(txtTenPhong.Text).First().MaPhong;
             hd.MaKH = maKH;
-            hd.MaQL = "NV002";
+            hd.MaQL = MAQL;
             return hd;
         }
         /** Tạo mã của hóa đơn mới **/
