@@ -17,7 +17,6 @@ namespace KaraokeRUM
          */
         private clsThongKe THONGKE;
         private clsMatHang MATHANG;
-        private clsPhong PHONG;
         private IEnumerable<dynamic> DSHOADON;
 
         public frmThongKeQL()

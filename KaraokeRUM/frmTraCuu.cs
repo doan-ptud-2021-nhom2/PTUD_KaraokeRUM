@@ -22,6 +22,7 @@ namespace KaraokeRUM
         {
             KHACHHANG = new clsKhachHang();
             TaoListView(lstvKhachHang);
+            btnTraCuu.Enabled = false;
         }
 
         /**
