@@ -17,7 +17,7 @@ namespace KaraokeRUM
        * KH: class khách hàng.
        * LK: class Loại khách.
        * dsKh danh sách khách hàng lấy từ 2 bảng
-       * sortColumn dùng để sắp xếp
+       * SORTCOLUMN dùng để sắp xếp
        */
         private clsKhachHang KH;
         private clsLoaiKhach LK;

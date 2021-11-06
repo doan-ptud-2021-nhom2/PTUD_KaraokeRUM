@@ -39,5 +39,34 @@ namespace KaraokeRUM
             return match.Success;
         }
 
+        /*Kiểm tra tính hợp lệ của CMND - Không Nhập trùng lặp quá 8 lần*/
+        public static bool KiemTraCMNDHopLE(string cmnd)
+        {
+            char temp = 'x';
+            int count = 0;
+            foreach (char c in cmnd)
+            {
+                if (temp == c)
+                    count++;
+                else
+                {
+                    temp = c;
+                    count = 0;
+                }
+            }
+            if (count > 8)
+                return false;
+            else
+                return true;
+        }
+        /*Kiểm tra độ dài hợp lệ của CMND*/
+        public static bool KiemTraDoDaiCMND(this string cmnd)
+        {
+            Regex regex = new Regex(@"^((\d){9})$");
+            Match match = regex.Match(cmnd);
+            return match.Success;
+        }
+
+
     }
 }

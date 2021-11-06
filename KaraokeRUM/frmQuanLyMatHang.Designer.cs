@@ -30,7 +30,7 @@ namespace KaraokeRUM
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.brbThongTinMatHang = new System.Windows.Forms.GroupBox();
             this.txtGia = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cboDonVi = new System.Windows.Forms.ComboBox();
@@ -52,39 +52,39 @@ namespace KaraokeRUM
             this.lstvMatHang = new System.Windows.Forms.ListView();
             this.label11 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox1.SuspendLayout();
+            this.brbThongTinMatHang.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // brbThongTinMatHang
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.brbThongTinMatHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.txtGia);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.cboDonVi);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtSoLuongTon);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.btnView);
-            this.groupBox1.Controls.Add(this.cboLMH);
-            this.groupBox1.Controls.Add(this.txtTenMH);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.btnXoa);
-            this.groupBox1.Controls.Add(this.btnThem);
-            this.groupBox1.Controls.Add(this.btnSua);
-            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(56, 272);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(642, 447);
-            this.groupBox1.TabIndex = 48;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thông tin mặt hàng";
+            this.brbThongTinMatHang.BackColor = System.Drawing.Color.White;
+            this.brbThongTinMatHang.Controls.Add(this.txtGia);
+            this.brbThongTinMatHang.Controls.Add(this.label6);
+            this.brbThongTinMatHang.Controls.Add(this.cboDonVi);
+            this.brbThongTinMatHang.Controls.Add(this.label5);
+            this.brbThongTinMatHang.Controls.Add(this.txtSoLuongTon);
+            this.brbThongTinMatHang.Controls.Add(this.label2);
+            this.brbThongTinMatHang.Controls.Add(this.btnView);
+            this.brbThongTinMatHang.Controls.Add(this.cboLMH);
+            this.brbThongTinMatHang.Controls.Add(this.txtTenMH);
+            this.brbThongTinMatHang.Controls.Add(this.label3);
+            this.brbThongTinMatHang.Controls.Add(this.label4);
+            this.brbThongTinMatHang.Controls.Add(this.btnXoa);
+            this.brbThongTinMatHang.Controls.Add(this.btnThem);
+            this.brbThongTinMatHang.Controls.Add(this.btnSua);
+            this.brbThongTinMatHang.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brbThongTinMatHang.Location = new System.Drawing.Point(56, 272);
+            this.brbThongTinMatHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.brbThongTinMatHang.Name = "brbThongTinMatHang";
+            this.brbThongTinMatHang.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.brbThongTinMatHang.Size = new System.Drawing.Size(642, 447);
+            this.brbThongTinMatHang.TabIndex = 48;
+            this.brbThongTinMatHang.TabStop = false;
+            this.brbThongTinMatHang.Text = "Thông tin mặt hàng";
             // 
             // txtGia
             // 
@@ -94,6 +94,7 @@ namespace KaraokeRUM
             this.txtGia.Name = "txtGia";
             this.txtGia.Size = new System.Drawing.Size(406, 30);
             this.txtGia.TabIndex = 49;
+            this.txtGia.TextChanged += new System.EventHandler(this.txtGia_TextChanged);
             // 
             // label6
             // 
@@ -133,6 +134,7 @@ namespace KaraokeRUM
             this.txtSoLuongTon.Name = "txtSoLuongTon";
             this.txtSoLuongTon.Size = new System.Drawing.Size(406, 30);
             this.txtSoLuongTon.TabIndex = 45;
+            this.txtSoLuongTon.TextChanged += new System.EventHandler(this.txtSoLuongTon_TextChanged);
             // 
             // label2
             // 
@@ -176,6 +178,7 @@ namespace KaraokeRUM
             this.txtTenMH.Name = "txtTenMH";
             this.txtTenMH.Size = new System.Drawing.Size(406, 30);
             this.txtTenMH.TabIndex = 1;
+            this.txtTenMH.TextChanged += new System.EventHandler(this.txtTenMH_TextChanged);
             // 
             // label3
             // 
@@ -328,7 +331,7 @@ namespace KaraokeRUM
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1681, 898);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.brbThongTinMatHang);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTimKiemMatHang);
             this.Controls.Add(this.groupBox2);
@@ -339,8 +342,8 @@ namespace KaraokeRUM
             this.Text = "Quản lý mặt hàng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmQuanLyMatHang_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.brbThongTinMatHang.ResumeLayout(false);
+            this.brbThongTinMatHang.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -349,7 +352,7 @@ namespace KaraokeRUM
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox brbThongTinMatHang;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.ComboBox cboLMH;
         private System.Windows.Forms.TextBox txtTenMH;

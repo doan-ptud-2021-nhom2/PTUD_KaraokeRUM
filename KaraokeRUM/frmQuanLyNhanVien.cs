@@ -15,18 +15,17 @@ namespace KaraokeRUM
     {
         /** 
          * Các biến toàn cục.
-         * nV: class Nhân Viên.
-         * lNV: class Loại Nhân Viên.
+         * NV: class Nhân Viên.
+         * LNV: class Loại Nhân Viên.
          * hl: class Hỗn Loạn.
          * dsNV danh sách nhân viên lấy từ 2 bảng
-         * sortColumn dùng để sắp xếp
+         * SORTCOLUMN dùng để sắp xếp
          * TextWasChanged dùng để kiểm tra xem text box có đổi hay không
          */
-        private clsNhanVien nV;
-        private clsLoaiNhanVien lNV;
-        private clsHonLoan hL;
-        private clsTaiKhoan tK;
-        private int sortColumn = -1;
+        private clsNhanVien NV;
+        private clsLoaiNhanVien LNV;
+        private clsTaiKhoan TK;
+        private int SORTCOLUMN = -1;
         private string MANVQL;
         public frmQuanLyNhanVien(string maNVQL)
         {
@@ -38,13 +37,20 @@ namespace KaraokeRUM
         private void frmQuanLyNhanVien_Load(object sender, EventArgs e)
         {
             loadCombobox();
-            TaoTieuDeCot(lvwDSNV);
-            nV = new clsNhanVien();
-            lNV = new clsLoaiNhanVien();
-            hL = new clsHonLoan();
-            tK = new clsTaiKhoan();
-            IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVienTheoLoai("thu ngân",MANVQL);
-            TaiDuLieuLenListView(lvwDSNV, dsNV);
+            TaoTieuDeCot(lstvDSNV);
+            TaiDuLieu();
+        }
+        /*Khởi tạo ban đầu - tải dữ liệu lên listview, vô hiệu hoá các nút chức năng*/
+        void TaiDuLieu()
+        {
+            btnThem.Enabled = false;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+            NV = new clsNhanVien();
+            LNV = new clsLoaiNhanVien();
+            TK = new clsTaiKhoan();
+            IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai("thu ngân", MANVQL);
+            TaiDuLieuLenListView(lstvDSNV, dsNV);
             txtTimKiemNhanVien.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtTimKiemNhanVien.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
@@ -75,6 +81,7 @@ namespace KaraokeRUM
             ListViewItem itemNhanVien;
             foreach (dynamic ds in dsNV)
             {
+                
                 itemNhanVien = TaoItem(ds);
                 lsw.Items.Add(itemNhanVien);
             }
@@ -82,17 +89,17 @@ namespace KaraokeRUM
         }
         ListViewItem TaoItem(dynamic itemNV)
         {
-            ListViewItem lswItem;
-            lswItem = new ListViewItem(itemNV.MaNV);
-            lswItem.SubItems.Add(itemNV.TenNV);
-            lswItem.SubItems.Add(itemNV.GioiTinh);
-            lswItem.SubItems.Add(itemNV.CMND);
-            lswItem.SubItems.Add(itemNV.SDT);
-            lswItem.SubItems.Add(itemNV.DiaChi);
-            lswItem.SubItems.Add(itemNV.TenLNV);
-            lswItem.SubItems.Add(itemNV.TrangThai);
-            lswItem.Tag = itemNV;
-            return lswItem;
+            ListViewItem lstvItem;
+            lstvItem = new ListViewItem(itemNV.MaNV);
+            lstvItem.SubItems.Add(itemNV.TenNV);
+            lstvItem.SubItems.Add(itemNV.GioiTinh);
+            lstvItem.SubItems.Add(itemNV.CMND);
+            lstvItem.SubItems.Add(itemNV.SDT);
+            lstvItem.SubItems.Add(itemNV.DiaChi);
+            lstvItem.SubItems.Add(itemNV.TenLNV);
+            lstvItem.SubItems.Add(itemNV.TrangThai);
+            lstvItem.Tag = itemNV;
+            return lstvItem;
         }
         /*
          * load combobox 
@@ -116,12 +123,12 @@ namespace KaraokeRUM
             cboLocTheoLoai.Items.Add("Đã nghỉ");
             cboLocTheoLoai.Items.Add("Tất cả");
         }
-        private void lvwDSNV_SelectedIndexChanged(object sender, EventArgs e)
+        private void lstvDSNV_SelectedIndexChanged(object sender, EventArgs e)
         {
             dynamic dsNV = null;
-            if (lvwDSNV.SelectedItems.Count > 0)
+            if (lstvDSNV.SelectedItems.Count > 0)
             {
-                dsNV = (dynamic)lvwDSNV.SelectedItems[0].Tag;
+                dsNV = (dynamic)lstvDSNV.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsNV);
             }
         }
@@ -141,28 +148,28 @@ namespace KaraokeRUM
             string selected = this.cboLocTheoLoai.GetItemText(this.cboLocTheoLoai.SelectedItem);
             if (selected.Equals("Tất cả") == true)
             {
-                lvwDSNV.Clear();
-                TaoTieuDeCot(lvwDSNV);
-                IEnumerable<dynamic> dsNVALL = nV.LayToanBoNhanVienVaLoaiNhanVien(MANVQL);
-                TaiDuLieuLenListView(lvwDSNV, dsNVALL);
+                lstvDSNV.Clear();
+                TaoTieuDeCot(lstvDSNV);
+                IEnumerable<dynamic> dsNVALL = NV.LayToanBoNhanVienVaLoaiNhanVien(MANVQL);
+                TaiDuLieuLenListView(lstvDSNV, dsNVALL);
             }
             else
             {
                 if (selected.Equals("Đã nghỉ") == true)
                 {
 
-                    lvwDSNV.Clear();
-                    TaoTieuDeCot(lvwDSNV);
-                    IEnumerable<dynamic> dsNVDaNghi = nV.LayNhanVienVaLoaiNhanVienDaNghi(MANVQL);
-                    TaiDuLieuLenListView(lvwDSNV, dsNVDaNghi);
+                    lstvDSNV.Clear();
+                    TaoTieuDeCot(lstvDSNV);
+                    IEnumerable<dynamic> dsNVDaNghi = NV.LayNhanVienVaLoaiNhanVienDaNghi(MANVQL);
+                    TaiDuLieuLenListView(lstvDSNV, dsNVDaNghi);
                 }
                 else
                 {
 
-                    IEnumerable<dynamic> dsKH = nV.LayNhanVienVaLoaiNhanVienTheoLoai(selected, MANVQL);
-                    lvwDSNV.Clear();
-                    TaoTieuDeCot(lvwDSNV);
-                    TaiDuLieuLenListView(lvwDSNV, dsKH);
+                    IEnumerable<dynamic> dsKH = NV.LayNhanVienVaLoaiNhanVienTheoLoai(selected, MANVQL);
+                    lstvDSNV.Clear();
+                    TaoTieuDeCot(lstvDSNV);
+                    TaiDuLieuLenListView(lstvDSNV, dsKH);
                 }
             }
             
@@ -170,22 +177,22 @@ namespace KaraokeRUM
         /*
        * sự kiện click vào cột để sắp xếp
        */
-        private void lvwDSNV_ColumnClick(object sender, ColumnClickEventArgs e)
+        private void lstvDSNV_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            if (e.Column != sortColumn)
+            if (e.Column != SORTCOLUMN)
             {
-                sortColumn = e.Column;
-                lvwDSNV.Sorting = SortOrder.Ascending;
+                SORTCOLUMN = e.Column;
+                lstvDSNV.Sorting = SortOrder.Ascending;
             }
             else
             {
-                if (lvwDSNV.Sorting == SortOrder.Ascending)
-                    lvwDSNV.Sorting = SortOrder.Descending;
+                if (lstvDSNV.Sorting == SortOrder.Ascending)
+                    lstvDSNV.Sorting = SortOrder.Descending;
                 else
-                    lvwDSNV.Sorting = SortOrder.Ascending;
+                    lstvDSNV.Sorting = SortOrder.Ascending;
             }
-            lvwDSNV.Sort();
-            this.lvwDSNV.ListViewItemSorter = new clsListViewItemComparer(e.Column,lvwDSNV.Sorting);
+            lstvDSNV.Sort();
+            this.lstvDSNV.ListViewItemSorter = new clsListViewItemComparer(e.Column, lstvDSNV.Sorting);
         }
         /*
          * Tim kiem
@@ -193,11 +200,11 @@ namespace KaraokeRUM
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             IEnumerable<dynamic> dsNVTim;
-            dsNVTim = nV.TimNhanVienVaLoaiNhanVien(txtTimKiemNhanVien.Text, MANVQL);
-            lvwDSNV.Clear();
+            dsNVTim = NV.TimNhanVienVaLoaiNhanVien(txtTimKiemNhanVien.Text, MANVQL);
+            lstvDSNV.Clear();
             txtTimKiemNhanVien.Clear();
-            TaoTieuDeCot(lvwDSNV);
-            TaiDuLieuLenListView(lvwDSNV, dsNVTim);
+            TaoTieuDeCot(lstvDSNV);
+            TaiDuLieuLenListView(lstvDSNV, dsNVTim);
         }
         /*
         * auto complete 
@@ -205,7 +212,7 @@ namespace KaraokeRUM
         private void txtTimKiemNhanVien_TextChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-            foreach (NhanVien i in nV.LayDSNV(MANVQL))
+            foreach (NhanVien i in NV.LayDSNV(MANVQL))
             {
                 collection.Add(i.MaNV);
                 collection.Add(i.TenNV);
@@ -227,21 +234,30 @@ namespace KaraokeRUM
         private void btnThem_Click(object sender, EventArgs e)
         {
             NhanVien nhanVien = ThemNhanVien();
-            if (nV.TimNhanVien(nhanVien.CMND, nhanVien.SDT).Count() > 0 )
+            if (NV.TimNhanVien(nhanVien.CMND, nhanVien.SDT).Count() > 0 )
             {
                 MessageBox.Show("Nhân viên này đã tồn tại. Vui lòng không nhập trùng !! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                nV.ThemNhanVien(nhanVien);
-                if (nhanVien.MaLNV.ToLower().Equals("lnv01") || nhanVien.MaLNV.ToLower().Equals("lnv02"))
+                if(clsKiemTra.KiemTraCMNDHopLE(txtCMND.Text))
                 {
-                    TaiKhoan taiKhoan = TaoTaiKhoan(nhanVien);
-                    tK.ThemTaiKhoan(taiKhoan);
-                }
-                XoaCacTxtCbo();
-                TaiDuLieuLenListView(lvwDSNV, nV.LayNhanVienVaLoaiNhanVien(MANVQL));
-                errorProvider1.SetError(txtSDT, null);
+                    NV.ThemNhanVien(nhanVien);
+                    if (nhanVien.MaLNV.ToLower().Equals("lnv01") || nhanVien.MaLNV.ToLower().Equals("lnv02"))
+                    {
+                        TaiKhoan taiKhoan = TaoTaiKhoan(nhanVien);
+                        TK.ThemTaiKhoan(taiKhoan);
+                    }
+                    XoaCacTxtCbo();
+                    TaiDuLieuLenListView(lstvDSNV, NV.LayNhanVienVaLoaiNhanVien(MANVQL));
+                    errorProvider1.SetError(txtSDT, null);
+                    errorProvider1.SetError(txtCMND, null);
+                } 
+                else
+                {
+                    MessageBox.Show("Chứng minh nhân dân bạn nhập không hợp lệ!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }    
+                
 
             }
             
@@ -252,8 +268,9 @@ namespace KaraokeRUM
         */
         private string TaoMaNhanVien()
         {
+
             string maNhanVien = "";
-            string maNhanVienTam = nV.LayDSNVFULL(MANVQL).Last().MaNV.ToString();
+            string maNhanVienTam = NV.LayDSNVFULL(MANVQL).Last().MaNV.ToString();
             int dem = Convert.ToInt32(maNhanVienTam.Split('N','V')[2]) + 1;
             if (dem < 10)
             {
@@ -279,8 +296,8 @@ namespace KaraokeRUM
             nhanVien.MaNV = TaoMaNhanVien();
             nhanVien.TenNV = txtTen.Text;
             nhanVien.GioiTinh = cboGioiTinh.Text;
-            nhanVien.MaLNV = lNV.LayLoaiNhanVien(cboLoaiNV.Text).First().MaLNV;
-            nhanVien.CMND = txtSDT.Text;
+            nhanVien.MaLNV = LNV.LayLoaiNhanVien(cboLoaiNV.Text).First().MaLNV;
+            nhanVien.CMND = txtCMND.Text;
             nhanVien.DiaChi = txtDiaChi.Text;
             nhanVien.TrangThai = cboTrangThai.Text;
             nhanVien.SDT = txtSDT.Text;
@@ -296,10 +313,10 @@ namespace KaraokeRUM
         private void btnSua_Click(object sender, EventArgs e)
         {
             NhanVien suaNhanVien = SuaThongTinNhanVien();
-                    nV.SuaNhanVien(suaNhanVien);
-                    IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
+                    NV.SuaNhanVien(suaNhanVien);
+                    IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVien(MANVQL);
                     XoaCacTxtCbo();
-                    TaiDuLieuLenListView(lvwDSNV, dsNV);
+                    TaiDuLieuLenListView(lstvDSNV, dsNV);
                     errorProvider1.SetError(txtSDT, null);
         }
 
@@ -310,8 +327,8 @@ namespace KaraokeRUM
         {
             NhanVien nhanVien = new NhanVien();
             nhanVien.TenNV = txtTen.Text;
-            nhanVien.MaNV = nV.TimNhanVien(txtCMND.Text, txtSDT.Text).First().MaNV;
-            nhanVien.MaLNV = lNV.LayLoaiNhanVien(cboLoaiNV.Text).First().MaLNV;
+            nhanVien.MaNV = NV.TimNhanVien(txtCMND.Text, txtSDT.Text).First().MaNV;
+            nhanVien.MaLNV = LNV.LayLoaiNhanVien(cboLoaiNV.Text).First().MaLNV;
             nhanVien.GioiTinh = cboGioiTinh.Text;
             nhanVien.DiaChi = txtDiaChi.Text;
 
@@ -324,7 +341,7 @@ namespace KaraokeRUM
         {
             
             NhanVien nhanVien = new NhanVien();
-            nhanVien.MaNV = nV.TimNhanVien(txtCMND.Text, txtSDT.Text).First().MaNV;
+            nhanVien.MaNV = NV.TimNhanVien(txtCMND.Text, txtSDT.Text).First().MaNV;
             nhanVien.TrangThai = "Đã nghỉ";
             return nhanVien;
         }
@@ -337,20 +354,20 @@ namespace KaraokeRUM
             if (hoiXoa == DialogResult.Yes)
             {
                 NhanVien xoaNhanVien = XoaNhanVien();
-                nV.XoaNhanVien(xoaNhanVien);
-                IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
+                NV.XoaNhanVien(xoaNhanVien);
+                IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVien(MANVQL);
                 XoaCacTxtCbo();
-                TaiDuLieuLenListView(lvwDSNV, dsNV);
+                TaiDuLieuLenListView(lstvDSNV, dsNV);
             }
         }
 
         private void btnViewList_Click(object sender, EventArgs e)
         {
-            IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
+            IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVien(MANVQL);
             XoaCacTxtCbo();
-            lvwDSNV.Clear();
-            TaoTieuDeCot(lvwDSNV);
-            TaiDuLieuLenListView(lvwDSNV, dsNV);
+            lstvDSNV.Clear();
+            TaoTieuDeCot(lstvDSNV);
+            TaiDuLieuLenListView(lstvDSNV, dsNV);
         }
         /*
          * chỉ nhập số
@@ -377,10 +394,60 @@ namespace KaraokeRUM
             else
             {
                 errorProvider1.SetError(txtSDT, null);
-                btnThem.Enabled = true;
-                btnSua.Enabled = true;
             }
         }
+
+        private void txtCMND_TextChanged(object sender, EventArgs e)
+        {
+            string cmnd = txtCMND.Text;
+            if (!clsKiemTra.KiemTraDoDaiCMND(cmnd))
+            {
+                txtCMND.Focus();
+                errorProvider1.SetError(txtCMND, "Chứng nhân nhân dân phải đủ 9 số");
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+            }
+            else
+            {
+                errorProvider1.SetError(txtCMND, null);
+            }
+        }
+        /*Kiểm tra xem các thành phần trong text box có rỗng k*/
+        private void KiemTraTxt()
+        {
+            foreach (Control c in grbThongTinNhanVien.Controls)
+            {
+                if (c is TextBox)
+                {
+                    var a = c as TextBox;
+                    if (a.Text == "")
+                    {
+                        btnThem.Enabled = false;
+                        btnSua.Enabled = false;
+                        btnXoa.Enabled = false;
+                        return;
+                    }    
+                   
+                }
+            }
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+        }
+
+        private void txtTen_TextChanged(object sender, EventArgs e)
+        {
+            KiemTraTxt();
+        }
+
+        private void txtDiaChi_TextChanged(object sender, EventArgs e)
+        {
+            KiemTraTxt();
+        }
+
+        
+
+       
     }
   
 } 
