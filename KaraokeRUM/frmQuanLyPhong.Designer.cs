@@ -341,9 +341,9 @@ namespace KaraokeRUM
             this.lblThongTinPhongSoPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblThongTinPhongSoPhong.Location = new System.Drawing.Point(46, 70);
             this.lblThongTinPhongSoPhong.Name = "lblThongTinPhongSoPhong";
-            this.lblThongTinPhongSoPhong.Size = new System.Drawing.Size(94, 22);
+            this.lblThongTinPhongSoPhong.Size = new System.Drawing.Size(103, 22);
             this.lblThongTinPhongSoPhong.TabIndex = 0;
-            this.lblThongTinPhongSoPhong.Text = "Số phòng :";
+            this.lblThongTinPhongSoPhong.Text = "Tên phòng :";
             // 
             // label4
             // 
