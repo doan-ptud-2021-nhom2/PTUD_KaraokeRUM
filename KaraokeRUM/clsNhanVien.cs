@@ -75,6 +75,7 @@ namespace KaraokeRUM
                 IQueryable<NhanVien> tam = (from n in dt.NhanViens
                                          where n.MaNV == nhanVien.MaNV
                                          select n);
+                tam.First().TenNV = nhanVien.TenNV;
                 tam.First().GioiTinh = nhanVien.GioiTinh;
                 tam.First().DiaChi = nhanVien.DiaChi;
                 tam.First().MaLNV = nhanVien.MaLNV;

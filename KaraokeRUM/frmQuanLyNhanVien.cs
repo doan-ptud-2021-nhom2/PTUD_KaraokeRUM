@@ -229,7 +229,7 @@ namespace KaraokeRUM
             NhanVien nhanVien = ThemNhanVien();
             if (nV.TimNhanVien(nhanVien.CMND, nhanVien.SDT).Count() > 0 )
             {
-                MessageBox.Show("Lỗi! đã tồn tại nhân viên này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Nhân viên này đã tồn tại. Vui lòng không nhập trùng !! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -241,6 +241,7 @@ namespace KaraokeRUM
                 }
                 XoaCacTxtCbo();
                 TaiDuLieuLenListView(lvwDSNV, nV.LayNhanVienVaLoaiNhanVien(MANVQL));
+                errorProvider1.SetError(txtSDT, null);
 
             }
             
@@ -299,9 +300,7 @@ namespace KaraokeRUM
                     IEnumerable<dynamic> dsNV = nV.LayNhanVienVaLoaiNhanVien(MANVQL);
                     XoaCacTxtCbo();
                     TaiDuLieuLenListView(lvwDSNV, dsNV);
-          
-
-
+                    errorProvider1.SetError(txtSDT, null);
         }
 
         /** 
@@ -310,6 +309,7 @@ namespace KaraokeRUM
         NhanVien SuaThongTinNhanVien()
         {
             NhanVien nhanVien = new NhanVien();
+            nhanVien.TenNV = txtTen.Text;
             nhanVien.MaNV = nV.TimNhanVien(txtCMND.Text, txtSDT.Text).First().MaNV;
             nhanVien.MaLNV = lNV.LayLoaiNhanVien(cboLoaiNV.Text).First().MaLNV;
             nhanVien.GioiTinh = cboGioiTinh.Text;
