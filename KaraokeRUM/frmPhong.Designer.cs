@@ -29,6 +29,7 @@ namespace KaraokeRUM
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lstvDanhSachDP = new System.Windows.Forms.ListView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.fpnlPhongVip = new System.Windows.Forms.FlowLayoutPanel();
@@ -36,6 +37,7 @@ namespace KaraokeRUM
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtmGioDatPhong = new System.Windows.Forms.DateTimePicker();
             this.rdoDatPhong = new System.Windows.Forms.RadioButton();
             this.rdoMoPhong = new System.Windows.Forms.RadioButton();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
@@ -65,12 +67,13 @@ namespace KaraokeRUM
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnXemPhong = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
-            this.dtmGioDatPhong = new System.Windows.Forms.DateTimePicker();
+            this.errSoDienThoai = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox3.SuspendLayout();
             this.groupBOx.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errSoDienThoai)).BeginInit();
             this.SuspendLayout();
             // 
             // lstvDanhSachDP
@@ -172,6 +175,15 @@ namespace KaraokeRUM
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin phòng";
             // 
+            // dtmGioDatPhong
+            // 
+            this.dtmGioDatPhong.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtmGioDatPhong.Location = new System.Drawing.Point(234, 266);
+            this.dtmGioDatPhong.MinDate = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
+            this.dtmGioDatPhong.Name = "dtmGioDatPhong";
+            this.dtmGioDatPhong.Size = new System.Drawing.Size(404, 34);
+            this.dtmGioDatPhong.TabIndex = 28;
+            // 
             // rdoDatPhong
             // 
             this.rdoDatPhong.AutoSize = true;
@@ -207,6 +219,7 @@ namespace KaraokeRUM
             this.txtSoDienThoai.Size = new System.Drawing.Size(404, 30);
             this.txtSoDienThoai.TabIndex = 1;
             this.txtSoDienThoai.Text = "0343220597";
+            this.txtSoDienThoai.Validating += new System.ComponentModel.CancelEventHandler(this.txtSoDienThoai_Validating);
             // 
             // txtTenPhong
             // 
@@ -507,13 +520,9 @@ namespace KaraokeRUM
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
-            // dtmGioDatPhong
+            // errSoDienThoai
             // 
-            this.dtmGioDatPhong.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtmGioDatPhong.Location = new System.Drawing.Point(235, 305);
-            this.dtmGioDatPhong.Name = "dtmGioDatPhong";
-            this.dtmGioDatPhong.Size = new System.Drawing.Size(403, 34);
-            this.dtmGioDatPhong.TabIndex = 28;
+            this.errSoDienThoai.ContainerControl = this;
             // 
             // frmPhong
             // 
@@ -546,6 +555,7 @@ namespace KaraokeRUM
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errSoDienThoai)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -589,5 +599,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.Button btnXemPhong;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.DateTimePicker dtmGioDatPhong;
+        private System.Windows.Forms.ErrorProvider errSoDienThoai;
     }
 }
