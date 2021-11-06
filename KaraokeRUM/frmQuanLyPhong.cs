@@ -18,25 +18,16 @@ namespace KaraokeRUM
         }
 
         /** 
-        * Các biến toàn cục.
-        * p: class Phòng.
-        * lp: class Loại Phòng.
-        * hl: class Hỗn Loạn.
-        * dsPhong: danh sách Phòng.
-        * dsLoaiPhong: danh sách Loại Phòng.
-        */
-        private clsPhong p;
-        private clsLoaiPhong lp;
-        private clsHonLoan hl;
-        private IEnumerable<Phong> dsPhong;
-        private IEnumerable<LoaiPhong> dsLoaiPhong;
+         * Các biến toàn cục.
+         */
+        private clsPhong PHONG;
+        private clsLoaiPhong LOAIPHONG;
+        private IEnumerable<Phong> DANHSACHPHONG;
+        private IEnumerable<LoaiPhong> DANHSACHLOAIPHONG;
 
         private void frmQuanLyPhong_Load(object sender, EventArgs e)
         {
-            // Gán thuộc tính cho combobox
-            /* cboTrangThai.Items.Add("Mở");
-             cboTrangThai.Items.Add("Đặt");
-             cboTrangThai.Items.Add("Đóng");*/
+            //Gán thuộc tính cho combobox
             cboTrangThai.Text = "Đóng";
             cboLoaiPhong.Items.Add("VIP");
             cboLoaiPhong2.Items.Add("VIP");
@@ -44,14 +35,13 @@ namespace KaraokeRUM
             cboLoaiPhong2.Items.Add("THƯỜNG");
 
             TaoTieuDeCot(lstvDanhSachPhong);
-            p = new clsPhong();
-            lp = new clsLoaiPhong();
-            hl = new clsHonLoan();
+            PHONG = new clsPhong();
+            LOAIPHONG = new clsLoaiPhong();
 
-            dsPhong = p.LayTatCaPhong();
-            dsLoaiPhong = lp.LayTatCaLoaiPhong();
+            DANHSACHPHONG = PHONG.LayTatCaPhong();
+            DANHSACHLOAIPHONG = LOAIPHONG.LayTatCaLoaiPhong();
 
-            IEnumerable<dynamic> dsP = p.LayTatCaPhongDong();
+            IEnumerable<dynamic> dsP = PHONG.LayTatCaPhongDong();
             TaiDuLieuLenListView(lstvDanhSachPhong, dsP);
 
             txtTimKiemThongTinPhong.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -64,9 +54,9 @@ namespace KaraokeRUM
          */
         private void TaiDuLieuVaoBoxTimKiem()
         {
-            dsPhong = p.LayTatCaPhong();
+            DANHSACHPHONG = PHONG.LayTatCaPhong();
             txtTimKiemThongTinPhong.AutoCompleteCustomSource.Clear();
-            foreach (Phong i in dsPhong)
+            foreach (Phong i in DANHSACHPHONG)
             {
                 txtTimKiemThongTinPhong.AutoCompleteCustomSource.Add(i.TenPhong);
             }
@@ -87,14 +77,14 @@ namespace KaraokeRUM
         void XuLyGiaPhuHopVoiLoaiPhong()
         {
             string loaiPhong = cboLoaiPhong.Text;
-            string giaPhong = lp.TimLoaiPhong(loaiPhong).First().Gia.ToString("##,## VNĐ");
+            string giaPhong = LOAIPHONG.TimLoaiPhong(loaiPhong).First().Gia.ToString("##,## VNĐ");
 
             txtGiaPhong.Text = giaPhong;
         }
         void XuLyGiaPhuHopVoiLoaiPhong2()
         {
             string loaiPhong = cboLoaiPhong2.Text;
-            string giaPhong = lp.TimLoaiPhong(loaiPhong).First().Gia.ToString("##,## VNĐ");
+            string giaPhong = LOAIPHONG.TimLoaiPhong(loaiPhong).First().Gia.ToString("##,## VNĐ");
 
             txtGiaPhongCu.Text = giaPhong;
         }
@@ -134,8 +124,8 @@ namespace KaraokeRUM
             lstvItem = new ListViewItem(itemP.MaPhong);
             lstvItem.SubItems.Add(itemP.TenPhong.Trim());
             lstvItem.SubItems.Add(itemP.TrangThaiPhong);
-            lstvItem.SubItems.Add(lp.LayLoaiPhong(itemP.MaLoaiPhong).TenLoaiPhong);
-            lstvItem.SubItems.Add(lp.LayLoaiPhong(itemP.MaLoaiPhong).Gia.ToString("#,### VNĐ"));
+            lstvItem.SubItems.Add(LOAIPHONG.LayLoaiPhong(itemP.MaLoaiPhong).TenLoaiPhong);
+            lstvItem.SubItems.Add(LOAIPHONG.LayLoaiPhong(itemP.MaLoaiPhong).Gia.ToString("#,### VNĐ"));
 
             lstvItem.Tag = itemP;
             return lstvItem;
@@ -158,13 +148,13 @@ namespace KaraokeRUM
         {
             txtSoPhong.Text = dsP.TenPhong;
             cboTrangThai.Text = dsP.TrangThaiPhong;
-            cboLoaiPhong.Text = lp.LayLoaiPhong(dsP.MaLoaiPhong).TenLoaiPhong;
-            txtGiaPhong.Text = lp.LayLoaiPhong(dsP.MaLoaiPhong).Gia.ToString("##,## VNĐ");
+            cboLoaiPhong.Text = LOAIPHONG.LayLoaiPhong(dsP.MaLoaiPhong).TenLoaiPhong;
+            txtGiaPhong.Text = LOAIPHONG.LayLoaiPhong(dsP.MaLoaiPhong).Gia.ToString("##,## VNĐ");
         }
         void TaiDuLieuTuLstvDenTxtCbo2(dynamic dsP)
         {
-            cboLoaiPhong2.Text = lp.LayLoaiPhong(dsP.MaLoaiPhong).TenLoaiPhong;
-            txtGiaPhongCu.Text = lp.LayLoaiPhong(dsP.MaLoaiPhong).Gia.ToString("##,## VNĐ");
+            cboLoaiPhong2.Text = LOAIPHONG.LayLoaiPhong(dsP.MaLoaiPhong).TenLoaiPhong;
+            txtGiaPhongCu.Text = LOAIPHONG.LayLoaiPhong(dsP.MaLoaiPhong).Gia.ToString("##,## VNĐ");
         }
 
         /** 
@@ -189,20 +179,20 @@ namespace KaraokeRUM
         {
             if(TaoPhong() == null)
             {
-                MessageBox.Show("Bạn cần nhập đầy đủ các thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn cần nhập, chọn đầy đủ các thông tin để thực hiện chức năng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 Phong phong = TaoPhong();
-                if (p.TimPhong(phong.TenPhong).Count() > 0)
+                if (PHONG.TimPhong(phong.TenPhong).Count() > 0)
                 {
-                    MessageBox.Show("Tên phòng đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tên phòng đã tồn tại. Vui lòng nhập tên phòng khác để thực hiện chức năng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    p.ThemPhong(phong);
+                    PHONG.ThemPhong(phong);
                     XoaCacTxtCbo();
-                    TaiDuLieuLenListView(lstvDanhSachPhong, p.LayTatCaPhong());
+                    TaiDuLieuLenListView(lstvDanhSachPhong, PHONG.LayTatCaPhongDong());
                 }
             }
         }
@@ -212,20 +202,26 @@ namespace KaraokeRUM
         private string TaoMaPhong()
         {
             string maPhong = "";
-            //string maPhongTam  = p.LayTatCaPhong().Last().MaPhong.ToString();
-            // int dem = Convert.ToInt32(maPhongTam.Split('P')[1]) + 1;
-            int dem = p.LayTatCaPhong().Count() + 1;
-            if(dem < 10)
+            if(PHONG.LayTatCaPhong().Count() == 0)
             {
-                maPhong += "P00" + dem;
-            }
-            else if(dem >= 10 && dem < 100)
-            {
-                maPhong += "P0" + dem;
+                maPhong = "P001";
             }
             else
             {
-                maPhong += "P" + dem;
+                string maPhongTam = PHONG.LayTatCaPhong().Last().MaPhong.ToString();
+                int dem = Convert.ToInt32(maPhongTam.Split('P')[1]) + 1;
+                if (dem < 10)
+                {
+                    maPhong += "P00" + dem;
+                }
+                else if (dem >= 10 && dem < 100)
+                {
+                    maPhong += "P0" + dem;
+                }
+                else
+                {
+                    maPhong += "P" + dem;
+                }
             }
 
             return maPhong;
@@ -242,7 +238,7 @@ namespace KaraokeRUM
                 phong.MaPhong = TaoMaPhong();
                 phong.TenPhong = txtSoPhong.Text;
                 phong.TrangThaiPhong = cboTrangThai.Text;
-                phong.MaLoaiPhong = lp.TimLoaiPhong(cboLoaiPhong.Text).First().MaLoaiPhong;
+                phong.MaLoaiPhong = LOAIPHONG.TimLoaiPhong(cboLoaiPhong.Text).First().MaLoaiPhong;
                 phong.MaQL = "NV002";
 
                 return phong;
@@ -256,14 +252,14 @@ namespace KaraokeRUM
         */
         dynamic SuaTenVaLoaiPhong()
         {
-            if(lstvDanhSachPhong.SelectedItems.Count > 0)
+            if(lstvDanhSachPhong.SelectedItems.Count > 0 && (cboLoaiPhong.Text == "VIP" || cboLoaiPhong.Text == "THƯỜNG") && txtSoPhong.Text != "")
             {
                 ListViewItem item = lstvDanhSachPhong.SelectedItems[0];
                 Phong phong = new Phong();
                 phong.MaPhong = item.Text;
                 phong.TenPhong = txtSoPhong.Text;
                 phong.TrangThaiPhong = cboTrangThai.Text;
-                phong.MaLoaiPhong = lp.TimLoaiPhong(cboLoaiPhong.Text).First().MaLoaiPhong;
+                phong.MaLoaiPhong = LOAIPHONG.TimLoaiPhong(cboLoaiPhong.Text).First().MaLoaiPhong;
 
                 return phong;
             }
@@ -279,16 +275,16 @@ namespace KaraokeRUM
             else
             {
                 Phong suaPhong = SuaTenVaLoaiPhong();
-                if (p.TimPhong(suaPhong.TenPhong).Count() > 0)
+                if (PHONG.TimPhong(suaPhong.TenPhong).Count() > 0)
                 {
-                    MessageBox.Show("Tên phòng đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tên phòng đã tồn tại. Vui lòng nhập tên phòng khác để thực hiện chức năng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    p.SuaPhong(suaPhong);
+                    PHONG.SuaPhong(suaPhong);
                     XoaCacTxtCbo();
-                    dsPhong = p.LayTatCaPhong();
-                    TaiDuLieuLenListView(lstvDanhSachPhong, dsPhong);
+                    DANHSACHPHONG = PHONG.LayTatCaPhongDong();
+                    TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);
                 }
             }
             
@@ -302,7 +298,7 @@ namespace KaraokeRUM
             if(cboLoaiPhong2.SelectedIndex >= 0 && txtGiaPhongMoi.Text != "")
             {
                 LoaiPhong loaiPhong = new LoaiPhong();
-                loaiPhong.MaLoaiPhong = lp.TimLoaiPhong(cboLoaiPhong2.Text).First().MaLoaiPhong;
+                loaiPhong.MaLoaiPhong = LOAIPHONG.TimLoaiPhong(cboLoaiPhong2.Text).First().MaLoaiPhong;
                 loaiPhong.Gia = Convert.ToDecimal(txtGiaPhongMoi.Text);
 
                 return loaiPhong;
@@ -322,42 +318,41 @@ namespace KaraokeRUM
             else
             {
                 LoaiPhong suaLP = SuaGiaLoaiPhong();
-                lp.CapNhatGiaLoaiPhong(suaLP);
-                dsPhong = p.LayTatCaPhong();
+                LOAIPHONG.CapNhatGiaLoaiPhong(suaLP);
+                DANHSACHPHONG = PHONG.LayTatCaPhongDong();
                 XoaCacTxtCbo();
-                TaiDuLieuLenListView(lstvDanhSachPhong, dsPhong);
+                TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);
             }
         }
 
 
         /** 
-        * Xóa Phòng
-        * Chỉ được quyền xóa phần từ cuối cùng trong danh sách Phòng, còn lại
-        * bắt bược phải cập nhật (Số phòng, Trạng thái, Loại phòng).
-        */
+         * Xóa Phòng
+         */
         private void btnXoa_Click(object sender, EventArgs e)
         {
             DialogResult hoiXoa;
             Phong phong;
 
-            if (lstvDanhSachPhong.SelectedItems.Count > 0)
+            if (lstvDanhSachPhong.SelectedItems.Count > 0 && (cboLoaiPhong.Text == "VIP" || cboLoaiPhong.Text == "THƯỜNG") && txtSoPhong.Text != "")
             {
                 hoiXoa = MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
 
                 if(hoiXoa == DialogResult.Yes)
                 {
-                    if(p.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Mở" || p.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Đặt")
+
+                    if(PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Mở" || PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Đặt")
                     {
                         MessageBox.Show("Phòng đang mở hoặc đặt, không được xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } 
                     else
                     {
-                        phong = p.TimPhong(txtSoPhong.Text).First();
-                        p.XoaPhong(phong);
+                        phong = PHONG.TimPhong(txtSoPhong.Text).First();
+                        PHONG.XoaPhong(phong);
 
-                        dsPhong = p.LayTatCaPhong();
+                        DANHSACHPHONG = PHONG.LayTatCaPhongDong();
                         XoaCacTxtCbo();
-                        TaiDuLieuLenListView(lstvDanhSachPhong, dsPhong);
+                        TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);
                     }
                 }
             }
@@ -372,9 +367,9 @@ namespace KaraokeRUM
         */
         private void btnTaiLai_Click(object sender, EventArgs e)
         {
-            dsPhong = p.LayTatCaPhong();
+            DANHSACHPHONG = PHONG.LayTatCaPhongDong();
             XoaCacTxtCbo();
-            TaiDuLieuLenListView(lstvDanhSachPhong, dsPhong);
+            TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);
         }
 
 
@@ -383,8 +378,8 @@ namespace KaraokeRUM
         */
         private void btnTimKiemThongTinPhong_Click(object sender, EventArgs e)
         {
-            dsPhong = p.TimPhong(txtTimKiemThongTinPhong.Text);
-            TaiDuLieuLenListView(lstvDanhSachPhong, dsPhong);
+            DANHSACHPHONG = PHONG.TimPhong(txtTimKiemThongTinPhong.Text);
+            TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);
         }
 
 
