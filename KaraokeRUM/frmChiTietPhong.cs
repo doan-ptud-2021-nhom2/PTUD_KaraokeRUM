@@ -161,7 +161,7 @@ namespace KaraokeRUM
         */
         private void btnDoiPhong_Click(object sender, EventArgs e)
         {
-            frmDanhSachPhong frm = new frmDanhSachPhong(maHoaDon);
+            frmDanhSachPhong frm = new frmDanhSachPhong(maHoaDon, this);
             frm.Show();
             //Cập nhật phòng cũ
             Phong phong;
@@ -181,7 +181,7 @@ namespace KaraokeRUM
             hoaDon.GioRa = tp;
             HoaDon.CapNhapHoaDon(hoaDon);
 
-            frmHoaDon frm = new frmHoaDon(this.maHoaDon, true);
+            frmHoaDon frm = new frmHoaDon(this.maHoaDon, true, this);
             frm.Show();
         }
 

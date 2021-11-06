@@ -232,7 +232,7 @@ namespace KaraokeRUM
             string maHD = item.SubItems[0].Text;
             bool statusBtn = false;
             //MessageBox.Show(maHD);
-            frmHoaDon frm = new frmHoaDon(maHD, statusBtn);
+            frmHoaDon frm = new frmHoaDon(maHD, statusBtn, null);
             frm.Show();
         }
     }
