@@ -15,14 +15,20 @@ namespace KaraokeRUM
         /**
          * Khai báo các biến toàn cục sử dụng trong class
          */
-        private clsTaiKhoan qlTaiKhoan;
+        private clsTaiKhoan TAIKHOAN;
 
         public frmLayLaiMatKhau()
         {
             InitializeComponent();
-            qlTaiKhoan = new clsTaiKhoan();
         }
 
+        /**
+         * Sự kiện load form để khởi tạo biến TAIKHOAN để thực hiện chức năng
+         */
+        private void frmLayLaiMatKhau_Load(object sender, EventArgs e)
+        {
+            TAIKHOAN = new clsTaiKhoan();
+        }
         /**
          * Sự kiện sử lý khi click vào label quay vềđăng nhập
          */
@@ -39,13 +45,24 @@ namespace KaraokeRUM
         {
             string tenDangNhap = txtTaiKhoan.Text;
             string sdt = txtSDT.Text;
-            if (tenDangNhap.Equals("") || sdt.Equals(""))
+            if (tenDangNhap.Equals("") && !sdt.Equals(""))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin để lấy lại mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tài khoản không được để trống. Vui lòng nhập đầy đủ thông tin!!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!tenDangNhap.Equals("") && sdt.Equals(""))
+            {
+                MessageBox.Show("Số điện thoại không được để trống. Vui lòng nhập đầy đủ thông tin!!", "Thông báo",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (tenDangNhap.Equals("") && sdt.Equals(""))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin để thực hiện chức năng!!", "Thông báo",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                string matKhau = qlTaiKhoan.TimMatKhau(tenDangNhap.Trim(), sdt.Trim());
+                string matKhau = TAIKHOAN.TimMatKhau(tenDangNhap.Trim(), sdt.Trim());
                 if (!matKhau.Equals(""))
                 {
                     string thongTin = "Thông tin tài khoản của bạn:\nTên đăng nhập: " +
@@ -71,12 +88,22 @@ namespace KaraokeRUM
             {
                 this.DialogResult = DialogResult.Yes;
             }
-           
         }
 
-        private void frmLayLaiMatKhau_Load(object sender, EventArgs e)
+        private void txtSDT_TextChanged(object sender, EventArgs e)
         {
-
+            string sdt = txtSDT.Text;
+            if (!clsKiemTra.KiemTraSDT(sdt))
+            {
+                txtSDT.Focus();
+                errorProvider1.SetError(txtSDT, "Số điện thoại phải bắt đầu từ đầu số hợp lệ. VD: 09XXXXXXXX");
+                btnXacNhan.Enabled = false;
+            }
+            else
+            {
+                errorProvider1.SetError(txtSDT, null);
+                btnXacNhan.Enabled = true;
+            }
         }
     }
 }

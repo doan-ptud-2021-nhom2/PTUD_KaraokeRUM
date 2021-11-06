@@ -29,6 +29,7 @@ namespace KaraokeRUM
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTaiKhoan = new System.Windows.Forms.TextBox();
             this.btnXacNhan = new System.Windows.Forms.Button();
@@ -37,6 +38,8 @@ namespace KaraokeRUM
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.lblDangNhap = new System.Windows.Forms.Label();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -107,6 +110,7 @@ namespace KaraokeRUM
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(235, 30);
             this.txtSDT.TabIndex = 1;
+            this.txtSDT.TextChanged += new System.EventHandler(this.txtSDT_TextChanged);
             // 
             // lblDangNhap
             // 
@@ -137,6 +141,10 @@ namespace KaraokeRUM
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmLayLaiMatKhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
@@ -157,6 +165,8 @@ namespace KaraokeRUM
             this.Name = "frmLayLaiMatKhau";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Karaoke RUM - Lấy lại mật khẩu";
+            this.Load += new System.EventHandler(this.frmLayLaiMatKhau_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +182,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label lblDangNhap;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
