@@ -14,7 +14,7 @@ namespace KaraokeRUM
          */
         public static bool KiemTraMatKhau(this string matKhau)
         {
-            Regex regex = new Regex(@"^(.{7,20}|[^0-9]*|[^A-Z])$");
+            Regex regex = new Regex(@"^(.{8,20}|[^0-9]*|[^A-Z])$");
             Match match = regex.Match(matKhau);
             return match.Success;
         }

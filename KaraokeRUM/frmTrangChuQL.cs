@@ -88,7 +88,7 @@ namespace KaraokeRUM
 
         private void btnDoiMatKhau_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel(new frmDoiMatKhau());
+            OpenFormInPanel(new frmDoiMatKhau(MAQL));
         }
     }
 }

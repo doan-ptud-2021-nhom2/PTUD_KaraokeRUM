@@ -15,12 +15,13 @@ namespace KaraokeRUM
         /**
          * Khai báo các biến trong class
          */
-        private clsTaiKhoan qlTaiKhoan;
-        private string maQL;
+        private clsTaiKhoan TAIKHOAN;
+        private string MAQL;
 
-        public frmDoiMatKhau()
+        public frmDoiMatKhau(string maQL)
         {
             InitializeComponent();
+            this.MAQL = maQL;
         }
 
         /**
@@ -28,8 +29,7 @@ namespace KaraokeRUM
          */
         private void frmDoiMatKhau_Load(object sender, EventArgs e)
         {
-            qlTaiKhoan = new clsTaiKhoan();
-            maQL = frmTrangChu.MAQL;
+            TAIKHOAN = new clsTaiKhoan();
         }
 
       
@@ -39,7 +39,7 @@ namespace KaraokeRUM
         private TaiKhoan TaoTaiKhoan()
         {
             TaiKhoan tk = new TaiKhoan();
-            tk.UserName = maQL;
+            tk.UserName = MAQL;
             tk.PassWord = txtNLMK.Text;
             return tk;
         }
@@ -53,33 +53,56 @@ namespace KaraokeRUM
             string txtMatKhauMoi = txtMKM.Text.Trim();
             string txtMatKhauNhapLai = txtNLMK.Text.Trim();
 
-            if(String.IsNullOrEmpty(txtMatKhauHienTai) || String.IsNullOrEmpty(txtMatKhauMoi) || 
-                String.IsNullOrEmpty(txtMatKhauNhapLai))
+            if(String.IsNullOrEmpty(txtMatKhauHienTai) && !String.IsNullOrEmpty(txtMatKhauMoi) && !String.IsNullOrEmpty(txtMatKhauNhapLai))
             {
-                MessageBox.Show("Vui lòng nhập đẩy đủ thông tin để thực hiện chức năng!","Thông báo", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Mật khẩu hiện tại không được để trống. Vui lòng nhập đẩy đủ thông tin!","Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!String.IsNullOrEmpty(txtMatKhauHienTai) && String.IsNullOrEmpty(txtMatKhauMoi) && !String.IsNullOrEmpty(txtMatKhauNhapLai))
+            {
+                MessageBox.Show("Mật khẩu mới không được để trống. Vui lòng nhập đẩy đủ thông tin!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if(!String.IsNullOrEmpty(txtMatKhauHienTai) && !String.IsNullOrEmpty(txtMatKhauMoi) && String.IsNullOrEmpty(txtMatKhauNhapLai))
+            {
+                MessageBox.Show("Mật khẩu nhập lại không được để trống. Vui lòng nhập đẩy đủ thông tin!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }else if(String.IsNullOrEmpty(txtMatKhauHienTai) && String.IsNullOrEmpty(txtMatKhauMoi) && String.IsNullOrEmpty(txtMatKhauNhapLai))
+            {
+                MessageBox.Show("Vui lòng nhập đẩy đủ thông tin để thực hiện chức năng!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }else if(String.IsNullOrEmpty(txtMatKhauHienTai) || String.IsNullOrEmpty(txtMatKhauMoi) || String.IsNullOrEmpty(txtMatKhauNhapLai))
+            {
+                MessageBox.Show("Vui lòng nhập đẩy đủ thông tin để thực hiện chức năng!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                if (!qlTaiKhoan.TimMatKhau(maQL).Equals(txtMatKhauHienTai))
+                if (!TAIKHOAN.TimMatKhau(MAQL).Equals(txtMatKhauHienTai))
                 {
                     MessageBox.Show("Vui lòng nhập đúng mật khẩu hiện tại để thực hiện chức năng!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
                     if (!txtMatKhauMoi.Equals(txtMatKhauNhapLai))
                     {
                         MessageBox.Show("Mật khẩu nhập lại phải đúng với mật khẩu mới!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
                         TaiKhoan tk = TaoTaiKhoan();
-                        if (qlTaiKhoan.DoiMatKhau(tk) == 1)
+                        if (TAIKHOAN.DoiMatKhau(tk) == 1)
                         {
                             MessageBox.Show("Mật khẩu được đổi thành công!", "Thông báo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LamMoiInput();
+                        }
+                        else 
+                        {
+                            MessageBox.Show("Quá trình đổi mật khẩu thất bại!", "Thông báo",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
                     }
@@ -87,6 +110,15 @@ namespace KaraokeRUM
             }
         }
 
+        /**
+         * Hàm xử lý làm mới input sau khi đổi mật khẩu thành công
+         */
+        private void LamMoiInput()
+        {
+            txtMKHT.Clear();
+            txtMKM.Clear();
+            txtNLMK.Clear();
+        }
         /*
          * Sự kiện kiểm tra input "Nhập Mật khẩu Mới" trong khi nhập
          */

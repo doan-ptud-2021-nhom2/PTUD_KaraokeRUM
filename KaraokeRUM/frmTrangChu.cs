@@ -12,7 +12,7 @@ namespace KaraokeRUM
 {
     public partial class frmTrangChu : Form
     {
-        public static string MAQL;
+        private string MAQL;
         private clsNhanVien NHANVIEN;
         private clsLoaiNhanVien LOAINV;
 
@@ -87,7 +87,7 @@ namespace KaraokeRUM
 
         private void btnDoiMatKhau_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel(new frmDoiMatKhau());
+            OpenFormInPanel(new frmDoiMatKhau(MAQL));
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
