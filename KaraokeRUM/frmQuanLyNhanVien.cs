@@ -240,7 +240,7 @@ namespace KaraokeRUM
             }
             else
             {
-                if(clsKiemTra.KiemTraCMNDHopLE(txtCMND.Text))
+                if(clsKiemTra.KiemTraCMNDHopLe(txtCMND.Text))
                 {
                     NV.ThemNhanVien(nhanVien);
                     if (nhanVien.MaLNV.ToLower().Equals("lnv01") || nhanVien.MaLNV.ToLower().Equals("lnv02"))
@@ -394,7 +394,9 @@ namespace KaraokeRUM
             else
             {
                 errorProvider1.SetError(txtSDT, null);
+                KiemTraTxt();
             }
+            
         }
 
         private void txtCMND_TextChanged(object sender, EventArgs e)
@@ -406,11 +408,14 @@ namespace KaraokeRUM
                 errorProvider1.SetError(txtCMND, "Chứng nhân nhân dân phải đủ 9 số");
                 btnThem.Enabled = false;
                 btnSua.Enabled = false;
+                btnXoa.Enabled = false;
             }
             else
             {
                 errorProvider1.SetError(txtCMND, null);
+                KiemTraTxt();
             }
+            
         }
         /*Kiểm tra xem các thành phần trong text box có rỗng k*/
         private void KiemTraTxt()

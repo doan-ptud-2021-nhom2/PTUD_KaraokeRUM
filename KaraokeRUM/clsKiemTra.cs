@@ -40,7 +40,7 @@ namespace KaraokeRUM
         }
 
         /*Kiểm tra tính hợp lệ của CMND - Không Nhập trùng lặp quá 8 lần*/
-        public static bool KiemTraCMNDHopLE(string cmnd)
+        public static bool KiemTraCMNDHopLe(string cmnd)
         {
             char temp = 'x';
             int count = 0;
@@ -54,10 +54,16 @@ namespace KaraokeRUM
                     count = 0;
                 }
             }
-            if (count > 8)
+            if (count > 7)
+            {
                 return false;
+            }    
+                
             else
+            {
                 return true;
+            }    
+               
         }
         /*Kiểm tra độ dài hợp lệ của CMND*/
         public static bool KiemTraDoDaiCMND(this string cmnd)
