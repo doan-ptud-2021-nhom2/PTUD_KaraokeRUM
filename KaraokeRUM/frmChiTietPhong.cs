@@ -27,15 +27,15 @@ namespace KaraokeRUM
         * dsTenMatHang: danh sách chỉ có tên Mặt hàng.
         * i: tăng tự động (Số thứ tự).
         */
-        private clsMatHang mh;
-        private clsChiTietHoaDon cthd;
-        private clsHoaDon HoaDon;
-        private clsPhong Phong;
-        private clsLoaiPhong LoaiPhong;
-        private clsKhachHang KhachHang;
-        private IEnumerable<dynamic> dsMatHang;
-        private IEnumerable<MatHang> dsTenMatHang;
-        private string maHoaDon;
+        private clsMatHang MATHANG;
+        private clsChiTietHoaDon CHITIETHOADON;
+        private clsHoaDon HOADON;
+        private clsPhong PHONG;
+        private clsLoaiPhong LOAIPHONG;
+        private clsKhachHang KHACHHANG;
+        private IEnumerable<dynamic> DANHSACHMATHANG;
+        private IEnumerable<MatHang> DANHSACHTENMATHANG;
+        private string MAHOADON;
 
         /**
          * Tạo constructor có:
@@ -45,7 +45,7 @@ namespace KaraokeRUM
         public frmChiTietPhong(string maHoaDon)
         {
             InitializeComponent();
-            this.maHoaDon = maHoaDon;
+            this.MAHOADON = maHoaDon;
         }
 
         /**
@@ -53,32 +53,32 @@ namespace KaraokeRUM
         */
         private void frmChiTietPhong_Load(object sender, EventArgs e)
         {
-            mh = new clsMatHang();
-            cthd = new clsChiTietHoaDon();
-            HoaDon = new clsHoaDon();
-            Phong = new clsPhong();
-            LoaiPhong = new clsLoaiPhong();
-            KhachHang = new clsKhachHang();
+            MATHANG = new clsMatHang();
+            CHITIETHOADON = new clsChiTietHoaDon();
+            HOADON = new clsHoaDon();
+            PHONG = new clsPhong();
+            LOAIPHONG = new clsLoaiPhong();
+            KHACHHANG = new clsKhachHang();
 
             //Khởi tạo
-            HoaDon hoaDon = HoaDon.LayHoaDon(maHoaDon);
-            Phong phong = Phong.LayThongTinPhong(hoaDon.MaPhong);
-            txtTenKhachHang.Text = KhachHang.LayThongTinKhach(hoaDon.MaKH).TenKhach;
-            txtSoDienThoai.Text = KhachHang.LayThongTinKhach(hoaDon.MaKH).SDT;
+            HoaDon hoaDon = HOADON.LayHoaDon(MAHOADON);
+            Phong phong = PHONG.LayThongTinPhong(hoaDon.MaPhong);
+            txtTenKhachHang.Text = KHACHHANG.LayThongTinKhach(hoaDon.MaKH).TenKhach;
+            txtSoDienThoai.Text = KHACHHANG.LayThongTinKhach(hoaDon.MaKH).SDT;
             txtGioVao.Text = hoaDon.GioVao.ToString(@"hh\:mm\:ss");
-            txtTenPhong.Text = Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TenPhong;
-            txtLoaiPhong.Text = LoaiPhong.LayLoaiPhong(phong.MaLoaiPhong).TenLoaiPhong;
-            txtTTP.Text = Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TrangThaiPhong;
+            txtTenPhong.Text = PHONG.TimMotPhongTheoMa(hoaDon.MaPhong).TenPhong;
+            txtLoaiPhong.Text = LOAIPHONG.LayLoaiPhong(phong.MaLoaiPhong).TenLoaiPhong;
+            txtTTP.Text = PHONG.TimMotPhongTheoMa(hoaDon.MaPhong).TrangThaiPhong;
 
             //Lấy tên phòng
-            lblTenPhong.Text = "Phòng - " + Phong.TimMotPhongTheoMa(hoaDon.MaPhong).TenPhong;
+            lblTenPhong.Text = "Phòng - " + PHONG.TimMotPhongTheoMa(hoaDon.MaPhong).TenPhong;
 
             //Tải tên mặt hàng lên combobox.
             TaiMatHangLenComboBox();
 
             TaoTieuDeCot(lstvDanhSachMatHang);
-            dsMatHang = HoaDon.LayChiTietHoaDon(maHoaDon);
-            TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang);
+            DANHSACHMATHANG = HOADON.LayChiTietHoaDon(MAHOADON);
+            TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
 
         }
 
@@ -87,8 +87,8 @@ namespace KaraokeRUM
         */
         private void TaiMatHangLenComboBox()
         {
-            dsTenMatHang = mh.LayTatCaMatHang();
-            foreach (MatHang mh in dsTenMatHang)
+            DANHSACHTENMATHANG = MATHANG.LayTatCaMatHang();
+            foreach (MatHang mh in DANHSACHTENMATHANG)
             {
                 cboMatHang.Items.Add(mh.TenMh);
             }
@@ -127,8 +127,8 @@ namespace KaraokeRUM
         {
             ListViewItem dsItem;
             dsItem = new ListViewItem(id.ToString());
-            dsItem.SubItems.Add(mh.TimTheoMa(itemMH.MaMH).TenMh);
-            dsItem.SubItems.Add(mh.TimTheoMa(itemMH.MaMH).DonVi);
+            dsItem.SubItems.Add(MATHANG.TimTheoMa(itemMH.MaMH).TenMh);
+            dsItem.SubItems.Add(MATHANG.TimTheoMa(itemMH.MaMH).DonVi);
             dsItem.SubItems.Add(itemMH.SoLuong.ToString());
             dsItem.SubItems.Add(itemMH.ThanhTien.ToString("##,## VNĐ"));
 
@@ -146,12 +146,13 @@ namespace KaraokeRUM
             {
                 dsMH = (dynamic)lstvDanhSachMatHang.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsMH);
+                cboMatHang.Enabled = false;
             }
         }
 
         void TaiDuLieuTuLstvDenTxtCbo(dynamic dsMH)
         {
-            cboMatHang.Text = mh.TimTheoMa(dsMH.MaMH).TenMh;
+            cboMatHang.Text = MATHANG.TimTheoMa(dsMH.MaMH).TenMh;
             txtSoLuong.Text = dsMH.SoLuong.ToString();
         }
 
@@ -161,13 +162,13 @@ namespace KaraokeRUM
         */
         private void btnDoiPhong_Click(object sender, EventArgs e)
         {
-            frmDanhSachPhong frm = new frmDanhSachPhong(maHoaDon, this);
+            frmDanhSachPhong frm = new frmDanhSachPhong(MAHOADON);
             frm.Show();
             //Cập nhật phòng cũ
             Phong phong;
-            phong = Phong.TimPhong(txtTenPhong.Text).First();
+            phong = PHONG.TimPhong(txtTenPhong.Text).First();
             phong.TrangThaiPhong = "Đóng";
-            Phong.SuaTrangThaiPhong(phong);
+            PHONG.SuaTrangThaiPhong(phong);
         }
 
         /** 
@@ -175,34 +176,47 @@ namespace KaraokeRUM
         */
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
-            HoaDon hoaDon = HoaDon.LayHoaDon(maHoaDon);
+            HoaDon hoaDon = HOADON.LayHoaDon(MAHOADON);
             DateTime dt = DateTime.Now;
             TimeSpan tp = (TimeSpan)dt.TimeOfDay;
             hoaDon.GioRa = tp;
-            HoaDon.CapNhapHoaDon(hoaDon);
+            HOADON.CapNhapHoaDon(hoaDon);
 
-            frmHoaDon frm = new frmHoaDon(this.maHoaDon, true, this);
+            frmHoaDon frm = new frmHoaDon(this.MAHOADON, true);
             frm.Show();
         }
 
         /** 
         * Thêm một mặt hàng vào danh sách mặt hàng.
         */
-        /*private double ThemMatHangCungTen(string maMatHang, int soLuong)
-        {
-            var gia = (double)mh.TimMatHangTheoMaDeLayGia(maMatHang).First().Gia;
-            double thanhTien = Convert.ToInt32(soLuong+txtSoLuong.Text) * gia;
-            return thanhTien;
-        }*/
         private void btnThem_Click(object sender, EventArgs e)
         {
-            ChiTietHoaDon chiTietHoaDon = TaoChiTietHoaDon();
-            cthd.ThemChiTietHoaDon(chiTietHoaDon);
+            if (cboMatHang.Text == "" || txtSoLuong.Text == "")
+            {
+                MessageBox.Show("Bạn cần phải nhập, chọn đầy đủ thông tin để thực hiện chức năng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                ChiTietHoaDon chiTietHoaDon = TaoChiTietHoaDon();
 
-            dsMatHang = HoaDon.LayChiTietHoaDon(maHoaDon);
-            TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang);
-            cboMatHang.Text = "";
-            txtSoLuong.Text = "";
+                if (CHITIETHOADON.TimChiTietHoaDon(MATHANG.TimMaTheoTen(cboMatHang.Text).MaMH, this.MAHOADON).Count() > 0)
+                {
+                    MessageBox.Show("Mặt hàng đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cboMatHang.Text = "";
+                    txtSoLuong.Text = "";
+                }
+                else
+                {
+                    CHITIETHOADON.ThemChiTietHoaDon(chiTietHoaDon);
+                    DANHSACHMATHANG = HOADON.LayChiTietHoaDon(MAHOADON);
+                    TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
+
+                    cboMatHang.Text = "";
+                    txtSoLuong.Text = "";
+                }
+            }
+
+            cboMatHang.Enabled = true;
         }
 
         /** 
@@ -211,8 +225,8 @@ namespace KaraokeRUM
         ChiTietHoaDon TaoChiTietHoaDon()
         {
             ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon();
-            chiTietHoaDon.MaHD = this.maHoaDon;
-            chiTietHoaDon.MaMH = mh.TimMaTheoTen(cboMatHang.Text).MaMH;
+            chiTietHoaDon.MaHD = this.MAHOADON;
+            chiTietHoaDon.MaMH = MATHANG.TimMaTheoTen(cboMatHang.Text).MaMH;
             chiTietHoaDon.SoLuong = Convert.ToInt32(txtSoLuong.Text);
             chiTietHoaDon.ThanhTien = 0;
 
@@ -224,7 +238,7 @@ namespace KaraokeRUM
         */
         private double CapNhatThanhTien(string maMatHang, int soLuong)
         {
-            var gia = (double)mh.TimTheoMa(maMatHang).Gia;
+            var gia = (double)MATHANG.TimTheoMa(maMatHang).Gia;
             double thanhTien = soLuong * gia;
             return thanhTien;
         }
@@ -234,25 +248,38 @@ namespace KaraokeRUM
         */
         ChiTietHoaDon SuaSoLuongMatHang()
         {
-            ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon();
-            chiTietHoaDon.MaHD = this.maHoaDon;
-            chiTietHoaDon.MaMH = mh.TimMaTheoTen(cboMatHang.Text).MaMH;
-            chiTietHoaDon.SoLuong = Convert.ToInt32(txtSoLuong.Text);
-            chiTietHoaDon.ThanhTien = Convert.ToDecimal(CapNhatThanhTien(chiTietHoaDon.MaMH, chiTietHoaDon.SoLuong));
+            if(lstvDanhSachMatHang.SelectedItems.Count > 0 && cboMatHang.SelectedIndex >= 0 && txtSoLuong.Text != "")
+            {
+                ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon();
+                chiTietHoaDon.MaHD = this.MAHOADON;
+                chiTietHoaDon.MaMH = MATHANG.TimMaTheoTen(cboMatHang.Text).MaMH;
+                chiTietHoaDon.SoLuong = Convert.ToInt32(txtSoLuong.Text);
+                chiTietHoaDon.ThanhTien = Convert.ToDecimal(CapNhatThanhTien(chiTietHoaDon.MaMH, chiTietHoaDon.SoLuong));
 
-            return chiTietHoaDon;
+                return chiTietHoaDon;
+            }
+
+            return null;
         }
 
         //Lỗi không load được chỗ listView
         private void btnSua_Click(object sender, EventArgs e)
         {
-            ChiTietHoaDon suaSoLuong = SuaSoLuongMatHang();
-            cthd.SuaThongTinMatHang(suaSoLuong);
+            if (SuaSoLuongMatHang() == null)
+            {
+                MessageBox.Show("Vui lòng chọn một mặt hàng để chỉnh sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                ChiTietHoaDon suaSoLuong = SuaSoLuongMatHang();
+                CHITIETHOADON.SuaThongTinMatHang(suaSoLuong);
+                DANHSACHMATHANG = HOADON.LayChiTietHoaHoaTaiLenListView(MAHOADON);
+                TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
 
-            dsMatHang = HoaDon.LayChiTietHoaHoaTaiLenListView(maHoaDon);
-            TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang);
-            cboMatHang.Text = "";
-            txtSoLuong.Text = "";
+                cboMatHang.Text = "";
+                txtSoLuong.Text = "";
+                cboMatHang.Enabled = true;
+            }
         }
 
         /** 
@@ -263,21 +290,25 @@ namespace KaraokeRUM
             DialogResult hoiXoa;
             ChiTietHoaDon chiTietHoaDon;
 
-            if (lstvDanhSachMatHang.SelectedItems.Count > 0)
+            if (lstvDanhSachMatHang.SelectedItems.Count > 0 && cboMatHang.Text != "" && txtSoLuong.Text != "")
             {
                 hoiXoa = MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
 
                 if (hoiXoa == DialogResult.Yes)
                 {
-                    
-                    chiTietHoaDon = cthd.TimChiTietHoaDon(mh.TimMaTheoTen(cboMatHang.Text).MaMH, this.maHoaDon).First();
-                    cthd.XoaChiTietHoaDon(chiTietHoaDon);
+                    chiTietHoaDon = CHITIETHOADON.TimChiTietHoaDon(MATHANG.TimMaTheoTen(cboMatHang.Text).MaMH, this.MAHOADON).First();
+                    CHITIETHOADON.XoaChiTietHoaDon(chiTietHoaDon);
+                    DANHSACHMATHANG = HOADON.LayChiTietHoaDon(MAHOADON);
+                    TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG); 
 
-                    dsMatHang = HoaDon.LayChiTietHoaDon(maHoaDon);
-                    TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang); 
                     cboMatHang.Text = "";
                     txtSoLuong.Text = "";
+                    cboMatHang.Enabled = true;
                 }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một mặt hàng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -286,8 +317,8 @@ namespace KaraokeRUM
          */
         private void btnHuyPhong_Click(object sender, EventArgs e)
         {
-            HoaDon hoaDon = HoaDon.LayHoaDon(maHoaDon);
-            Phong phong = Phong.LayThongTinPhong(hoaDon.MaPhong);
+            HoaDon hoaDon = HOADON.LayHoaDon(MAHOADON);
+            Phong phong = PHONG.LayThongTinPhong(hoaDon.MaPhong);
             //Phong tam = Phong.TimMotPhongTheoMa(hoaDon.MaPhong);
             DialogResult hoiHuy;
             hoiHuy = MessageBox.Show("Bạn có muốn hủy phòng không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
@@ -301,8 +332,8 @@ namespace KaraokeRUM
                 else if (txtTenPhong.Text == phong.TenPhong)
                 {
                     phong.TrangThaiPhong = "Đóng";
-                    Phong.SuaTrangThaiPhong(phong);
-                    HoaDon.XoaHoaDon(hoaDon);
+                    PHONG.SuaTrangThaiPhong(phong);
+                    HOADON.XoaHoaDon(hoaDon);
                     this.Close();
                 }
             }
