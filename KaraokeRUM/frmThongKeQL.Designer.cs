@@ -108,10 +108,10 @@ namespace KaraokeRUM
             // 
             // txtTDT
             // 
-            this.txtTDT.Location = new System.Drawing.Point(163, 165);
+            this.txtTDT.Location = new System.Drawing.Point(184, 165);
             this.txtTDT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTDT.Name = "txtTDT";
-            this.txtTDT.Size = new System.Drawing.Size(190, 30);
+            this.txtTDT.Size = new System.Drawing.Size(193, 30);
             this.txtTDT.TabIndex = 5;
             this.txtTDT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -126,10 +126,10 @@ namespace KaraokeRUM
             // 
             // txtSKH
             // 
-            this.txtSKH.Location = new System.Drawing.Point(163, 48);
+            this.txtSKH.Location = new System.Drawing.Point(184, 48);
             this.txtSKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSKH.Name = "txtSKH";
-            this.txtSKH.Size = new System.Drawing.Size(190, 30);
+            this.txtSKH.Size = new System.Drawing.Size(193, 30);
             this.txtSKH.TabIndex = 5;
             this.txtSKH.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -186,10 +186,10 @@ namespace KaraokeRUM
             // 
             // txtSMH
             // 
-            this.txtSMH.Location = new System.Drawing.Point(163, 110);
+            this.txtSMH.Location = new System.Drawing.Point(184, 110);
             this.txtSMH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSMH.Name = "txtSMH";
-            this.txtSMH.Size = new System.Drawing.Size(190, 30);
+            this.txtSMH.Size = new System.Drawing.Size(193, 30);
             this.txtSMH.TabIndex = 5;
             this.txtSMH.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -198,9 +198,9 @@ namespace KaraokeRUM
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(16, 112);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 22);
+            this.label5.Size = new System.Drawing.Size(162, 22);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Số mặt hàng:";
+            this.label5.Text = "Số lượng mặt hàng:";
             // 
             // label2
             // 
@@ -249,7 +249,7 @@ namespace KaraokeRUM
             this.lstvDSHoaDon.Location = new System.Drawing.Point(5, 32);
             this.lstvDSHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstvDSHoaDon.Name = "lstvDSHoaDon";
-            this.lstvDSHoaDon.Size = new System.Drawing.Size(788, 372);
+            this.lstvDSHoaDon.Size = new System.Drawing.Size(805, 372);
             this.lstvDSHoaDon.TabIndex = 0;
             this.lstvDSHoaDon.UseCompatibleStateImageBehavior = false;
             this.lstvDSHoaDon.DoubleClick += new System.EventHandler(this.lstvDSHoaDon_DoubleClick);
@@ -262,7 +262,7 @@ namespace KaraokeRUM
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(800, 418);
+            this.groupBox1.Size = new System.Drawing.Size(817, 418);
             this.groupBox1.TabIndex = 89;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách khách hàng ";
@@ -284,7 +284,7 @@ namespace KaraokeRUM
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(373, 215);
+            this.groupBox3.Size = new System.Drawing.Size(397, 215);
             this.groupBox3.TabIndex = 91;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin";

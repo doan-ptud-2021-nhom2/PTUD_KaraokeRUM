@@ -37,11 +37,12 @@ namespace KaraokeRUM
         private int ChietKhau;
         private double TongTien;
         private int i = 1;
+        private frmChiTietPhong frmCTP;
 
         /*
          * Constructor
          */
-        public frmHoaDon(string maHD, bool statusBtn)
+        public frmHoaDon(string maHD, bool statusBtn, frmChiTietPhong _frmCTP)
         {
             InitializeComponent();
             this.MaximumSize = new Size(650, 1011);
@@ -51,6 +52,7 @@ namespace KaraokeRUM
             //Gán giá trị biến
             MaHD = maHD;
             StatusBTN = statusBtn;
+            frmCTP = _frmCTP;
         }
 
         /*
@@ -414,6 +416,7 @@ namespace KaraokeRUM
                 this.Close();
 
                 //Xử lý tắt giao diện này rồi mở giao diện Phòng lên.
+                frmCTP.Close();
             }
            
         }
