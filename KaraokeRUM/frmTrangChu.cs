@@ -62,12 +62,12 @@ namespace KaraokeRUM
 
         private void btnQLP_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel(new frmQuanLyPhong());
+            OpenFormInPanel(new frmQuanLyPhong(MAQL));
         }
 
         private void btnQLTB_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel(new frmQuanLyThietBi());
+            OpenFormInPanel(new frmQuanLyThietBi(MAQL));
         }
 
         private void btnQLMH_Click(object sender, EventArgs e)
