@@ -64,7 +64,7 @@ namespace KaraokeRUM
             lsw.Columns.Add("Giới tính", 100);
             lsw.Columns.Add("CMND", 130);
             lsw.Columns.Add("SDT", 130);
-            lsw.Columns.Add("Địa chỉ", 400);
+            lsw.Columns.Add("Địa chỉ", 430);
             lsw.Columns.Add("Chức vụ", 130);
             lsw.Columns.Add("Trạng thái", 150);
             lsw.View = View.Details;

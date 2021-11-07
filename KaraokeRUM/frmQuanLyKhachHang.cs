@@ -188,7 +188,24 @@ namespace KaraokeRUM
         LoaiKhachHang SuaChietKhauLoaiKhach()
         {
             LoaiKhachHang loaiKhachHang = new LoaiKhachHang();
-            loaiKhachHang.MaLoaiKH = LK.TimLoaiKhachHang(cboLoaiKhachHang.Text).First().MaLoaiKH;
+            string maLoaiKhachHang;
+            if (cboLoaiKhachHang.SelectedIndex == 0)
+            {
+                maLoaiKhachHang = "LKH01";
+            }
+            else if (cboLoaiKhachHang.SelectedIndex == 1)
+            {
+                maLoaiKhachHang = "LKH02";
+            }
+            else if (cboLoaiKhachHang.SelectedIndex == 2)
+            {
+                maLoaiKhachHang = "LKH03";
+            }
+            else
+            {
+                maLoaiKhachHang = null;
+            }
+            loaiKhachHang.MaLoaiKH = maLoaiKhachHang;
             loaiKhachHang.ChietKhau = Convert.ToInt32(txtCKM.Text);
 
             return loaiKhachHang;
@@ -348,6 +365,11 @@ namespace KaraokeRUM
         private void txtCKM_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void cboLoaiKhachHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
