@@ -32,7 +32,7 @@ namespace KaraokeRUM
 
         /*
          * Thay thế hàm Lấy chi tiết hóa đơn của chức năng Sửa
-         */
+         *//*
         public IEnumerable<dynamic> LayChiTietHoaHoaTaiLenListView(string maHD)
         {
             var ds = from n in dt.ChiTietHoaDons
@@ -40,7 +40,7 @@ namespace KaraokeRUM
                      where y.MaHD.Equals(maHD)
                      select new { n.MaMH, n.SoLuong, n.ThanhTien };
             return ds;
-        }
+        }*/
 
         public IEnumerable<HoaDon> LayToanBoHoaDon()
         {
@@ -52,6 +52,7 @@ namespace KaraokeRUM
             var dsCTHD = from cthd in dt.ChiTietHoaDons
                          where cthd.MaHD.Equals(maHD)
                          select cthd;
+            dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, dsCTHD);
             return dsCTHD;
         }
 
