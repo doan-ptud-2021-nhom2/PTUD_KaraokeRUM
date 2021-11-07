@@ -18,16 +18,16 @@ namespace KaraokeRUM
          * DsCTHD: danh sách chi tiết hóa đơn
          * KhoangTG: thời gian sử dụng phòng
          */
-        private string MaHD;
+        private string MAHD;
         private bool StatusBTN;
-        private clsHoaDon HoaDon;
-        private clsPhong Phong;
-        private clsLoaiPhong LoaiPhong;
-        private clsMatHang MatHang;
-        private clsKhachHang KhachHang;
-        private clsLoaiKhach LoaiKhach;
-        private clsChuyenSoThanhChu SoThanhChu;
-        private IEnumerable<ChiTietHoaDon> DsCTHD;
+        private clsHoaDon HOADON;
+        private clsPhong PHONG;
+        private clsLoaiPhong LOAIPHONG;
+        private clsMatHang MATHANG;
+        private clsKhachHang KHACHHANG;
+        private clsLoaiKhach LOAIKHACH;
+        private clsChuyenSoThanhChu SOTHANHCHU;
+        private IEnumerable<ChiTietHoaDon> DSCTHD;
         private string GioVao;
         private string GioRa;
         private int KhoangTG;
@@ -42,6 +42,7 @@ namespace KaraokeRUM
         /*
          * Constructor
          */
+
         public frmHoaDon(string maHD, bool statusBtn, frmChiTietPhong _frmCTP)
         {
             InitializeComponent();
@@ -50,7 +51,7 @@ namespace KaraokeRUM
             this.StartPosition = FormStartPosition.CenterScreen;
 
             //Gán giá trị biến
-            MaHD = maHD;
+            MAHD = maHD;
             StatusBTN = statusBtn;
             frmCTP = _frmCTP;
         }
@@ -60,44 +61,34 @@ namespace KaraokeRUM
          */
         private void frmHoaDon_Load(object sender, EventArgs e)
         {
-            HoaDon = new clsHoaDon();
-            Phong = new clsPhong();
-            LoaiPhong = new clsLoaiPhong();
-            MatHang = new clsMatHang();
-            KhachHang = new clsKhachHang();
-            LoaiKhach = new clsLoaiKhach();
-            SoThanhChu = new clsChuyenSoThanhChu();
+            HOADON = new clsHoaDon();
+            PHONG = new clsPhong();
+            LOAIPHONG = new clsLoaiPhong();
+            MATHANG = new clsMatHang();
+            KHACHHANG = new clsKhachHang();
+            LOAIKHACH = new clsLoaiKhach();
+            SOTHANHCHU = new clsChuyenSoThanhChu();
 
             btnThanhToan.Enabled = StatusBTN;
-            var hd = HoaDon.LayHoaDon(MaHD);
-            var phong = Phong.KiemTra(hd.MaPhong);
-            var loaiPhong = LoaiPhong.LayLoaiPhong(phong.MaLoaiPhong);
-            var khachHang = KhachHang.LayThongTinKhach(hd.MaKH);
-            var loaiKhach = LoaiKhach.LayLoaiKhach(khachHang.MaLoaiKH);
+            var hd = HOADON.LayHoaDon(MAHD);
+            var phong = PHONG.KiemTra(hd.MaPhong);
+            var loaiPhong = LOAIPHONG.LayLoaiPhong(phong.MaLoaiPhong);
+            var khachHang = KHACHHANG.LayThongTinKhach(hd.MaKH);
+            var loaiKhach = LOAIKHACH.LayLoaiKhach(khachHang.MaLoaiKH);
+            string loaiChietKhau = loaiKhach.MaLoaiKH;
 
             //Các biến dùng để tính tiền
-            TienMatHang = HoaDon.TinhTongTienMatHang(MaHD);
+            TienMatHang = HOADON.TinhTongTienMatHang(MAHD);
             ChietKhau = loaiKhach.ChietKhau;
             GiaPhong = (int)loaiPhong.Gia;
-            KhoangTG = HoaDon.TinhGio(MaHD);
+            KhoangTG = HOADON.TinhGio(MAHD);
             TienPhong = (KhoangTG / 60.0) * GiaPhong;
             GioVao = hd.GioVao.ToString(@"hh\:mm\:ss");
             TimeSpan ts = TimeSpan.Parse(hd.GioRa.ToString());
             GioRa = ts.ToString(@"hh\:mm\:ss");
 
             //Thực hiện tính tổng tiền
-            if (ChietKhau == 0)
-            {
-                TongTien = (TienMatHang + TienPhong) * 1.1;
-            }
-            else if(ChietKhau == 5)
-            {
-                TongTien = ((TienMatHang + TienPhong) * 1.1) * 0.95;
-            }
-            else
-            {
-                TongTien = ((TienMatHang + TienPhong) * 1.1) * 0.9;
-            }
+            TongTien = ((TienMatHang + TienPhong) * 1.1) * ((double)(1 - (ChietKhau/100)));
 
             //Gán các giá trị
             lblMaHD.Text = hd.MaHD;
@@ -115,9 +106,9 @@ namespace KaraokeRUM
             lblSoDienThoai.Text = khachHang.SDT;
 
             //ListView
-            DsCTHD = HoaDon.LayChiTietHoaDon(MaHD);
+            DSCTHD = HOADON.LayChiTietHoaDon(MAHD);
             TaoListView(lstvChiTietHoaDon);
-            TaiDuLieuLenListView(lstvChiTietHoaDon, DsCTHD);
+            TaiDuLieuLenListView(lstvChiTietHoaDon, DSCTHD);
         }
 
         /**
@@ -142,7 +133,7 @@ namespace KaraokeRUM
         {
             ListViewItem lstvItem;
             lstvItem = new ListViewItem((i++).ToString());
-            lstvItem.SubItems.Add(MatHang.TimTheoMa(item.MaMH).TenMh);
+            lstvItem.SubItems.Add(MATHANG.TimTheoMa(item.MaMH).TenMh);
             lstvItem.SubItems.Add(item.SoLuong.ToString());
             lstvItem.SubItems.Add(item.ThanhTien.ToString("#,### VNĐ"));
 
@@ -179,14 +170,14 @@ namespace KaraokeRUM
         private void pdHoaDon_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             //Tìm để lấy thông tin hiển thị ra giao diện
-            var danhSachHoaDon = HoaDon.LayChiTietHoaDon(MaHD);
-            var hd = HoaDon.LayHoaDon(MaHD);
-            var tenKhachHang = KhachHang.LayThongTinKhach(hd.MaKH).TenKhach;
-            var soDienThoai = KhachHang.LayThongTinKhach(hd.MaKH).SDT;
-            var phong = Phong.LayThongTinPhong(hd.MaPhong).TenPhong;
-            var tam = Phong.LayThongTinPhong(hd.MaPhong);
-            var loaiPhong = LoaiPhong.LayLoaiPhong(tam.MaLoaiPhong).TenLoaiPhong;
-            var donGiaLoaiPhong = LoaiPhong.LayLoaiPhong(tam.MaLoaiPhong).Gia;
+            var danhSachHoaDon = HOADON.LayChiTietHoaDon(MAHD);
+            var hd = HOADON.LayHoaDon(MAHD);
+            var tenKhachHang = KHACHHANG.LayThongTinKhach(hd.MaKH).TenKhach;
+            var soDienThoai = KHACHHANG.LayThongTinKhach(hd.MaKH).SDT;
+            var phong = PHONG.LayThongTinPhong(hd.MaPhong).TenPhong;
+            var tam = PHONG.LayThongTinPhong(hd.MaPhong);
+            var loaiPhong = LOAIPHONG.LayLoaiPhong(tam.MaLoaiPhong).TenLoaiPhong;
+            var donGiaLoaiPhong = LOAIPHONG.LayLoaiPhong(tam.MaLoaiPhong).Gia;
 
             //Định nghĩa chiều rộng
             var w = pdHoaDon.DefaultPageSettings.PaperSize.Width;
@@ -220,7 +211,7 @@ namespace KaraokeRUM
                                 new Point(40, 70));
             //Lấy Mã hóa đơn
             e.Graphics.DrawString(
-                                String.Format("{0}", MaHD),
+                                String.Format("{0}", MAHD),
                                 new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(w / 2 + 220, 25));
@@ -332,7 +323,7 @@ namespace KaraokeRUM
                                    Brushes.Black,
                                    new Point(30, y));
                 e.Graphics.DrawString(
-                                   string.Format("{0}", MatHang.TimTheoMa(danhSach.MaMH).TenMh),
+                                   string.Format("{0}", MATHANG.TimTheoMa(danhSach.MaMH).TenMh),
                                    new Font("Courier New", 13, FontStyle.Regular),
                                    Brushes.Black,
                                    new Point(80, y));
@@ -367,7 +358,7 @@ namespace KaraokeRUM
             //Đọc số tiền thành chữ
             y += 40;
             e.Graphics.DrawString(
-                                   string.Format("Thành chữ: {0} đồng", SoThanhChu.DocTienBangChu((long)TongTien)),
+                                   string.Format("Thành chữ: {0} đồng", SOTHANHCHU.DocTienBangChu((long)TongTien)),
                                    new Font("Courier New", 12, FontStyle.Regular),
                                    Brushes.Black,
                                    new Point(15, y));
@@ -389,27 +380,27 @@ namespace KaraokeRUM
             if(hoiThanhToan == DialogResult.Yes)
             {
                 //Cập nhật thành tiền vào hóa đơn.
-                HoaDon hoaDon = HoaDon.LayHoaDon(MaHD);
+                HoaDon hoaDon = HOADON.LayHoaDon(MAHD);
                 hoaDon.TongTien = Convert.ToDecimal(TongTien);
-                HoaDon.CapNhapHoaDon(hoaDon);
+                HOADON.CapNhapHoaDon(hoaDon);
 
                 //Cập nhật tổng tiền cho khách hàng (để thống kê).
-                KhachHang maKhachHang = KhachHang.LayThongTinKhach(hoaDon.MaKH);
+                KhachHang maKhachHang = KHACHHANG.LayThongTinKhach(hoaDon.MaKH);
                 if (maKhachHang.SoLanDen == 1)
                 {
                     maKhachHang.TongTien = Convert.ToDecimal(TongTien);
-                    KhachHang.CapNhatTongTienChoKhach(maKhachHang);
+                    KHACHHANG.CapNhatTongTienChoKhach(maKhachHang);
                 }
                 else
                 {
                     maKhachHang.TongTien += Convert.ToDecimal(hoaDon.TongTien);
-                    KhachHang.CapNhatTongTienChoKhach(maKhachHang);
+                    KHACHHANG.CapNhatTongTienChoKhach(maKhachHang);
                 }
 
                 //Cập nhật trạng thái phòng.
-                Phong phong = Phong.TimMotPhongTheoMa(hoaDon.MaPhong);
+                Phong phong = PHONG.TimMotPhongTheoMa(hoaDon.MaPhong);
                 phong.TrangThaiPhong = "Đóng";
-                Phong.SuaTrangThaiPhong(phong);
+                PHONG.SuaTrangThaiPhong(phong);
 
                 MessageBox.Show("Hoàn tất thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //Tắt giao diện hóa đơn.
