@@ -112,6 +112,7 @@ namespace KaraokeRUM
             // 
             // cboLoaiNV
             // 
+            this.cboLoaiNV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLoaiNV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLoaiNV.FormattingEnabled = true;
             this.cboLoaiNV.Location = new System.Drawing.Point(596, 129);
@@ -122,6 +123,7 @@ namespace KaraokeRUM
             // 
             // cboTrangThai
             // 
+            this.cboTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTrangThai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTrangThai.FormattingEnabled = true;
             this.cboTrangThai.Location = new System.Drawing.Point(596, 87);
@@ -142,6 +144,7 @@ namespace KaraokeRUM
             // 
             // cboGioiTinh
             // 
+            this.cboGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGioiTinh.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboGioiTinh.FormattingEnabled = true;
             this.cboGioiTinh.Location = new System.Drawing.Point(596, 49);
@@ -269,6 +272,7 @@ namespace KaraokeRUM
             // 
             // cboLocTheoLoai
             // 
+            this.cboLocTheoLoai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLocTheoLoai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLocTheoLoai.FormattingEnabled = true;
             this.cboLocTheoLoai.Location = new System.Drawing.Point(147, 64);
