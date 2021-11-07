@@ -358,6 +358,7 @@ namespace KaraokeRUM
             // 
             // cboMatHang
             // 
+            this.cboMatHang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMatHang.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMatHang.FormattingEnabled = true;
             this.cboMatHang.Location = new System.Drawing.Point(203, 53);
