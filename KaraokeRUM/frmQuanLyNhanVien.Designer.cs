@@ -120,6 +120,7 @@ namespace KaraokeRUM
             this.cboLoaiNV.Name = "cboLoaiNV";
             this.cboLoaiNV.Size = new System.Drawing.Size(248, 30);
             this.cboLoaiNV.TabIndex = 15;
+            this.cboLoaiNV.SelectedIndexChanged += new System.EventHandler(this.cboLoaiNV_SelectedIndexChanged);
             // 
             // cboTrangThai
             // 
@@ -131,6 +132,7 @@ namespace KaraokeRUM
             this.cboTrangThai.Name = "cboTrangThai";
             this.cboTrangThai.Size = new System.Drawing.Size(248, 30);
             this.cboTrangThai.TabIndex = 15;
+            this.cboTrangThai.SelectedIndexChanged += new System.EventHandler(this.cboTrangThai_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -152,6 +154,7 @@ namespace KaraokeRUM
             this.cboGioiTinh.Name = "cboGioiTinh";
             this.cboGioiTinh.Size = new System.Drawing.Size(248, 30);
             this.cboGioiTinh.TabIndex = 3;
+            this.cboGioiTinh.SelectedIndexChanged += new System.EventHandler(this.cboGioiTinh_SelectedIndexChanged);
             // 
             // label4
             // 

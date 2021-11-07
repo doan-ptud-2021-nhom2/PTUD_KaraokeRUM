@@ -346,6 +346,7 @@ namespace KaraokeRUM
             this.Text = "Quản lý mặt hàng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmQuanLyMatHang_Load);
+            this.Click += new System.EventHandler(this.frmQuanLyMatHang_Click);
             this.brbThongTinMatHang.ResumeLayout(false);
             this.brbThongTinMatHang.PerformLayout();
             this.groupBox2.ResumeLayout(false);

@@ -122,6 +122,8 @@ namespace KaraokeRUM
             cboLocTheoLoai.Items.Add("Bảo vệ");
             cboLocTheoLoai.Items.Add("Đã nghỉ");
             cboLocTheoLoai.Items.Add("Tất cả");
+
+            cboTrangThai.Items.Add("Đang làm");
         }
         private void lstvDSNV_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -310,6 +312,7 @@ namespace KaraokeRUM
                     XoaCacTxtCbo();
                     TaiDuLieuLenListView(lstvDSNV, dsNV);
                     errorProvider1.SetError(txtSDT, null);
+                    errorProvider1.SetError(txtCMND, null);
         }
 
         /** 
@@ -322,6 +325,7 @@ namespace KaraokeRUM
             nhanVien.MaNV = NV.TimNhanVien(txtCMND.Text, txtSDT.Text).First().MaNV;
             nhanVien.MaLNV = LNV.LayLoaiNhanVien(cboLoaiNV.Text).First().MaLNV;
             nhanVien.GioiTinh = cboGioiTinh.Text;
+            nhanVien.TrangThai = cboTrangThai.Text;
             nhanVien.DiaChi = txtDiaChi.Text;
 
             return nhanVien;
@@ -350,6 +354,8 @@ namespace KaraokeRUM
                 IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVien(MANVQL);
                 XoaCacTxtCbo();
                 TaiDuLieuLenListView(lstvDSNV, dsNV);
+                errorProvider1.SetError(txtSDT, null);
+                errorProvider1.SetError(txtCMND, null);
             }
         }
 
@@ -386,7 +392,7 @@ namespace KaraokeRUM
             else
             {
                 errorProvider1.SetError(txtSDT, null);
-                KiemTraTxt();
+                KiemTraTxtCbo();
             }
             
         }
@@ -416,14 +422,14 @@ namespace KaraokeRUM
                 else
                 {
                     errorProvider1.SetError(txtCMND, null);
-                    KiemTraTxt();
+                    KiemTraTxtCbo();
                 }
                 
             }
             
         }
-        /*Kiểm tra xem các thành phần trong text box có rỗng k*/
-        private void KiemTraTxt()
+        /*Kiểm tra xem các thành phần trong group box có rỗng k*/
+        private void KiemTraTxtCbo()
         {
             foreach (Control c in grbThongTinNhanVien.Controls)
             {
@@ -439,6 +445,18 @@ namespace KaraokeRUM
                     }    
                    
                 }
+                if (c is ComboBox)
+                {
+                    var a = c as ComboBox;
+                    if (a.Text == "")
+                    {
+                        btnThem.Enabled = false;
+                        btnSua.Enabled = false;
+                        btnXoa.Enabled = false;
+                        return;
+                    }
+
+                }
             }
             btnThem.Enabled = true;
             btnSua.Enabled = true;
@@ -447,17 +465,28 @@ namespace KaraokeRUM
 
         private void txtTen_TextChanged(object sender, EventArgs e)
         {
-            KiemTraTxt();
+            KiemTraTxtCbo();
         }
 
         private void txtDiaChi_TextChanged(object sender, EventArgs e)
         {
-            KiemTraTxt();
+            KiemTraTxtCbo();
         }
 
-        
+        private void cboGioiTinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            KiemTraTxtCbo();
+        }
 
-       
+        private void cboTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            KiemTraTxtCbo();
+        }
+
+        private void cboLoaiNV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            KiemTraTxtCbo();
+        }
     }
   
 } 

@@ -78,6 +78,7 @@ namespace KaraokeRUM
                 tam.First().TenNV = nhanVien.TenNV;
                 tam.First().GioiTinh = nhanVien.GioiTinh;
                 tam.First().DiaChi = nhanVien.DiaChi;
+                tam.First().TrangThai = nhanVien.TrangThai;
                 tam.First().MaLNV = nhanVien.MaLNV;
                 dt.SubmitChanges();
                 dt.Transaction.Commit();

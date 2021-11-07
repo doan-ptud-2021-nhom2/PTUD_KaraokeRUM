@@ -83,6 +83,13 @@ namespace KaraokeRUM
                 dsMH = (MatHang)lstvMatHang.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsMH);
             }
+            txtTenMH.Enabled = false;
+            cboLMH.Enabled = false;
+            txtSoLuongTon.Enabled = false;
+            cboDonVi.Enabled = false;
+            btnThem.Enabled = false;
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
         }
         /*
          * load combobox 
@@ -105,7 +112,7 @@ namespace KaraokeRUM
             cboLMH.Text = dsMH.Loai;
             txtSoLuongTon.Text = dsMH.SoLuongTon.ToString();
             cboDonVi.Text = dsMH.DonVi;
-            txtGia.Text = dsMH.Gia.ToString("##,## VNĐ");
+            txtGia.Text = dsMH.Gia.ToString("##,##");
 
         }
         /*
@@ -328,6 +335,17 @@ namespace KaraokeRUM
         private void txtGia_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void frmQuanLyMatHang_Click(object sender, EventArgs e)
+        {
+            txtTenMH.Enabled = true;
+            cboLMH.Enabled = true;
+            txtSoLuongTon.Enabled = true;
+            cboDonVi.Enabled = true;
+            btnThem.Enabled = true;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
         }
     }
 }
