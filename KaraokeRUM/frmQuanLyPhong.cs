@@ -295,7 +295,7 @@ namespace KaraokeRUM
         */
         LoaiPhong SuaGiaLoaiPhong()
         {
-            if(cboLoaiPhong2.SelectedIndex >= 0 && txtGiaPhongMoi.Text != "")
+            if(cboLoaiPhong2.SelectedIndex >= 0 && txtGiaPhongMoi.Text != "" && txtGiaPhongCu.Text != "")
             {
                 LoaiPhong loaiPhong = new LoaiPhong();
                 loaiPhong.MaLoaiPhong = LOAIPHONG.TimLoaiPhong(cboLoaiPhong2.Text).First().MaLoaiPhong;
