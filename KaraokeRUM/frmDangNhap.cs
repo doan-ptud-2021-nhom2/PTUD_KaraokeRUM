@@ -97,6 +97,11 @@ namespace KaraokeRUM
                     MessageBox.Show("Mật khẩu không được để trống. Vui lòng nhập đầy đủ thông tin!!",
                                     "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else if(txtUsername.Text.Trim().Equals("") && txtPassword.Text.Trim().Equals(""))
+                {
+                    MessageBox.Show("Tài khoản và mật khẩu không được để trống. Vui lòng nhập đầy đủ thông tin!!",
+                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 else
                 {
                     MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!!", 
