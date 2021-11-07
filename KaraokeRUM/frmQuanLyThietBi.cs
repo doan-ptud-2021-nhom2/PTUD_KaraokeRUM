@@ -12,10 +12,7 @@ namespace KaraokeRUM
 {
     public partial class frmQuanLyThietBi : Form
     {
-        public frmQuanLyThietBi()
-        {
-            InitializeComponent();
-        }
+
         private clsHonLoan HONLOAN;
         private clsPhong PHONG;
         private IEnumerable<Phong> DANHSACHPHONG;
@@ -23,6 +20,17 @@ namespace KaraokeRUM
         private IEnumerable<TrangThietBi> DANHSACHTHIETBI;
         private clsPhongTrangThietBi PHONGTRANGTHIETBI;
         private IEnumerable<Phong_TrangThietBi> DANHSACHPHONGTTB;
+        private string MAQL;
+
+        /*
+         * Constructor
+         */
+        public frmQuanLyThietBi(string maQL)
+        {
+            InitializeComponent();
+            this.MAQL = maQL;
+        }
+
         private void frmQuanLyThietBi_Load(object sender, EventArgs e)
         {
             btnSua.Enabled = false;
@@ -208,7 +216,7 @@ namespace KaraokeRUM
             ttb.SoLuongTon = (int)Convert.ToDecimal(txtSoLuongTon.Text);
             ttb.DonVi = cboDonVi.Text;
             ttb.Gia = Convert.ToDecimal(txtDonGia.Text);
-            ttb.MaQL = "NV002";
+            ttb.MaQL = MAQL;
             ttb.TrangThai = "DSD";
             return ttb;
         }
@@ -282,7 +290,7 @@ namespace KaraokeRUM
             tb.SoLuongTon = (int)Convert.ToDecimal(txtSoLuongTon.Text);
             tb.DonVi = cboDonVi.Text;
             tb.Gia = Convert.ToDecimal(txtDonGia.Text);
-            tb.MaQL = "NV002";
+            tb.MaQL = MAQL;
             return tb;
         }
 
