@@ -111,6 +111,7 @@ namespace KaraokeRUM
             this.cboLoaiKhachHang.Name = "cboLoaiKhachHang";
             this.cboLoaiKhachHang.Size = new System.Drawing.Size(359, 30);
             this.cboLoaiKhachHang.TabIndex = 3;
+            this.cboLoaiKhachHang.SelectedIndexChanged += new System.EventHandler(this.cboLoaiKhachHang_SelectedIndexChanged);
             // 
             // label6
             // 
