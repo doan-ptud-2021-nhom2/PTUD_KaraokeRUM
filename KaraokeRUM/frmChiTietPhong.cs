@@ -162,7 +162,7 @@ namespace KaraokeRUM
         */
         private void btnDoiPhong_Click(object sender, EventArgs e)
         {
-            frmDanhSachPhong frm = new frmDanhSachPhong(MAHOADON);
+            frmDanhSachPhong frm = new frmDanhSachPhong(MAHOADON, this);
             frm.Show();
             //Cập nhật phòng cũ
             Phong phong;
@@ -182,7 +182,7 @@ namespace KaraokeRUM
             hoaDon.GioRa = tp;
             HOADON.CapNhapHoaDon(hoaDon);
 
-            frmHoaDon frm = new frmHoaDon(this.MAHOADON, true);
+            frmHoaDon frm = new frmHoaDon(this.MAHOADON, true, this);
             frm.Show();
         }
 
@@ -273,13 +273,11 @@ namespace KaraokeRUM
             {
                 ChiTietHoaDon suaSoLuong = SuaSoLuongMatHang();
                 CHITIETHOADON.SuaThongTinMatHang(suaSoLuong);
-                DANHSACHMATHANG = HOADON.LayChiTietHoaHoaTaiLenListView(MAHOADON);
+                DANHSACHMATHANG = HOADON.LayChiTietHoaDon(MAHOADON);
                 TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
-
-            dsMatHang = HoaDon.LayChiTietHoaDon(maHoaDon);
-            TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang);
-            cboMatHang.Text = "";
-            txtSoLuong.Text = "";
+                cboMatHang.Text = "";
+                txtSoLuong.Text = "";
+            }
         }
 
         /** 
