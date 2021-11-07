@@ -22,8 +22,13 @@ namespace KaraokeRUM
             var taiKhoan = (from tk in dt.TaiKhoans
                             where tk.UserName == tenDangNhap
                             select tk).FirstOrDefault();
-            dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, taiKhoan);
-            return taiKhoan;
+            if (taiKhoan == null)
+                return taiKhoan;
+            else
+            {
+                dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, taiKhoan);
+                return taiKhoan;
+            }
         }
 
         //Hàm kiểm tra tài khoản, truyền vào tham số là một taiKhoan: TaiKhoan

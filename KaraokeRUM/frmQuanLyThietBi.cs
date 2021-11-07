@@ -147,7 +147,7 @@ namespace KaraokeRUM
             txtTen.Text = tb.TenTTB;
             txtSoLuongTon.Text = tb.SoLuongTon.ToString();
             cboDonVi.Text = tb.DonVi;
-            txtDonGia.Text = tb.Gia.ToString("#,###,000 VNĐ");
+            txtDonGia.Text = tb.Gia.ToString("#,###,000");
 
         }
         /*Chức năng tải dữ liệu lên textbox từ lstvThietBi*/
@@ -209,6 +209,7 @@ namespace KaraokeRUM
             ttb.DonVi = cboDonVi.Text;
             ttb.Gia = Convert.ToDecimal(txtDonGia.Text);
             ttb.MaQL = "NV002";
+            ttb.TrangThai = "DSD";
             return ttb;
         }
         /*Chức năng thêm thiết bị mới vào kho*/
@@ -222,7 +223,7 @@ namespace KaraokeRUM
         #endregion
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
+            DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBiKhiThemVaoPhong();
             TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
         }
         /*Chức năng xóa thiết bị*/
@@ -276,7 +277,7 @@ namespace KaraokeRUM
         TrangThietBi ThongTinMoiCuaThietBi()
         {
             TrangThietBi tb = new TrangThietBi();
-            tb.MaTTB = THIETBI.TimThietBiTheoTen(txtTen.Text).First().MaTTB;
+            tb.MaTTB = THIETBI.TimThietBiTheoTen(txtTen.Text).FirstOrDefault().MaTTB;
             tb.TenTTB = txtTen.Text;
             tb.SoLuongTon = (int)Convert.ToDecimal(txtSoLuongTon.Text);
             tb.DonVi = cboDonVi.Text;

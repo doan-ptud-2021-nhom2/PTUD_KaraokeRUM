@@ -17,6 +17,14 @@ namespace KaraokeRUM
         public IEnumerable<TrangThietBi> LayToanBoTrangThietBis()
         {
             IEnumerable<TrangThietBi> tb = from n in dt.TrangThietBis select n;
+            //dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tb);
+            return tb;
+        }
+        /*Lấy tất cả trang thiết bị*/
+        public IEnumerable<TrangThietBi> LayToanBoTrangThietBiKhiThemVaoPhong()
+        {
+            IEnumerable<TrangThietBi> tb = from n in dt.TrangThietBis select n;
+            dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tb);
             return tb;
         }
         /*kiểm tra*/
