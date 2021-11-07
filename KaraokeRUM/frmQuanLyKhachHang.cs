@@ -344,6 +344,11 @@ namespace KaraokeRUM
                 MessageBox.Show("Lỗi! Không được để trống!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void txtCKM_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 
 

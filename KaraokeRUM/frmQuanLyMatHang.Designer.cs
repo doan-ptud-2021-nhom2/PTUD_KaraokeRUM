@@ -95,6 +95,7 @@ namespace KaraokeRUM
             this.txtGia.Size = new System.Drawing.Size(406, 30);
             this.txtGia.TabIndex = 49;
             this.txtGia.TextChanged += new System.EventHandler(this.txtGia_TextChanged);
+            this.txtGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGia_KeyPress);
             // 
             // label6
             // 
@@ -136,6 +137,7 @@ namespace KaraokeRUM
             this.txtSoLuongTon.Size = new System.Drawing.Size(406, 30);
             this.txtSoLuongTon.TabIndex = 45;
             this.txtSoLuongTon.TextChanged += new System.EventHandler(this.txtSoLuongTon_TextChanged);
+            this.txtSoLuongTon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuongTon_KeyPress);
             // 
             // label2
             // 

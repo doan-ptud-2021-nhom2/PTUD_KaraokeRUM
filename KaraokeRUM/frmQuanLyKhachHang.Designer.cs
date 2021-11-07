@@ -230,6 +230,7 @@ namespace KaraokeRUM
             this.txtCKM.Name = "txtCKM";
             this.txtCKM.Size = new System.Drawing.Size(359, 30);
             this.txtCKM.TabIndex = 5;
+            this.txtCKM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCKM_KeyPress);
             // 
             // btnCapNhap
             // 
