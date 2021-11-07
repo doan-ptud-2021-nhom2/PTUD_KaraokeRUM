@@ -12,10 +12,6 @@ namespace KaraokeRUM
 {
     public partial class frmQuanLyPhong : Form
     {
-        public frmQuanLyPhong()
-        {
-            InitializeComponent();
-        }
 
         /** 
          * Các biến toàn cục.
@@ -24,6 +20,16 @@ namespace KaraokeRUM
         private clsLoaiPhong LOAIPHONG;
         private IEnumerable<Phong> DANHSACHPHONG;
         private IEnumerable<LoaiPhong> DANHSACHLOAIPHONG;
+        private string MAQL;
+
+        /** 
+         * Constructor
+         */
+        public frmQuanLyPhong(string maQL)
+        {
+            InitializeComponent();
+            this.MAQL = maQL;
+        }
 
         private void frmQuanLyPhong_Load(object sender, EventArgs e)
         {
@@ -239,7 +245,7 @@ namespace KaraokeRUM
                 phong.TenPhong = txtSoPhong.Text;
                 phong.TrangThaiPhong = cboTrangThai.Text;
                 phong.MaLoaiPhong = LOAIPHONG.TimLoaiPhong(cboLoaiPhong.Text).First().MaLoaiPhong;
-                phong.MaQL = "NV002";
+                phong.MaQL = MAQL;
 
                 return phong;
             }
