@@ -180,7 +180,7 @@ namespace KaraokeRUM
             }    
             else
             {
-                MessageBox.Show("Lỗi! Không được để trống!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Lỗi! Không được để trống chiết khấu mới !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }    
            
         }
@@ -358,7 +358,7 @@ namespace KaraokeRUM
             }
             else
             {
-                MessageBox.Show("Lỗi! Không được để trống!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Lỗi! Bạn chưa chọn ghi chú khách hàng !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -369,6 +369,28 @@ namespace KaraokeRUM
 
         private void cboLoaiKhachHang_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string maLoaiKhachHang;
+            if (cboLoaiKhachHang.SelectedIndex == 0)
+            {
+                maLoaiKhachHang = "LKH01";
+            }
+            else if (cboLoaiKhachHang.SelectedIndex == 1)
+            {
+                maLoaiKhachHang = "LKH02";
+            }
+            else if (cboLoaiKhachHang.SelectedIndex == 2)
+            {
+                maLoaiKhachHang = "LKH03";
+            }
+            else
+            {
+                maLoaiKhachHang = "LKH01";
+            }
+           
+            
+                IEnumerable<LoaiKhachHang> kh = LK.TimLoaiKhachHangTheoMaLoai(maLoaiKhachHang);
+            txtCKC.Text = kh.First().ChietKhau.ToString();
+
 
         }
     }
