@@ -201,7 +201,7 @@ namespace KaraokeRUM
 
                 if (CHITIETHOADON.TimChiTietHoaDon(MATHANG.TimMaTheoTen(cboMatHang.Text).MaMH, this.MAHOADON).Count() > 0)
                 {
-                    MessageBox.Show("Mặt hàng đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mặt hàng đã tồn tại!. Bạn có thể sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     cboMatHang.Text = "";
                     txtSoLuong.Text = "";
                 }
