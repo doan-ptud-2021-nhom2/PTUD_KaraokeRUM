@@ -117,6 +117,7 @@ namespace KaraokeRUM
             this.cboDonVi.Name = "cboDonVi";
             this.cboDonVi.Size = new System.Drawing.Size(406, 30);
             this.cboDonVi.TabIndex = 47;
+            this.cboDonVi.SelectedIndexChanged += new System.EventHandler(this.cboDonVi_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -173,6 +174,7 @@ namespace KaraokeRUM
             this.cboLMH.Name = "cboLMH";
             this.cboLMH.Size = new System.Drawing.Size(406, 30);
             this.cboLMH.TabIndex = 42;
+            this.cboLMH.SelectedIndexChanged += new System.EventHandler(this.cboLMH_SelectedIndexChanged);
             // 
             // txtTenMH
             // 

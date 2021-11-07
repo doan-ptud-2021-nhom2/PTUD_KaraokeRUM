@@ -290,7 +290,7 @@ namespace KaraokeRUM
             TaiDuLieuLenListView(lstvMatHang, dsMH);
         }
         /*Kiểm tra xem các thành phần trong text box có rỗng k*/
-        private void KiemTraTxt()
+        private void KiemTraTxtCbo()
         {
             foreach (Control c in brbThongTinMatHang.Controls)
             {
@@ -306,26 +306,46 @@ namespace KaraokeRUM
                     }
 
                 }
+                if (c is ComboBox)
+                {
+                    var a = c as ComboBox;
+                    if (a.Text == "")
+                    {
+                        btnThem.Enabled = false;
+                        btnSua.Enabled = false;
+                        btnXoa.Enabled = false;
+                        return;
+                    }
+
+                }
             }
             btnThem.Enabled = true;
-            btnSua.Enabled = true;
-            btnXoa.Enabled = true;
+           
         }
 
         private void txtTenMH_TextChanged(object sender, EventArgs e)
         {
-            KiemTraTxt();
+            KiemTraTxtCbo();
         }
 
         private void txtGia_TextChanged(object sender, EventArgs e)
         {
-            KiemTraTxt();
+            KiemTraTxtCbo();
         }
 
         private void txtSoLuongTon_TextChanged(object sender, EventArgs e)
         {
-            KiemTraTxt();
+            KiemTraTxtCbo();
         }
+        private void cboLMH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            KiemTraTxtCbo();
+        }
+        private void cboDonVi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            KiemTraTxtCbo();
+        }
+        /*Chặn không cho nhập chữ */
 
         private void txtSoLuongTon_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -339,14 +359,16 @@ namespace KaraokeRUM
 
         private void frmQuanLyMatHang_Click(object sender, EventArgs e)
         {
+            XoaCacTxtCbo();
             txtTenMH.Enabled = true;
             cboLMH.Enabled = true;
             txtSoLuongTon.Enabled = true;
             cboDonVi.Enabled = true;
-            btnThem.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
         }
+
+      
     }
 }
 
