@@ -25,6 +25,7 @@ namespace KaraokeRUM
         private int sortColumn = -1;
         private void frmQuanLyKhachHang_Load(object sender, EventArgs e)
         {
+            TaiCombobox();
             TaiDuLieu();
             txtTimKiemKhachHang.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtTimKiemKhachHang.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -34,7 +35,6 @@ namespace KaraokeRUM
         {
             lstvDSKH.Clear();
             lstvDanhSachDen.Clear();
-            TaiCombobox();
             TaoTieuDeCot(lstvDSKH);
             TaoTieuDeCotDanhSachDen(lstvDanhSachDen);
             KH = new clsKhachHang();
@@ -169,11 +169,14 @@ namespace KaraokeRUM
         private void btnCapNhap_Click(object sender, EventArgs e)
         {
             
-            if (!string.IsNullOrEmpty(txtCKM.Text.Trim()))
+            if (!string.IsNullOrEmpty(txtCKM.Text.Trim()) && !string.IsNullOrEmpty(cboLoaiKhachHang.Text))
             {
+                
                 LoaiKhachHang suaLk = SuaChietKhauLoaiKhach();
                 LK.CapNhatChietKhau(suaLk);
                 TaiDuLieu();
+                txtCKC.Text = "";
+                txtCKM.Text = "";
             }    
             else
             {

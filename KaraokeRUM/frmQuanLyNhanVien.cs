@@ -240,8 +240,6 @@ namespace KaraokeRUM
             }
             else
             {
-                if(clsKiemTra.KiemTraCMNDHopLe(txtCMND.Text))
-                {
                     NV.ThemNhanVien(nhanVien);
                     if (nhanVien.MaLNV.ToLower().Equals("lnv01") || nhanVien.MaLNV.ToLower().Equals("lnv02"))
                     {
@@ -252,12 +250,6 @@ namespace KaraokeRUM
                     TaiDuLieuLenListView(lstvDSNV, NV.LayNhanVienVaLoaiNhanVien(MANVQL));
                     errorProvider1.SetError(txtSDT, null);
                     errorProvider1.SetError(txtCMND, null);
-                } 
-                else
-                {
-                    MessageBox.Show("Chứng minh nhân dân bạn nhập không hợp lệ!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }    
-                
 
             }
             
@@ -401,7 +393,7 @@ namespace KaraokeRUM
 
         private void txtCMND_TextChanged(object sender, EventArgs e)
         {
-            string cmnd = txtCMND.Text;
+            string cmnd = txtCMND.Text.Trim();
             if (!clsKiemTra.KiemTraDoDaiCMND(cmnd))
             {
                 txtCMND.Focus();
@@ -410,10 +402,23 @@ namespace KaraokeRUM
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
             }
+            
             else
             {
-                errorProvider1.SetError(txtCMND, null);
-                KiemTraTxt();
+                if(!clsKiemTra.KiemTraCMNDHopLe(cmnd))
+                {
+                    txtCMND.Focus();
+                    errorProvider1.SetError(txtCMND, "Chứng minh nhân dân không hợp lệ");
+                    btnThem.Enabled = false;
+                    btnSua.Enabled = false;
+                    btnXoa.Enabled = false;
+                }
+                else
+                {
+                    errorProvider1.SetError(txtCMND, null);
+                    KiemTraTxt();
+                }
+                
             }
             
         }
