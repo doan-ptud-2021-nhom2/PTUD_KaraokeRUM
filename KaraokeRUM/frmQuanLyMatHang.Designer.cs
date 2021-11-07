@@ -162,6 +162,7 @@ namespace KaraokeRUM
             // 
             // cboLMH
             // 
+            this.cboLMH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLMH.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cboLMH.FormattingEnabled = true;
             this.cboLMH.Location = new System.Drawing.Point(192, 105);

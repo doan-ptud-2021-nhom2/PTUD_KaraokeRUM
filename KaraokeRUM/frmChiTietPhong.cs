@@ -276,10 +276,10 @@ namespace KaraokeRUM
                 DANHSACHMATHANG = HOADON.LayChiTietHoaHoaTaiLenListView(MAHOADON);
                 TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
 
-                cboMatHang.Text = "";
-                txtSoLuong.Text = "";
-                cboMatHang.Enabled = true;
-            }
+            dsMatHang = HoaDon.LayChiTietHoaDon(maHoaDon);
+            TaiDuLieuLenListView(lstvDanhSachMatHang, dsMatHang);
+            cboMatHang.Text = "";
+            txtSoLuong.Text = "";
         }
 
         /** 
