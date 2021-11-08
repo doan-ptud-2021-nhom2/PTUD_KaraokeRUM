@@ -308,7 +308,6 @@ namespace KaraokeRUM
             tb.SoLuongTon = (int)Convert.ToDecimal(txtSoLuongTon.Text);
             tb.DonVi = cboDonVi.Text;
             tb.Gia = Convert.ToDecimal(txtDonGia.Text);
-            tb.MaQL = "NV002";
             tb.TrangThai = "DSD";
             tb.MaQL = MAQL;
             return tb;
