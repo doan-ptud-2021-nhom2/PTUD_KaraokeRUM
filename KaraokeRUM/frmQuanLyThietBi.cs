@@ -66,6 +66,7 @@ namespace KaraokeRUM
             lstv.Columns.Add("Số Lượng Tồn", 150);
             lstv.Columns.Add("Đơn Vị", 130);
             lstv.Columns.Add("Giá", 200);
+            lstv.Columns.Add("Trạng thái", 150);
         }
         /*Tải dữ liệu lên lsvtThietBi*/
         private void TaiDuLieuLenLstvThietBi(ListView lstv, IEnumerable<TrangThietBi> dSach)
@@ -99,7 +100,7 @@ namespace KaraokeRUM
             lvwItem.SubItems.Add(tb.SoLuongTon.ToString());
             lvwItem.SubItems.Add(tb.DonVi);
             lvwItem.SubItems.Add(tb.Gia.ToString("#,###,000 VNĐ"));
-
+            lvwItem.SubItems.Add(tb.TrangThai);
             lvwItem.Tag = tb;
             lvwItem.ImageIndex = 0;
             return lvwItem;
@@ -158,6 +159,8 @@ namespace KaraokeRUM
             {
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
+                txtTen.Enabled = false;
+                txtDonGia.Enabled = false;
                 tb = lstvThietBi.SelectedItems[0].Tag;
                 DuLieuLenTextBoxThietBi(tb);
             }
@@ -188,14 +191,22 @@ namespace KaraokeRUM
         private string taoMaTTB()
         {
             string maTTB = "";
-            int dem = THIETBI.LayToanBoTrangThietBis().Count() + 1;
-            if (dem < 10)
+            if (THIETBI.LayToanBoTrangThietBis().Count() == 0)
             {
-                maTTB += "TB00" + dem;
+                maTTB = "TB001";
             }
             else
             {
-                maTTB += "TB0" + dem;
+                string maTTBTam = THIETBI.LayToanBoTrangThietBis().Last().MaTTB.ToString();
+                int dem = Convert.ToInt32(maTTBTam.Split('T','B')[2]) + 1;
+                if (dem < 10)
+                {
+                    maTTB += "TB00" + dem;
+                }
+                else
+                {
+                    maTTB += "TB0" + dem;
+                }
             }
             return maTTB;
         }
@@ -212,12 +223,30 @@ namespace KaraokeRUM
             ttb.TrangThai = "DSD";
             return ttb;
         }
+        private bool KiemTraTonTaiTenThietBi(TrangThietBi ttb)
+        {
+            foreach (TrangThietBi i in THIETBI.LayToanBoTrangThietBis())
+            {
+                if (ttb.TenTTB.Equals(i.TenTTB))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         /*Chức năng thêm thiết bị mới vào kho*/
         private void btnThem_Click(object sender, EventArgs e)
         {
             TrangThietBi ttb = TaoTTB();
-            THIETBI.Them(ttb);
-            TaiDuLieuLenLstvThietBi(lstvThietBi, THIETBI.LayToanBoTrangThietBis());
+            if(!KiemTraTonTaiTenThietBi(ttb))
+            {
+                MessageBox.Show("Thiết bị đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }    
+            else
+            {
+                THIETBI.Them(ttb);
+                TaiDuLieuLenLstvThietBi(lstvThietBi, THIETBI.LayToanBoTrangThietBis());
+            }              
         }
         /*Chức năng duyệt lại danh sách thiết bị*/
         #endregion
@@ -244,12 +273,9 @@ namespace KaraokeRUM
                         ttb = (TrangThietBi)lstvThietBi.Items[index].Tag;
                         if(ttb.SoLuongTon == 0)
                         {
-                            THIETBI.Xoa(ttb);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Thiết bị đang sử dụng không thể xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                        }    
+                            ttb.TrangThai = "Hết";
+                            THIETBI.SuaTrangThietBi(ttb);
+                        }   
                     }
                     TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
                     btnXoa.Enabled = false;
@@ -262,14 +288,6 @@ namespace KaraokeRUM
         private void btnSua_Click(object sender, EventArgs e)
         {
             TrangThietBi tb = ThongTinMoiCuaThietBi();                          
-            if (tb.SoLuongTon == 0)
-            {
-                tb.TrangThai = "Hết";
-            }
-            else
-            {
-                tb.TrangThai = "DSD";
-            }
             THIETBI.SuaTrangThietBi(tb);
             TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
         }
@@ -283,6 +301,7 @@ namespace KaraokeRUM
             tb.DonVi = cboDonVi.Text;
             tb.Gia = Convert.ToDecimal(txtDonGia.Text);
             tb.MaQL = "NV002";
+            tb.TrangThai = "DSD";
             return tb;
         }
 
@@ -329,6 +348,9 @@ namespace KaraokeRUM
                 {
                     maPhong = PHONG.TimPhongTheoTen(cboTenPhong.Text).First().MaPhong;
                     maTTB = THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().MaTTB;
+                    TrangThietBi ttb = THIETBI.TimTTBTheoMa(maTTB);
+                    ttb.TrangThai = "DSD";
+                    THIETBI.SuaTrangThietBi(ttb);
                     pttb = PHONGTRANGTHIETBI.TimTTBtrongPhongTheoTenVaMaTTB(maPhong, maTTB).First();
                     PHONGTRANGTHIETBI.Xoa(pttb);
                 }
@@ -357,12 +379,13 @@ namespace KaraokeRUM
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
-            txtTimKiem.AutoCompleteCustomSource.Clear();
-            foreach (TrangThietBi i in DANHSACHTHIETBI)
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            foreach (TrangThietBi i in THIETBI.LayToanBoTrangThietBis())
             {
-                txtTimKiem.AutoCompleteCustomSource.Add(i.TenTTB);
-                txtTimKiem.AutoCompleteCustomSource.Add(i.MaTTB);
+                collection.Add(i.MaTTB);
+                collection.Add(i.TenTTB);
             }
+            txtTimKiem.AutoCompleteCustomSource = collection;
         }
         /*Chức năng duyệt danh sách thiết bị trong phòng theo tên phòng ở cboTenPhong*/
         private void cboTenPhong_SelectedIndexChanged(object sender, EventArgs e)

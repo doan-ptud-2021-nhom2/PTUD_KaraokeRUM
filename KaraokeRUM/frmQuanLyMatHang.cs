@@ -149,7 +149,6 @@ namespace KaraokeRUM
                 collection.Add(i.TenMh);
             }
             txtTimKiemMatHang.AutoCompleteCustomSource = collection;
-
         }
         void XoaCacTxtCbo()
         {
