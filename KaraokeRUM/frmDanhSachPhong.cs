@@ -168,7 +168,7 @@ namespace KaraokeRUM
             }
             else if(btn.BackColor == Color.Teal)
             {
-                MessageBox.Show("Bạn đang ở phòng này, vui lòng chọn phòng khác nếu bạn muốn chuyển phòng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Phòng đang mở, vui lòng chọn phòng khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if(btn.BackColor == Color.Orange)
             {

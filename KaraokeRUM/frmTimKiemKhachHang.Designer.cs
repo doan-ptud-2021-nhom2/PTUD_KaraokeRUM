@@ -29,9 +29,12 @@ namespace KaraokeRUM
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.errSoDienThoai = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errSoDienThoai)).BeginInit();
             this.SuspendLayout();
             // 
             // btnTimKiem
@@ -54,6 +57,7 @@ namespace KaraokeRUM
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(247, 34);
             this.txtSDT.TabIndex = 1;
+            this.txtSDT.Validating += new System.ComponentModel.CancelEventHandler(this.txtSoDienThoai_Validating);
             // 
             // label1
             // 
@@ -63,6 +67,10 @@ namespace KaraokeRUM
             this.label1.Size = new System.Drawing.Size(216, 23);
             this.label1.TabIndex = 2;
             this.label1.Text = "Số điện thoại khách hàng:";
+            // 
+            // errSoDienThoai
+            // 
+            this.errSoDienThoai.ContainerControl = this;
             // 
             // frmTimKiemKhachHang
             // 
@@ -77,6 +85,7 @@ namespace KaraokeRUM
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tìm kiếm khách hàng";
             this.Load += new System.EventHandler(this.frmTimKiemKhachHang_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errSoDienThoai)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,5 +96,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errSoDienThoai;
     }
 }
