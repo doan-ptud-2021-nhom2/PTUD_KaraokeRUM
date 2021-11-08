@@ -150,11 +150,11 @@
     <Compile Include="frmTrangChuQL.Designer.cs">
       <DependentUpon>frmTrangChuQL.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPhong.cs">
+    <Compile Include="frmDatPhong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPhong.Designer.cs">
-      <DependentUpon>frmPhong.cs</DependentUpon>
+    <Compile Include="frmDatPhong.Designer.cs">
+      <DependentUpon>frmDatPhong.cs</DependentUpon>
     </Compile>
     <Compile Include="frmQuanLyMatHang.cs">
       <SubType>Form</SubType>
@@ -212,8 +212,8 @@
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPhong.resx">
-      <DependentUpon>frmPhong.cs</DependentUpon>
+    <EmbeddedResource Include="frmDatPhong.resx">
+      <DependentUpon>frmDatPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyKhachHang.resx">
       <DependentUpon>frmQuanLyKhachHang.cs</DependentUpon>

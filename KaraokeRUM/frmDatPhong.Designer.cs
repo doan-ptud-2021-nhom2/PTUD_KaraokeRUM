@@ -1,7 +1,7 @@
 ﻿
 namespace KaraokeRUM
 {
-    partial class frmPhong
+    partial class frmDatPhong
     {
         /// <summary>
         /// Required designer variable.
@@ -56,7 +56,6 @@ namespace KaraokeRUM
             this.btnDatPhong = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -365,7 +364,6 @@ namespace KaraokeRUM
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
@@ -387,18 +385,6 @@ namespace KaraokeRUM
             this.label9.TabIndex = 7;
             this.label9.Text = "Phòng Mở";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.Green;
-            this.label10.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(535, 258);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(168, 41);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Phòng Đang Chọn";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
@@ -524,7 +510,7 @@ namespace KaraokeRUM
             // 
             this.errSoDienThoai.ContainerControl = this;
             // 
-            // frmPhong
+            // frmDatPhong
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -545,7 +531,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnDatPhong);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmPhong";
+            this.Name = "frmDatPhong";
             this.Text = "Phong";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPhong_Load);
@@ -593,7 +579,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnLamMoi;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnXemPhong;
