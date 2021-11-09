@@ -84,7 +84,7 @@ namespace KaraokeRUM
             this.lstvDanhSachDP.HideSelection = false;
             this.lstvDanhSachDP.Location = new System.Drawing.Point(19, 48);
             this.lstvDanhSachDP.Name = "lstvDanhSachDP";
-            this.lstvDanhSachDP.Size = new System.Drawing.Size(801, 734);
+            this.lstvDanhSachDP.Size = new System.Drawing.Size(801, 748);
             this.lstvDanhSachDP.TabIndex = 0;
             this.lstvDanhSachDP.UseCompatibleStateImageBehavior = false;
             this.lstvDanhSachDP.SelectedIndexChanged += new System.EventHandler(this.lvwDanhSachDP_SelectedIndexChanged_1);
@@ -119,7 +119,7 @@ namespace KaraokeRUM
             this.groupBOx.ForeColor = System.Drawing.Color.Black;
             this.groupBOx.Location = new System.Drawing.Point(774, 53);
             this.groupBOx.Name = "groupBOx";
-            this.groupBOx.Size = new System.Drawing.Size(842, 798);
+            this.groupBOx.Size = new System.Drawing.Size(842, 817);
             this.groupBOx.TabIndex = 24;
             this.groupBOx.TabStop = false;
             this.groupBOx.Text = "Danh sách đặt phòng";

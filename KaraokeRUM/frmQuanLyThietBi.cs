@@ -121,7 +121,7 @@ namespace KaraokeRUM
             lstv.View = View.Details;
             lstv.GridLines = true;
             lstv.FullRowSelect = true;
-            lstv.Columns.Add("Số Phòng", 150);
+            lstv.Columns.Add("Tên Phòng", 150);
             lstv.Columns.Add("Tên Trang Thiết Bị", 350);
             lstv.Columns.Add("Số Lượng", 100);
         }

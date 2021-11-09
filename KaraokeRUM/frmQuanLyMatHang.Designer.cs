@@ -155,12 +155,12 @@ namespace KaraokeRUM
             this.btnView.BackColor = System.Drawing.Color.Teal;
             this.btnView.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnView.ForeColor = System.Drawing.Color.White;
-            this.btnView.Location = new System.Drawing.Point(490, 335);
+            this.btnView.Location = new System.Drawing.Point(484, 335);
             this.btnView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(110, 45);
+            this.btnView.Size = new System.Drawing.Size(116, 45);
             this.btnView.TabIndex = 43;
-            this.btnView.Text = "Tải lại";
+            this.btnView.Text = "Làm mới";
             this.btnView.UseVisualStyleBackColor = false;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 

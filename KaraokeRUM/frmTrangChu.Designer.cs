@@ -115,7 +115,7 @@ namespace KaraokeRUM
             this.btnPhong.Size = new System.Drawing.Size(377, 80);
             this.btnPhong.TabIndex = 12;
             this.btnPhong.TabStop = false;
-            this.btnPhong.Text = "Đặt Phòng";
+            this.btnPhong.Text = "Đặt phòng";
             this.btnPhong.UseVisualStyleBackColor = false;
             this.btnPhong.Click += new System.EventHandler(this.btnPhong_Click);
             // 
