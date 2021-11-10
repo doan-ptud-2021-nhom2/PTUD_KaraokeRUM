@@ -303,7 +303,7 @@ namespace KaraokeRUM
                         }        
                         else if(ttb.SoLuongTon == 0)
                         {
-                            ttb.TrangThai = "Hết";
+                            ttb.TrangThai = "HET";
                             THIETBI.SuaTrangThietBi(ttb);
                         }   
                     }

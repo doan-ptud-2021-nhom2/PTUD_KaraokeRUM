@@ -47,5 +47,30 @@ namespace KaraokeRUM
                          select lnv;
             return loaiNV.FirstOrDefault();
         }
+        /**
+      * Sửa mức lương loại nhân viên 
+      */
+        public bool SuaMucLuongLoaiNhanVien(LoaiNhanVien loaiNhanVien)
+        {
+            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = myTran;
+                IQueryable<LoaiNhanVien> tam = (from n in dt.LoaiNhanViens
+                                            where n.MaLNV == loaiNhanVien.MaLNV
+                                                select n);
+                tam.First().MucLuong = loaiNhanVien.MucLuong;
+              
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Lỗi không sửa được!" + ex.Message);
+
+            }
+        }
     }
 }

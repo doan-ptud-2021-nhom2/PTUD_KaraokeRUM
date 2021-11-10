@@ -155,10 +155,10 @@ namespace KaraokeRUM
             this.btnView.BackColor = System.Drawing.Color.Teal;
             this.btnView.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnView.ForeColor = System.Drawing.Color.White;
-            this.btnView.Location = new System.Drawing.Point(484, 335);
+            this.btnView.Location = new System.Drawing.Point(458, 335);
             this.btnView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(116, 45);
+            this.btnView.Size = new System.Drawing.Size(142, 45);
             this.btnView.TabIndex = 43;
             this.btnView.Text = "Làm mới";
             this.btnView.UseVisualStyleBackColor = false;
@@ -211,7 +211,7 @@ namespace KaraokeRUM
             this.btnXoa.BackColor = System.Drawing.Color.Teal;
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(346, 335);
+            this.btnXoa.Location = new System.Drawing.Point(321, 335);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(110, 45);
@@ -239,7 +239,7 @@ namespace KaraokeRUM
             this.btnSua.BackColor = System.Drawing.Color.Teal;
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(192, 335);
+            this.btnSua.Location = new System.Drawing.Point(182, 335);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(110, 45);
