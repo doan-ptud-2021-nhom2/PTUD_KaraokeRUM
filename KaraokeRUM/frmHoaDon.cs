@@ -19,7 +19,7 @@ namespace KaraokeRUM
          * KhoangTG: thời gian sử dụng phòng
          */
         private string MAHD;
-        private bool StatusBTN;
+        private bool STATUSBTN;
         private clsHoaDon HOADON;
         private clsPhong PHONG;
         private clsLoaiPhong LOAIPHONG;
@@ -28,15 +28,15 @@ namespace KaraokeRUM
         private clsLoaiKhach LOAIKHACH;
         private clsChuyenSoThanhChu SOTHANHCHU;
         private IEnumerable<ChiTietHoaDon> DSCTHD;
-        private string GioVao;
-        private string GioRa;
-        private int KhoangTG;
-        private int TienMatHang;
-        private double GiaPhong;
-        private double TienPhong;
-        private int ChietKhau;
-        private double TongTien;
-        private int i = 1;
+        private string GIOVAO;
+        private string GIORA;
+        private int KHOANGTG;
+        private int TIENMATHANG;
+        private double GIAPHONG;
+        private double TIENPHONG;
+        private int CHIETKHAU;
+        private double TONGTIEN;
+        private int I = 1;
         private frmChiTietPhong frmCTP;
 
         /*
@@ -52,7 +52,7 @@ namespace KaraokeRUM
 
             //Gán giá trị biến
             MAHD = maHD;
-            StatusBTN = statusBtn;
+            STATUSBTN = statusBtn;
             frmCTP = _frmCTP;
         }
 
@@ -69,7 +69,7 @@ namespace KaraokeRUM
             LOAIKHACH = new clsLoaiKhach();
             SOTHANHCHU = new clsChuyenSoThanhChu();
 
-            btnThanhToan.Enabled = StatusBTN;
+            btnThanhToan.Enabled = STATUSBTN;
             var hd = HOADON.LayHoaDon(MAHD);
             var phong = PHONG.KiemTra(hd.MaPhong);
             var loaiPhong = LOAIPHONG.LayLoaiPhong(phong.MaLoaiPhong);
@@ -78,30 +78,30 @@ namespace KaraokeRUM
             string loaiChietKhau = loaiKhach.MaLoaiKH;
 
             //Các biến dùng để tính tiền
-            TienMatHang = HOADON.TinhTongTienMatHang(MAHD);
-            ChietKhau = loaiKhach.ChietKhau;
-            GiaPhong = (int)loaiPhong.Gia;
-            KhoangTG = HOADON.TinhGio(MAHD);
-            TienPhong = (KhoangTG / 60.0) * GiaPhong;
-            GioVao = hd.GioVao.ToString(@"hh\:mm\:ss");
+            TIENMATHANG = HOADON.TinhTongTienMatHang(MAHD);
+            CHIETKHAU = loaiKhach.ChietKhau;
+            GIAPHONG = (int)loaiPhong.Gia;
+            KHOANGTG = HOADON.TinhGio(MAHD);
+            TIENPHONG = (KHOANGTG / 60.0) * GIAPHONG;
+            GIOVAO = hd.GioVao.ToString(@"hh\:mm\:ss");
             TimeSpan ts = TimeSpan.Parse(hd.GioRa.ToString());
-            GioRa = ts.ToString(@"hh\:mm\:ss");
+            GIORA = ts.ToString(@"hh\:mm\:ss");
 
             //Thực hiện tính tổng tiền
-            TongTien = ((TienMatHang + TienPhong) * 1.1) * ((double)(1 - (ChietKhau/100)));
+            TONGTIEN = ((TIENMATHANG + TIENPHONG) * 1.1) * ((double)(1 - (CHIETKHAU / 100)));
 
             //Gán các giá trị
             lblMaHD.Text = hd.MaHD;
-            lblGioVao.Text = GioVao;
-            lblGioRa.Text = GioRa;
+            lblGioVao.Text = GIOVAO;
+            lblGioRa.Text = GIORA;
             lblNgayLap.Text = hd.NgayLap.ToString("dd/MM/yyyy");
             lblTenPhong.Text = phong.TenPhong;
             lblLoaiPhong.Text = loaiPhong.TenLoaiPhong;
-            lblDonGia.Text = GiaPhong.ToString("#,### VNĐ");
-            lblChietKhau.Text = ChietKhau.ToString() + " %";
-            lblTienMatHang.Text = TienMatHang.ToString("#,### VNĐ");
-            lblTienPhong.Text = TienPhong.ToString("#,### VNĐ");
-            lblTongTien.Text = TongTien.ToString("#,### VNĐ");
+            lblDonGia.Text = GIAPHONG.ToString("#,### VNĐ");
+            lblChietKhau.Text = CHIETKHAU.ToString() + " %";
+            lblTienMatHang.Text = TIENMATHANG.ToString("#,### VNĐ");
+            lblTienPhong.Text = TIENPHONG.ToString("#,### VNĐ");
+            lblTongTien.Text = TONGTIEN.ToString("#,### VNĐ");
             lblTenKhach.Text = khachHang.TenKhach;
             lblSoDienThoai.Text = khachHang.SDT;
 
@@ -132,7 +132,7 @@ namespace KaraokeRUM
         private ListViewItem TaoItem(dynamic item)
         {
             ListViewItem lstvItem;
-            lstvItem = new ListViewItem((i++).ToString());
+            lstvItem = new ListViewItem((I++).ToString());
             lstvItem.SubItems.Add(MATHANG.TimTheoMa(item.MaMH).TenMh);
             lstvItem.SubItems.Add(item.SoLuong.ToString());
             lstvItem.SubItems.Add(item.ThanhTien.ToString("#,### VNĐ"));
@@ -261,25 +261,25 @@ namespace KaraokeRUM
             //Lấy giờ sử dụng Phòng (Giờ vào, Giờ ra)
             y += 20;
             e.Graphics.DrawString(
-                                String.Format("Thời gian vào: {0}", GioVao),
+                                String.Format("Thời gian vào: {0}", GIOVAO),
                                 new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(40, y));
             e.Graphics.DrawString(
-                                String.Format("Thời gian ra: {0}", GioRa),
+                                String.Format("Thời gian ra: {0}", GIORA),
                                 new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(w / 2 + 140, y));
             //Hiển thị thời gian sử dụng Phòng
             y += 20;
             e.Graphics.DrawString(
-                                String.Format("Thời gian sử dụng Phòng: {0} phút", KhoangTG),
+                                String.Format("Thời gian sử dụng Phòng: {0} phút", KHOANGTG),
                                 new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(40, y));
             //Hiển thị tiền phòng
             e.Graphics.DrawString(
-                               String.Format("Tiền phòng: {0}", TienPhong.ToString("#,### VNĐ")),
+                               String.Format("Tiền phòng: {0}", TIENPHONG.ToString("#,### VNĐ")),
                                new Font("Courier New", 13, FontStyle.Regular),
                                Brushes.Black,
                                new Point(w / 2 + 140, y));
@@ -351,14 +351,14 @@ namespace KaraokeRUM
             e.Graphics.DrawLine(mauDen, p1, p2);
             //Tổng tiền
             e.Graphics.DrawString(
-                                   string.Format("Tổng tiền: {0}", TongTien.ToString("#,### VNĐ")),
+                                   string.Format("Tổng tiền: {0}", TONGTIEN.ToString("#,### VNĐ")),
                                    new Font("Courier New", 13, FontStyle.Regular),
                                    Brushes.Black,
                                    new Point(w - 320, y + 8));
             //Đọc số tiền thành chữ
             y += 40;
             e.Graphics.DrawString(
-                                   string.Format("Thành chữ: {0} đồng", SOTHANHCHU.DocTienBangChu((long)TongTien)),
+                                   string.Format("Thành chữ: {0} đồng", SOTHANHCHU.DocTienBangChu((long)TONGTIEN)),
                                    new Font("Courier New", 12, FontStyle.Regular),
                                    Brushes.Black,
                                    new Point(15, y));
@@ -381,14 +381,14 @@ namespace KaraokeRUM
             {
                 //Cập nhật thành tiền vào hóa đơn.
                 HoaDon hoaDon = HOADON.LayHoaDon(MAHD);
-                hoaDon.TongTien = Convert.ToDecimal(TongTien);
+                hoaDon.TongTien = Convert.ToDecimal(TONGTIEN);
                 HOADON.CapNhapHoaDon(hoaDon);
 
                 //Cập nhật tổng tiền cho khách hàng (để thống kê).
                 KhachHang maKhachHang = KHACHHANG.LayThongTinKhach(hoaDon.MaKH);
                 if (maKhachHang.SoLanDen == 1)
                 {
-                    maKhachHang.TongTien = Convert.ToDecimal(TongTien);
+                    maKhachHang.TongTien = Convert.ToDecimal(TONGTIEN);
                     KHACHHANG.CapNhatTongTienChoKhach(maKhachHang);
                 }
                 else
