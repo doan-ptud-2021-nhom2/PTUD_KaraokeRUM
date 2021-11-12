@@ -40,10 +40,10 @@ namespace KaraokeRUM
         void TaoTieuDeCot(ListView lstv)
         {
             lstv.Columns.Add("Mã MH", 100);
-            lstv.Columns.Add("Tên Mặt Hàng", 230);
+            lstv.Columns.Add("Tên Mặt Hàng", 200);
             lstv.Columns.Add("Số lượng", 100);
             lstv.Columns.Add("Đơn vị", 100);
-            lstv.Columns.Add("Giá", 130);
+            lstv.Columns.Add("Giá",160);
             lstv.View = View.Details;
             lstv.GridLines = true;
             lstv.FullRowSelect = true;

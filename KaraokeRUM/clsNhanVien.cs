@@ -183,7 +183,7 @@ namespace KaraokeRUM
                                       join x in dt.LoaiNhanViens
                                       on n.MaLNV equals x.MaLNV
                                       where n.TenNV.Contains(timKiem) || n.MaNV.Contains(timKiem) && !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("đã nghỉ")
-                                      select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV };
+                                      select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV , x.MucLuong};
             return nv;
         }
 
