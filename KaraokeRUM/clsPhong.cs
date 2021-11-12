@@ -17,6 +17,7 @@ namespace KaraokeRUM
             dt = LayData();
             lp = new clsLoaiPhong();
         }        
+
         /*Lấy tất cả các phòng*/
         public IEnumerable<Phong> LayTatCaPhong()
         {
@@ -24,6 +25,7 @@ namespace KaraokeRUM
                                    select n;
             return q;
         }
+
         /*Tìm một phòng theo mã*/
         public Phong TimMotPhongTheoMa(string maPhong)
         {
@@ -34,6 +36,7 @@ namespace KaraokeRUM
             }
             return null;
         }
+
         /**
         * Lấy tất cả các phòng
         * fix load lên ListView (Trạng thái phòng đóng)
@@ -74,46 +77,53 @@ namespace KaraokeRUM
         /*Thêm các thông tin Phòng*/
         public int ThemPhong(Phong phong)
         {
-            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
-            try
+            using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = br;
-                dt.Phongs.InsertOnSubmit(phong);
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return 1;
+                try
+                {
+                    dt.Transaction = br;
+                    dt.Phongs.InsertOnSubmit(phong);
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception(ex.Message);
-            }
+            
         }
 
         /*Sửa thông tin phòng (Trạng thái, Loại phòng)*/
         public bool SuaPhong(Phong phong)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
+            using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = myTran;
-                IQueryable<Phong> tam = (from n in dt.Phongs
-                                              where n.MaPhong == phong.MaPhong
-                                         select n);
-                tam.First().TenPhong = phong.TenPhong;
-                //truy vào khóa ngoại của bảng Phòng để đổi trạng thái (VIP, THƯỜNG) bên bảng Loại Phòng.
-                tam.First().MaLoaiPhong = phong.MaLoaiPhong;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Loi không sửa được!" + ex.Message);
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<Phong> tam = (from n in dt.Phongs
+                                             where n.MaPhong == phong.MaPhong
+                                             select n);
+                    tam.First().TenPhong = phong.TenPhong;
+                    //truy vào khóa ngoại của bảng Phòng để đổi trạng thái (VIP, THƯỜNG) bên bảng Loại Phòng.
+                    tam.First().MaLoaiPhong = phong.MaLoaiPhong;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Loi không sửa được!" + ex.Message);
 
+                }
             }
         }
+
+
         /*Tìm kiếm phòng */
         public IEnumerable<Phong> TimPhong(string tenPhong)
         {
@@ -127,9 +137,10 @@ namespace KaraokeRUM
         {
             Phong q = (from n in dt.Phongs
                        where n.TenPhong.Equals(tenPhong)
-                       select n).First();
+                       select n).FirstOrDefault();
             return q;
         }
+
         public Phong TimMotPhongTheoTen(string tenPhong)
         {
             foreach (Phong i in dt.Phongs)
@@ -140,7 +151,6 @@ namespace KaraokeRUM
             return null;
         }
 
-       
         /**
        * Tim ten phòng
        */
@@ -151,6 +161,8 @@ namespace KaraokeRUM
                                    select n);
             return q;
         }
+
+        /*Hàm tìm phòng theo mã*/
         public IQueryable<Phong> TimPhongTheoMa(string maPhong)
         {
             IQueryable<Phong> q = (from n in dt.Phongs
@@ -158,6 +170,7 @@ namespace KaraokeRUM
                                    select n);
             return q;
         }
+
         /**
         * kiểm tra
         */
@@ -168,49 +181,58 @@ namespace KaraokeRUM
                      select x).FirstOrDefault();
             return q;
         }
+
         /**
-        * Xóa phòng hỗn loạn
+        * Hàm xóa phòng
+        * Hàm xóa phòng là cập nhật lại trạng thái phòng = null.
         */
         public int XoaPhong(Phong p)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = myTran;
-                if (KiemTra(p.MaPhong) != null)
+                try
                 {
-                    dt.Phongs.DeleteOnSubmit(p);
+                    dt.Transaction = myTran;
+                    if (KiemTra(p.MaPhong) != null)
+                    {
+                        dt.Phongs.DeleteOnSubmit(p);
+                        dt.SubmitChanges();
+                        dt.Transaction.Commit();
+                        return 1;
+                    }
+                    return 0;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Lỗi!!" + ex.Message);
+                }
+            }
+            
+        }
+
+        /*Hàm sửa trạng thái phòng*/
+        public int SuaTrangThaiPhong(Phong phong)
+        {
+            using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
+            {
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<Phong> temp = (from n in dt.Phongs
+                                              where n.MaPhong == phong.MaPhong
+                                              select n);
+                    temp.First().TrangThaiPhong = phong.TrangThaiPhong;
                     dt.SubmitChanges();
                     dt.Transaction.Commit();
                     return 1;
                 }
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Lỗi!!" + ex.Message);
-            }
-        }
-        public int SuaTrangThaiPhong(Phong phong)
-        {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
-            {
-                dt.Transaction = myTran;
-                IQueryable<Phong> temp = (from n in dt.Phongs
-                                          where n.MaPhong == phong.MaPhong
-                                          select n);
-                temp.First().TrangThaiPhong = phong.TrangThaiPhong;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return 1;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Loi không sửa được!" + ex.Message);
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Loi không sửa được!" + ex.Message);
 
+                }
             }
         }
 
