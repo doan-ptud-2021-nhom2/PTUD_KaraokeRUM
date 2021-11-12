@@ -18,6 +18,7 @@ namespace KaraokeRUM
          */
         private clsPhong PHONG;
         private clsLoaiPhong LOAIPHONG;
+        private clsHoaDon HOADON;
         private IEnumerable<Phong> DANHSACHPHONG;
         private IEnumerable<LoaiPhong> DANHSACHLOAIPHONG;
         private string MAQL;
@@ -43,6 +44,7 @@ namespace KaraokeRUM
             TaoTieuDeCot(lstvDanhSachPhong);
             PHONG = new clsPhong();
             LOAIPHONG = new clsLoaiPhong();
+            HOADON = new clsHoaDon();
 
             DANHSACHPHONG = PHONG.LayTatCaPhong();
             DANHSACHLOAIPHONG = LOAIPHONG.LayTatCaLoaiPhong();
@@ -347,10 +349,14 @@ namespace KaraokeRUM
                 if(hoiXoa == DialogResult.Yes)
                 {
 
-                    if(PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Mở" || PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Đặt")
+                    if (PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Mở" || PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Đặt")
                     {
-                        MessageBox.Show("Phòng đang mở hoặc đặt, không được xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Phòng đang được sử dụng không được xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } 
+                    else if (HOADON.LayDanhSachHoaDonTheoMaPhong(PHONG.TimPhongTheoTen(txtSoPhong.Text).FirstOrDefault().MaPhong).Count() > 0)
+                    {
+                        MessageBox.Show("Phòng đã được tạo hóa đơn không được xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     else
                     {
                         phong = PHONG.TimPhong(txtSoPhong.Text).First();
