@@ -24,6 +24,15 @@ namespace KaraokeRUM
             return hoaDon;
         }
 
+        /*Hàm lấy danh sách hóa đơn theo mã phòng*/
+        public IEnumerable<HoaDon> LayDanhSachHoaDonTheoMaPhong(string maPhong)
+        {
+            var hoaDon = (from hd in dt.HoaDons
+                          where hd.MaPhong.Equals(maPhong)
+                          select hd);
+            return hoaDon;
+        }
+
         /*Hàm lấy hóa đơn theo mã phòng*/
         public HoaDon LayMaHoaDonTheoMaPhong(string maPhong)
         {
