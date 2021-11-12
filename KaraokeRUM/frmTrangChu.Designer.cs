@@ -44,7 +44,7 @@ namespace KaraokeRUM
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTenNV = new System.Windows.Forms.Label();
-            this.lblLoaiNV = new System.Windows.Forms.Label();
+            this.lblChucVu = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel_workarea = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -115,7 +115,7 @@ namespace KaraokeRUM
             this.btnPhong.Size = new System.Drawing.Size(377, 80);
             this.btnPhong.TabIndex = 12;
             this.btnPhong.TabStop = false;
-            this.btnPhong.Text = "Phòng";
+            this.btnPhong.Text = "Đặt phòng";
             this.btnPhong.UseVisualStyleBackColor = false;
             this.btnPhong.Click += new System.EventHandler(this.btnPhong_Click);
             // 
@@ -248,7 +248,7 @@ namespace KaraokeRUM
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.lblTenNV);
-            this.panel3.Controls.Add(this.lblLoaiNV);
+            this.panel3.Controls.Add(this.lblChucVu);
             this.panel3.Location = new System.Drawing.Point(3, 130);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
@@ -267,17 +267,17 @@ namespace KaraokeRUM
             this.lblTenNV.Text = "Lê Anh Thảo";
             this.lblTenNV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblLoaiNV
+            // lblChucVu
             // 
-            this.lblLoaiNV.BackColor = System.Drawing.Color.White;
-            this.lblLoaiNV.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoaiNV.ForeColor = System.Drawing.Color.Teal;
-            this.lblLoaiNV.Location = new System.Drawing.Point(4, 34);
-            this.lblLoaiNV.Name = "lblLoaiNV";
-            this.lblLoaiNV.Size = new System.Drawing.Size(377, 30);
-            this.lblLoaiNV.TabIndex = 1;
-            this.lblLoaiNV.Text = "NV002";
-            this.lblLoaiNV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblChucVu.BackColor = System.Drawing.Color.White;
+            this.lblChucVu.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChucVu.ForeColor = System.Drawing.Color.Teal;
+            this.lblChucVu.Location = new System.Drawing.Point(4, 34);
+            this.lblChucVu.Name = "lblChucVu";
+            this.lblChucVu.Size = new System.Drawing.Size(377, 30);
+            this.lblChucVu.TabIndex = 1;
+            this.lblChucVu.Text = "NV002";
+            this.lblChucVu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timer1
             // 
@@ -322,7 +322,7 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblTenNV;
-        private System.Windows.Forms.Label lblLoaiNV;
+        private System.Windows.Forms.Label lblChucVu;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnQLP;

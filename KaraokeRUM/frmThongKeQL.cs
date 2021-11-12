@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace KaraokeRUM
 {
-    public partial class frmThongKe : Form
+    public partial class frmThongKeQL : Form
     {
         /**
          * Các biến được sử dụng trong chương trình
@@ -19,7 +19,7 @@ namespace KaraokeRUM
         private clsMatHang MATHANG;
         private IEnumerable<dynamic> DSHOADON;
 
-        public frmThongKe()
+        public frmThongKeQL()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace KaraokeRUM
         /**
          * Sự kiện load form
          */
-        private void frmThongKe_Load(object sender, EventArgs e)
+        private void frmThongKeQL_Load(object sender, EventArgs e)
         {
             THONGKE = new clsThongKe();
             MATHANG = new clsMatHang();
@@ -100,7 +100,7 @@ namespace KaraokeRUM
         {
             lstv.Items.Clear();
             ListViewItem itemHD;
-            foreach(dynamic item in dsHD)
+            foreach (dynamic item in dsHD)
             {
                 itemHD = TaoItem(item);
                 lstv.Items.Add(itemHD);
@@ -111,40 +111,72 @@ namespace KaraokeRUM
          * Các hàm hỗ trợ cho việc vẽ biểu đồ gồm có: tải theo ngày hôm nay và tải theo tháng & năm
          */
         #region Các hàm hỗ trợ cho việc load Biểu đồ
+        /**
+         * Tải biểu đồ thống kê theo mặt hàng
+         */
         private void TaiBieuDoHomNay(string homNay)
         {
             //Xóa biểu đồ để vẽ lại
-            chrThongKeDoanhThu.Series["MatHang"].Points.Clear();
+            chrThongKeMatHang.Series["MatHang"].Points.Clear();
             //Load dữ liệu vào data
             dynamic data = THONGKE.LaySoLieuThongKeHomNay(homNay);
             //Hiển thị thông số của trường dữ liệu
-            chrThongKeDoanhThu.Series["MatHang"].IsValueShownAsLabel = true;
-            
+            chrThongKeMatHang.Series["MatHang"].IsValueShownAsLabel = true;
+
             //Chạy vòng lặp để show dữ liệu
             foreach (dynamic item in data)
             {
                 //Đối với các loại nước có đơn vị là lon thì / 24 để tính bằng thùng
-                if(MATHANG.LayDonViMatHang(item.MatHang).DonVi.Equals("Lon"))
-                    chrThongKeDoanhThu.Series["MatHang"].Points.AddXY(item.MatHang, item.SoLuong / 24);
+                if (MATHANG.LayDonViMatHang(item.MatHang).DonVi.Equals("Lon"))
+                    chrThongKeMatHang.Series["MatHang"].Points.AddXY(item.MatHang, item.SoLuong / 24);
                 else
-                    chrThongKeDoanhThu.Series["MatHang"].Points.AddXY(item.MatHang, item.SoLuong);
+                    chrThongKeMatHang.Series["MatHang"].Points.AddXY(item.MatHang, item.SoLuong);
             }
         }
 
-        private void TaiBieuTheoThang(string thang, string nam)
+        private void TaiBieuDoTheoThang(string thang, string nam)
         {
-            chrThongKeDoanhThu.Series["MatHang"].Points.Clear();
+            chrThongKeMatHang.Series["MatHang"].Points.Clear();
             dynamic data = THONGKE.LaySoLieuThongKeTheoThang(thang, nam);
-            chrThongKeDoanhThu.Series["MatHang"].IsValueShownAsLabel = true;
+            chrThongKeMatHang.Series["MatHang"].IsValueShownAsLabel = true;
             foreach (dynamic item in data)
             {
                 if (MATHANG.LayDonViMatHang(item.MatHang).DonVi.Equals("Lon"))
-                    chrThongKeDoanhThu.Series["MatHang"].Points.AddXY(item.MatHang, (item.SoLuong / 24));
+                    chrThongKeMatHang.Series["MatHang"].Points.AddXY(item.MatHang, (item.SoLuong / 24));
                 else
-                    chrThongKeDoanhThu.Series["MatHang"].Points.AddXY(item.MatHang, item.SoLuong);
+                    chrThongKeMatHang.Series["MatHang"].Points.AddXY(item.MatHang, item.SoLuong);
             }
         }
 
+        /**
+         * Tải biểu đồ thống kê theo phong
+         */
+        private void TaiBieuDoPhongHomNay(string homNay)
+        {
+            //Xóa biểu đồ để vẽ lại
+            chrPhong.Series["Phong"].Points.Clear();
+            //Load dữ liệu vào data
+            dynamic data = THONGKE.LaySoLieuThongKePhongHomNay(homNay);
+            //Hiển thị thông số của trường dữ liệu
+            chrPhong.Series["Phong"].IsValueShownAsLabel = true;
+
+            //Chạy vòng lặp để show dữ liệu
+            foreach (dynamic item in data)
+            {
+                chrPhong.Series["Phong"].Points.AddXY(item.TenPhong, item.SoLanSD);
+            }
+        }
+
+        private void TaiBieuDoPhongTheoThang(string thang, string nam)
+        {
+            chrPhong.Series["Phong"].Points.Clear();
+            dynamic data = THONGKE.LaySoLieuThongKePhongTheoThang(thang, nam);
+            chrPhong.Series["Phong"].IsValueShownAsLabel = true;
+            foreach (dynamic item in data)
+            {
+                chrPhong.Series["Phong"].Points.AddXY(item.TenPhong, item.SoLanSD);
+            }
+        }
         #endregion
         /**
          * Sử lý sự kiện check vào radio HomNay
@@ -153,7 +185,7 @@ namespace KaraokeRUM
         {
             if (rdoHomNay.Checked)
             {
-                btnTKDoanhThu.Enabled = false;
+                btnThongKe.Enabled = false;
                 cboThang.Text = "";
                 cboNam.Text = "";
                 //Thay thế biến bằng date.ToString format theo sql
@@ -161,7 +193,7 @@ namespace KaraokeRUM
                 string homNay = DateTime.Now.ToString("yyyy-MM-dd");
                 //Load biểu đồ
                 TaiBieuDoHomNay(homNay);
-
+                TaiBieuDoPhongHomNay(homNay);
                 //Load danh sách
                 lstvDSHoaDon.Clear();
                 DSHOADON = THONGKE.LayDanhSachHoaDonHomNay(homNay);
@@ -183,14 +215,14 @@ namespace KaraokeRUM
             //Xử lý khi chọn vào combo rồi click Thống kê
             string thang = cboThang.Text;
             string nam = cboNam.Text;
-            if(!thang.Equals("") && nam.Equals(""))
+            if (!thang.Equals("") && nam.Equals(""))
             {
                 MessageBox.Show("Phải chọn đẩy đủ thông tin để thống kê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cboNam.Text = nam = DateTime.Now.Year.ToString();
             }
             //LoadBieuDo
-            TaiBieuTheoThang(thang, nam);
-
+            TaiBieuDoTheoThang(thang, nam);
+            TaiBieuDoPhongTheoThang(thang, nam);
             //Load danh sách
             lstvDSHoaDon.Clear();
             DSHOADON = THONGKE.LayDanhSachHoaDonTheoThangNam(thang, nam);
@@ -209,7 +241,7 @@ namespace KaraokeRUM
         private void cboThang_SelectedIndexChanged(object sender, EventArgs e)
         {
             rdoHomNay.Checked = false;
-            btnTKDoanhThu.Enabled = true;
+            btnThongKe.Enabled = true;
         }
 
         /**
@@ -218,8 +250,8 @@ namespace KaraokeRUM
         private void cboNam_SelectedIndexChanged(object sender, EventArgs e)
         {
             rdoHomNay.Checked = false;
-            btnTKDoanhThu.Enabled = true;
-            if(Convert.ToInt32(cboNam.Text) > Convert.ToInt32(DateTime.Now.Year.ToString()))
+            btnThongKe.Enabled = true;
+            if (Convert.ToInt32(cboNam.Text) > Convert.ToInt32(DateTime.Now.Year.ToString()))
             {
                 MessageBox.Show("Không được chọn năm lớn hơn năm hiện tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cboNam.Text = DateTime.Now.Year.ToString();
@@ -233,6 +265,12 @@ namespace KaraokeRUM
             bool statusBtn = false;
             //MessageBox.Show(maHD);
             frmHoaDon frm = new frmHoaDon(maHD, statusBtn, null);
+            frm.Show();
+        }
+
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            frmTraCuu frm = new frmTraCuu();
             frm.Show();
         }
     }

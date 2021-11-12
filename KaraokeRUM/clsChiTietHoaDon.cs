@@ -18,12 +18,12 @@ namespace KaraokeRUM
         /**
        * Lấy tất cả thông tin Chi tiết hóa đơn.
        */
-        public IEnumerable<ChiTietHoaDon> LayChiTietHoaDon()
+        /*public IEnumerable<ChiTietHoaDon> LayChiTietHoaDon()
         {
             IEnumerable<ChiTietHoaDon> q = from n in dt.ChiTietHoaDons
                                            select n;
             return q;
-        }
+        }*/
 
         /**
         * Tìm kiếm Chi tiết hóa đơn theo mã.
@@ -80,6 +80,7 @@ namespace KaraokeRUM
                 IQueryable<ChiTietHoaDon> tam = (from n in dt.ChiTietHoaDons
                                                  where n.MaMH.Equals(chiTietHD.MaMH) && n.MaHD.Equals(chiTietHD.MaHD)
                                                  select n);
+                dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tam);
                 tam.First().SoLuong = chiTietHD.SoLuong;
                 tam.First().ThanhTien = chiTietHD.ThanhTien;
                 dt.SubmitChanges();
@@ -110,24 +111,29 @@ namespace KaraokeRUM
         */
         public int XoaChiTietHoaDon(ChiTietHoaDon chiTietHoaDon)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
-            {
-                dt.Transaction = myTran;
-                if (KiemTraMa(chiTietHoaDon.MaMH, chiTietHoaDon.MaHD) != null)
+            using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction()) 
+            { 
+                try
                 {
-                    dt.ChiTietHoaDons.DeleteOnSubmit(chiTietHoaDon);
-                    dt.SubmitChanges();
-                    dt.Transaction.Commit();
-                    return 1;
+                    dt.Transaction = myTran;
+                    if (KiemTraMa(chiTietHoaDon.MaMH, chiTietHoaDon.MaHD) != null)
+                    {
+                        dt.ChiTietHoaDons.DeleteOnSubmit(chiTietHoaDon);
+                        dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, chiTietHoaDon);
+                        dt.SubmitChanges();
+                        dt.Transaction.Commit();
+                        return 1;
+                    }
+                    return 0;
                 }
-                return 0;
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Lỗi!!" + ex.Message);
+                }
+
             }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Lỗi!!" + ex.Message);
-            }
+            
         }
 
     }

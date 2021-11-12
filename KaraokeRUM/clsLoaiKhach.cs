@@ -42,6 +42,16 @@ namespace KaraokeRUM
                                        select n);
             return q;
         }
+        /*
+      * tìm kiếm Loại khách hàng theo mã
+      */
+        public IQueryable<LoaiKhachHang> TimLoaiKhachHangTheoMaLoai(string maLoai)
+        {
+            IQueryable<LoaiKhachHang> q = (from n in dt.LoaiKhachHangs
+                                           where n.MaLoaiKH.Equals(maLoai)
+                                           select n);
+            return q;
+        }
         public bool CapNhatChietKhau(LoaiKhachHang lk)
         {
             System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();

@@ -120,6 +120,24 @@
     <Compile Include="frmQuanLyKhachHang.Designer.cs">
       <DependentUpon>frmQuanLyKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmThongKeQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongKeQL.Designer.cs">
+      <DependentUpon>frmThongKeQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTimKiemKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTimKiemKhachHang.Designer.cs">
+      <DependentUpon>frmTimKiemKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTraCuu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTraCuu.Designer.cs">
+      <DependentUpon>frmTraCuu.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,11 +150,11 @@
     <Compile Include="frmTrangChuQL.Designer.cs">
       <DependentUpon>frmTrangChuQL.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPhong.cs">
+    <Compile Include="frmDatPhong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPhong.Designer.cs">
-      <DependentUpon>frmPhong.cs</DependentUpon>
+    <Compile Include="frmDatPhong.Designer.cs">
+      <DependentUpon>frmDatPhong.cs</DependentUpon>
     </Compile>
     <Compile Include="frmQuanLyMatHang.cs">
       <SubType>Form</SubType>
@@ -171,9 +189,6 @@
     <Compile Include="clsListViewItemComparer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="qlKaraoke.cs">
-      <DependentUpon>qlKaraoke.dbml</DependentUpon>
-    </Compile>
     <Compile Include="qlKaraoke.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -197,8 +212,8 @@
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPhong.resx">
-      <DependentUpon>frmPhong.cs</DependentUpon>
+    <EmbeddedResource Include="frmDatPhong.resx">
+      <DependentUpon>frmDatPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyKhachHang.resx">
       <DependentUpon>frmQuanLyKhachHang.cs</DependentUpon>
@@ -217,6 +232,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmThongKe.resx">
       <DependentUpon>frmThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongKeQL.resx">
+      <DependentUpon>frmThongKeQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTimKiemKhachHang.resx">
+      <DependentUpon>frmTimKiemKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTraCuu.resx">
+      <DependentUpon>frmTraCuu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTrangChu.resx">
       <DependentUpon>frmTrangChu.cs</DependentUpon>

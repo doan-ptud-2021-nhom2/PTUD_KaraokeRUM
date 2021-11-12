@@ -181,6 +181,7 @@ namespace KaraokeRUM
             // 
             // cboLoaiPhong2
             // 
+            this.cboLoaiPhong2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLoaiPhong2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLoaiPhong2.FormattingEnabled = true;
             this.cboLoaiPhong2.Location = new System.Drawing.Point(160, 62);
@@ -274,6 +275,7 @@ namespace KaraokeRUM
             // 
             // cboLoaiPhong
             // 
+            this.cboLoaiPhong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLoaiPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLoaiPhong.FormattingEnabled = true;
             this.cboLoaiPhong.Location = new System.Drawing.Point(166, 137);
@@ -341,9 +343,9 @@ namespace KaraokeRUM
             this.lblThongTinPhongSoPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblThongTinPhongSoPhong.Location = new System.Drawing.Point(46, 70);
             this.lblThongTinPhongSoPhong.Name = "lblThongTinPhongSoPhong";
-            this.lblThongTinPhongSoPhong.Size = new System.Drawing.Size(94, 22);
+            this.lblThongTinPhongSoPhong.Size = new System.Drawing.Size(103, 22);
             this.lblThongTinPhongSoPhong.TabIndex = 0;
-            this.lblThongTinPhongSoPhong.Text = "Số phòng :";
+            this.lblThongTinPhongSoPhong.Text = "Tên phòng :";
             // 
             // label4
             // 

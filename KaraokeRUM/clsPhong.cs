@@ -34,6 +34,17 @@ namespace KaraokeRUM
             }
             return null;
         }
+        /**
+        * Lấy tất cả các phòng
+        * fix load lên ListView (Trạng thái phòng đóng)
+        */
+        public IEnumerable<Phong> LayTatCaPhongDong()
+        {
+            IEnumerable<Phong> q = from n in dt.Phongs
+                                   where n.TrangThaiPhong.Equals("Đóng")
+                                   select n;
+            return q;
+        }
 
         /*Tìm kiếm theo mã phòng (trấn thêm)*/
         public Phong LayThongTinPhong(string maPhong)
@@ -189,7 +200,7 @@ namespace KaraokeRUM
                 dt.Transaction = myTran;
                 IQueryable<Phong> temp = (from n in dt.Phongs
                                           where n.MaPhong == phong.MaPhong
-                                          select n); ;
+                                          select n);
                 temp.First().TrangThaiPhong = phong.TrangThaiPhong;
                 dt.SubmitChanges();
                 dt.Transaction.Commit();

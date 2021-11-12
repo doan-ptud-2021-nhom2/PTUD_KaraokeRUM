@@ -14,14 +14,15 @@ namespace KaraokeRUM
         {
             dt = LayData();
         }
+
         public IEnumerable<NhanVien> LayDSNV(string MANVQL)
         {
             IEnumerable<NhanVien> nv = from n in dt.NhanViens
-                                       where !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("đã nghỉ")
+                                       where !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("Đã nghỉ")
                                        select n;
             return nv;
-
         }
+
         public IEnumerable<NhanVien> LayDSNVFULL(string MANVQL)
         {
             IEnumerable<NhanVien> nv = from n in dt.NhanViens
@@ -74,8 +75,10 @@ namespace KaraokeRUM
                 IQueryable<NhanVien> tam = (from n in dt.NhanViens
                                          where n.MaNV == nhanVien.MaNV
                                          select n);
+                tam.First().TenNV = nhanVien.TenNV;
                 tam.First().GioiTinh = nhanVien.GioiTinh;
                 tam.First().DiaChi = nhanVien.DiaChi;
+                tam.First().TrangThai = nhanVien.TrangThai;
                 tam.First().MaLNV = nhanVien.MaLNV;
                 dt.SubmitChanges();
                 dt.Transaction.Commit();
@@ -118,11 +121,41 @@ namespace KaraokeRUM
           */
         public IEnumerable<dynamic> LayNhanVienVaLoaiNhanVien(string MANVQL)
         {
-            //Đã nghỉ
+            //Đang làm
             var nv = from n in dt.NhanViens
                      join x in dt.LoaiNhanViens
                      on n.MaLNV equals x.MaLNV
                      where !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("đã nghỉ")
+                     select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV, x.MucLuong };
+
+            return nv;
+        }
+        /**
+          * join 2 bảng: NhanVien với LoaiNhanVien
+          * Lấy dữ liệu ở Nhân viên và Loại Nhân Viên
+          */
+        public IEnumerable<dynamic> LayToanBoNhanVienVaLoaiNhanVien(string MANVQL)
+        {
+            //Toàn bộ
+            var nv = from n in dt.NhanViens
+                     join x in dt.LoaiNhanViens
+                     on n.MaLNV equals x.MaLNV
+                     where !n.MaNV.Contains(MANVQL)
+                     select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV };
+
+            return nv;
+        }
+        /**
+          * join 2 bảng: NhanVien với LoaiNhanVien
+          * Lấy dữ liệu ở Nhân viên và Loại Nhân Viên
+          */
+        public IEnumerable<dynamic> LayNhanVienVaLoaiNhanVienDaNghi(string MANVQL)
+        {
+            //chỉ đã nghỉ
+            var nv = from n in dt.NhanViens
+                     join x in dt.LoaiNhanViens
+                     on n.MaLNV equals x.MaLNV
+                     where !n.MaNV.Contains(MANVQL) && n.TrangThai.ToLower().Contains("đã nghỉ")
                      select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV };
 
             return nv;
@@ -137,7 +170,7 @@ namespace KaraokeRUM
                      join x in dt.LoaiNhanViens
                      on n.MaLNV equals x.MaLNV
                      where !n.MaNV.Contains(MANVQL) && x.TenLNV.Equals(loaiNV) && !n.TrangThai.ToLower().Contains("đã nghỉ")
-                     select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV };
+                     select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV, x.MucLuong};
             return nv;
         }
         /*
@@ -150,8 +183,21 @@ namespace KaraokeRUM
                                       join x in dt.LoaiNhanViens
                                       on n.MaLNV equals x.MaLNV
                                       where n.TenNV.Contains(timKiem) || n.MaNV.Contains(timKiem) && !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("đã nghỉ")
-                                      select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV };
+                                      select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV , x.MucLuong};
             return nv;
+        }
+
+        /**
+         * Tìm nhân viên theo mã
+         * Lấy trạng thái nhân viên
+         * -Tuấn
+         */
+        public NhanVien TimNhanVienTheoMa(string maNV)
+        {
+            var nhanVien = from nv in dt.NhanViens
+                           where nv.MaNV.Equals(maNV)
+                           select nv;
+            return nhanVien.FirstOrDefault();
         }
 
     }

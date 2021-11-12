@@ -26,13 +26,13 @@ namespace KaraokeRUM
         {
             var hoaDon = (from hd in dt.HoaDons
                           where hd.MaPhong.Equals(maPhong) && hd.TongTien == null
-                          select hd).First();
+                          select hd).FirstOrDefault();
             return hoaDon;
         }
 
         /*
          * Thay thế hàm Lấy chi tiết hóa đơn của chức năng Sửa
-         */
+         *//*
         public IEnumerable<dynamic> LayChiTietHoaHoaTaiLenListView(string maHD)
         {
             var ds = from n in dt.ChiTietHoaDons
@@ -40,7 +40,7 @@ namespace KaraokeRUM
                      where y.MaHD.Equals(maHD)
                      select new { n.MaMH, n.SoLuong, n.ThanhTien };
             return ds;
-        }
+        }*/
 
         public IEnumerable<HoaDon> LayToanBoHoaDon()
         {
@@ -52,6 +52,7 @@ namespace KaraokeRUM
             var dsCTHD = from cthd in dt.ChiTietHoaDons
                          where cthd.MaHD.Equals(maHD)
                          select cthd;
+            dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, dsCTHD);
             return dsCTHD;
         }
 
@@ -111,6 +112,83 @@ namespace KaraokeRUM
                 dt.Transaction.Rollback();
                 throw new Exception(ex.Message);
             }
+        }
+
+        /*
+         * Cập nhật đổi phòng
+         */
+        public bool CapNhatDoiPhong(HoaDon hoaDon)
+        {
+            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = br;
+                IQueryable<HoaDon> tam = (from n in dt.HoaDons
+                                          where n.MaHD == hoaDon.MaHD
+                                          select n);
+                tam.First().MaPhong = hoaDon.MaPhong;
+                dt.SubmitChanges();
+                dt.Transaction.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception(ex.Message);
+            }
+        } 
+
+        /*Tìm hóa đơn theo mã khách hàng - Huy*/
+        public HoaDon TimHoaDonTheoMaKhachHang(string maKH)
+        {
+            var kh = from n in dt.HoaDons
+                     where n.MaKH.Equals(maKH) && n.TongTien.Equals(null)
+                     select n;
+            return kh.FirstOrDefault();
+        }
+
+        /*
+        * Kiểm tra hóa đơn theo mã
+        */
+        public HoaDon KiemTraMaHoaDon(string maHoaDon)
+        {
+            var q = (from hd in dt.HoaDons
+                     where hd.MaHD.Equals(maHoaDon)
+                     select hd).FirstOrDefault();
+            return q;
+        }
+
+        /*
+         * Xóa hóa đơn
+         */
+        public int XoaHoaDon(HoaDon hoaDon)
+        {
+            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
+            try
+            {
+                dt.Transaction = br;
+                if (KiemTraMaHoaDon(hoaDon.MaHD) != null)
+                {
+                    dt.HoaDons.DeleteOnSubmit(hoaDon);
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                dt.Transaction.Rollback();
+                throw new Exception("Lỗi!!" + ex.Message);
+            }
+        }
+        /*Tìm hóa đơn theo mã phòng - Huy*/
+        public HoaDon TimHoaDonTheoMaPhong(string maPhong)
+        {
+            var kh = from n in dt.HoaDons
+                     where n.MaPhong.Equals(maPhong) && n.TongTien.Equals(null)
+                     select n;
+            return kh.FirstOrDefault();
         }
     }
 }

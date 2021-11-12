@@ -60,7 +60,6 @@ namespace KaraokeRUM
             this.label6 = new System.Windows.Forms.Label();
             this.btnXoaTP = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnLamMoiTP = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lstvThietBiTrongPhong = new System.Windows.Forms.ListView();
             this.groupBox2.SuspendLayout();
@@ -97,6 +96,7 @@ namespace KaraokeRUM
             // 
             // cboDonVi
             // 
+            this.cboDonVi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDonVi.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDonVi.FormattingEnabled = true;
             this.cboDonVi.Location = new System.Drawing.Point(166, 143);
@@ -326,7 +326,6 @@ namespace KaraokeRUM
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.btnXoaTP);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.btnLamMoiTP);
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(13, 507);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -339,6 +338,7 @@ namespace KaraokeRUM
             // 
             // cboTenPhong
             // 
+            this.cboTenPhong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTenPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTenPhong.FormattingEnabled = true;
             this.cboTenPhong.Location = new System.Drawing.Point(162, 47);
@@ -349,6 +349,7 @@ namespace KaraokeRUM
             // 
             // cboTenTTB
             // 
+            this.cboTenTTB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTenTTB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTenTTB.FormattingEnabled = true;
             this.cboTenTTB.Location = new System.Drawing.Point(162, 100);
@@ -370,10 +371,10 @@ namespace KaraokeRUM
             this.btnThemTP.BackColor = System.Drawing.Color.Teal;
             this.btnThemTP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemTP.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnThemTP.Location = new System.Drawing.Point(1, 229);
+            this.btnThemTP.Location = new System.Drawing.Point(16, 229);
             this.btnThemTP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemTP.Name = "btnThemTP";
-            this.btnThemTP.Size = new System.Drawing.Size(107, 45);
+            this.btnThemTP.Size = new System.Drawing.Size(140, 45);
             this.btnThemTP.TabIndex = 31;
             this.btnThemTP.Text = "Thêm";
             this.btnThemTP.UseVisualStyleBackColor = false;
@@ -384,10 +385,10 @@ namespace KaraokeRUM
             this.btnSuaTP.BackColor = System.Drawing.Color.Teal;
             this.btnSuaTP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuaTP.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSuaTP.Location = new System.Drawing.Point(139, 229);
+            this.btnSuaTP.Location = new System.Drawing.Point(194, 229);
             this.btnSuaTP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSuaTP.Name = "btnSuaTP";
-            this.btnSuaTP.Size = new System.Drawing.Size(107, 45);
+            this.btnSuaTP.Size = new System.Drawing.Size(142, 45);
             this.btnSuaTP.TabIndex = 30;
             this.btnSuaTP.Text = "Sửa";
             this.btnSuaTP.UseVisualStyleBackColor = false;
@@ -418,10 +419,10 @@ namespace KaraokeRUM
             this.btnXoaTP.BackColor = System.Drawing.Color.Teal;
             this.btnXoaTP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoaTP.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnXoaTP.Location = new System.Drawing.Point(279, 229);
+            this.btnXoaTP.Location = new System.Drawing.Point(382, 229);
             this.btnXoaTP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoaTP.Name = "btnXoaTP";
-            this.btnXoaTP.Size = new System.Drawing.Size(107, 45);
+            this.btnXoaTP.Size = new System.Drawing.Size(137, 45);
             this.btnXoaTP.TabIndex = 29;
             this.btnXoaTP.Text = "Xóa";
             this.btnXoaTP.UseVisualStyleBackColor = false;
@@ -436,20 +437,6 @@ namespace KaraokeRUM
             this.label7.Size = new System.Drawing.Size(98, 22);
             this.label7.TabIndex = 0;
             this.label7.Text = "Tên phòng:";
-            // 
-            // btnLamMoiTP
-            // 
-            this.btnLamMoiTP.BackColor = System.Drawing.Color.Teal;
-            this.btnLamMoiTP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoiTP.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLamMoiTP.Location = new System.Drawing.Point(417, 229);
-            this.btnLamMoiTP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLamMoiTP.Name = "btnLamMoiTP";
-            this.btnLamMoiTP.Size = new System.Drawing.Size(107, 45);
-            this.btnLamMoiTP.TabIndex = 28;
-            this.btnLamMoiTP.Text = "Làm mới";
-            this.btnLamMoiTP.UseVisualStyleBackColor = false;
-            this.btnLamMoiTP.Click += new System.EventHandler(this.btnLamMoiTP_Click);
             // 
             // groupBox4
             // 
@@ -540,7 +527,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnXoaTP;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnLamMoiTP;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ListView lstvThietBiTrongPhong;
         private System.Windows.Forms.ComboBox cboDonVi;

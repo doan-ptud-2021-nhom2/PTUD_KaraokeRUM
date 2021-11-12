@@ -12,10 +12,7 @@ namespace KaraokeRUM
 {
     public partial class frmQuanLyThietBi : Form
     {
-        public frmQuanLyThietBi()
-        {
-            InitializeComponent();
-        }
+
         private clsHonLoan HONLOAN;
         private clsPhong PHONG;
         private IEnumerable<Phong> DANHSACHPHONG;
@@ -23,6 +20,17 @@ namespace KaraokeRUM
         private IEnumerable<TrangThietBi> DANHSACHTHIETBI;
         private clsPhongTrangThietBi PHONGTRANGTHIETBI;
         private IEnumerable<Phong_TrangThietBi> DANHSACHPHONGTTB;
+        private string MAQL;
+
+        /*
+         * Constructor
+         */
+        public frmQuanLyThietBi(string maQL)
+        {
+            InitializeComponent();
+            this.MAQL = maQL;
+        }
+
         private void frmQuanLyThietBi_Load(object sender, EventArgs e)
         {
             btnSua.Enabled = false;
@@ -66,6 +74,7 @@ namespace KaraokeRUM
             lstv.Columns.Add("Số Lượng Tồn", 150);
             lstv.Columns.Add("Đơn Vị", 130);
             lstv.Columns.Add("Giá", 200);
+            lstv.Columns.Add("Trạng thái", 150);
         }
         /*Tải dữ liệu lên lsvtThietBi*/
         private void TaiDuLieuLenLstvThietBi(ListView lstv, IEnumerable<TrangThietBi> dSach)
@@ -99,7 +108,7 @@ namespace KaraokeRUM
             lvwItem.SubItems.Add(tb.SoLuongTon.ToString());
             lvwItem.SubItems.Add(tb.DonVi);
             lvwItem.SubItems.Add(tb.Gia.ToString("#,###,000 VNĐ"));
-
+            lvwItem.SubItems.Add(tb.TrangThai);
             lvwItem.Tag = tb;
             lvwItem.ImageIndex = 0;
             return lvwItem;
@@ -112,7 +121,7 @@ namespace KaraokeRUM
             lstv.View = View.Details;
             lstv.GridLines = true;
             lstv.FullRowSelect = true;
-            lstv.Columns.Add("Số Phòng", 150);
+            lstv.Columns.Add("Tên Phòng", 150);
             lstv.Columns.Add("Tên Trang Thiết Bị", 350);
             lstv.Columns.Add("Số Lượng", 100);
         }
@@ -147,7 +156,7 @@ namespace KaraokeRUM
             txtTen.Text = tb.TenTTB;
             txtSoLuongTon.Text = tb.SoLuongTon.ToString();
             cboDonVi.Text = tb.DonVi;
-            txtDonGia.Text = tb.Gia.ToString("#,###,000 VNĐ");
+            txtDonGia.Text = tb.Gia.ToString("#,###,000");
 
         }
         /*Chức năng tải dữ liệu lên textbox từ lstvThietBi*/
@@ -158,6 +167,8 @@ namespace KaraokeRUM
             {
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
+                txtTen.Enabled = false;
+                txtDonGia.Enabled = false;
                 tb = lstvThietBi.SelectedItems[0].Tag;
                 DuLieuLenTextBoxThietBi(tb);
             }
@@ -188,14 +199,22 @@ namespace KaraokeRUM
         private string taoMaTTB()
         {
             string maTTB = "";
-            int dem = THIETBI.LayToanBoTrangThietBis().Count() + 1;
-            if (dem < 10)
+            if (THIETBI.LayToanBoTrangThietBis().Count() == 0)
             {
-                maTTB += "TB00" + dem;
+                maTTB = "TB001";
             }
             else
             {
-                maTTB += "TB0" + dem;
+                string maTTBTam = THIETBI.LayToanBoTrangThietBis().Last().MaTTB.ToString();
+                int dem = Convert.ToInt32(maTTBTam.Split('T','B')[2]) + 1;
+                if (dem < 10)
+                {
+                    maTTB += "TB00" + dem;
+                }
+                else
+                {
+                    maTTB += "TB0" + dem;
+                }
             }
             return maTTB;
         }
@@ -208,21 +227,58 @@ namespace KaraokeRUM
             ttb.SoLuongTon = (int)Convert.ToDecimal(txtSoLuongTon.Text);
             ttb.DonVi = cboDonVi.Text;
             ttb.Gia = Convert.ToDecimal(txtDonGia.Text);
-            ttb.MaQL = "NV002";
+            ttb.MaQL = MAQL;
+            ttb.TrangThai = "DSD";
             return ttb;
+        }
+        private bool KiemTraTonTaiTenThietBi(TrangThietBi ttb)
+        {
+            foreach (TrangThietBi i in THIETBI.LayToanBoTrangThietBis())
+            {
+                if (ttb.TenTTB.Equals(i.TenTTB))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         /*Chức năng thêm thiết bị mới vào kho*/
         private void btnThem_Click(object sender, EventArgs e)
         {
-            TrangThietBi ttb = TaoTTB();
-            THIETBI.Them(ttb);
-            TaiDuLieuLenLstvThietBi(lstvThietBi, THIETBI.LayToanBoTrangThietBis());
+            txtDonGia.Enabled = true;
+            txtTen.Enabled = true;
+            txtSoLuongTon.Enabled = true;
+            cboDonVi.Enabled = true;
+            if (string.IsNullOrEmpty(txtTen.Text) || string.IsNullOrEmpty(txtDonGia.Text) || string.IsNullOrEmpty(txtSoLuongTon.Text))
+            {
+                MessageBox.Show("Yêu cầu nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }    
+            else
+            {
+                string ten = txtTen.Text + "đã tồn tại";
+                TrangThietBi ttb = TaoTTB();
+                if (!KiemTraTonTaiTenThietBi(ttb))
+                {
+                    MessageBox.Show(ten, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if(ttb.SoLuongTon < 0)
+                {
+                    MessageBox.Show("Số lương tồn phải lớn hơn 0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }    
+                else
+                {
+                    THIETBI.Them(ttb);
+                    TaiDuLieuLenLstvThietBi(lstvThietBi, THIETBI.LayToanBoTrangThietBis());
+                    XoaDuLieuTextBox();
+                }
+            }    
         }
         /*Chức năng duyệt lại danh sách thiết bị*/
         #endregion
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
+            DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBiKhiThemVaoPhong();
+            XoaDuLieuTextBox();
             TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
         }
         /*Chức năng xóa thiết bị*/
@@ -241,47 +297,62 @@ namespace KaraokeRUM
                     {
                         index = lstvThietBi.SelectedIndices[i];
                         ttb = (TrangThietBi)lstvThietBi.Items[index].Tag;
-                        if(ttb.SoLuongTon == 0)
+                        if(ttb.SoLuongTon > 0 || !KiemTraThietBiTrongPhong(ttb))
                         {
-                            THIETBI.Xoa(ttb);
-                        }
-                        else
+                            MessageBox.Show("Thiết bị đang sử dụng, không thể xóa ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }        
+                        else if(ttb.SoLuongTon == 0)
                         {
-                            MessageBox.Show("Thiết bị đang sử dụng không thể xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                        }    
+                            ttb.TrangThai = "HET";
+                            THIETBI.SuaTrangThietBi(ttb);
+                        }   
                     }
+                    XoaDuLieuTextBox();
                     TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
                     btnXoa.Enabled = false;
                     btnSua.Enabled = false;
                 }
             }
         }
+        private bool KiemTraThietBiTrongPhong(TrangThietBi ttb)
+        {
+            foreach(Phong_TrangThietBi i in DANHSACHPHONGTTB)
+            {
+                if(i.MaTTB.Equals(ttb.MaTTB))
+                {
+                    return false;
+                }    
+            }
+            return true;
+        }
         /*Chức năng sửa thông tin của thiết bị*/
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            TrangThietBi tb = ThongTinMoiCuaThietBi();                          
-            if (tb.SoLuongTon == 0)
+            if (string.IsNullOrEmpty(txtSoLuongTon.Text))
             {
-                tb.TrangThai = "Hết";
+                MessageBox.Show("Số lượng tồn không được trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                tb.TrangThai = "DSD";
-            }
-            THIETBI.SuaTrangThietBi(tb);
-            TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
+                TrangThietBi tb = ThongTinMoiCuaThietBi();
+                THIETBI.SuaTrangThietBi(tb);
+                XoaDuLieuTextBox();
+                TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
+            }    
+            
         }
         /*Tạo thiết bị mới để sửa thông tin thiết bị*/
         TrangThietBi ThongTinMoiCuaThietBi()
         {
             TrangThietBi tb = new TrangThietBi();
-            tb.MaTTB = THIETBI.TimThietBiTheoTen(txtTen.Text).First().MaTTB;
+            tb.MaTTB = THIETBI.TimThietBiTheoTen(txtTen.Text).FirstOrDefault().MaTTB;
             tb.TenTTB = txtTen.Text;
             tb.SoLuongTon = (int)Convert.ToDecimal(txtSoLuongTon.Text);
             tb.DonVi = cboDonVi.Text;
             tb.Gia = Convert.ToDecimal(txtDonGia.Text);
-            tb.MaQL = "NV002";
+            tb.TrangThai = "DSD";
+            tb.MaQL = MAQL;
             return tb;
         }
 
@@ -298,22 +369,45 @@ namespace KaraokeRUM
        /* Chức năng thêm thiết bị vào phòng*/
         private void btnThemTP_Click(object sender, EventArgs e)
         {
-            Phong_TrangThietBi pTTB = TaoPTTB();
-            PHONGTRANGTHIETBI.Them(pTTB);
-            DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
-            TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
-            TaiDuLieuLenLstvPhongTrangThietBi(lstvThietBiTrongPhong, PHONGTRANGTHIETBI.TraTatCaDuLieu());
+            if (string.IsNullOrEmpty(cboTenPhong.Text) || string.IsNullOrEmpty(cboTenTTB.Text) || string.IsNullOrEmpty(txtSoLuongTP.Text))
+            {
+                MessageBox.Show("Yêu cầu nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Phong_TrangThietBi pTTB = TaoPTTB();
+                if(pTTB.SoLuong < 0)
+                {
+                    MessageBox.Show("Số lương phải lớn hơn 0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }    
+                else
+                {
+                    PHONGTRANGTHIETBI.Them(pTTB);
+                    DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
+                    XoaDuLieuTextBox();
+                    TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
+                    TaiDuLieuLenLstvPhongTrangThietBi(lstvThietBiTrongPhong, PHONGTRANGTHIETBI.TraTatCaDuLieu());
+                }                   
+            }               
         }
         /*Chức năng sửa thông tin thiết bị trong phòng*/
         private void btnSuaTP_Click(object sender, EventArgs e)
         {
             Phong_TrangThietBi pTTB = TaoPTTB();
-            PHONGTRANGTHIETBI.SuaTrangThietBi(pTTB);
-            TaiDuLieuLenLstvPhongTrangThietBi(lstvThietBiTrongPhong, PHONGTRANGTHIETBI.TraTatCaDuLieu());
-            DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
-            TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
-            btnSuaTP.Enabled = false;
-            btnXoaTP.Enabled = false;
+            if (pTTB.SoLuong < 0)
+            {
+                MessageBox.Show("Số lương phải lớn hơn 0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                PHONGTRANGTHIETBI.SuaTrangThietBi(pTTB);
+                TaiDuLieuLenLstvPhongTrangThietBi(lstvThietBiTrongPhong, PHONGTRANGTHIETBI.TraTatCaDuLieu());
+                DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
+                TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
+                XoaDuLieuTextBox();
+                btnSuaTP.Enabled = false;
+                btnXoaTP.Enabled = false;
+            }                
         }
         /*Chức năng xóa thiết bị ra khỏi phòng*/
         private void btnXoaTP_Click(object sender, EventArgs e)
@@ -328,21 +422,27 @@ namespace KaraokeRUM
                 {
                     maPhong = PHONG.TimPhongTheoTen(cboTenPhong.Text).First().MaPhong;
                     maTTB = THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().MaTTB;
+                    TrangThietBi ttb = THIETBI.TimTTBTheoMa(maTTB);
+                    ttb.TrangThai = "DSD";
+                    THIETBI.SuaTrangThietBi(ttb);
                     pttb = PHONGTRANGTHIETBI.TimTTBtrongPhongTheoTenVaMaTTB(maPhong, maTTB).First();
                     PHONGTRANGTHIETBI.Xoa(pttb);
                 }
                 TaiDuLieuLenLstvPhongTrangThietBi(lstvThietBiTrongPhong, PHONGTRANGTHIETBI.TraTatCaDuLieu());
                 DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
+                XoaDuLieuTextBox();
                 TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
             }
             btnSuaTP.Enabled = false;
             btnXoaTP.Enabled = false;
+
         }
         /*Chức năng làm mới danh sách thiết bị trong phòng*/
         private void btnLamMoiTP_Click(object sender, EventArgs e)
         {
             DANHSACHPHONGTTB = PHONGTRANGTHIETBI.TraTatCaDuLieu();
             TaiDuLieuLenLstvPhongTrangThietBi(lstvThietBiTrongPhong, DANHSACHPHONGTTB);
+            XoaDuLieuTextBox();
         }
         /*Chức năng tìm thiết bị (theo mã hoặc theo tên)*/
 
@@ -356,12 +456,13 @@ namespace KaraokeRUM
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
-            txtTimKiem.AutoCompleteCustomSource.Clear();
-            foreach (TrangThietBi i in DANHSACHTHIETBI)
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            foreach (TrangThietBi i in THIETBI.LayToanBoTrangThietBis())
             {
-                txtTimKiem.AutoCompleteCustomSource.Add(i.TenTTB);
-                txtTimKiem.AutoCompleteCustomSource.Add(i.MaTTB);
+                collection.Add(i.MaTTB);
+                collection.Add(i.TenTTB);
             }
+            txtTimKiem.AutoCompleteCustomSource = collection;
         }
         /*Chức năng duyệt danh sách thiết bị trong phòng theo tên phòng ở cboTenPhong*/
         private void cboTenPhong_SelectedIndexChanged(object sender, EventArgs e)
@@ -370,6 +471,15 @@ namespace KaraokeRUM
             string maPhong = PHONG.TimPhongTheoTen(tenPhong).First().MaPhong;
             DANHSACHPHONGTTB = PHONGTRANGTHIETBI.TimPhongTTB(maPhong);
             TaiDuLieuLenLstvPhongTrangThietBi(lstvThietBiTrongPhong, DANHSACHPHONGTTB);
+        }
+        private void XoaDuLieuTextBox()
+        {
+            txtTen.Text = "";
+            txtSoLuongTon.Text = "";
+            txtDonGia.Text = "";
+            cboTenTTB.Text = "";
+            cboTenPhong.Text = "";
+            txtSoLuongTP.Text = "";
         }
     }
 }
