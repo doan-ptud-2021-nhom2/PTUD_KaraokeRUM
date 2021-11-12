@@ -15,8 +15,8 @@ namespace KaraokeRUM
             dt = LayData();
         }
 
-        //Hàm lấy tài khoản, truyền vào tham số username: String
-        //Trả về một tài khoản tồn tại.
+        /*Hàm lấy tài khoản, truyền vào tham số username: String
+        Trả về một tài khoản tồn tại.*/
         public TaiKhoan LayTaiKhoan(string tenDangNhap)
         {
             var taiKhoan = (from tk in dt.TaiKhoans
@@ -31,8 +31,8 @@ namespace KaraokeRUM
             }
         }
 
-        //Hàm kiểm tra tài khoản, truyền vào tham số là một taiKhoan: TaiKhoan
-        //Trả về true nếu cả tài khoản và mật khẩu đều khớp với dữ liệu trong database.
+        /*Hàm kiểm tra tài khoản, truyền vào tham số là một taiKhoan: TaiKhoan
+        Trả về true nếu cả tài khoản và mật khẩu đều khớp với dữ liệu trong database.*/
         public bool KiemTraTaiKhoan(TaiKhoan taiKhoan)
         {
             TaiKhoan tk = LayTaiKhoan(taiKhoan.UserName);
@@ -48,8 +48,8 @@ namespace KaraokeRUM
             return false;
         }
 
-        //Hàm lấy loại tài khoản, truyền vào tham số là một taiKhoan: TaiKhoan
-        //Trả về mã của loại nhân viên từ đó so sánh để phân quyền đăng nhập
+        /*Hàm lấy loại tài khoản, truyền vào tham số là một taiKhoan: TaiKhoan
+        Trả về mã của loại nhân viên từ đó so sánh để phân quyền đăng nhập*/
         public String LayLoaiTaiKhoan(TaiKhoan taiKhoan)
         {
             var strMaLoaiTaiKhoan = (from tk in dt.TaiKhoans
@@ -59,8 +59,8 @@ namespace KaraokeRUM
             return strMaLoaiTaiKhoan;
         }
 
-        //Hàm lấy lại mật khẩu, truyền vào username: String và sdt: String
-        //Trả về mật khẩu của nhân viên
+        /*Hàm lấy lại mật khẩu, truyền vào username: String và sdt: String
+        Trả về mật khẩu của nhân viên*/
         public String TimMatKhau(String tenDangNhap, String sdt)
         {
             var taiKhoan = (from tk in dt.TaiKhoans
@@ -70,6 +70,7 @@ namespace KaraokeRUM
             return taiKhoan == null ? "" : taiKhoan.PassWord.Trim();
         }
 
+        /*Hàm tìm mật khẩu theo tên đăng nhập*/
         public String TimMatKhau(String tenDangNhap)
         {
             var taiKhoan = (from tk in dt.TaiKhoans
@@ -78,45 +79,53 @@ namespace KaraokeRUM
             return taiKhoan == null ? "" : taiKhoan.PassWord.Trim();
         }
 
+        /*Hàm đổi mật khẩu cho tài khoản*/
         public int DoiMatKhau(TaiKhoan taiKhoan)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
+            using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = myTran;
-                IQueryable<TaiKhoan> tkTam = (from tk in dt.TaiKhoans
-                                              where tk.UserName == taiKhoan.UserName
-                                              select tk);
-                tkTam.First().PassWord = taiKhoan.PassWord;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return 1;
-            }catch(Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Lỗi đổi mật khẩu: " + ex.Message);
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<TaiKhoan> tkTam = (from tk in dt.TaiKhoans
+                                                  where tk.UserName == taiKhoan.UserName
+                                                  select tk);
+                    tkTam.First().PassWord = taiKhoan.PassWord;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Lỗi đổi mật khẩu: " + ex.Message);
+                }
             }
+            
         }
+
         /**
          * Thêm tài khoản mới
-         * 
          */
         public int ThemTaiKhoan(TaiKhoan taiKhoan)
         {
-            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = br;
-                dt.TaiKhoans.InsertOnSubmit(taiKhoan);
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return 1;
+                try
+                {
+                    dt.Transaction = br;
+                    dt.TaiKhoans.InsertOnSubmit(taiKhoan);
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception(ex.Message);
-            }
+           
         }
 
     }

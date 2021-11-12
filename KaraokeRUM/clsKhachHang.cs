@@ -15,6 +15,7 @@ namespace KaraokeRUM
             dt = LayData();
         }
         
+        /*Hàm lấy toàn bộ danh sách khách hàng*/
         public IEnumerable<KhachHang> LayDSKH()
         {
             IEnumerable<KhachHang> kh = from n in dt.KhachHangs
@@ -22,6 +23,8 @@ namespace KaraokeRUM
             return kh;
            
         }
+
+        /*Hàm tìm tên khách hàng bằng số điện thoại*/
         public IQueryable<KhachHang> TimTenKhachHang(string sdt)
         {
             IQueryable<KhachHang> q = (from n in dt.KhachHangs
@@ -36,6 +39,8 @@ namespace KaraokeRUM
                     select kh;
             return i;
         }*/
+
+        /*Hàm lấy thông tin khách hàng theo mã khách hàng*/
         public KhachHang LayThongTinKhach(string maKH)
         {
             var in4_kh = from kh in dt.KhachHangs
@@ -43,35 +48,39 @@ namespace KaraokeRUM
                      select kh;
             return in4_kh.FirstOrDefault();
         }
+
+        /*Hàm tìm khách hàng theo số điện thoại*/
         public KhachHang TimKhachHang(string sdt)
         {
             KhachHang k = (from n in dt.KhachHangs where n.SDT == sdt select n).FirstOrDefault();
             return k;
         }
-        /**
-       * Thêm các thông tin Khách Hàng
-       */
+
+        /*Hàm thêm khách hàng*/
         public int ThemKhachHang(KhachHang khach)
         {
-            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
-            try
+            using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = br;
-                dt.KhachHangs.InsertOnSubmit(khach);
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return 1;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception(ex.Message);
-            }
+                try
+                {
+                    dt.Transaction = br;
+                    dt.KhachHangs.InsertOnSubmit(khach);
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception(ex.Message);
+                }
+            }  
         }
-        /**
-      * join 2 bảng: KhachHang với LoaiKhachHang
-      * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
-      */
+
+        /** Hàm lấy khách hàng và loại khách hàng
+          * join 2 bảng: KhachHang với LoaiKhachHang
+          * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
+          */
         public IEnumerable<dynamic> KhachHangVaLoaiKhachHang()
         {
             var kh = from n in dt.KhachHangs
@@ -81,12 +90,12 @@ namespace KaraokeRUM
                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau };
             return kh;
         }
-        /**
+
+        /** Hàm lấy danh sách khách hàng
         * join 2 bảng: KhachHang với LoaiKhachHang
         * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
         * Có điều kiện
         */
-
         public IEnumerable<dynamic> LayKhachHangVaLoaiKhachHangTheoLoai(string maLoaiKH)
         {
             var kh = from n in dt.LoaiKhachHangs
@@ -96,6 +105,8 @@ namespace KaraokeRUM
                      select new { x.MaKH, x.TenKhach, x.SDT, x.SoLanDen, n.TenLoaiKH, n.ChietKhau };
             return kh;
         }
+
+        /*Hàm lấy danh sách khách hàng được thêm vào danh sách đen*/
         public IEnumerable<dynamic> KhachHangVaLoaiKhachHangDanhSachDen()
         {
             var kh = from n in dt.KhachHangs
@@ -103,13 +114,9 @@ namespace KaraokeRUM
                      select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen,n.GhiChu};
             return kh;
         }
-        /**
-        * join 2 bảng: KhachHang với LoaiKhachHang
-        * Lấy dữ liệu ở Khách Hàng và Loại Khách Hàng
-        * Có điều kiện
-        */
+
         /*
-         * tìm kiếm khách hàng
+         * Hàm tìm khách hàng bằng tên hoặc mã khách hàng
          */
         public IEnumerable<dynamic> TimKhach(string timKiem)
         {
@@ -120,9 +127,10 @@ namespace KaraokeRUM
                                       select new { n.MaKH, n.TenKhach, n.SDT, n.SoLanDen, x.TenLoaiKH, x.ChietKhau , n.GhiChu};
             return kh;
         }
+
         /*
-       * tìm kiếm khách hàng theo mã
-       */
+        * Hàm tìm kiếm khách hàng theo mã khách hàng
+        */
         public IQueryable<KhachHang> TimKhachHangTheoMa(string maKH)
         {
             IQueryable<KhachHang> q = (from n in dt.KhachHangs
@@ -131,26 +139,29 @@ namespace KaraokeRUM
             return q;
         }
 
+        /*Hàm cập nhật số lần đến cho khách hàng*/
         public int SuaSoLanDen(KhachHang kh)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = myTran;
-                IQueryable<KhachHang> temp = (from n in dt.KhachHangs
-                                              where n.MaKH == kh.MaKH
-                                              select n);
-                temp.First().SoLanDen = kh.SoLanDen;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return 1;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Loi không sửa được!" + ex.Message);
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<KhachHang> temp = (from n in dt.KhachHangs
+                                                  where n.MaKH == kh.MaKH
+                                                  select n);
+                    temp.First().SoLanDen = kh.SoLanDen;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Loi không sửa được!" + ex.Message);
 
-            }
+                }
+            }   
         }
 
         /*
@@ -158,45 +169,50 @@ namespace KaraokeRUM
          */
         public int CapNhatTongTienChoKhach(KhachHang khachHang)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = myTran;
-                IQueryable<KhachHang> temp = (from n in dt.KhachHangs
-                                          where n.MaKH == khachHang.MaKH
-                                          select n);
-                temp.First().TongTien = khachHang.TongTien;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return 1;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Loi không sửa được!" + ex.Message);
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<KhachHang> temp = (from n in dt.KhachHangs
+                                                  where n.MaKH == khachHang.MaKH
+                                                  select n);
+                    temp.First().TongTien = khachHang.TongTien;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Loi không sửa được!" + ex.Message);
 
-            }
+                }
+            } 
         }
-        /*cập nhập ghi chú của khách hàng*/
+
+        /*Hàm cập nhập ghi chú của khách hàng*/
         public bool CapNhatGhiChu(KhachHang kh)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
+            using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = myTran;
-                IQueryable<KhachHang> tam = (from n in dt.KhachHangs
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<KhachHang> tam = (from n in dt.KhachHangs
                                                  where n.MaKH == kh.MaKH
                                                  select n);
-                tam.First().GhiChu = kh.GhiChu;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return true;
+                    tam.First().GhiChu = kh.GhiChu;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return true;
 
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Lỗi không thể sửa chiết khấu Khách hàng này!" + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Lỗi không thể sửa chiết khấu Khách hàng này!" + ex.Message);
+                }
             }
         }
         

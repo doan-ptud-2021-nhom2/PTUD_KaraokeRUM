@@ -13,6 +13,7 @@ namespace KaraokeRUM
         {
             dt = LayData();
         }
+
         /*Lấy tất cả trang thiết bị*/
         public IEnumerable<TrangThietBi> LayToanBoTrangThietBis()
         {
@@ -20,6 +21,7 @@ namespace KaraokeRUM
             //dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tb);
             return tb;
         }
+
         /*Lấy tất cả trang thiết bị*/
         public IEnumerable<TrangThietBi> LayToanBoTrangThietBiKhiThemVaoPhong()
         {
@@ -27,7 +29,8 @@ namespace KaraokeRUM
             dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tb);
             return tb;
         }
-        /*kiểm tra*/
+
+        /*kiểm tra thiết bị theo ID*/
         public TrangThietBi KiemTra(string id)
         {
             TrangThietBi temp = (from n in dt.TrangThietBis
@@ -35,10 +38,12 @@ namespace KaraokeRUM
                               select n).FirstOrDefault();
             return temp;
         }
+
         /*Thêm trang thiết bị*/
         public int Them(TrangThietBi tb)
         {
-            System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction();
+            using(System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction())
+            {
                 try
                 {
                     dt.Transaction = tran;
@@ -47,61 +52,70 @@ namespace KaraokeRUM
                     dt.Transaction.Commit();
                     return 1;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                   dt.Transaction.Rollback();
-                   throw new Exception(ex.Message);
+                    dt.Transaction.Rollback();
+                    throw new Exception(ex.Message);
                 }
+            }    
         }
+
+
         /*Xóa trang thiết bị*/
         public int Xoa(TrangThietBi tb)
         {
-            System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = tran;
-                if(KiemTra(tb.MaTTB)!=null)
+                try
                 {
-                    dt.TrangThietBis.DeleteOnSubmit(tb);
+                    dt.Transaction = tran;
+                    if (KiemTra(tb.MaTTB) != null)
+                    {
+                        dt.TrangThietBis.DeleteOnSubmit(tb);
+                        dt.SubmitChanges();
+                        dt.Transaction.Commit();
+                        return 1;
+                    }
+                    return 0;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Loi" + ex.Message);
+                }
+            } 
+        }
+
+        /* Sửa trang thiết bị */
+        public int SuaTrangThietBi(TrangThietBi tb)
+        {
+            using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
+            {
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<TrangThietBi> temp = (from n in dt.TrangThietBis
+                                                     where n.MaTTB == tb.MaTTB
+                                                     select n);
+                    temp.First().TenTTB = tb.TenTTB;
+                    temp.First().SoLuongTon = tb.SoLuongTon;
+                    temp.First().DonVi = tb.DonVi;
+                    temp.First().Gia = tb.Gia;
+                    temp.First().TrangThai = tb.TrangThai;
                     dt.SubmitChanges();
                     dt.Transaction.Commit();
                     return 1;
                 }
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Loi" + ex.Message);
-            }
-        }
-        /* Sửa trang thiết bị */
-        public int SuaTrangThietBi(TrangThietBi tb)
-        {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
-            {
-                dt.Transaction = myTran;
-                IQueryable<TrangThietBi> temp = (from n in dt.TrangThietBis
-                                                 where n.MaTTB == tb.MaTTB
-                                                 select n);
-                temp.First().TenTTB = tb.TenTTB;
-                temp.First().SoLuongTon = tb.SoLuongTon;
-                temp.First().DonVi = tb.DonVi;
-                temp.First().Gia = tb.Gia;
-                temp.First().TrangThai = tb.TrangThai;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return 1;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Loi không sửa được!" + ex.Message);
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Loi không sửa được!" + ex.Message);
 
-            }
+                }
+            } 
         }        
-        /* tìm danh sách thiết bị theo mã */
+
+        /*Hàm tìm danh sách thiết bị theo mã */
         public IEnumerable<TrangThietBi> TimDSachTTBTheoMa(string maTTB)
         {
             IEnumerable<TrangThietBi> q = from n in dt.TrangThietBis
@@ -109,6 +123,7 @@ namespace KaraokeRUM
                                    select n;
             return q;
         }
+
         /*Tìm thiết bị theo mã*/ 
         public TrangThietBi TimTTBTheoMa(string maTTB)
         {
@@ -117,6 +132,7 @@ namespace KaraokeRUM
                               select n).First();
             return q;
         }
+
         /* Tìm thiết bị theo tên */
         public IQueryable<TrangThietBi> TimThietBiTheoTen(string tenTB)
         {

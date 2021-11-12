@@ -52,19 +52,21 @@ namespace KaraokeRUM
         */
         public int ThemChiTietHoaDon(ChiTietHoaDon chiTietHoaDon)
         {
-            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = br;
-                dt.ChiTietHoaDons.InsertOnSubmit(chiTietHoaDon);
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return 1;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception(ex.Message);
+                try
+                {
+                    dt.Transaction = br;
+                    dt.ChiTietHoaDons.InsertOnSubmit(chiTietHoaDon);
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception(ex.Message);
+                }
             }
         }
 
@@ -73,25 +75,27 @@ namespace KaraokeRUM
         */
         public bool SuaThongTinMatHang(ChiTietHoaDon chiTietHD)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = myTran;
-                IQueryable<ChiTietHoaDon> tam = (from n in dt.ChiTietHoaDons
-                                                 where n.MaMH.Equals(chiTietHD.MaMH) && n.MaHD.Equals(chiTietHD.MaHD)
-                                                 select n);
-                dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tam);
-                tam.First().SoLuong = chiTietHD.SoLuong;
-                tam.First().ThanhTien = chiTietHD.ThanhTien;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Lỗi không sửa được!" + ex.Message);
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<ChiTietHoaDon> tam = (from n in dt.ChiTietHoaDons
+                                                     where n.MaMH.Equals(chiTietHD.MaMH) && n.MaHD.Equals(chiTietHD.MaHD)
+                                                     select n);
+                    dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tam);
+                    tam.First().SoLuong = chiTietHD.SoLuong;
+                    tam.First().ThanhTien = chiTietHD.ThanhTien;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Lỗi không sửa được!" + ex.Message);
 
+                }
             }
         }
 
@@ -129,9 +133,8 @@ namespace KaraokeRUM
                 catch (Exception ex)
                 {
                     dt.Transaction.Rollback();
-                    throw new Exception("Lỗi!!" + ex.Message);
+                    throw new Exception("Lỗi xóa chi tiết hóa đơn!!" + ex.Message);
                 }
-
             }
             
         }
