@@ -301,7 +301,6 @@ namespace KaraokeRUM
             this.txtTimKiemKhachHang.Name = "txtTimKiemKhachHang";
             this.txtTimKiemKhachHang.Size = new System.Drawing.Size(298, 30);
             this.txtTimKiemKhachHang.TabIndex = 70;
-            this.txtTimKiemKhachHang.TextChanged += new System.EventHandler(this.txtTimKiemKhachHang_TextChanged);
             // 
             // groupBox4
             // 

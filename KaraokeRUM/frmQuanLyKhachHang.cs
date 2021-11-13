@@ -29,6 +29,23 @@ namespace KaraokeRUM
             TaiDuLieu();
             txtTimKiemKhachHang.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtTimKiemKhachHang.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            TaiDuLieuVaoBoxTimKiem();
+        }
+
+        /**
+         * Hàm hỗ trợ tải tên và mã khách hàng vào txtTimKiem để thực hiện chức năng tìm kiếm.
+         */
+        private void TaiDuLieuVaoBoxTimKiem()
+        {
+            txtTimKiemKhachHang.AutoCompleteCustomSource.Clear();
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            foreach (KhachHang i in KH.LayDSKH())
+            {
+                collection.Add(i.MaKH);
+                collection.Add(i.TenKhach);
+            }
+            txtTimKiemKhachHang.AutoCompleteCustomSource = collection;
         }
         /*Làm mới lại toàn bộ list view và tải dữ liệu mới lên list view*/
         void TaiDuLieu()
@@ -322,21 +339,6 @@ namespace KaraokeRUM
             
             
         }
-        /*
-         * auto complete tự động tải danh sách
-         */
-        private void txtTimKiemKhachHang_TextChanged(object sender, EventArgs e)
-        {
-            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-            foreach (KhachHang i in KH.LayDSKH())
-            {
-                collection.Add(i.MaKH);
-                collection.Add(i.TenKhach);
-            }
-            txtTimKiemKhachHang.AutoCompleteCustomSource = collection;
-
-        }
-
         private void lstvDanhSachDen_SelectedIndexChanged(object sender, EventArgs e)
         {
             dynamic dsKH = null;

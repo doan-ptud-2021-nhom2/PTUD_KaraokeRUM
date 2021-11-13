@@ -39,6 +39,23 @@ namespace KaraokeRUM
             loadCombobox();
             TaoTieuDeCot(lstvDSNV);
             TaiDuLieu();
+
+            TaiDuLieuVaoBoxTimKiem();
+        }
+
+        /**
+         * Hàm hỗ trợ tải tên và mã nhân viên vào txtTimKiem để thực hiện chức năng tìm kiếm.
+         */
+        private void TaiDuLieuVaoBoxTimKiem()
+        {
+            txtTimKiemNhanVien.AutoCompleteCustomSource.Clear();
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            foreach (NhanVien i in NV.LayDSNV(MANVQL))
+            {
+                collection.Add(i.MaNV);
+                collection.Add(i.TenNV);
+            }
+            txtTimKiemNhanVien.AutoCompleteCustomSource = collection;
         }
         /*Khởi tạo ban đầu - tải dữ liệu lên listview, vô hiệu hoá các nút chức năng*/
         void TaiDuLieu()
@@ -224,13 +241,6 @@ namespace KaraokeRUM
         */
         private void txtTimKiemNhanVien_TextChanged(object sender, EventArgs e)
         {
-            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-            foreach (NhanVien i in NV.LayDSNV(MANVQL))
-            {
-                collection.Add(i.MaNV);
-                collection.Add(i.TenNV);
-            }
-            txtTimKiemNhanVien.AutoCompleteCustomSource = collection;
         }
         void XoaCacTxtCbo()
         {
