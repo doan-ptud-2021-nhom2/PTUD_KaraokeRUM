@@ -601,6 +601,7 @@ namespace KaraokeRUM
                                 khc.MaLoaiKH = "LKH03";
                             }
                             MoPhongTrucTiep(khc);
+                            KetThucMoPhong();
                         }                        
                     }
                     else
