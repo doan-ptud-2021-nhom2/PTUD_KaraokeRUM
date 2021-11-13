@@ -265,7 +265,6 @@ namespace KaraokeRUM
             this.txtTimKiemMatHang.Name = "txtTimKiemMatHang";
             this.txtTimKiemMatHang.Size = new System.Drawing.Size(337, 30);
             this.txtTimKiemMatHang.TabIndex = 71;
-            this.txtTimKiemMatHang.TextChanged += new System.EventHandler(this.txtTimKiemMatHang_TextChanged);
             // 
             // btnTim
             // 

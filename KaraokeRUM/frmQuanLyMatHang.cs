@@ -21,6 +21,24 @@ namespace KaraokeRUM
             loadCombobox();
             TaoTieuDeCot(lstvMatHang);
             TaiDuLieu();
+
+            TaiDuLieuVaoBoxTimKiem();
+        }
+
+        /**
+         * Hàm hỗ trợ tải tên mặt hàng vào txtTimKiem để thực hiện chức năng tìm kiếm.
+         */
+        private void TaiDuLieuVaoBoxTimKiem()
+        {
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            txtTimKiemMatHang.AutoCompleteCustomSource.Clear();
+            foreach (MatHang i in MH.LayTatCaMatHang())
+            {
+                collection.Add(i.MaMH);
+                collection.Add(i.TenMh);
+            }
+            txtTimKiemMatHang.AutoCompleteCustomSource = collection;
         }
         private void TaiDuLieu()
         {
@@ -147,16 +165,7 @@ namespace KaraokeRUM
             TaiDuLieuLenListView(lstvMatHang, dsMHTim);
         }
 
-        private void txtTimKiemMatHang_TextChanged(object sender, EventArgs e)
-        {
-            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-            foreach (MatHang i in MH.LayTatCaMatHang())
-            {
-                collection.Add(i.MaMH);
-                collection.Add(i.TenMh);
-            }
-            txtTimKiemMatHang.AutoCompleteCustomSource = collection;
-        }
+
         void XoaCacTxtCbo()
         {
             txtTenMH.Text = "";
