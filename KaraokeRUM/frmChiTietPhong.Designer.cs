@@ -29,6 +29,7 @@ namespace KaraokeRUM
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -61,12 +62,14 @@ namespace KaraokeRUM
             this.lblTenPhong = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstvDanhSachMatHang = new System.Windows.Forms.ListView();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox3.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -279,7 +282,7 @@ namespace KaraokeRUM
             this.btnXoa.Location = new System.Drawing.Point(630, 188);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(192, 52);
-            this.btnXoa.TabIndex = 9;
+            this.btnXoa.TabIndex = 5;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -292,7 +295,7 @@ namespace KaraokeRUM
             this.btnThem.Location = new System.Drawing.Point(82, 188);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(192, 52);
-            this.btnThem.TabIndex = 2;
+            this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -303,7 +306,8 @@ namespace KaraokeRUM
             this.txtSoLuong.Location = new System.Drawing.Point(203, 116);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(216, 34);
-            this.txtSoLuong.TabIndex = 1;
+            this.txtSoLuong.TabIndex = 2;
+            this.txtSoLuong.Validating += new System.ComponentModel.CancelEventHandler(this.txtSoLuong_Validating);
             // 
             // btnSua
             // 
@@ -313,7 +317,7 @@ namespace KaraokeRUM
             this.btnSua.Location = new System.Drawing.Point(350, 188);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(192, 52);
-            this.btnSua.TabIndex = 2;
+            this.btnSua.TabIndex = 4;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -364,7 +368,7 @@ namespace KaraokeRUM
             this.cboMatHang.Location = new System.Drawing.Point(203, 53);
             this.cboMatHang.Name = "cboMatHang";
             this.cboMatHang.Size = new System.Drawing.Size(216, 34);
-            this.cboMatHang.TabIndex = 10;
+            this.cboMatHang.TabIndex = 1;
             // 
             // panel2
             // 
@@ -436,6 +440,10 @@ namespace KaraokeRUM
             this.lstvDanhSachMatHang.UseCompatibleStateImageBehavior = false;
             this.lstvDanhSachMatHang.SelectedIndexChanged += new System.EventHandler(this.lstvDanhSachMatHang_SelectedIndexChanged);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmChiTietPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -460,6 +468,7 @@ namespace KaraokeRUM
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -497,5 +506,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnHuyPhong;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

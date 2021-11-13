@@ -67,8 +67,12 @@ namespace KaraokeRUM
             var dsCTHD = from cthd in dt.ChiTietHoaDons
                          where cthd.MaHD.Equals(maHD)
                          select cthd;
-            //dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, dsCTHD);
-            return dsCTHD;
+            using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
+            {
+                dt.Transaction = br;
+                dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, dsCTHD);
+                return dsCTHD;
+            }
         }
 
         /*Hàm tính tổng tiền mặt hagf theo mã hóa đơn*/
