@@ -205,6 +205,10 @@ namespace KaraokeRUM
                     cboMatHang.Text = "";
                     txtSoLuong.Text = "";
                 }
+                else if(Convert.ToInt32(txtSoLuong.Text) > MATHANG.TimMaTheoTen(cboMatHang.Text).SoLuongTon)
+                {
+                    MessageBox.Show("Số lượng tồn của mặt hàng không đủ. Vui lòng nhập số lượng nhỏ hơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 else
                 {
                     CHITIETHOADON.ThemChiTietHoaDon(chiTietHoaDon);
@@ -269,6 +273,10 @@ namespace KaraokeRUM
             {
                 MessageBox.Show("Vui lòng chọn một mặt hàng để chỉnh sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if(Convert.ToInt32(txtSoLuong.Text) > MATHANG.TimMaTheoTen(cboMatHang.Text).SoLuongTon)
+            {
+                MessageBox.Show("Số lượng tồn của mặt hàng không đủ. Vui lòng nhập số lượng nhỏ hơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 ChiTietHoaDon suaSoLuong = SuaSoLuongMatHang();
@@ -278,6 +286,8 @@ namespace KaraokeRUM
                 cboMatHang.Text = "";
                 txtSoLuong.Text = "";
             }
+
+            cboMatHang.Enabled = true;
         }
 
         /** 
@@ -351,6 +361,24 @@ namespace KaraokeRUM
             }
         }
 
+        /*
+         * Kiểm tra chỉ cho nhập số từ 0-9
+         */
+        private void txtSoLuong_Validating(object sender, CancelEventArgs e)
+        {
+            string txtSLuong = txtSoLuong.Text;
+            if(!clsKiemTra.KiemTraSoLuongMatHangTrongPhong(txtSLuong))
+            {
+                e.Cancel = true;
+                txtSoLuong.Focus();
+                errorProvider1.SetError(txtSoLuong, "Bạn phải nhập số từ 0-9!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtSoLuong, null);
+            }
+        }
     }
 }
 

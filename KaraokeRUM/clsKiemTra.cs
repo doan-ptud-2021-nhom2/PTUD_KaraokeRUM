@@ -73,6 +73,15 @@ namespace KaraokeRUM
             return match.Success;
         }
 
+        /*
+         * Kiểm tra độ dài hợp lệ của CMND
+         */
+        public static bool KiemTraSoLuongMatHangTrongPhong(this string soLuong)
+        {
+            Regex regex = new Regex("^[0-9]+$");
+            Match match = regex.Match(soLuong);
+            return match.Success;
+        }
 
     }
 }
