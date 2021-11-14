@@ -14,7 +14,7 @@ namespace KaraokeRUM
          */
         public static bool KiemTraMatKhau(this string matKhau)
         {
-            Regex regex = new Regex(@"^(.{8,20}|[^0-9]*|[^A-Z])$");
+            Regex regex = new Regex(@"^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?!.*\s).{8,}$");
             Match match = regex.Match(matKhau);
             return match.Success;
         }
@@ -34,7 +34,7 @@ namespace KaraokeRUM
          */
         public static bool KiemTraSDT(this string sdt)
         {
-            Regex regex = new Regex(@"^((09(\d){8})|(086(\d){7})|(083(\d){7})|(087(\d){7})|(088(\d){7})|(089(\d){7})|(01(\d){9})|(03(\d){8})|(07(\d){8})|(05(\d){8}))$");
+            Regex regex = new Regex(@"^((09(\d){8})|(08(\d){8})|(01(\d){9})|(03(\d){8})|(07(\d){8})|(05(\d){8}))$");
             Match match = regex.Match(sdt);
             return match.Success;
         }
