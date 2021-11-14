@@ -378,16 +378,20 @@ namespace KaraokeRUM
                     {
                         MessageBox.Show("Giờ đặt phải sau 8 giờ và trước 23h", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    else if (khc.GhiChu == "Cấm")
-                    {
-                        MessageBox.Show("Khách hàng đã bị cấm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
                     else
                     {
                         string maKH = "";
                         if (khc != null)
                         {
-                           maKH = khc.MaKH;
+                            if (khc.GhiChu == "Cấm")
+                            {
+                                MessageBox.Show("Khách hàng đã bị cấm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                maKH = khc.MaKH;
+                            }
+                            
                         }
                         else
                         {
