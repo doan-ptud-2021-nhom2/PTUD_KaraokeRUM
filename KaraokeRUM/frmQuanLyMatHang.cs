@@ -26,13 +26,12 @@ namespace KaraokeRUM
         }
 
         /**
-         * Hàm hỗ trợ tải tên mặt hàng vào txtTimKiem để thực hiện chức năng tìm kiếm.
+         * Hàm hỗ trợ tải tên và mã mặt hàng vào txtTimKiem để thực hiện chức năng tìm kiếm.
          */
         private void TaiDuLieuVaoBoxTimKiem()
         {
-
-            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
             txtTimKiemMatHang.AutoCompleteCustomSource.Clear();
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
             foreach (MatHang i in MH.LayTatCaMatHang())
             {
                 collection.Add(i.MaMH);
