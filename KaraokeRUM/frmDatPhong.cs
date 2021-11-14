@@ -47,6 +47,7 @@ namespace KaraokeRUM
 
             btnXemPhong.Enabled = false;
             btnHuyPhong.Enabled = false;
+            rdoHienTai.Enabled = true;
 
             MacDinhThoiGian();
             rdoMoPhong.Checked = true;            
@@ -350,7 +351,6 @@ namespace KaraokeRUM
                             else
                             {
                                 DatPhong(maKH);
-
                             }
                             XoaDuLieuTextBox();
                         }
@@ -555,9 +555,7 @@ namespace KaraokeRUM
             int xetGioBatDau = (int)(DateTime.Now.TimeOfDay.Hours - gioBD.Hour);
             DateTime gioKT = new DateTime(2021, 11, 5, 22, 0, 0);
             int xetGioKetThuc = (int)(DateTime.Now.TimeOfDay.Hours - gioKT.Hour);
-
-            string maPhong = PHONG.TimPhongTheoTen(txtTenPhong.Text).First().MaPhong;
-            string trangThaiPhong = PHONG.TimPhongTheoMa(maPhong).First().TrangThaiPhong;
+           
             if (xetGioBatDau < 0 || xetGioKetThuc > 0)
             {
                 MessageBox.Show("Mở phòng phải sau 8 giờ và trước 23h", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -572,6 +570,8 @@ namespace KaraokeRUM
             }    
             else
             {
+                string maPhong = PHONG.TimPhongTheoTen(txtTenPhong.Text).First().MaPhong;
+                string trangThaiPhong = PHONG.TimPhongTheoMa(maPhong).First().TrangThaiPhong;
                 if (trangThaiPhong == "Đóng")
                 {
                     //mở phòng trực tiếp
@@ -937,7 +937,7 @@ namespace KaraokeRUM
         /*Chức năng vào xem chi tiết của một phòng*/
         private void btnXemPhong_Click(object sender, EventArgs e)
         {
-            Phong phong = PHONG.TimMotPhongTheoTen(txtTenPhong.Text);
+            Phong phong = PHONG.TimMotPhongTheoTen_XemPhong(txtTenPhong.Text);
             if(phong.TrangThaiPhong.Equals("Mở"))
             {
                 MAPHONG = phong.MaPhong;
