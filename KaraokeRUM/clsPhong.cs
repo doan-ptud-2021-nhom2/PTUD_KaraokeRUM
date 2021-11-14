@@ -143,12 +143,22 @@ namespace KaraokeRUM
 
         public Phong TimMotPhongTheoTen(string tenPhong)
         {
-            foreach (Phong i in dt.Phongs)
+            Phong q = (from n in dt.Phongs
+                       where n.TenPhong.Equals(tenPhong)
+                       select n).FirstOrDefault();
+            return q;
+        }
+        public Phong TimMotPhongTheoTen_XemPhong(string tenPhong)
+        {
+            Phong q = (from n in dt.Phongs
+                       where n.TenPhong.Equals(tenPhong)
+                       select n).FirstOrDefault();
+            using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
-                if (i.TenPhong == tenPhong)
-                    return i;
+                dt.Transaction = br;
+                dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, q);
+                return q;
             }
-            return null;
         }
 
         /**

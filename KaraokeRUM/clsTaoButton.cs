@@ -27,7 +27,12 @@ namespace KaraokeRUM
             IEnumerable<Phong> q = from n in dt.Phongs
                                    where n.MaLoaiPhong.Equals(maLoaiPhong)
                                    select n;
-            return q;
+            using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
+            {
+                dt.Transaction = br;
+                dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, q);
+                return q;
+            }
         }
     }
 }
