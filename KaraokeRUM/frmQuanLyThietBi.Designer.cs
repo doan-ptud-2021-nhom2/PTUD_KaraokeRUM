@@ -97,11 +97,11 @@ namespace KaraokeRUM
             // cboDonVi
             // 
             this.cboDonVi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDonVi.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDonVi.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDonVi.FormattingEnabled = true;
             this.cboDonVi.Location = new System.Drawing.Point(166, 143);
             this.cboDonVi.Name = "cboDonVi";
-            this.cboDonVi.Size = new System.Drawing.Size(357, 31);
+            this.cboDonVi.Size = new System.Drawing.Size(357, 30);
             this.cboDonVi.TabIndex = 33;
             // 
             // label8
@@ -339,22 +339,22 @@ namespace KaraokeRUM
             // cboTenPhong
             // 
             this.cboTenPhong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTenPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTenPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTenPhong.FormattingEnabled = true;
             this.cboTenPhong.Location = new System.Drawing.Point(162, 47);
             this.cboTenPhong.Name = "cboTenPhong";
-            this.cboTenPhong.Size = new System.Drawing.Size(357, 31);
+            this.cboTenPhong.Size = new System.Drawing.Size(357, 30);
             this.cboTenPhong.TabIndex = 35;
             this.cboTenPhong.SelectedIndexChanged += new System.EventHandler(this.cboTenPhong_SelectedIndexChanged);
             // 
             // cboTenTTB
             // 
             this.cboTenTTB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTenTTB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTenTTB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTenTTB.FormattingEnabled = true;
             this.cboTenTTB.Location = new System.Drawing.Point(162, 100);
             this.cboTenTTB.Name = "cboTenTTB";
-            this.cboTenTTB.Size = new System.Drawing.Size(357, 31);
+            this.cboTenTTB.Size = new System.Drawing.Size(357, 30);
             this.cboTenTTB.TabIndex = 34;
             // 
             // txtSoLuongTP

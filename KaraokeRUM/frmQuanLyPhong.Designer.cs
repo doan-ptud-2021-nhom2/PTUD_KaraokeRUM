@@ -84,11 +84,11 @@ namespace KaraokeRUM
             this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.lstvDanhSachPhong);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(823, 70);
+            this.groupBox2.Location = new System.Drawing.Point(799, 70);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(874, 762);
+            this.groupBox2.Size = new System.Drawing.Size(904, 762);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh Sách Phòng";
@@ -99,10 +99,10 @@ namespace KaraokeRUM
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstvDanhSachPhong.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstvDanhSachPhong.HideSelection = false;
-            this.lstvDanhSachPhong.Location = new System.Drawing.Point(26, 38);
+            this.lstvDanhSachPhong.Location = new System.Drawing.Point(16, 40);
             this.lstvDanhSachPhong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstvDanhSachPhong.Name = "lstvDanhSachPhong";
-            this.lstvDanhSachPhong.Size = new System.Drawing.Size(825, 695);
+            this.lstvDanhSachPhong.Size = new System.Drawing.Size(871, 705);
             this.lstvDanhSachPhong.TabIndex = 0;
             this.lstvDanhSachPhong.UseCompatibleStateImageBehavior = false;
             this.lstvDanhSachPhong.SelectedIndexChanged += new System.EventHandler(this.lstvDanhSachPhong_SelectedIndexChanged_1);
