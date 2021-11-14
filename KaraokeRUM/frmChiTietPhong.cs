@@ -195,6 +195,10 @@ namespace KaraokeRUM
             {
                 MessageBox.Show("Bạn cần phải nhập, chọn đầy đủ thông tin để thực hiện chức năng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            else if (!KiemTraSoLuong())
+            {
+                MessageBox.Show("Bạn phải nhập số từ 0-9!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 ChiTietHoaDon chiTietHoaDon = TaoChiTietHoaDon();
@@ -252,7 +256,7 @@ namespace KaraokeRUM
         */
         ChiTietHoaDon SuaSoLuongMatHang()
         {
-            if(lstvDanhSachMatHang.SelectedItems.Count > 0 && cboMatHang.SelectedIndex >= 0 && txtSoLuong.Text != "")
+            if(lstvDanhSachMatHang.SelectedItems.Count > 0 && cboMatHang.SelectedIndex >= 0 && txtSoLuong.Text != "" && KiemTraSoLuong())
             {
                 ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon();
                 chiTietHoaDon.MaHD = this.MAHOADON;
@@ -377,6 +381,22 @@ namespace KaraokeRUM
             {
                 e.Cancel = false;
                 errorProvider1.SetError(txtSoLuong, null);
+            }
+        }
+
+        /*
+         * Kiếm tra số lượng đã hợp lý hay chưa
+         */
+        private bool KiemTraSoLuong()
+        {
+            string txtSLuong = txtSoLuong.Text;
+            if (!clsKiemTra.KiemTraSoLuongMatHangTrongPhong(txtSLuong))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

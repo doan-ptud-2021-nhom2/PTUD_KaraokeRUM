@@ -303,7 +303,7 @@ namespace KaraokeRUM
         */
         LoaiPhong SuaGiaLoaiPhong()
         {
-            if(cboLoaiPhong2.SelectedIndex >= 0 && txtGiaPhongMoi.Text != "" && txtGiaPhongCu.Text != "")
+            if(cboLoaiPhong2.SelectedIndex >= 0 && txtGiaPhongMoi.Text != "" && txtGiaPhongCu.Text != "" && KiemTraTien())
             {
                 LoaiPhong loaiPhong = new LoaiPhong();
                 loaiPhong.MaLoaiPhong = LOAIPHONG.TimLoaiPhong(cboLoaiPhong2.Text).First().MaLoaiPhong;
@@ -422,6 +422,22 @@ namespace KaraokeRUM
             {
                 e.Cancel = false;
                 errorProvider1.SetError(txtGiaPhongMoi, null);
+            }
+        }
+
+        /*
+         * Kiếm tra số lượng đã hợp lý hay chưa
+         */
+        private bool KiemTraTien()
+        {
+            string txtGiaMoi = txtGiaPhongMoi.Text;
+            if (!clsKiemTra.KiemTraSoTien(txtGiaMoi))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }
