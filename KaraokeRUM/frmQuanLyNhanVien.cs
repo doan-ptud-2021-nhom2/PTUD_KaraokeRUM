@@ -53,7 +53,8 @@ namespace KaraokeRUM
             foreach (NhanVien i in NV.LayDSNV(MANVQL))
             {
                 collection.Add(i.MaNV);
-                collection.Add(i.TenNV);
+                collection.Add(i.TenNV.Split(' ')[i.TenNV.Split(' ').Count()-1]);
+                collection.Add( i.TenNV);
             }
             txtTimKiemNhanVien.AutoCompleteCustomSource = collection;
         }

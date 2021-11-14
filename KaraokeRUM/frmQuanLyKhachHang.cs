@@ -43,6 +43,7 @@ namespace KaraokeRUM
             foreach (KhachHang i in KH.LayDSKH())
             {
                 collection.Add(i.MaKH);
+                collection.Add(i.TenKhach.Split(' ')[i.TenKhach.Split(' ').Count() - 1]);
                 collection.Add(i.TenKhach);
             }
             txtTimKiemKhachHang.AutoCompleteCustomSource = collection;
