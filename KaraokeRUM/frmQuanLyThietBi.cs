@@ -56,8 +56,13 @@ namespace KaraokeRUM
             {
                 cboTenPhong.Items.Add(i.TenPhong);
             }
-            DANHSACHPHONGTTB = PHONGTRANGTHIETBI.TraTatCaDuLieu();
+
+            cboTenPhong.SelectedIndex = 0;
+            string tenPhong = cboTenPhong.Text;
+            string maPhong = PHONG.TimPhongTheoTen(tenPhong).First().MaPhong;
+            DANHSACHPHONGTTB = PHONGTRANGTHIETBI.TimPhongTTB(maPhong);
             TaiDuLieuLenLstvPhongTrangThietBi(lstvThietBiTrongPhong, DANHSACHPHONGTTB);
+
             txtTimKiem.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtTimKiem.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
@@ -123,7 +128,7 @@ namespace KaraokeRUM
             lstv.FullRowSelect = true;
             lstv.Columns.Add("Tên Phòng", 150);
             lstv.Columns.Add("Tên Trang Thiết Bị", 350);
-            lstv.Columns.Add("Số Lượng", 100);
+            lstv.Columns.Add("Số Lượng", 250);
         }
         /*Tạo item trong lstvPhongTrangThietBi*/
         private ListViewItem TaoItemPTTB(dynamic pTTB)
