@@ -17,7 +17,9 @@ namespace KaraokeRUM
         /*Lấy tất cả trang thiết bị*/
         public IEnumerable<TrangThietBi> LayToanBoTrangThietBis()
         {
-            IEnumerable<TrangThietBi> tb = from n in dt.TrangThietBis select n;
+            IEnumerable<TrangThietBi> tb = from n in dt.TrangThietBis 
+                                           where n.TrangThai.Equals("DSD")
+                                           select n;
             //dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tb);
             using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
@@ -121,10 +123,10 @@ namespace KaraokeRUM
         }        
 
         /*Hàm tìm danh sách thiết bị theo mã */
-        public IEnumerable<TrangThietBi> TimDSachTTBTheoMa(string maTTB)
+        public IEnumerable<TrangThietBi> TimDSachTTBTheoMa(string timKiem)
         {
             IEnumerable<TrangThietBi> q = from n in dt.TrangThietBis
-                                   where n.MaTTB.Equals(maTTB)
+                                          where n.MaTTB.Equals(timKiem) || n.TenTTB.Equals(timKiem)
                                    select n;
             return q;
         }
