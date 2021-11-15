@@ -478,6 +478,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.label);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmQuanLyNhanVien";
             this.Text = "Quản lý nhân viên";
             this.Load += new System.EventHandler(this.frmQuanLyNhanVien_Load);

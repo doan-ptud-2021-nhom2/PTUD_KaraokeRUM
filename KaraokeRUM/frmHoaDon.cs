@@ -26,7 +26,6 @@ namespace KaraokeRUM
         private clsMatHang MATHANG;
         private clsKhachHang KHACHHANG;
         private clsLoaiKhach LOAIKHACH;
-        private clsChuyenSoThanhChu SOTHANHCHU;
         private IEnumerable<ChiTietHoaDon> DSCTHD;
         private string GIOVAO;
         private string GIORA;
@@ -67,7 +66,6 @@ namespace KaraokeRUM
             MATHANG = new clsMatHang();
             KHACHHANG = new clsKhachHang();
             LOAIKHACH = new clsLoaiKhach();
-            SOTHANHCHU = new clsChuyenSoThanhChu();
 
             btnThanhToan.Enabled = STATUSBTN;
             var hd = HOADON.LayHoaDon(MAHD);
@@ -277,12 +275,6 @@ namespace KaraokeRUM
                                 new Font("Courier New", 13, FontStyle.Regular),
                                 Brushes.Black,
                                 new Point(40, y));
-            //Hiển thị tiền phòng
-            e.Graphics.DrawString(
-                               String.Format("Tiền phòng: {0}", TIENPHONG.ToString("#,### VNĐ")),
-                               new Font("Courier New", 13, FontStyle.Regular),
-                               Brushes.Black,
-                               new Point(w / 2 + 140, y));
             y += 55;
             //Tiêu đề
             e.Graphics.DrawString(
@@ -349,19 +341,41 @@ namespace KaraokeRUM
             p2 = new Point(w - 10, y);
             //Kẻ đường ngang
             e.Graphics.DrawLine(mauDen, p1, p2);
+
+            //Tiền mặt hàng
+            e.Graphics.DrawString(
+                               String.Format("Tiền mặt hàng: {0}", TIENMATHANG.ToString("#,### VNĐ")),
+                               new Font("Courier New", 13, FontStyle.Regular),
+                               Brushes.Black,
+                               new Point(w - 420, y + 8));
+            y += 30;
+            //Tiền phòng
+            e.Graphics.DrawString(
+                               String.Format("Tiền phòng: {0}", TIENPHONG.ToString("#,### VNĐ")),
+                               new Font("Courier New", 13, FontStyle.Regular),
+                               Brushes.Black,
+                               new Point(w - 420, y + 8));
+            y += 30;
+            //VAT
+            e.Graphics.DrawString(
+                                   string.Format("VAT: 10%"),
+                                   new Font("Courier New", 13, FontStyle.Regular),
+                                   Brushes.Black,
+                                   new Point(w - 420, y + 8));
+            y += 30;
+            //ChietKhau
+            e.Graphics.DrawString(
+                                   string.Format("Chiết khấu: {0}%", CHIETKHAU),
+                                   new Font("Courier New", 13, FontStyle.Regular),
+                                   Brushes.Black,
+                                   new Point(w - 420, y + 8));
+            y += 30;
             //Tổng tiền
             e.Graphics.DrawString(
                                    string.Format("Tổng tiền: {0}", TONGTIEN.ToString("#,### VNĐ")),
                                    new Font("Courier New", 13, FontStyle.Regular),
                                    Brushes.Black,
-                                   new Point(w - 320, y + 8));
-            //Đọc số tiền thành chữ
-            y += 40;
-            e.Graphics.DrawString(
-                                   string.Format("Thành chữ: {0} đồng", SOTHANHCHU.DocTienBangChu((long)TONGTIEN)),
-                                   new Font("Courier New", 12, FontStyle.Regular),
-                                   Brushes.Black,
-                                   new Point(15, y));
+                                   new Point(w - 420, y + 8));
             //Text: Cám ơn khách hàng
             y += 100;
             e.Graphics.DrawString(

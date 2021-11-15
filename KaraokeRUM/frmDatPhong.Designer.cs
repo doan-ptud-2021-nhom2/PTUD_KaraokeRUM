@@ -30,6 +30,7 @@ namespace KaraokeRUM
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDatPhong));
             this.lstvDanhSachDP = new System.Windows.Forms.ListView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.fpnlPhongVip = new System.Windows.Forms.FlowLayoutPanel();
@@ -218,6 +219,7 @@ namespace KaraokeRUM
             this.txtSoDienThoai.Size = new System.Drawing.Size(404, 30);
             this.txtSoDienThoai.TabIndex = 3;
             this.txtSoDienThoai.Text = "0343220597";
+            this.txtSoDienThoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoDienThoai_KeyPress);
             this.txtSoDienThoai.Validating += new System.ComponentModel.CancelEventHandler(this.txtSoDienThoai_Validating);
             // 
             // txtTenPhong
@@ -531,6 +533,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnDatPhong);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDatPhong";
             this.Text = "Phong";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

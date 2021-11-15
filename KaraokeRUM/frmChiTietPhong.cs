@@ -162,13 +162,12 @@ namespace KaraokeRUM
         */
         private void btnDoiPhong_Click(object sender, EventArgs e)
         {
-            frmDanhSachPhong frm = new frmDanhSachPhong(MAHOADON, this);
-            frm.Show();
+            
             //Cập nhật phòng cũ
-            Phong phong;
-            phong = PHONG.TimPhong(txtTenPhong.Text).First();
-            phong.TrangThaiPhong = "Đóng";
-            PHONG.SuaTrangThaiPhong(phong);
+            Phong phongCu;
+            phongCu = PHONG.TimPhong(txtTenPhong.Text).First();
+            frmDanhSachPhong frm = new frmDanhSachPhong(MAHOADON, phongCu, this);
+            frm.Show();
         }
 
         /** 
@@ -193,15 +192,18 @@ namespace KaraokeRUM
         {
             if (cboMatHang.Text == "" || txtSoLuong.Text == "")
             {
-                MessageBox.Show("Bạn cần phải nhập, chọn đầy đủ thông tin để thực hiện chức năng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn cần phải nhập, chọn đầy đủ thông tin để thực hiện chức năng!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (!KiemTraSoLuong())
+            else if (Convert.ToInt32(txtSoLuong.Text) < 0)
             {
-                MessageBox.Show("Bạn phải nhập số từ 0-9!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Số lượng phải lớn hơn 0!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 ChiTietHoaDon chiTietHoaDon = TaoChiTietHoaDon();
+                int soLuongTon = MATHANG.TimMaTheoTen(cboMatHang.Text).SoLuongTon;
 
                 if (CHITIETHOADON.TimChiTietHoaDon(MATHANG.TimMaTheoTen(cboMatHang.Text).MaMH, this.MAHOADON).Count() > 0)
                 {
@@ -209,9 +211,11 @@ namespace KaraokeRUM
                     cboMatHang.Text = "";
                     txtSoLuong.Text = "";
                 }
-                else if(Convert.ToInt32(txtSoLuong.Text) > MATHANG.TimMaTheoTen(cboMatHang.Text).SoLuongTon)
+                else if (Convert.ToInt32(txtSoLuong.Text) > soLuongTon)
                 {
-                    MessageBox.Show("Số lượng tồn của mặt hàng không đủ. Vui lòng nhập số lượng nhỏ hơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string thongBao = "Số lượng tồn của mặt hàng không đủ. Số lượng hiện tại: " + soLuongTon + ". Vui lòng nhập số lượng phù hợp!";
+                    MessageBox.Show(thongBao, "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -256,7 +260,7 @@ namespace KaraokeRUM
         */
         ChiTietHoaDon SuaSoLuongMatHang()
         {
-            if(lstvDanhSachMatHang.SelectedItems.Count > 0 && cboMatHang.SelectedIndex >= 0 && txtSoLuong.Text != "" && KiemTraSoLuong())
+            if(lstvDanhSachMatHang.SelectedItems.Count > 0 && cboMatHang.SelectedIndex >= 0 && txtSoLuong.Text != "")
             {
                 ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon();
                 chiTietHoaDon.MaHD = this.MAHOADON;
@@ -270,16 +274,20 @@ namespace KaraokeRUM
             return null;
         }
 
-        //Lỗi không load được chỗ listView
+
         private void btnSua_Click(object sender, EventArgs e)
         {
+            int soLuongTon = MATHANG.TimMaTheoTen(cboMatHang.Text).SoLuongTon;
             if (SuaSoLuongMatHang() == null)
             {
-                MessageBox.Show("Vui lòng chọn một mặt hàng để chỉnh sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn một mặt hàng để chỉnh sửa!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if(Convert.ToInt32(txtSoLuong.Text) > MATHANG.TimMaTheoTen(cboMatHang.Text).SoLuongTon)
+            else if(Convert.ToInt32(txtSoLuong.Text) > soLuongTon)
             {
-                MessageBox.Show("Số lượng tồn của mặt hàng không đủ. Vui lòng nhập số lượng nhỏ hơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string thongBao = "Số lượng tồn của mặt hàng không đủ. Số lượng hiện tại: " + soLuongTon + ". Vui lòng nhập số lượng phù hợp!";
+                MessageBox.Show(thongBao, "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -365,39 +373,9 @@ namespace KaraokeRUM
             }
         }
 
-        /*
-         * Kiểm tra chỉ cho nhập số từ 0-9
-         */
-        private void txtSoLuong_Validating(object sender, CancelEventArgs e)
+        private void txtSoLuong_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string txtSLuong = txtSoLuong.Text;
-            if(!clsKiemTra.KiemTraSoLuongMatHangTrongPhong(txtSLuong))
-            {
-                e.Cancel = true;
-                txtSoLuong.Focus();
-                errorProvider1.SetError(txtSoLuong, "Bạn phải nhập số từ 0-9!");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider1.SetError(txtSoLuong, null);
-            }
-        }
-
-        /*
-         * Kiếm tra số lượng đã hợp lý hay chưa
-         */
-        private bool KiemTraSoLuong()
-        {
-            string txtSLuong = txtSoLuong.Text;
-            if (!clsKiemTra.KiemTraSoLuongMatHangTrongPhong(txtSLuong))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

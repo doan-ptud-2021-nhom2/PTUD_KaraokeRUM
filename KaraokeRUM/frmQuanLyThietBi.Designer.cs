@@ -30,6 +30,7 @@ namespace KaraokeRUM
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuanLyThietBi));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cboDonVi = new System.Windows.Forms.ComboBox();
@@ -492,6 +493,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.txtID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmQuanLyThietBi";
             this.Text = "-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

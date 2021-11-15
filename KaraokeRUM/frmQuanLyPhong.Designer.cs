@@ -30,6 +30,7 @@ namespace KaraokeRUM
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuanLyPhong));
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstvDanhSachPhong = new System.Windows.Forms.ListView();
@@ -169,7 +170,7 @@ namespace KaraokeRUM
             this.txtGiaPhongMoi.Name = "txtGiaPhongMoi";
             this.txtGiaPhongMoi.Size = new System.Drawing.Size(417, 30);
             this.txtGiaPhongMoi.TabIndex = 2;
-            this.txtGiaPhongMoi.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaPhongMoi_Validating);
+            this.txtGiaPhongMoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaPhongMoi_KeyPress);
             // 
             // label7
             // 
@@ -420,6 +421,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.lblTimKiem);
             this.Controls.Add(this.btnTimKiemThongTinPhong);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmQuanLyPhong";
             this.Text = "Quản lý phòng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

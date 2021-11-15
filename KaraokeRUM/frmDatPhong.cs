@@ -47,7 +47,7 @@ namespace KaraokeRUM
 
             btnXemPhong.Enabled = false;
             btnHuyPhong.Enabled = false;
-            rdoHienTai.Enabled = true;
+            rdoHienTai.Checked = true;
 
             MacDinhThoiGian();
             rdoMoPhong.Checked = true;            
@@ -989,6 +989,11 @@ namespace KaraokeRUM
         {
             frmTimKiemKhachHang frm = new frmTimKiemKhachHang();
             frm.Show();
+        }
+
+        private void txtSoDienThoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
