@@ -74,12 +74,22 @@ namespace KaraokeRUM
         }
 
         /*
-         * Kiểm tra độ dài hợp lệ của CMND
+         * Kiểm tra số lượng mặt hàng trong phòng (phải là số)
          */
         public static bool KiemTraSoLuongMatHangTrongPhong(this string soLuong)
         {
             Regex regex = new Regex("^[0-9]+$");
             Match match = regex.Match(soLuong);
+            return match.Success;
+        }
+
+        /*
+         * Kiểm tra Tên phòng theo định dạng: TXXX hoặc VXXX (X là số từ 0-9)
+         */
+        public static bool KiemTraTenPhong(this string tenPhong)
+        {
+            Regex regex = new Regex(@"^[T||V]\d{3}$");
+            Match match = regex.Match(tenPhong);
             return match.Success;
         }
 

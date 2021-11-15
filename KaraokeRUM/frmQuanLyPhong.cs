@@ -171,7 +171,6 @@ namespace KaraokeRUM
         void XoaCacTxtCbo()
         {
             txtSoPhong.Text = "";
-            cboTrangThai.Text = "";
             cboLoaiPhong.Text = "";
             txtGiaPhong.Text = "";
             cboLoaiPhong2.Text = "";
@@ -239,7 +238,7 @@ namespace KaraokeRUM
         */
         dynamic TaoPhong()
         {
-            if(txtSoPhong.Text != "" && cboLoaiPhong.SelectedIndex >= 0 && cboTrangThai.Text != "")
+            if(txtSoPhong.Text != "" && cboLoaiPhong.SelectedIndex >= 0 && cboTrangThai.Text != "" && KiemTraPhong())
             {
                 Phong phong = new Phong();
 
@@ -260,7 +259,7 @@ namespace KaraokeRUM
         */
         dynamic SuaTenVaLoaiPhong()
         {
-            if(lstvDanhSachPhong.SelectedItems.Count > 0 && (cboLoaiPhong.Text == "VIP" || cboLoaiPhong.Text == "THƯỜNG") && txtSoPhong.Text != "")
+            if(lstvDanhSachPhong.SelectedItems.Count > 0 && (cboLoaiPhong.Text == "VIP" || cboLoaiPhong.Text == "THƯỜNG") && txtSoPhong.Text != "" && KiemTraPhong())
             {
                 ListViewItem item = lstvDanhSachPhong.SelectedItems[0];
                 Phong phong = new Phong();
@@ -432,6 +431,41 @@ namespace KaraokeRUM
         {
             string txtGiaMoi = txtGiaPhongMoi.Text;
             if (!clsKiemTra.KiemTraSoTien(txtGiaMoi))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        /**
+        * Xử lý và kiểm tra tên Phòng (số phòng)
+        */
+        private void txtSoPhong_Validating(object sender, CancelEventArgs e)
+        {
+            string txtTenPhong = txtSoPhong.Text;
+            if(!clsKiemTra.KiemTraTenPhong(txtTenPhong))
+            {
+                e.Cancel = true;
+                txtSoPhong.Focus();
+                errorProvider2.SetError(txtSoPhong, "Nhập đúng định dạng: TXXX hoặc VXXX (X: là số từ 0-9)!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider2.SetError(txtSoPhong, null);
+            }
+        }
+
+        /*
+         * Kiếm tra tên Phòng đã đúng định dạng hay chưa
+         */
+        public bool KiemTraPhong()
+        {
+            string txtTenPhong = txtSoPhong.Text;
+            if(!clsKiemTra.KiemTraTenPhong(txtTenPhong))
             {
                 return false;
             }
