@@ -54,24 +54,27 @@ namespace KaraokeRUM
         }
         public bool CapNhatChietKhau(LoaiKhachHang lk)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = myTran;
-                IQueryable<LoaiKhachHang> tam = (from n in dt.LoaiKhachHangs
-                                                 where n.MaLoaiKH == lk.MaLoaiKH
-                                                 select n);
-                tam.First().ChietKhau = lk.ChietKhau;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return true;
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<LoaiKhachHang> tam = (from n in dt.LoaiKhachHangs
+                                                     where n.MaLoaiKH == lk.MaLoaiKH
+                                                     select n);
+                    tam.First().ChietKhau = lk.ChietKhau;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return true;
 
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Lỗi không thể sửa chiết khấu Khách hàng này!" + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Lỗi không thể sửa chiết khấu Khách hàng này!" + ex.Message);
-            }
+            
         }
     }
 }

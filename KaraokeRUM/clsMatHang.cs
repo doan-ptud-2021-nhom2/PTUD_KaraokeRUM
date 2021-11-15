@@ -67,78 +67,86 @@ namespace KaraokeRUM
         }
         public int ThemMatHang(MatHang matHang)
         {
-            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = br;
-                dt.MatHangs.InsertOnSubmit(matHang);
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return 1;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception(ex.Message);
+                try
+                {
+                    dt.Transaction = br;
+                    dt.MatHangs.InsertOnSubmit(matHang);
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception(ex.Message);
+                }
             }
         }
+
         /**
          * Sửa thông tin mặt hàng
          */
         public bool SuaMatHang(MatHang matHang)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = myTran;
-                IQueryable<MatHang> tam = (from n in dt.MatHangs
-                                            where n.MaMH == matHang.MaMH
-                                           select n);
-                tam.First().Loai = matHang.Loai;
-                tam.First().SoLuongTon = matHang.SoLuongTon;
-                tam.First().DonVi = matHang.DonVi;
-                tam.First().Gia = matHang.Gia;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Lỗi không sửa được!" + ex.Message);
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<MatHang> tam = (from n in dt.MatHangs
+                                               where n.MaMH == matHang.MaMH
+                                               select n);
+                    tam.First().Loai = matHang.Loai;
+                    tam.First().SoLuongTon = matHang.SoLuongTon;
+                    tam.First().DonVi = matHang.DonVi;
+                    tam.First().Gia = matHang.Gia;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Lỗi không sửa được!" + ex.Message);
 
+                }
             }
         }
+
         /**
         * thay đổi trạng thái nhân viên thành đã nghỉ.
         */
         public bool XoaMatHang(MatHang matHang)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = myTran;
-                IQueryable<MatHang> tam = (from n in dt.MatHangs
-                                           where n.MaMH == matHang.MaMH
-                                           select n);
-                tam.First().TrangThai = matHang.TrangThai;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Lỗi không sửa được!" + ex.Message);
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<MatHang> tam = (from n in dt.MatHangs
+                                               where n.MaMH == matHang.MaMH
+                                               select n);
+                    tam.First().TrangThai = matHang.TrangThai;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Lỗi không sửa được!" + ex.Message);
 
-            }
+                }
+            }  
         }
         
-         public IEnumerable<MatHang> LayTatCaMatHangTonTai()
+        /*Hàm lấy tắt cả mặt hàng*/
+        public IEnumerable<MatHang> LayTatCaMatHangTonTai()
         {
             IEnumerable<MatHang> q = from n in dt.MatHangs
-                                   
-                                     select n;
+                                        select n;
             return q;
         }
     }

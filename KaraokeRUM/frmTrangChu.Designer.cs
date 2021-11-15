@@ -30,6 +30,7 @@ namespace KaraokeRUM
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTrangChu));
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTrangChu = new System.Windows.Forms.Button();
@@ -65,7 +66,7 @@ namespace KaraokeRUM
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(385, 1043);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
@@ -81,7 +82,7 @@ namespace KaraokeRUM
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(381, 792);
-            this.flowLayoutPanel1.TabIndex = 10;
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnTrangChu
             // 
@@ -95,7 +96,7 @@ namespace KaraokeRUM
             this.btnTrangChu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTrangChu.Name = "btnTrangChu";
             this.btnTrangChu.Size = new System.Drawing.Size(377, 98);
-            this.btnTrangChu.TabIndex = 11;
+            this.btnTrangChu.TabIndex = 0;
             this.btnTrangChu.TabStop = false;
             this.btnTrangChu.Text = "Giới thiệu";
             this.btnTrangChu.UseVisualStyleBackColor = false;
@@ -113,7 +114,7 @@ namespace KaraokeRUM
             this.btnPhong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPhong.Name = "btnPhong";
             this.btnPhong.Size = new System.Drawing.Size(377, 80);
-            this.btnPhong.TabIndex = 12;
+            this.btnPhong.TabIndex = 1;
             this.btnPhong.TabStop = false;
             this.btnPhong.Text = "Đặt phòng";
             this.btnPhong.UseVisualStyleBackColor = false;
@@ -131,7 +132,7 @@ namespace KaraokeRUM
             this.btnQLP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnQLP.Name = "btnQLP";
             this.btnQLP.Size = new System.Drawing.Size(377, 80);
-            this.btnQLP.TabIndex = 11;
+            this.btnQLP.TabIndex = 2;
             this.btnQLP.Text = "Quản lý phòng";
             this.btnQLP.UseVisualStyleBackColor = false;
             this.btnQLP.Click += new System.EventHandler(this.btnQLP_Click);
@@ -148,7 +149,7 @@ namespace KaraokeRUM
             this.btnQLTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnQLTB.Name = "btnQLTB";
             this.btnQLTB.Size = new System.Drawing.Size(377, 80);
-            this.btnQLTB.TabIndex = 10;
+            this.btnQLTB.TabIndex = 3;
             this.btnQLTB.Text = "    Quản lý trang thiết bị";
             this.btnQLTB.UseVisualStyleBackColor = false;
             this.btnQLTB.Click += new System.EventHandler(this.btnQLTB_Click);
@@ -165,7 +166,7 @@ namespace KaraokeRUM
             this.btnQLMH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnQLMH.Name = "btnQLMH";
             this.btnQLMH.Size = new System.Drawing.Size(377, 80);
-            this.btnQLMH.TabIndex = 9;
+            this.btnQLMH.TabIndex = 4;
             this.btnQLMH.Text = "Quản lý mặt hàng";
             this.btnQLMH.UseVisualStyleBackColor = false;
             this.btnQLMH.Click += new System.EventHandler(this.btnQLMH_Click);
@@ -182,7 +183,7 @@ namespace KaraokeRUM
             this.btnThongKe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(377, 80);
-            this.btnThongKe.TabIndex = 8;
+            this.btnThongKe.TabIndex = 5;
             this.btnThongKe.Text = "Thống Kê";
             this.btnThongKe.UseVisualStyleBackColor = false;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
@@ -199,7 +200,7 @@ namespace KaraokeRUM
             this.btnDoiMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
             this.btnDoiMatKhau.Size = new System.Drawing.Size(381, 80);
-            this.btnDoiMatKhau.TabIndex = 10;
+            this.btnDoiMatKhau.TabIndex = 6;
             this.btnDoiMatKhau.Text = "Đổi mật khẩu";
             this.btnDoiMatKhau.UseVisualStyleBackColor = false;
             this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
@@ -216,7 +217,7 @@ namespace KaraokeRUM
             this.btnDangXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(381, 80);
-            this.btnDangXuat.TabIndex = 9;
+            this.btnDangXuat.TabIndex = 7;
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.UseVisualStyleBackColor = false;
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
@@ -291,7 +292,7 @@ namespace KaraokeRUM
             this.panel_workarea.Location = new System.Drawing.Point(388, 1);
             this.panel_workarea.Name = "panel_workarea";
             this.panel_workarea.Size = new System.Drawing.Size(1453, 1043);
-            this.panel_workarea.TabIndex = 11;
+            this.panel_workarea.TabIndex = 0;
             // 
             // frmTrangChu
             // 
@@ -302,6 +303,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.panel_workarea);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmTrangChu";
             this.Text = "Karaoke Rum - Nhân Viên";

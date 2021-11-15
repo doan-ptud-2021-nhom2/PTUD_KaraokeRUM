@@ -18,6 +18,7 @@ namespace KaraokeRUM
          */
         private clsPhong PHONG;
         private clsLoaiPhong LOAIPHONG;
+        private clsHoaDon HOADON;
         private IEnumerable<Phong> DANHSACHPHONG;
         private IEnumerable<LoaiPhong> DANHSACHLOAIPHONG;
         private string MAQL;
@@ -43,6 +44,7 @@ namespace KaraokeRUM
             TaoTieuDeCot(lstvDanhSachPhong);
             PHONG = new clsPhong();
             LOAIPHONG = new clsLoaiPhong();
+            HOADON = new clsHoaDon();
 
             DANHSACHPHONG = PHONG.LayTatCaPhong();
             DANHSACHLOAIPHONG = LOAIPHONG.LayTatCaLoaiPhong();
@@ -169,7 +171,6 @@ namespace KaraokeRUM
         void XoaCacTxtCbo()
         {
             txtSoPhong.Text = "";
-            cboTrangThai.Text = "";
             cboLoaiPhong.Text = "";
             txtGiaPhong.Text = "";
             cboLoaiPhong2.Text = "";
@@ -237,7 +238,7 @@ namespace KaraokeRUM
         */
         dynamic TaoPhong()
         {
-            if(txtSoPhong.Text != "" && cboLoaiPhong.SelectedIndex >= 0 && cboTrangThai.Text != "")
+            if(txtSoPhong.Text != "" && cboLoaiPhong.SelectedIndex >= 0 && cboTrangThai.Text != "" && KiemTraPhong())
             {
                 Phong phong = new Phong();
 
@@ -258,7 +259,7 @@ namespace KaraokeRUM
         */
         dynamic SuaTenVaLoaiPhong()
         {
-            if(lstvDanhSachPhong.SelectedItems.Count > 0 && (cboLoaiPhong.Text == "VIP" || cboLoaiPhong.Text == "THƯỜNG") && txtSoPhong.Text != "")
+            if(lstvDanhSachPhong.SelectedItems.Count > 0 && (cboLoaiPhong.Text == "VIP" || cboLoaiPhong.Text == "THƯỜNG") && txtSoPhong.Text != "" && KiemTraPhong())
             {
                 ListViewItem item = lstvDanhSachPhong.SelectedItems[0];
                 Phong phong = new Phong();
@@ -319,15 +320,25 @@ namespace KaraokeRUM
         {
             if(SuaGiaLoaiPhong() == null) 
             {
-                MessageBox.Show("Bạn phải chọn loại phòng và nhập giá mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn phải chọn loại phòng và nhập giá mới!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 LoaiPhong suaLP = SuaGiaLoaiPhong();
-                LOAIPHONG.CapNhatGiaLoaiPhong(suaLP);
-                DANHSACHPHONG = PHONG.LayTatCaPhongDong();
-                XoaCacTxtCbo();
-                TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);
+                if(suaLP.Gia > 100000)
+                {
+                    LOAIPHONG.CapNhatGiaLoaiPhong(suaLP);
+                    DANHSACHPHONG = PHONG.LayTatCaPhongDong();
+                    XoaCacTxtCbo();
+                    TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);
+                }
+                else
+                {
+                    MessageBox.Show("Giá phòng mới phải lớn hơn 100.000 VNĐ!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
             }
         }
 
@@ -347,10 +358,14 @@ namespace KaraokeRUM
                 if(hoiXoa == DialogResult.Yes)
                 {
 
-                    if(PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Mở" || PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Đặt")
+                    if (PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Mở" || PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Đặt")
                     {
-                        MessageBox.Show("Phòng đang mở hoặc đặt, không được xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Phòng đang được sử dụng không được xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } 
+                    else if (HOADON.LayDanhSachHoaDonTheoMaPhong(PHONG.TimPhongTheoTen(txtSoPhong.Text).FirstOrDefault().MaPhong).Count() > 0)
+                    {
+                        MessageBox.Show("Phòng đã được tạo hóa đơn không được xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     else
                     {
                         phong = PHONG.TimPhong(txtSoPhong.Text).First();
@@ -400,23 +415,46 @@ namespace KaraokeRUM
             txtSoPhong.Enabled = true;
         }
 
+        
+
         /**
-        * Xử lý và kiểm tra giá Phòng
+        * Xử lý và kiểm tra tên Phòng (số phòng)
         */
-        private void txtGiaPhongMoi_Validating(object sender, CancelEventArgs e)
+        private void txtSoPhong_Validating(object sender, CancelEventArgs e)
         {
-            string txtGiaPhong = txtGiaPhongMoi.Text;
-            if (!clsKiemTra.KiemTraSoTien(txtGiaPhong) || Convert.ToInt32(txtGiaPhong) < 100000)
+            string txtTenPhong = txtSoPhong.Text;
+            if(!clsKiemTra.KiemTraTenPhong(txtTenPhong))
             {
                 e.Cancel = true;
-                txtGiaPhongMoi.Focus();
-                errorProvider1.SetError(txtGiaPhongMoi, "Phải là số và lớn hơn 100000!");
+                txtSoPhong.Focus();
+                errorProvider2.SetError(txtSoPhong, "Nhập đúng định dạng: TXXX hoặc VXXX (X: là số từ 0-9)!");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(txtGiaPhongMoi, null);
+                errorProvider2.SetError(txtSoPhong, null);
             }
+        }
+
+        /*
+         * Kiếm tra tên Phòng đã đúng định dạng hay chưa
+         */
+        public bool KiemTraPhong()
+        {
+            string txtTenPhong = txtSoPhong.Text;
+            if(!clsKiemTra.KiemTraTenPhong(txtTenPhong))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void txtGiaPhongMoi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

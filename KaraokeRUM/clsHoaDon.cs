@@ -15,13 +15,25 @@ namespace KaraokeRUM
             dt = LayData();
         }
 
+        /*Hàm lấy hóa đơn theo mã*/
         public HoaDon LayHoaDon(string maHD)
         {
             var hoaDon = (from hd in dt.HoaDons
                           where hd.MaHD.Equals(maHD)
-                          select hd).First();
+                          select hd).FirstOrDefault();
             return hoaDon;
         }
+
+        /*Hàm lấy danh sách hóa đơn theo mã phòng*/
+        public IEnumerable<HoaDon> LayDanhSachHoaDonTheoMaPhong(string maPhong)
+        {
+            var hoaDon = (from hd in dt.HoaDons
+                          where hd.MaPhong.Equals(maPhong)
+                          select hd);
+            return hoaDon;
+        }
+
+        /*Hàm lấy hóa đơn theo mã phòng*/
         public HoaDon LayMaHoaDonTheoMaPhong(string maPhong)
         {
             var hoaDon = (from hd in dt.HoaDons
@@ -42,20 +54,28 @@ namespace KaraokeRUM
             return ds;
         }*/
 
+        /*Hàm lấy toàn bộ danh sách hóa đơn*/
         public IEnumerable<HoaDon> LayToanBoHoaDon()
         {
             IEnumerable<HoaDon> tb = from n in dt.HoaDons select n;
             return tb;
         }
+
+        /*Hàm lấy chi tiết hóa đơn theo mã hóa đơn*/
         public IEnumerable<ChiTietHoaDon> LayChiTietHoaDon(string maHD)
         {
             var dsCTHD = from cthd in dt.ChiTietHoaDons
                          where cthd.MaHD.Equals(maHD)
                          select cthd;
-            dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, dsCTHD);
-            return dsCTHD;
+            using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
+            {
+                dt.Transaction = br;
+                dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, dsCTHD);
+                return dsCTHD;
+            }
         }
 
+        /*Hàm tính tổng tiền mặt hagf theo mã hóa đơn*/
         public int TinhTongTienMatHang(string maHD)
         {
             var dsCTHD = from cthd in dt.ChiTietHoaDons
@@ -66,6 +86,7 @@ namespace KaraokeRUM
             return (int)dsCTHD.Sum(tt => tt.ThanhTien);
         }
 
+        /*Hàm tính thời gian sử dụng theo mã hóa đơn*/
         public int TinhGio(string maHD)
         {
             var gio = (from hd in dt.HoaDons
@@ -75,42 +96,49 @@ namespace KaraokeRUM
 
             return ts;
         }
+
+        /*Hàm thêm hóa đơn*/
         public int ThemHoaDon(HoaDon hoaDon)
         {
-            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = br;
-                dt.HoaDons.InsertOnSubmit(hoaDon);
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return 1;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception(ex.Message);
+                try
+                {
+                    dt.Transaction = br;
+                    dt.HoaDons.InsertOnSubmit(hoaDon);
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception(ex.Message);
+                }
             }
         }
 
+        /*Hàm cập nhật giờ ra cho hóa đơn*/
         public bool CapNhapHoaDon(HoaDon hoaDon)
         {
-            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
-            try
+            using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = br;
-                IQueryable<HoaDon> tam = (from n in dt.HoaDons
-                                           where n.MaHD == hoaDon.MaHD
-                                           select n);
-                tam.First().GioRa = hoaDon.GioRa;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return true;
-            }
-            catch(Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception(ex.Message);
+                try
+                {
+                    dt.Transaction = br;
+                    IQueryable<HoaDon> tam = (from n in dt.HoaDons
+                                              where n.MaHD == hoaDon.MaHD
+                                              select n);
+                    tam.First().GioRa = hoaDon.GioRa;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception(ex.Message);
+                }
             }
         }
 
@@ -119,22 +147,24 @@ namespace KaraokeRUM
          */
         public bool CapNhatDoiPhong(HoaDon hoaDon)
         {
-            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = br;
-                IQueryable<HoaDon> tam = (from n in dt.HoaDons
-                                          where n.MaHD == hoaDon.MaHD
-                                          select n);
-                tam.First().MaPhong = hoaDon.MaPhong;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception(ex.Message);
+                try
+                {
+                    dt.Transaction = br;
+                    IQueryable<HoaDon> tam = (from n in dt.HoaDons
+                                              where n.MaHD == hoaDon.MaHD
+                                              select n);
+                    tam.First().MaPhong = hoaDon.MaPhong;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception(ex.Message);
+                }
             }
         } 
 
@@ -163,25 +193,28 @@ namespace KaraokeRUM
          */
         public int XoaHoaDon(HoaDon hoaDon)
         {
-            System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction();
-            try
+            using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = br;
-                if (KiemTraMaHoaDon(hoaDon.MaHD) != null)
+                try
                 {
-                    dt.HoaDons.DeleteOnSubmit(hoaDon);
-                    dt.SubmitChanges();
-                    dt.Transaction.Commit();
-                    return 1;
+                    dt.Transaction = br;
+                    if (KiemTraMaHoaDon(hoaDon.MaHD) != null)
+                    {
+                        dt.HoaDons.DeleteOnSubmit(hoaDon);
+                        dt.SubmitChanges();
+                        dt.Transaction.Commit();
+                        return 1;
+                    }
+                    return 0;
                 }
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Lỗi!!" + ex.Message);
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Lỗi!!" + ex.Message);
+                }
             }
         }
+
         /*Tìm hóa đơn theo mã phòng - Huy*/
         public HoaDon TimHoaDonTheoMaPhong(string maPhong)
         {

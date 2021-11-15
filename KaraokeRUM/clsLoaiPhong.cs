@@ -53,24 +53,27 @@ namespace KaraokeRUM
         */
         public bool CapNhatGiaLoaiPhong(LoaiPhong lp)
         {
-            System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction();
-            try
+            using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
-                dt.Transaction = myTran;
-                IQueryable<LoaiPhong> tam = (from n in dt.LoaiPhongs
-                                              where n.MaLoaiPhong == lp.MaLoaiPhong
-                                              select n);
-                tam.First().Gia = lp.Gia;
-                dt.SubmitChanges();
-                dt.Transaction.Commit();
-                return true;
+                try
+                {
+                    dt.Transaction = myTran;
+                    IQueryable<LoaiPhong> tam = (from n in dt.LoaiPhongs
+                                                 where n.MaLoaiPhong == lp.MaLoaiPhong
+                                                 select n);
+                    tam.First().Gia = lp.Gia;
+                    dt.SubmitChanges();
+                    dt.Transaction.Commit();
+                    return true;
 
+                }
+                catch (Exception ex)
+                {
+                    dt.Transaction.Rollback();
+                    throw new Exception("Lỗi không thể sửa giá Phòng này!" + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                dt.Transaction.Rollback();
-                throw new Exception("Lỗi không thể sửa giá Phòng này!" + ex.Message);
-            }
+            
         }
 
     }

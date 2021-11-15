@@ -89,7 +89,7 @@ namespace KaraokeRUM
             this.txtCKC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCKC.Name = "txtCKC";
             this.txtCKC.Size = new System.Drawing.Size(359, 30);
-            this.txtCKC.TabIndex = 8;
+            this.txtCKC.TabIndex = 1;
             // 
             // label7
             // 
@@ -110,7 +110,7 @@ namespace KaraokeRUM
             this.cboLoaiKhachHang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cboLoaiKhachHang.Name = "cboLoaiKhachHang";
             this.cboLoaiKhachHang.Size = new System.Drawing.Size(359, 30);
-            this.cboLoaiKhachHang.TabIndex = 3;
+            this.cboLoaiKhachHang.TabIndex = 0;
             this.cboLoaiKhachHang.SelectedIndexChanged += new System.EventHandler(this.cboLoaiKhachHang_SelectedIndexChanged);
             // 
             // label6
@@ -132,7 +132,7 @@ namespace KaraokeRUM
             this.cboLocTheoLoai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cboLocTheoLoai.Name = "cboLocTheoLoai";
             this.cboLocTheoLoai.Size = new System.Drawing.Size(346, 30);
-            this.cboLocTheoLoai.TabIndex = 3;
+            this.cboLocTheoLoai.TabIndex = 0;
             this.cboLocTheoLoai.SelectedIndexChanged += new System.EventHandler(this.cboLocTheoLoai_SelectedIndexChanged);
             // 
             // label3
@@ -157,7 +157,7 @@ namespace KaraokeRUM
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Size = new System.Drawing.Size(1401, 477);
-            this.groupBox2.TabIndex = 67;
+            this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách khách hàng";
             // 
@@ -188,7 +188,7 @@ namespace KaraokeRUM
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Size = new System.Drawing.Size(587, 121);
-            this.groupBox3.TabIndex = 71;
+            this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Lựa chọn xem danh sách khách hàng";
             // 
@@ -219,7 +219,7 @@ namespace KaraokeRUM
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Size = new System.Drawing.Size(587, 295);
-            this.groupBox1.TabIndex = 66;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cập nhập chiết khấu";
             // 
@@ -230,7 +230,7 @@ namespace KaraokeRUM
             this.txtCKM.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCKM.Name = "txtCKM";
             this.txtCKM.Size = new System.Drawing.Size(359, 30);
-            this.txtCKM.TabIndex = 5;
+            this.txtCKM.TabIndex = 2;
             this.txtCKM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCKM_KeyPress);
             // 
             // btnCapNhap
@@ -242,7 +242,7 @@ namespace KaraokeRUM
             this.btnCapNhap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCapNhap.Name = "btnCapNhap";
             this.btnCapNhap.Size = new System.Drawing.Size(362, 46);
-            this.btnCapNhap.TabIndex = 2;
+            this.btnCapNhap.TabIndex = 3;
             this.btnCapNhap.Text = "Cập nhập";
             this.btnCapNhap.UseVisualStyleBackColor = false;
             this.btnCapNhap.Click += new System.EventHandler(this.btnCapNhap_Click);
@@ -266,7 +266,7 @@ namespace KaraokeRUM
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(107, 37);
-            this.btnTimKiem.TabIndex = 68;
+            this.btnTimKiem.TabIndex = 1;
             this.btnTimKiem.Text = "Tìm";
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
@@ -280,7 +280,7 @@ namespace KaraokeRUM
             this.label11.Location = new System.Drawing.Point(0, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(1748, 50);
-            this.label11.TabIndex = 65;
+            this.label11.TabIndex = 0;
             this.label11.Text = "Quản lý khách hàng";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -300,8 +300,7 @@ namespace KaraokeRUM
             this.txtTimKiemKhachHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTimKiemKhachHang.Name = "txtTimKiemKhachHang";
             this.txtTimKiemKhachHang.Size = new System.Drawing.Size(298, 30);
-            this.txtTimKiemKhachHang.TabIndex = 70;
-            this.txtTimKiemKhachHang.TextChanged += new System.EventHandler(this.txtTimKiemKhachHang_TextChanged);
+            this.txtTimKiemKhachHang.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -321,7 +320,7 @@ namespace KaraokeRUM
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox4.Size = new System.Drawing.Size(587, 252);
-            this.groupBox4.TabIndex = 67;
+            this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Thông tin khách hàng";
             // 
@@ -333,7 +332,7 @@ namespace KaraokeRUM
             this.txtMaKhachHang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMaKhachHang.Name = "txtMaKhachHang";
             this.txtMaKhachHang.Size = new System.Drawing.Size(359, 30);
-            this.txtMaKhachHang.TabIndex = 8;
+            this.txtMaKhachHang.TabIndex = 0;
             // 
             // label9
             // 
@@ -353,7 +352,7 @@ namespace KaraokeRUM
             this.txtSDT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(359, 30);
-            this.txtSDT.TabIndex = 8;
+            this.txtSDT.TabIndex = 2;
             // 
             // label5
             // 
@@ -384,7 +383,7 @@ namespace KaraokeRUM
             this.txtTenKhachHang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTenKhachHang.Name = "txtTenKhachHang";
             this.txtTenKhachHang.Size = new System.Drawing.Size(359, 30);
-            this.txtTenKhachHang.TabIndex = 5;
+            this.txtTenKhachHang.TabIndex = 1;
             // 
             // btnCapNhapGhiChu
             // 
@@ -395,7 +394,7 @@ namespace KaraokeRUM
             this.btnCapNhapGhiChu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCapNhapGhiChu.Name = "btnCapNhapGhiChu";
             this.btnCapNhapGhiChu.Size = new System.Drawing.Size(362, 46);
-            this.btnCapNhapGhiChu.TabIndex = 2;
+            this.btnCapNhapGhiChu.TabIndex = 4;
             this.btnCapNhapGhiChu.Text = "Cập nhập";
             this.btnCapNhapGhiChu.UseVisualStyleBackColor = false;
             this.btnCapNhapGhiChu.Click += new System.EventHandler(this.btnCapNhapGhiChu_Click);
@@ -433,7 +432,7 @@ namespace KaraokeRUM
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox5.Size = new System.Drawing.Size(1401, 480);
-            this.groupBox5.TabIndex = 72;
+            this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Danh sách đen";
             // 
@@ -467,6 +466,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTimKiemKhachHang);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmQuanLyKhachHang";
             this.Text = "frmQuanLyKhachHang";

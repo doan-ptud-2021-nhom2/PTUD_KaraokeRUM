@@ -30,6 +30,7 @@ namespace KaraokeRUM
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDoiMatKhau));
             this.label1 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
             this.txtNLMK = new System.Windows.Forms.TextBox();
@@ -66,7 +67,7 @@ namespace KaraokeRUM
             this.btnLuu.Location = new System.Drawing.Point(21, 205);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(530, 44);
-            this.btnLuu.TabIndex = 17;
+            this.btnLuu.TabIndex = 3;
             this.btnLuu.Text = "Lưu thay đổi";
             this.btnLuu.UseVisualStyleBackColor = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
@@ -78,7 +79,7 @@ namespace KaraokeRUM
             this.txtNLMK.Name = "txtNLMK";
             this.txtNLMK.PasswordChar = '*';
             this.txtNLMK.Size = new System.Drawing.Size(252, 30);
-            this.txtNLMK.TabIndex = 16;
+            this.txtNLMK.TabIndex = 2;
             // 
             // txtMKM
             // 
@@ -87,7 +88,7 @@ namespace KaraokeRUM
             this.txtMKM.Name = "txtMKM";
             this.txtMKM.PasswordChar = '*';
             this.txtMKM.Size = new System.Drawing.Size(252, 30);
-            this.txtMKM.TabIndex = 15;
+            this.txtMKM.TabIndex = 1;
             this.txtMKM.Validating += new System.ComponentModel.CancelEventHandler(this.txtMKM_Validating);
             // 
             // txtMKHT
@@ -97,7 +98,7 @@ namespace KaraokeRUM
             this.txtMKHT.Name = "txtMKHT";
             this.txtMKHT.PasswordChar = '*';
             this.txtMKHT.Size = new System.Drawing.Size(252, 30);
-            this.txtMKHT.TabIndex = 14;
+            this.txtMKHT.TabIndex = 0;
             // 
             // label5
             // 
@@ -142,7 +143,7 @@ namespace KaraokeRUM
             this.groupBox1.Location = new System.Drawing.Point(509, 280);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(603, 274);
-            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đổi mật khẩu";
             // 
@@ -159,6 +160,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDoiMatKhau";
             this.Text = "Đổi mật khẩu";
             this.Load += new System.EventHandler(this.frmDoiMatKhau_Load);

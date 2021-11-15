@@ -29,6 +29,7 @@ namespace KaraokeRUM
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTrangChuQL));
             this.panel_workarea = new System.Windows.Forms.Panel();
             this.lblTenQL = new System.Windows.Forms.Label();
             this.lblChucVu = new System.Windows.Forms.Label();
@@ -57,7 +58,7 @@ namespace KaraokeRUM
             this.panel_workarea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_workarea.Name = "panel_workarea";
             this.panel_workarea.Size = new System.Drawing.Size(931, 930);
-            this.panel_workarea.TabIndex = 5;
+            this.panel_workarea.TabIndex = 0;
             // 
             // lblTenQL
             // 
@@ -149,7 +150,7 @@ namespace KaraokeRUM
             this.btnTrangChu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTrangChu.Name = "btnTrangChu";
             this.btnTrangChu.Size = new System.Drawing.Size(377, 80);
-            this.btnTrangChu.TabIndex = 12;
+            this.btnTrangChu.TabIndex = 0;
             this.btnTrangChu.TabStop = false;
             this.btnTrangChu.Text = "Giới thiệu";
             this.btnTrangChu.UseVisualStyleBackColor = false;
@@ -167,7 +168,7 @@ namespace KaraokeRUM
             this.btnQLNV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnQLNV.Name = "btnQLNV";
             this.btnQLNV.Size = new System.Drawing.Size(377, 80);
-            this.btnQLNV.TabIndex = 10;
+            this.btnQLNV.TabIndex = 1;
             this.btnQLNV.Text = "Quản lý nhân viên";
             this.btnQLNV.UseVisualStyleBackColor = false;
             this.btnQLNV.Click += new System.EventHandler(this.btnQLNV_Click);
@@ -184,7 +185,7 @@ namespace KaraokeRUM
             this.btnQLKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnQLKH.Name = "btnQLKH";
             this.btnQLKH.Size = new System.Drawing.Size(377, 80);
-            this.btnQLKH.TabIndex = 11;
+            this.btnQLKH.TabIndex = 2;
             this.btnQLKH.Text = "     Quản lý khách hàng";
             this.btnQLKH.UseVisualStyleBackColor = false;
             this.btnQLKH.Click += new System.EventHandler(this.btnQLKH_Click);
@@ -201,7 +202,7 @@ namespace KaraokeRUM
             this.btnThongKe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(377, 80);
-            this.btnThongKe.TabIndex = 11;
+            this.btnThongKe.TabIndex = 3;
             this.btnThongKe.Text = "Thống kê";
             this.btnThongKe.UseVisualStyleBackColor = false;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
@@ -218,7 +219,7 @@ namespace KaraokeRUM
             this.btnDoiMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
             this.btnDoiMatKhau.Size = new System.Drawing.Size(377, 80);
-            this.btnDoiMatKhau.TabIndex = 11;
+            this.btnDoiMatKhau.TabIndex = 4;
             this.btnDoiMatKhau.Text = "Đổi mật khẩu";
             this.btnDoiMatKhau.UseVisualStyleBackColor = false;
             this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
@@ -235,7 +236,7 @@ namespace KaraokeRUM
             this.btnDangXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(377, 80);
-            this.btnDangXuat.TabIndex = 13;
+            this.btnDangXuat.TabIndex = 5;
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.UseVisualStyleBackColor = false;
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
@@ -249,6 +250,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel_workarea);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmTrangChuQL";
             this.Text = "Trang Chủ";
