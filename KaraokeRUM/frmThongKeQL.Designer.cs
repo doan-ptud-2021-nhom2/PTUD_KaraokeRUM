@@ -38,6 +38,7 @@ namespace KaraokeRUM
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThongKeQL));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chrThongKeMatHang = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtTDT = new System.Windows.Forms.TextBox();
@@ -366,6 +367,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label11);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmThongKeQL";
             this.RightToLeftLayout = true;
             this.ShowIcon = false;

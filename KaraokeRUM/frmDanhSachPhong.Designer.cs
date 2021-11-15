@@ -29,6 +29,7 @@ namespace KaraokeRUM
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDanhSachPhong));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.fpnlPhongVip = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -180,9 +181,10 @@ namespace KaraokeRUM
             this.ClientSize = new System.Drawing.Size(844, 542);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDanhSachPhong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Danh sách phòng";
+            this.Text = "Karaoke RUM - Danh Sách Phòng";
             this.Load += new System.EventHandler(this.frmDanhSachPhong_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

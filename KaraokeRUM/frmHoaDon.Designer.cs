@@ -566,6 +566,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmHoaDon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Karaoke RUM - Hóa Đơn";

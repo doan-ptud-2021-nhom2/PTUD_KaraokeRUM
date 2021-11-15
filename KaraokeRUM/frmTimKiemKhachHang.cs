@@ -41,16 +41,25 @@ namespace KaraokeRUM
                 KhachHang khachHang = KHACHHANG.TimKhachHang(sdt);
                 if (khachHang == null)
                 {
-                    MessageBox.Show("Không tìm thấy khách hàng", "Thông tin tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Không tìm thấy khách hàng!", "Thông tin tìm kiếm", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     HoaDon hoaDon = HOADON.TimHoaDonTheoMaKhachHang(khachHang.MaKH);
-                    Phong phong = PHONG.TimMotPhongTheoMa(hoaDon.MaPhong);
-                    string tenKhachHang = khachHang.TenKhach;
-                    string tenPhong = phong.TenPhong;
-                    string kqua = "Khách hàng:" + tenKhachHang + "\nPhòng sử dụng :" + tenPhong;
-                    MessageBox.Show(kqua, "Thông tin tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if(hoaDon == null)
+                    {
+                        MessageBox.Show("Khách hàng hiện không sử dụng phòng nào!", "Thông tin tìm kiếm",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        Phong phong = PHONG.TimMotPhongTheoMa(hoaDon.MaPhong);
+                        string tenKhachHang = khachHang.TenKhach;
+                        string tenPhong = phong.TenPhong;
+                        string kqua = "Khách hàng: " + tenKhachHang + "\nPhòng sử dụng : " + tenPhong;
+                        MessageBox.Show(kqua, "Thông tin tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }                         
         }
@@ -59,13 +68,11 @@ namespace KaraokeRUM
             string soDienThoai = txtSDT.Text;
             if (!clsKiemTra.KiemTraSDT(soDienThoai))
             {
-                e.Cancel = true;
                 txtSDT.Focus();
-                errSoDienThoai.SetError(txtSDT, "Số điện thoại chưa hợp lý. Ví dụ: 0879276284");
+                errSoDienThoai.SetError(txtSDT, "Số điện thoại chưa hợp lý!. Ví dụ: 0879276284");
             }
             else
             {
-                e.Cancel = false;
                 errSoDienThoai.SetError(txtSDT, null);
             }
         }
@@ -82,5 +89,15 @@ namespace KaraokeRUM
             }
         }
 
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
+            {
+                errSoDienThoai.SetError(txtSDT, null);
+                this.Close();
+            }
+                
+        }
     }
 }
