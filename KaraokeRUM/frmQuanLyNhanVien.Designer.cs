@@ -77,7 +77,6 @@ namespace KaraokeRUM
             this.txtTimKiemNhanVien.Name = "txtTimKiemNhanVien";
             this.txtTimKiemNhanVien.Size = new System.Drawing.Size(355, 36);
             this.txtTimKiemNhanVien.TabIndex = 63;
-            this.txtTimKiemNhanVien.TextChanged += new System.EventHandler(this.txtTimKiemNhanVien_TextChanged);
             // 
             // groupBox2
             // 

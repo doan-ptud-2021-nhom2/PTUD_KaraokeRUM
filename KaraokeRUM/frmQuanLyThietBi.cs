@@ -196,6 +196,7 @@ namespace KaraokeRUM
             }
             btnSuaTP.Enabled = true;
             btnXoaTP.Enabled = true;
+            btnThemTP.Enabled = false;
         }
         #endregion
         #region ThietBi
@@ -280,13 +281,7 @@ namespace KaraokeRUM
             }    
         }
         /*Chức năng duyệt lại danh sách thiết bị*/
-        #endregion
-        private void btnLamMoi_Click(object sender, EventArgs e)
-        {
-            DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBiKhiThemVaoPhong();
-            XoaDuLieuTextBox();
-            TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
-        }
+        #endregion   
         /*Chức năng xóa thiết bị*/
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -452,6 +447,7 @@ namespace KaraokeRUM
         /*Gán AutoCompleteCustomSoure vào ô tìm kiếm*/
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
+            txtTimKiem.AutoCompleteCustomSource.Clear();
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
             foreach (TrangThietBi i in THIETBI.LayToanBoTrangThietBis())
             {
