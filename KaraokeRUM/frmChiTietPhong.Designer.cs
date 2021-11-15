@@ -136,7 +136,7 @@ namespace KaraokeRUM
             this.txtLoaiPhong.Location = new System.Drawing.Point(649, 113);
             this.txtLoaiPhong.Name = "txtLoaiPhong";
             this.txtLoaiPhong.Size = new System.Drawing.Size(202, 34);
-            this.txtLoaiPhong.TabIndex = 13;
+            this.txtLoaiPhong.TabIndex = 4;
             // 
             // txtTTP
             // 
@@ -145,7 +145,7 @@ namespace KaraokeRUM
             this.txtTTP.Location = new System.Drawing.Point(649, 180);
             this.txtTTP.Name = "txtTTP";
             this.txtTTP.Size = new System.Drawing.Size(202, 34);
-            this.txtTTP.TabIndex = 13;
+            this.txtTTP.TabIndex = 5;
             // 
             // txtSoDienThoai
             // 
@@ -154,7 +154,7 @@ namespace KaraokeRUM
             this.txtSoDienThoai.Location = new System.Drawing.Point(207, 113);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(202, 34);
-            this.txtSoDienThoai.TabIndex = 13;
+            this.txtSoDienThoai.TabIndex = 1;
             // 
             // txtTenPhong
             // 
@@ -163,7 +163,7 @@ namespace KaraokeRUM
             this.txtTenPhong.Location = new System.Drawing.Point(649, 53);
             this.txtTenPhong.Name = "txtTenPhong";
             this.txtTenPhong.Size = new System.Drawing.Size(202, 34);
-            this.txtTenPhong.TabIndex = 13;
+            this.txtTenPhong.TabIndex = 3;
             // 
             // txtGioVao
             // 
@@ -172,7 +172,7 @@ namespace KaraokeRUM
             this.txtGioVao.Location = new System.Drawing.Point(207, 180);
             this.txtGioVao.Name = "txtGioVao";
             this.txtGioVao.Size = new System.Drawing.Size(202, 34);
-            this.txtGioVao.TabIndex = 12;
+            this.txtGioVao.TabIndex = 2;
             // 
             // txtTenKhachHang
             // 
@@ -181,7 +181,7 @@ namespace KaraokeRUM
             this.txtTenKhachHang.Location = new System.Drawing.Point(207, 53);
             this.txtTenKhachHang.Name = "txtTenKhachHang";
             this.txtTenKhachHang.Size = new System.Drawing.Size(202, 34);
-            this.txtTenKhachHang.TabIndex = 12;
+            this.txtTenKhachHang.TabIndex = 0;
             // 
             // btnThoat
             // 
@@ -191,7 +191,7 @@ namespace KaraokeRUM
             this.btnThoat.Location = new System.Drawing.Point(669, 251);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(192, 52);
-            this.btnThoat.TabIndex = 10;
+            this.btnThoat.TabIndex = 9;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
@@ -204,7 +204,7 @@ namespace KaraokeRUM
             this.btnHuyPhong.Location = new System.Drawing.Point(251, 251);
             this.btnHuyPhong.Name = "btnHuyPhong";
             this.btnHuyPhong.Size = new System.Drawing.Size(192, 52);
-            this.btnHuyPhong.TabIndex = 10;
+            this.btnHuyPhong.TabIndex = 7;
             this.btnHuyPhong.Text = "Hủy Phòng";
             this.btnHuyPhong.UseVisualStyleBackColor = false;
             this.btnHuyPhong.Click += new System.EventHandler(this.btnHuyPhong_Click);
@@ -217,7 +217,7 @@ namespace KaraokeRUM
             this.btnDoiPhong.Location = new System.Drawing.Point(42, 251);
             this.btnDoiPhong.Name = "btnDoiPhong";
             this.btnDoiPhong.Size = new System.Drawing.Size(192, 52);
-            this.btnDoiPhong.TabIndex = 10;
+            this.btnDoiPhong.TabIndex = 6;
             this.btnDoiPhong.Text = "Đổi Phòng";
             this.btnDoiPhong.UseVisualStyleBackColor = false;
             this.btnDoiPhong.Click += new System.EventHandler(this.btnDoiPhong_Click);
@@ -230,7 +230,7 @@ namespace KaraokeRUM
             this.btnTaoHoaDon.Location = new System.Drawing.Point(460, 251);
             this.btnTaoHoaDon.Name = "btnTaoHoaDon";
             this.btnTaoHoaDon.Size = new System.Drawing.Size(192, 52);
-            this.btnTaoHoaDon.TabIndex = 11;
+            this.btnTaoHoaDon.TabIndex = 8;
             this.btnTaoHoaDon.Text = "Tạo Hóa Đơn";
             this.btnTaoHoaDon.UseVisualStyleBackColor = false;
             this.btnTaoHoaDon.Click += new System.EventHandler(this.btnTaoHoaDon_Click);
@@ -272,7 +272,7 @@ namespace KaraokeRUM
             this.panel3.Location = new System.Drawing.Point(23, 405);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(911, 329);
-            this.panel3.TabIndex = 13;
+            this.panel3.TabIndex = 2;
             // 
             // btnXoa
             // 
@@ -282,7 +282,7 @@ namespace KaraokeRUM
             this.btnXoa.Location = new System.Drawing.Point(630, 188);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(192, 52);
-            this.btnXoa.TabIndex = 5;
+            this.btnXoa.TabIndex = 4;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -295,7 +295,7 @@ namespace KaraokeRUM
             this.btnThem.Location = new System.Drawing.Point(82, 188);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(192, 52);
-            this.btnThem.TabIndex = 3;
+            this.btnThem.TabIndex = 2;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -306,7 +306,7 @@ namespace KaraokeRUM
             this.txtSoLuong.Location = new System.Drawing.Point(203, 116);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(216, 34);
-            this.txtSoLuong.TabIndex = 2;
+            this.txtSoLuong.TabIndex = 1;
             this.txtSoLuong.Validating += new System.ComponentModel.CancelEventHandler(this.txtSoLuong_Validating);
             // 
             // btnSua
@@ -317,7 +317,7 @@ namespace KaraokeRUM
             this.btnSua.Location = new System.Drawing.Point(350, 188);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(192, 52);
-            this.btnSua.TabIndex = 4;
+            this.btnSua.TabIndex = 3;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -368,7 +368,7 @@ namespace KaraokeRUM
             this.cboMatHang.Location = new System.Drawing.Point(203, 53);
             this.cboMatHang.Name = "cboMatHang";
             this.cboMatHang.Size = new System.Drawing.Size(216, 34);
-            this.cboMatHang.TabIndex = 1;
+            this.cboMatHang.TabIndex = 0;
             // 
             // panel2
             // 
@@ -377,7 +377,7 @@ namespace KaraokeRUM
             this.panel2.Location = new System.Drawing.Point(23, 115);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(911, 259);
-            this.panel2.TabIndex = 8;
+            this.panel2.TabIndex = 0;
             // 
             // lblPhong
             // 
@@ -426,7 +426,7 @@ namespace KaraokeRUM
             this.groupBox2.Location = new System.Drawing.Point(973, 102);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(872, 632);
-            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách mặt hàng";
             // 

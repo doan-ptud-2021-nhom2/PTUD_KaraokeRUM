@@ -79,7 +79,7 @@ namespace KaraokeRUM
             this.panel2.Location = new System.Drawing.Point(12, 55);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(814, 473);
-            this.panel2.TabIndex = 4;
+            this.panel2.TabIndex = 0;
             // 
             // label9
             // 
@@ -137,7 +137,7 @@ namespace KaraokeRUM
             this.groupBox2.Location = new System.Drawing.Point(4, 253);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(586, 205);
-            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phòng THƯỜNG";
             // 

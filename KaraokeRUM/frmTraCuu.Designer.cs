@@ -48,7 +48,7 @@ namespace KaraokeRUM
             this.btnTraCuu.Location = new System.Drawing.Point(278, 130);
             this.btnTraCuu.Name = "btnTraCuu";
             this.btnTraCuu.Size = new System.Drawing.Size(391, 50);
-            this.btnTraCuu.TabIndex = 0;
+            this.btnTraCuu.TabIndex = 1;
             this.btnTraCuu.Text = "Tra cứu";
             this.btnTraCuu.UseVisualStyleBackColor = false;
             this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
@@ -59,7 +59,7 @@ namespace KaraokeRUM
             this.txtSDT.Location = new System.Drawing.Point(278, 87);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(845, 30);
-            this.txtSDT.TabIndex = 1;
+            this.txtSDT.TabIndex = 0;
             this.txtSDT.TextChanged += new System.EventHandler(this.txtSDT_TextChanged);
             // 
             // label1
@@ -80,7 +80,7 @@ namespace KaraokeRUM
             this.btnThoat.Location = new System.Drawing.Point(732, 130);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(391, 50);
-            this.btnThoat.TabIndex = 0;
+            this.btnThoat.TabIndex = 2;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
@@ -104,7 +104,7 @@ namespace KaraokeRUM
             this.lstvKhachHang.Location = new System.Drawing.Point(48, 195);
             this.lstvKhachHang.Name = "lstvKhachHang";
             this.lstvKhachHang.Size = new System.Drawing.Size(1075, 105);
-            this.lstvKhachHang.TabIndex = 5;
+            this.lstvKhachHang.TabIndex = 3;
             this.lstvKhachHang.UseCompatibleStateImageBehavior = false;
             // 
             // errorProvider1
