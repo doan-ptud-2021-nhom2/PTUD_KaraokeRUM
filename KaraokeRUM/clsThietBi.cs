@@ -19,7 +19,12 @@ namespace KaraokeRUM
         {
             IEnumerable<TrangThietBi> tb = from n in dt.TrangThietBis select n;
             //dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tb);
-            return tb;
+            using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
+            {
+                dt.Transaction = br;
+                dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tb);
+                return tb;
+            }
         }
 
         /*Lấy tất cả trang thiết bị*/

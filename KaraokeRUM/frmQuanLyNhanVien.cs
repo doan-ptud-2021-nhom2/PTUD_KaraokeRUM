@@ -240,9 +240,6 @@ namespace KaraokeRUM
         /*
         * auto complete 
         */
-        private void txtTimKiemNhanVien_TextChanged(object sender, EventArgs e)
-        {
-        }
         void XoaCacTxtCbo()
         {
             txtTen.Text = "";
