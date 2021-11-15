@@ -218,6 +218,7 @@ namespace KaraokeRUM
             this.txtSoDienThoai.Size = new System.Drawing.Size(404, 30);
             this.txtSoDienThoai.TabIndex = 3;
             this.txtSoDienThoai.Text = "0343220597";
+            this.txtSoDienThoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoDienThoai_KeyPress);
             this.txtSoDienThoai.Validating += new System.ComponentModel.CancelEventHandler(this.txtSoDienThoai_Validating);
             // 
             // txtTenPhong
