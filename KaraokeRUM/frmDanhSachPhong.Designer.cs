@@ -181,6 +181,7 @@ namespace KaraokeRUM
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmDanhSachPhong";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh sách phòng";
             this.Load += new System.EventHandler(this.frmDanhSachPhong_Load);
             this.groupBox1.ResumeLayout(false);
