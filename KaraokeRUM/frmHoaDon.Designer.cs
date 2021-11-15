@@ -96,7 +96,7 @@ namespace KaraokeRUM
             this.btnInHoaDon.Location = new System.Drawing.Point(624, 744);
             this.btnInHoaDon.Name = "btnInHoaDon";
             this.btnInHoaDon.Size = new System.Drawing.Size(199, 53);
-            this.btnInHoaDon.TabIndex = 23;
+            this.btnInHoaDon.TabIndex = 1;
             this.btnInHoaDon.Text = "In hóa đơn";
             this.btnInHoaDon.UseVisualStyleBackColor = false;
             this.btnInHoaDon.Click += new System.EventHandler(this.btnInHoaDon_Click);
@@ -183,7 +183,7 @@ namespace KaraokeRUM
             this.groupBox2.Location = new System.Drawing.Point(15, 481);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(811, 257);
-            this.groupBox2.TabIndex = 16;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chi tiết hóa đơn";
             // 
@@ -486,7 +486,7 @@ namespace KaraokeRUM
             this.btnThanhToan.Location = new System.Drawing.Point(624, 818);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(199, 53);
-            this.btnThanhToan.TabIndex = 33;
+            this.btnThanhToan.TabIndex = 2;
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.UseVisualStyleBackColor = false;
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);

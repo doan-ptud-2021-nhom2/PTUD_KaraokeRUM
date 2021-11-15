@@ -120,7 +120,7 @@ namespace KaraokeRUM
             this.groupBOx.Location = new System.Drawing.Point(774, 53);
             this.groupBOx.Name = "groupBOx";
             this.groupBOx.Size = new System.Drawing.Size(842, 817);
-            this.groupBOx.TabIndex = 24;
+            this.groupBOx.TabIndex = 1;
             this.groupBOx.TabStop = false;
             this.groupBOx.Text = "Danh sách đặt phòng";
             // 
@@ -170,7 +170,7 @@ namespace KaraokeRUM
             this.groupBox1.Location = new System.Drawing.Point(47, 523);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(710, 347);
-            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin phòng";
             // 
@@ -181,7 +181,7 @@ namespace KaraokeRUM
             this.dtmGioDatPhong.MinDate = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
             this.dtmGioDatPhong.Name = "dtmGioDatPhong";
             this.dtmGioDatPhong.Size = new System.Drawing.Size(404, 34);
-            this.dtmGioDatPhong.TabIndex = 28;
+            this.dtmGioDatPhong.TabIndex = 7;
             // 
             // rdoDatPhong
             // 
@@ -190,7 +190,7 @@ namespace KaraokeRUM
             this.rdoDatPhong.Location = new System.Drawing.Point(291, 33);
             this.rdoDatPhong.Name = "rdoDatPhong";
             this.rdoDatPhong.Size = new System.Drawing.Size(133, 31);
-            this.rdoDatPhong.TabIndex = 27;
+            this.rdoDatPhong.TabIndex = 1;
             this.rdoDatPhong.TabStop = true;
             this.rdoDatPhong.Text = "Đặt phòng";
             this.rdoDatPhong.UseVisualStyleBackColor = true;
@@ -203,7 +203,7 @@ namespace KaraokeRUM
             this.rdoMoPhong.Location = new System.Drawing.Point(32, 33);
             this.rdoMoPhong.Name = "rdoMoPhong";
             this.rdoMoPhong.Size = new System.Drawing.Size(132, 31);
-            this.rdoMoPhong.TabIndex = 26;
+            this.rdoMoPhong.TabIndex = 0;
             this.rdoMoPhong.TabStop = true;
             this.rdoMoPhong.Text = "Mở phòng";
             this.rdoMoPhong.UseVisualStyleBackColor = true;
@@ -216,7 +216,7 @@ namespace KaraokeRUM
             this.txtSoDienThoai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(404, 30);
-            this.txtSoDienThoai.TabIndex = 1;
+            this.txtSoDienThoai.TabIndex = 3;
             this.txtSoDienThoai.Text = "0343220597";
             this.txtSoDienThoai.Validating += new System.ComponentModel.CancelEventHandler(this.txtSoDienThoai_Validating);
             // 
@@ -226,7 +226,7 @@ namespace KaraokeRUM
             this.txtTenPhong.Location = new System.Drawing.Point(235, 162);
             this.txtTenPhong.Name = "txtTenPhong";
             this.txtTenPhong.Size = new System.Drawing.Size(404, 30);
-            this.txtTenPhong.TabIndex = 16;
+            this.txtTenPhong.TabIndex = 4;
             // 
             // txtHoTen
             // 
@@ -235,7 +235,7 @@ namespace KaraokeRUM
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(404, 30);
-            this.txtHoTen.TabIndex = 1;
+            this.txtHoTen.TabIndex = 2;
             this.txtHoTen.Text = "Lê Tuấn";
             // 
             // label20
@@ -295,7 +295,7 @@ namespace KaraokeRUM
             this.dTimeNgayNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dTimeNgayNhan.Name = "dTimeNgayNhan";
             this.dTimeNgayNhan.Size = new System.Drawing.Size(404, 30);
-            this.dTimeNgayNhan.TabIndex = 9;
+            this.dTimeNgayNhan.TabIndex = 6;
             this.dTimeNgayNhan.Value = new System.DateTime(2021, 5, 21, 0, 0, 0, 0);
             // 
             // label2
@@ -318,7 +318,7 @@ namespace KaraokeRUM
             this.dTimeDatPhong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dTimeDatPhong.Name = "dTimeDatPhong";
             this.dTimeDatPhong.Size = new System.Drawing.Size(403, 30);
-            this.dTimeDatPhong.TabIndex = 8;
+            this.dTimeDatPhong.TabIndex = 5;
             this.dTimeDatPhong.Value = new System.DateTime(2021, 5, 12, 0, 0, 0, 0);
             // 
             // btnMoPhong
@@ -329,7 +329,7 @@ namespace KaraokeRUM
             this.btnMoPhong.Location = new System.Drawing.Point(289, 903);
             this.btnMoPhong.Name = "btnMoPhong";
             this.btnMoPhong.Size = new System.Drawing.Size(203, 52);
-            this.btnMoPhong.TabIndex = 14;
+            this.btnMoPhong.TabIndex = 4;
             this.btnMoPhong.Text = "Mở Phòng";
             this.btnMoPhong.UseVisualStyleBackColor = false;
             this.btnMoPhong.Click += new System.EventHandler(this.btnMoPhong_Click);
@@ -342,7 +342,7 @@ namespace KaraokeRUM
             this.btnHuyPhong.Location = new System.Drawing.Point(531, 903);
             this.btnHuyPhong.Name = "btnHuyPhong";
             this.btnHuyPhong.Size = new System.Drawing.Size(203, 52);
-            this.btnHuyPhong.TabIndex = 14;
+            this.btnHuyPhong.TabIndex = 5;
             this.btnHuyPhong.Text = "Hủy Đặt Phòng";
             this.btnHuyPhong.UseVisualStyleBackColor = false;
             this.btnHuyPhong.Click += new System.EventHandler(this.btnHuy_Click);
@@ -355,7 +355,7 @@ namespace KaraokeRUM
             this.btnDatPhong.Location = new System.Drawing.Point(47, 903);
             this.btnDatPhong.Name = "btnDatPhong";
             this.btnDatPhong.Size = new System.Drawing.Size(203, 52);
-            this.btnDatPhong.TabIndex = 14;
+            this.btnDatPhong.TabIndex = 3;
             this.btnDatPhong.Text = "Đặt Phòng";
             this.btnDatPhong.UseVisualStyleBackColor = false;
             this.btnDatPhong.Click += new System.EventHandler(this.btnDatPhong_Click);
@@ -372,7 +372,7 @@ namespace KaraokeRUM
             this.panel2.Location = new System.Drawing.Point(47, 98);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(710, 419);
-            this.panel2.TabIndex = 23;
+            this.panel2.TabIndex = 0;
             // 
             // label9
             // 
@@ -429,7 +429,7 @@ namespace KaraokeRUM
             this.groupBox2.Location = new System.Drawing.Point(12, 215);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(517, 183);
-            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phòng THƯỜNG";
             // 
@@ -448,7 +448,7 @@ namespace KaraokeRUM
             this.rdoTatCa.Location = new System.Drawing.Point(793, 915);
             this.rdoTatCa.Name = "rdoTatCa";
             this.rdoTatCa.Size = new System.Drawing.Size(93, 31);
-            this.rdoTatCa.TabIndex = 26;
+            this.rdoTatCa.TabIndex = 9;
             this.rdoTatCa.TabStop = true;
             this.rdoTatCa.Text = "Tất cả";
             this.rdoTatCa.UseVisualStyleBackColor = true;
@@ -461,7 +461,7 @@ namespace KaraokeRUM
             this.rdoHienTai.Location = new System.Drawing.Point(988, 915);
             this.rdoHienTai.Name = "rdoHienTai";
             this.rdoHienTai.Size = new System.Drawing.Size(109, 31);
-            this.rdoHienTai.TabIndex = 27;
+            this.rdoHienTai.TabIndex = 10;
             this.rdoHienTai.TabStop = true;
             this.rdoHienTai.Text = "Hiện tại";
             this.rdoHienTai.UseVisualStyleBackColor = true;
@@ -475,7 +475,7 @@ namespace KaraokeRUM
             this.btnLamMoi.Location = new System.Drawing.Point(531, 983);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(203, 52);
-            this.btnLamMoi.TabIndex = 28;
+            this.btnLamMoi.TabIndex = 8;
             this.btnLamMoi.Text = "Làm Mới";
             this.btnLamMoi.UseVisualStyleBackColor = false;
             this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
@@ -488,7 +488,7 @@ namespace KaraokeRUM
             this.btnXemPhong.Location = new System.Drawing.Point(47, 983);
             this.btnXemPhong.Name = "btnXemPhong";
             this.btnXemPhong.Size = new System.Drawing.Size(203, 52);
-            this.btnXemPhong.TabIndex = 29;
+            this.btnXemPhong.TabIndex = 6;
             this.btnXemPhong.Text = "Xem Phòng";
             this.btnXemPhong.UseVisualStyleBackColor = false;
             this.btnXemPhong.Click += new System.EventHandler(this.btnXemPhong_Click);
@@ -501,7 +501,7 @@ namespace KaraokeRUM
             this.btnTimKiem.Location = new System.Drawing.Point(289, 983);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(203, 52);
-            this.btnTimKiem.TabIndex = 30;
+            this.btnTimKiem.TabIndex = 7;
             this.btnTimKiem.Text = "Tìm Kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);

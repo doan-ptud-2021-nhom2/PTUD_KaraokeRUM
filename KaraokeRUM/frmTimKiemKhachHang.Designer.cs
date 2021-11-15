@@ -45,7 +45,7 @@ namespace KaraokeRUM
             this.btnTimKiem.Location = new System.Drawing.Point(503, 51);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(110, 42);
-            this.btnTimKiem.TabIndex = 0;
+            this.btnTimKiem.TabIndex = 1;
             this.btnTimKiem.Text = "Tìm Kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
@@ -56,7 +56,7 @@ namespace KaraokeRUM
             this.txtSDT.Location = new System.Drawing.Point(235, 56);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(247, 34);
-            this.txtSDT.TabIndex = 1;
+            this.txtSDT.TabIndex = 0;
             this.txtSDT.Validating += new System.ComponentModel.CancelEventHandler(this.txtSoDienThoai_Validating);
             // 
             // label1

@@ -30,14 +30,14 @@ namespace KaraokeRUM
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chrThongKeMatHang = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtTDT = new System.Windows.Forms.TextBox();
@@ -81,30 +81,30 @@ namespace KaraokeRUM
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(759, 418);
-            this.groupBox4.TabIndex = 92;
+            this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Biểu đồ thống kê mặt hàng";
             // 
             // chrThongKeMatHang
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chrThongKeMatHang.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chrThongKeMatHang.ChartAreas.Add(chartArea1);
             this.chrThongKeMatHang.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            legend3.Name = "Legend1";
-            this.chrThongKeMatHang.Legends.Add(legend3);
+            legend1.Name = "Legend1";
+            this.chrThongKeMatHang.Legends.Add(legend1);
             this.chrThongKeMatHang.Location = new System.Drawing.Point(7, 29);
             this.chrThongKeMatHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chrThongKeMatHang.Name = "chrThongKeMatHang";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series3.Legend = "Legend1";
-            series3.Name = "MatHang";
-            this.chrThongKeMatHang.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "MatHang";
+            this.chrThongKeMatHang.Series.Add(series1);
             this.chrThongKeMatHang.Size = new System.Drawing.Size(745, 375);
-            this.chrThongKeMatHang.TabIndex = 86;
-            title3.Name = "chart";
-            title3.Text = "Thống kê mặt hàng bán được";
-            this.chrThongKeMatHang.Titles.Add(title3);
+            this.chrThongKeMatHang.TabIndex = 0;
+            title1.Name = "chart";
+            title1.Text = "Thống kê mặt hàng bán được";
+            this.chrThongKeMatHang.Titles.Add(title1);
             // 
             // txtTDT
             // 
@@ -112,7 +112,7 @@ namespace KaraokeRUM
             this.txtTDT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTDT.Name = "txtTDT";
             this.txtTDT.Size = new System.Drawing.Size(193, 30);
-            this.txtTDT.TabIndex = 5;
+            this.txtTDT.TabIndex = 2;
             this.txtTDT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
@@ -130,7 +130,7 @@ namespace KaraokeRUM
             this.txtSKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSKH.Name = "txtSKH";
             this.txtSKH.Size = new System.Drawing.Size(193, 30);
-            this.txtSKH.TabIndex = 5;
+            this.txtSKH.TabIndex = 0;
             this.txtSKH.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
@@ -149,7 +149,7 @@ namespace KaraokeRUM
             this.cboNam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboNam.Name = "cboNam";
             this.cboNam.Size = new System.Drawing.Size(195, 30);
-            this.cboNam.TabIndex = 4;
+            this.cboNam.TabIndex = 1;
             this.cboNam.SelectedIndexChanged += new System.EventHandler(this.cboNam_SelectedIndexChanged);
             // 
             // cboThang
@@ -159,7 +159,7 @@ namespace KaraokeRUM
             this.cboThang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboThang.Name = "cboThang";
             this.cboThang.Size = new System.Drawing.Size(195, 30);
-            this.cboThang.TabIndex = 4;
+            this.cboThang.TabIndex = 0;
             this.cboThang.SelectedIndexChanged += new System.EventHandler(this.cboThang_SelectedIndexChanged);
             // 
             // label1
@@ -179,7 +179,7 @@ namespace KaraokeRUM
             this.btnThongKe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(195, 43);
-            this.btnThongKe.TabIndex = 3;
+            this.btnThongKe.TabIndex = 2;
             this.btnThongKe.Text = "Thống kê";
             this.btnThongKe.UseVisualStyleBackColor = false;
             this.btnThongKe.Click += new System.EventHandler(this.btnTKDoanhThu_Click);
@@ -190,7 +190,7 @@ namespace KaraokeRUM
             this.txtSMH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSMH.Name = "txtSMH";
             this.txtSMH.Size = new System.Drawing.Size(193, 30);
-            this.txtSMH.TabIndex = 5;
+            this.txtSMH.TabIndex = 1;
             this.txtSMH.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label5
@@ -238,7 +238,7 @@ namespace KaraokeRUM
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Size = new System.Drawing.Size(345, 215);
-            this.groupBox2.TabIndex = 90;
+            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lựa chọn";
             // 
@@ -263,7 +263,7 @@ namespace KaraokeRUM
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Size = new System.Drawing.Size(817, 418);
-            this.groupBox1.TabIndex = 89;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách khách hàng ";
             // 
@@ -285,7 +285,7 @@ namespace KaraokeRUM
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Size = new System.Drawing.Size(397, 215);
-            this.groupBox3.TabIndex = 91;
+            this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin";
             // 
@@ -312,31 +312,31 @@ namespace KaraokeRUM
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(759, 448);
-            this.groupBox5.TabIndex = 92;
+            this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Biểu đồ thống kê phòng";
             // 
             // chrPhong
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chrPhong.ChartAreas.Add(chartArea4);
+            chartArea2.Name = "ChartArea1";
+            this.chrPhong.ChartAreas.Add(chartArea2);
             this.chrPhong.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            legend4.Name = "Legend1";
-            this.chrPhong.Legends.Add(legend4);
+            legend2.Name = "Legend1";
+            this.chrPhong.Legends.Add(legend2);
             this.chrPhong.Location = new System.Drawing.Point(7, 29);
             this.chrPhong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chrPhong.Name = "chrPhong";
             this.chrPhong.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series4.Legend = "Legend1";
-            series4.Name = "Phong";
-            this.chrPhong.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Legend = "Legend1";
+            series2.Name = "Phong";
+            this.chrPhong.Series.Add(series2);
             this.chrPhong.Size = new System.Drawing.Size(745, 391);
-            this.chrPhong.TabIndex = 86;
-            title4.Name = "chart";
-            title4.Text = "Thống kê mức độ ưa chuộng phòng";
-            this.chrPhong.Titles.Add(title4);
+            this.chrPhong.TabIndex = 0;
+            title2.Name = "chart";
+            title2.Text = "Thống kê mức độ ưa chuộng phòng";
+            this.chrPhong.Titles.Add(title2);
             // 
             // btnTraCuu
             // 
@@ -347,7 +347,7 @@ namespace KaraokeRUM
             this.btnTraCuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTraCuu.Name = "btnTraCuu";
             this.btnTraCuu.Size = new System.Drawing.Size(195, 52);
-            this.btnTraCuu.TabIndex = 3;
+            this.btnTraCuu.TabIndex = 4;
             this.btnTraCuu.Text = "Tra Cứu";
             this.btnTraCuu.UseVisualStyleBackColor = false;
             this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
