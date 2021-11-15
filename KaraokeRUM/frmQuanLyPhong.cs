@@ -302,7 +302,7 @@ namespace KaraokeRUM
         */
         LoaiPhong SuaGiaLoaiPhong()
         {
-            if(cboLoaiPhong2.SelectedIndex >= 0 && txtGiaPhongMoi.Text != "" && txtGiaPhongCu.Text != "" && KiemTraTien())
+            if(cboLoaiPhong2.SelectedIndex >= 0 && txtGiaPhongMoi.Text != "" && txtGiaPhongCu.Text != "")
             {
                 LoaiPhong loaiPhong = new LoaiPhong();
                 loaiPhong.MaLoaiPhong = LOAIPHONG.TimLoaiPhong(cboLoaiPhong2.Text).First().MaLoaiPhong;
@@ -320,15 +320,25 @@ namespace KaraokeRUM
         {
             if(SuaGiaLoaiPhong() == null) 
             {
-                MessageBox.Show("Bạn phải chọn loại phòng và nhập giá mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn phải chọn loại phòng và nhập giá mới!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 LoaiPhong suaLP = SuaGiaLoaiPhong();
-                LOAIPHONG.CapNhatGiaLoaiPhong(suaLP);
-                DANHSACHPHONG = PHONG.LayTatCaPhongDong();
-                XoaCacTxtCbo();
-                TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);
+                if(suaLP.Gia > 100000)
+                {
+                    LOAIPHONG.CapNhatGiaLoaiPhong(suaLP);
+                    DANHSACHPHONG = PHONG.LayTatCaPhongDong();
+                    XoaCacTxtCbo();
+                    TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);
+                }
+                else
+                {
+                    MessageBox.Show("Giá phòng mới phải lớn hơn 100.000 VNĐ!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
             }
         }
 
@@ -405,40 +415,7 @@ namespace KaraokeRUM
             txtSoPhong.Enabled = true;
         }
 
-        /**
-        * Xử lý và kiểm tra giá Phòng
-        */
-        private void txtGiaPhongMoi_Validating(object sender, CancelEventArgs e)
-        {
-            string txtGiaPhong = txtGiaPhongMoi.Text;
-            if (!clsKiemTra.KiemTraSoTien(txtGiaPhong) || Convert.ToInt32(txtGiaPhong) < 100000)
-            {
-                e.Cancel = true;
-                txtGiaPhongMoi.Focus();
-                errorProvider1.SetError(txtGiaPhongMoi, "Phải là số và lớn hơn 100000!");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider1.SetError(txtGiaPhongMoi, null);
-            }
-        }
-
-        /*
-         * Kiếm tra số lượng đã hợp lý hay chưa
-         */
-        private bool KiemTraTien()
-        {
-            string txtGiaMoi = txtGiaPhongMoi.Text;
-            if (!clsKiemTra.KiemTraSoTien(txtGiaMoi))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+        
 
         /**
         * Xử lý và kiểm tra tên Phòng (số phòng)
@@ -473,6 +450,11 @@ namespace KaraokeRUM
             {
                 return true;
             }
+        }
+
+        private void txtGiaPhongMoi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

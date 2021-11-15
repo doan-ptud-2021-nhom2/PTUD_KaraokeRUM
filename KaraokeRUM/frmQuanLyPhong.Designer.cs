@@ -169,7 +169,7 @@ namespace KaraokeRUM
             this.txtGiaPhongMoi.Name = "txtGiaPhongMoi";
             this.txtGiaPhongMoi.Size = new System.Drawing.Size(417, 30);
             this.txtGiaPhongMoi.TabIndex = 2;
-            this.txtGiaPhongMoi.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaPhongMoi_Validating);
+            this.txtGiaPhongMoi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaPhongMoi_KeyPress);
             // 
             // label7
             // 
