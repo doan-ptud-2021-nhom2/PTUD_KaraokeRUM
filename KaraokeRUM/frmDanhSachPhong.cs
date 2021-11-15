@@ -27,15 +27,17 @@ namespace KaraokeRUM
         private IEnumerable<Phong> DANHSACHPHONGTHUONG;
         private string MAHOADON;
         private frmChiTietPhong frmCTP;
+        private Phong PHONGCU;
 
         /*
          * Constructor
          */
-        public frmDanhSachPhong(string maHoaDon, frmChiTietPhong _frmCTP)
+        public frmDanhSachPhong(string maHoaDon, Phong phongCu, frmChiTietPhong _frmCTP)
         {
             InitializeComponent();
             this.MAHOADON = maHoaDon;
             frmCTP = _frmCTP;
+            PHONGCU = phongCu;
         }
 
         /*
@@ -159,6 +161,10 @@ namespace KaraokeRUM
                     phong.TrangThaiPhong = "Mở";
                     HOADON.CapNhatDoiPhong(hoaDon);
                     PHONG.SuaTrangThaiPhong(phong);
+
+                    PHONGCU.TrangThaiPhong = "Đóng";
+                    PHONG.SuaTrangThaiPhong(PHONGCU);
+
                     MessageBox.Show("Chuyển phòng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //Thực hiển chuyển phòng và tắt 2 from
