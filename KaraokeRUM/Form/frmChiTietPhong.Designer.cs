@@ -270,7 +270,7 @@ namespace KaraokeRUM
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.groupBox3);
-            this.panel3.Location = new System.Drawing.Point(23, 405);
+            this.panel3.Location = new System.Drawing.Point(110, 399);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(911, 329);
             this.panel3.TabIndex = 2;
@@ -375,7 +375,7 @@ namespace KaraokeRUM
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Location = new System.Drawing.Point(23, 115);
+            this.panel2.Location = new System.Drawing.Point(110, 109);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(911, 259);
             this.panel2.TabIndex = 0;
@@ -424,7 +424,7 @@ namespace KaraokeRUM
             // 
             this.groupBox2.Controls.Add(this.lstvDanhSachMatHang);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(973, 102);
+            this.groupBox2.Location = new System.Drawing.Point(1060, 96);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(872, 632);
             this.groupBox2.TabIndex = 1;

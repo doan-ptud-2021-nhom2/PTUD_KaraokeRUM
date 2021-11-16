@@ -154,12 +154,12 @@ namespace KaraokeRUM
             // btnView
             // 
             this.btnView.BackColor = System.Drawing.Color.Teal;
-            this.btnView.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnView.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnView.ForeColor = System.Drawing.Color.White;
-            this.btnView.Location = new System.Drawing.Point(458, 335);
+            this.btnView.Location = new System.Drawing.Point(490, 335);
             this.btnView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(142, 45);
+            this.btnView.Size = new System.Drawing.Size(110, 45);
             this.btnView.TabIndex = 8;
             this.btnView.Text = "Làm mới";
             this.btnView.UseVisualStyleBackColor = false;
@@ -210,9 +210,9 @@ namespace KaraokeRUM
             // btnXoa
             // 
             this.btnXoa.BackColor = System.Drawing.Color.Teal;
-            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(321, 335);
+            this.btnXoa.Location = new System.Drawing.Point(344, 335);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(110, 45);
@@ -224,7 +224,7 @@ namespace KaraokeRUM
             // btnThem
             // 
             this.btnThem.BackColor = System.Drawing.Color.Teal;
-            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.White;
             this.btnThem.Location = new System.Drawing.Point(44, 335);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -238,9 +238,9 @@ namespace KaraokeRUM
             // btnSua
             // 
             this.btnSua.BackColor = System.Drawing.Color.Teal;
-            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(182, 335);
+            this.btnSua.Location = new System.Drawing.Point(194, 335);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(110, 45);
@@ -252,7 +252,7 @@ namespace KaraokeRUM
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 116);
+            this.label1.Location = new System.Drawing.Point(69, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 33);
             this.label1.TabIndex = 72;
@@ -261,7 +261,7 @@ namespace KaraokeRUM
             // txtTimKiemMatHang
             // 
             this.txtTimKiemMatHang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiemMatHang.Location = new System.Drawing.Point(203, 121);
+            this.txtTimKiemMatHang.Location = new System.Drawing.Point(222, 134);
             this.txtTimKiemMatHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTimKiemMatHang.Name = "txtTimKiemMatHang";
             this.txtTimKiemMatHang.Size = new System.Drawing.Size(337, 30);
@@ -272,7 +272,7 @@ namespace KaraokeRUM
             this.btnTim.BackColor = System.Drawing.Color.Teal;
             this.btnTim.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTim.ForeColor = System.Drawing.Color.White;
-            this.btnTim.Location = new System.Drawing.Point(546, 116);
+            this.btnTim.Location = new System.Drawing.Point(565, 129);
             this.btnTim.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(133, 44);
@@ -324,7 +324,7 @@ namespace KaraokeRUM
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(1681, 50);
             this.label11.TabIndex = 3;
-            this.label11.Text = "Mặt Hàng";
+            this.label11.Text = "Mặt hàng";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // errorProvider1
@@ -346,7 +346,7 @@ namespace KaraokeRUM
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmQuanLyMatHang";
-            this.Text = "Quản lý mặt hàng";
+            this.Text = "z";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmQuanLyMatHang_Load);
             this.Click += new System.EventHandler(this.frmQuanLyMatHang_Click);
