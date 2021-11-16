@@ -43,6 +43,7 @@ namespace KaraokeRUM
             this.btnThongKe = new System.Windows.Forms.Button();
             this.btnDoiMatKhau = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.Button();
+            this.lblHDSD = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -132,10 +133,11 @@ namespace KaraokeRUM
             this.flowLayoutPanel1.Controls.Add(this.btnThongKe);
             this.flowLayoutPanel1.Controls.Add(this.btnDoiMatKhau);
             this.flowLayoutPanel1.Controls.Add(this.btnDangXuat);
+            this.flowLayoutPanel1.Controls.Add(this.lblHDSD);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(1, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(380, 902);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(380, 924);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // btnTrangChu
@@ -241,6 +243,19 @@ namespace KaraokeRUM
             this.btnDangXuat.UseVisualStyleBackColor = false;
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
+            // lblHDSD
+            // 
+            this.lblHDSD.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblHDSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHDSD.ForeColor = System.Drawing.Color.Teal;
+            this.lblHDSD.Location = new System.Drawing.Point(3, 786);
+            this.lblHDSD.Name = "lblHDSD";
+            this.lblHDSD.Size = new System.Drawing.Size(373, 102);
+            this.lblHDSD.TabIndex = 9;
+            this.lblHDSD.Text = "Trợ giúp nhanh";
+            this.lblHDSD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHDSD.Click += new System.EventHandler(this.lblHDSD_Click);
+            // 
             // frmTrangChuQL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -278,5 +293,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.Button btnDoiMatKhau;
         private System.Windows.Forms.Button btnQLKH;
         private System.Windows.Forms.Button btnThongKe;
+        private System.Windows.Forms.Label lblHDSD;
     }
 }

@@ -90,5 +90,11 @@ namespace KaraokeRUM
         {
             OpenFormInPanel(new frmDoiMatKhau(MAQL));
         }
+
+        private void lblHDSD_Click(object sender, EventArgs e)
+        {
+            string fileName = @"..\..\FileHuongDan\HDSD_QL.pdf";
+            System.Diagnostics.Process.Start(fileName);
+        }
     }
 }

@@ -99,5 +99,11 @@ namespace KaraokeRUM
                 this.DialogResult = DialogResult.No;
             }
         }
+
+        private void lblHDSD_Click(object sender, EventArgs e)
+        {
+            string fileName = @"..\..\FileHuongDan\HDSD_TN.pdf";
+            System.Diagnostics.Process.Start(fileName);
+        }
     }
 }
