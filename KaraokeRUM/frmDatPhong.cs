@@ -212,7 +212,7 @@ namespace KaraokeRUM
         private void TaoListView(ListView lvwDSDatPhong)
         {
             lvwDSDatPhong.Columns.Add("Tên Phòng", 120);
-            lvwDSDatPhong.Columns.Add("Tên khách hàng", 200);
+            lvwDSDatPhong.Columns.Add("Tên khách hàng", 210);
             lvwDSDatPhong.Columns.Add("Số điện thoại", 150);
             lvwDSDatPhong.Columns.Add("Ngày đặt phòng", 150);
             lvwDSDatPhong.Columns.Add("Ngày nhận phòng", 150);
@@ -305,16 +305,20 @@ namespace KaraokeRUM
                     {
                         MessageBox.Show("Giờ đặt phải trước 23h", "Thông báo", MessageBoxButtons.OK);
                     } 
-                    else if (khc.GhiChu == "Cấm")
-                    {
-                        MessageBox.Show("Khách hàng đã bị cấm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
                     else
                     {
                         string maKH = "";
                         if (khc != null)
                         {
-                            maKH = khc.MaKH;  
+                            if (khc.GhiChu == "Cấm")
+                            {
+                                MessageBox.Show("Khách hàng đã bị cấm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                            else
+                            {
+                                maKH = khc.MaKH;
+                            }
                         }
                         else
                         {
@@ -386,6 +390,7 @@ namespace KaraokeRUM
                             if (khc.GhiChu == "Cấm")
                             {
                                 MessageBox.Show("Khách hàng đã bị cấm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
                             }
                             else
                             {
