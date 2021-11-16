@@ -270,7 +270,7 @@ namespace KaraokeRUM
                     }
                     
                     XoaCacTxtCbo();
-                    TaiDuLieuLenListView(lstvDSNV, NV.LayNhanVienVaLoaiNhanVien(MANVQL));
+                    TaiDuLieuLenListView(lstvDSNV, NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL));
                     errorProvider1.SetError(txtSDT, null);
                     errorProvider1.SetError(txtCMND, null);
 
@@ -332,7 +332,7 @@ namespace KaraokeRUM
             LoaiNhanVien suaMucLuong = SuaMucLuong();
                     NV.SuaNhanVien(suaNhanVien);
                     LNV.SuaMucLuongLoaiNhanVien(suaMucLuong);
-                    IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVien(MANVQL);
+                    IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text,MANVQL);
                     XoaCacTxtCbo();
                     TaiDuLieuLenListView(lstvDSNV, dsNV);
                     errorProvider1.SetError(txtSDT, null);
@@ -387,7 +387,7 @@ namespace KaraokeRUM
             {
                 NhanVien xoaNhanVien = XoaNhanVien();
                 NV.XoaNhanVien(xoaNhanVien);
-                IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVien(MANVQL);
+                IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
                 XoaCacTxtCbo();
                 TaiDuLieuLenListView(lstvDSNV, dsNV);
                 errorProvider1.SetError(txtSDT, null);
@@ -397,7 +397,7 @@ namespace KaraokeRUM
 
         private void btnViewList_Click(object sender, EventArgs e)
         {
-            IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVien(MANVQL);
+            IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
             XoaCacTxtCbo();
             lstvDSNV.Clear();
             TaoTieuDeCot(lstvDSNV);
