@@ -187,18 +187,25 @@ namespace KaraokeRUM
         private void btnCapNhap_Click(object sender, EventArgs e)
         {
             
-            if (!string.IsNullOrEmpty(txtCKM.Text.Trim()) && !string.IsNullOrEmpty(cboLoaiKhachHang.Text))
+            if (!string.IsNullOrEmpty(cboLoaiKhachHang.Text) )
             {
-                
-                LoaiKhachHang suaLk = SuaChietKhauLoaiKhach();
-                LK.CapNhatChietKhau(suaLk);
-                TaiDuLieu();
-                txtCKC.Text = "";
-                txtCKM.Text = "";
+                if(!string.IsNullOrEmpty(txtCKM.Text.Trim()))
+                {
+                    LoaiKhachHang suaLk = SuaChietKhauLoaiKhach();
+                    LK.CapNhatChietKhau(suaLk);
+                    TaiDuLieu();
+                    txtCKC.Text = "";
+                    txtCKM.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi! Bạn không được để trống chiết khấu mới !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }    
             else
             {
-                MessageBox.Show("Lỗi! Không được để trống chiết khấu mới !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Lỗi! Bạn chưa chọn loại khách hàng !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               
             }    
            
         }
