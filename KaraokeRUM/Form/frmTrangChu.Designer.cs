@@ -48,6 +48,8 @@ namespace KaraokeRUM
             this.lblChucVu = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel_workarea = new System.Windows.Forms.Panel();
+            this.lblHDSD = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -78,6 +80,8 @@ namespace KaraokeRUM
             this.flowLayoutPanel1.Controls.Add(this.btnThongKe);
             this.flowLayoutPanel1.Controls.Add(this.btnDoiMatKhau);
             this.flowLayoutPanel1.Controls.Add(this.btnDangXuat);
+            this.flowLayoutPanel1.Controls.Add(this.lblHDSD);
+            this.flowLayoutPanel1.Controls.Add(this.checkedListBox1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 245);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -294,6 +298,27 @@ namespace KaraokeRUM
             this.panel_workarea.Size = new System.Drawing.Size(1453, 1043);
             this.panel_workarea.TabIndex = 0;
             // 
+            // lblHDSD
+            // 
+            this.lblHDSD.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblHDSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHDSD.ForeColor = System.Drawing.Color.Teal;
+            this.lblHDSD.Location = new System.Drawing.Point(3, 690);
+            this.lblHDSD.Name = "lblHDSD";
+            this.lblHDSD.Size = new System.Drawing.Size(373, 102);
+            this.lblHDSD.TabIndex = 8;
+            this.lblHDSD.Text = "Trợ giúp nhanh";
+            this.lblHDSD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHDSD.Click += new System.EventHandler(this.lblHDSD_Click);
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(3, 795);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(120, 89);
+            this.checkedListBox1.TabIndex = 9;
+            // 
             // frmTrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -336,5 +361,7 @@ namespace KaraokeRUM
         private System.Windows.Forms.Button btnDangXuat;
         private System.Windows.Forms.Button btnDoiMatKhau;
         private System.Windows.Forms.Panel panel_workarea;
+        private System.Windows.Forms.Label lblHDSD;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
