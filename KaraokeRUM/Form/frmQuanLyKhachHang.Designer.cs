@@ -243,7 +243,7 @@ namespace KaraokeRUM
             this.btnCapNhap.Name = "btnCapNhap";
             this.btnCapNhap.Size = new System.Drawing.Size(362, 46);
             this.btnCapNhap.TabIndex = 3;
-            this.btnCapNhap.Text = "Cập nhập";
+            this.btnCapNhap.Text = "Cập nhật";
             this.btnCapNhap.UseVisualStyleBackColor = false;
             this.btnCapNhap.Click += new System.EventHandler(this.btnCapNhap_Click);
             // 
@@ -395,7 +395,7 @@ namespace KaraokeRUM
             this.btnCapNhapGhiChu.Name = "btnCapNhapGhiChu";
             this.btnCapNhapGhiChu.Size = new System.Drawing.Size(362, 46);
             this.btnCapNhapGhiChu.TabIndex = 4;
-            this.btnCapNhapGhiChu.Text = "Cập nhập";
+            this.btnCapNhapGhiChu.Text = "Cập nhật";
             this.btnCapNhapGhiChu.UseVisualStyleBackColor = false;
             this.btnCapNhapGhiChu.Click += new System.EventHandler(this.btnCapNhapGhiChu_Click);
             // 
