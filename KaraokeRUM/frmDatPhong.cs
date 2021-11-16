@@ -390,6 +390,7 @@ namespace KaraokeRUM
                             if (khc.GhiChu == "Cấm")
                             {
                                 MessageBox.Show("Khách hàng đã bị cấm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
                             }
                             else
                             {
