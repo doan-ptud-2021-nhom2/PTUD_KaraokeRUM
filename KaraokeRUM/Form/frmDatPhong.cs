@@ -300,11 +300,11 @@ namespace KaraokeRUM
                     KhachHang khc = KHACHHANG.TimKhachHang(txtSoDienThoai.Text);
                     if (xetGio1 < 0)
                     {
-                        MessageBox.Show("Vì ngày nhận là ngày hôm nay nên giờ đặt phải sau giờ hiện tại", "Thông báo", MessageBoxButtons.OK);
+                        MessageBox.Show("Vì ngày nhận là ngày hôm nay nên giờ đặt phải sau giờ hiện tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else if (xetGioKetThuc > 0)
                     {
-                        MessageBox.Show("Giờ đặt phải trước 23h", "Thông báo", MessageBoxButtons.OK);
+                        MessageBox.Show("Giờ đặt phải trước 23h", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     } 
                     else
                     {
@@ -318,10 +318,8 @@ namespace KaraokeRUM
                             }
                             else
                             {
-
                                 if (txtHoTen.Text.Equals(khc.TenKhach) == false)
                                 {
-
                                     MessageBox.Show("Tên khách hàng bị sai so với số điện thoại này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return;
                                 }
@@ -329,8 +327,7 @@ namespace KaraokeRUM
                                 {
                                     maKH = khc.MaKH;
                                 }
-                            }
-                           
+                            }                        
                         }
                         else
                         {
@@ -379,7 +376,6 @@ namespace KaraokeRUM
                             else
                             {
                                 DatPhong(maKH);
-
                             }
                         }
                         XoaDuLieuTextBox();
