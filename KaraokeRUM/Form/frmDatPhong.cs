@@ -318,8 +318,19 @@ namespace KaraokeRUM
                             }
                             else
                             {
-                                maKH = khc.MaKH;
+
+                                if (txtHoTen.Text.Equals(khc.TenKhach) == false)
+                                {
+
+                                    MessageBox.Show("Tên khách hàng bị sai so với số điện thoại này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return;
+                                }
+                                else
+                                {
+                                    maKH = khc.MaKH;
+                                }
                             }
+                           
                         }
                         else
                         {
@@ -395,9 +406,19 @@ namespace KaraokeRUM
                             }
                             else
                             {
-                                maKH = khc.MaKH;
+
+                                if (txtHoTen.Text.Equals(khc.TenKhach) == false)
+                                {
+
+                                    MessageBox.Show("Tên khách hàng bị sai so với số điện thoại này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return;
+                                }
+                                else
+                                {
+                                    maKH = khc.MaKH;
+                                }
                             }
-                            
+
                         }
                         else
                         {
@@ -592,27 +613,37 @@ namespace KaraokeRUM
                         if (khc.GhiChu == "Cấm")
                         {
                             MessageBox.Show("Khách hàng đã bị cấm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
                         }
                         else
-                        {
-                            int dem = khc.SoLanDen;
-                            khc.SoLanDen = dem + 1;
+                        { 
+                            if (txtHoTen.Text.Equals(khc.TenKhach)==false) 
+                            {
 
-                            if (khc.SoLanDen >= 5 && khc.SoLanDen < 10 && khc.TongTien >= 5000000)
+                                MessageBox.Show("Tên khách hàng bị sai so với số điện thoại này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                            else
                             {
-                                khc.MaLoaiKH = "LKH02";
-                            }
-                            else if (khc.SoLanDen >= 10 && khc.TongTien >= 10000000)
-                            {
-                                khc.MaLoaiKH = "LKH01";
-                            }
-                            else if(khc.SoLanDen < 5 && khc.TongTien < 5000000)
-                            { 
-                                khc.MaLoaiKH = "LKH03";
-                            }
-                            MoPhongTrucTiep(khc);
-                            KetThucMoPhong();
-                        }                        
+                                int dem = khc.SoLanDen;
+                                khc.SoLanDen = dem + 1;
+
+                                if (khc.SoLanDen >= 5 && khc.SoLanDen < 10 && khc.TongTien >= 5000000)
+                                {
+                                    khc.MaLoaiKH = "LKH02";
+                                }
+                                else if (khc.SoLanDen >= 10 && khc.TongTien >= 10000000)
+                                {
+                                    khc.MaLoaiKH = "LKH01";
+                                }
+                                else if (khc.SoLanDen < 5 && khc.TongTien < 5000000)
+                                {
+                                    khc.MaLoaiKH = "LKH03";
+                                }
+                                MoPhongTrucTiep(khc);
+                                KetThucMoPhong();
+                            } 
+                        }            
                     }
                     else
                     {
