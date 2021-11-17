@@ -402,6 +402,8 @@ namespace KaraokeRUM
             lstvDSNV.Clear();
             TaoTieuDeCot(lstvDSNV);
             TaiDuLieuLenListView(lstvDSNV, dsNV);
+            errorProvider1.SetError(txtSDT, null);
+            errorProvider1.SetError(txtCMND, null);
         }
         /*
          * chỉ nhập số

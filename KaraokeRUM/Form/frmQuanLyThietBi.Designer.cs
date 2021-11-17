@@ -42,9 +42,9 @@ namespace KaraokeRUM
             this.label5 = new System.Windows.Forms.Label();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnLamMoi = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
@@ -194,20 +194,6 @@ namespace KaraokeRUM
             this.label2.TabIndex = 0;
             this.label2.Text = "Số lượng tồn:";
             // 
-            // btnLamMoi
-            // 
-            this.btnLamMoi.BackColor = System.Drawing.Color.Teal;
-            this.btnLamMoi.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLamMoi.Location = new System.Drawing.Point(344, 118);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(117, 45);
-            this.btnLamMoi.TabIndex = 7;
-            this.btnLamMoi.Text = "Làm mới";
-            this.btnLamMoi.UseVisualStyleBackColor = false;
-            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
-            // 
             // btnXoa
             // 
             this.btnXoa.BackColor = System.Drawing.Color.Teal;
@@ -231,6 +217,20 @@ namespace KaraokeRUM
             this.label1.Size = new System.Drawing.Size(150, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên trang thiết bị:";
+            // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.BackColor = System.Drawing.Color.Teal;
+            this.btnLamMoi.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLamMoi.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLamMoi.Location = new System.Drawing.Point(453, 66);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(106, 45);
+            this.btnLamMoi.TabIndex = 7;
+            this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.UseVisualStyleBackColor = false;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // txtID
             // 
@@ -263,7 +263,7 @@ namespace KaraokeRUM
             this.txtTimKiem.Location = new System.Drawing.Point(141, 75);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(395, 30);
+            this.txtTimKiem.Size = new System.Drawing.Size(183, 30);
             this.txtTimKiem.TabIndex = 0;
             this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
@@ -272,7 +272,7 @@ namespace KaraokeRUM
             this.btnTim.BackColor = System.Drawing.Color.Teal;
             this.btnTim.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTim.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnTim.Location = new System.Drawing.Point(109, 118);
+            this.btnTim.Location = new System.Drawing.Point(330, 66);
             this.btnTim.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(117, 45);

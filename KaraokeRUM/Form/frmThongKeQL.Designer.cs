@@ -54,15 +54,15 @@ namespace KaraokeRUM
             this.label2 = new System.Windows.Forms.Label();
             this.rdoHomNay = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnXuatExcel = new System.Windows.Forms.Button();
             this.lstvDSHoaDon = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnTraCuu = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.chrPhong = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnTraCuu = new System.Windows.Forms.Button();
-            this.btnXuatExcel = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrThongKeMatHang)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -245,6 +245,19 @@ namespace KaraokeRUM
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lựa chọn";
             // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.BackColor = System.Drawing.Color.Teal;
+            this.btnXuatExcel.ForeColor = System.Drawing.Color.White;
+            this.btnXuatExcel.Location = new System.Drawing.Point(183, 165);
+            this.btnXuatExcel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(120, 43);
+            this.btnXuatExcel.TabIndex = 2;
+            this.btnXuatExcel.Text = "Xuất Excel";
+            this.btnXuatExcel.UseVisualStyleBackColor = false;
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            // 
             // lstvDSHoaDon
             // 
             this.lstvDSHoaDon.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -292,6 +305,20 @@ namespace KaraokeRUM
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin";
+            // 
+            // btnTraCuu
+            // 
+            this.btnTraCuu.BackColor = System.Drawing.Color.Teal;
+            this.btnTraCuu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTraCuu.ForeColor = System.Drawing.Color.White;
+            this.btnTraCuu.Location = new System.Drawing.Point(183, 165);
+            this.btnTraCuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTraCuu.Name = "btnTraCuu";
+            this.btnTraCuu.Size = new System.Drawing.Size(193, 43);
+            this.btnTraCuu.TabIndex = 4;
+            this.btnTraCuu.Text = "Tra Cứu";
+            this.btnTraCuu.UseVisualStyleBackColor = false;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // label11
             // 
@@ -341,33 +368,6 @@ namespace KaraokeRUM
             title2.Name = "chart";
             title2.Text = "Thống kê mức độ ưa chuộng phòng";
             this.chrPhong.Titles.Add(title2);
-            // 
-            // btnTraCuu
-            // 
-            this.btnTraCuu.BackColor = System.Drawing.Color.Teal;
-            this.btnTraCuu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraCuu.ForeColor = System.Drawing.Color.White;
-            this.btnTraCuu.Location = new System.Drawing.Point(183, 165);
-            this.btnTraCuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTraCuu.Name = "btnTraCuu";
-            this.btnTraCuu.Size = new System.Drawing.Size(147, 43);
-            this.btnTraCuu.TabIndex = 4;
-            this.btnTraCuu.Text = "Tra Cứu";
-            this.btnTraCuu.UseVisualStyleBackColor = false;
-            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
-            // 
-            // btnXuatExcel
-            // 
-            this.btnXuatExcel.BackColor = System.Drawing.Color.Teal;
-            this.btnXuatExcel.ForeColor = System.Drawing.Color.White;
-            this.btnXuatExcel.Location = new System.Drawing.Point(183, 165);
-            this.btnXuatExcel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(120, 43);
-            this.btnXuatExcel.TabIndex = 2;
-            this.btnXuatExcel.Text = "Xuất Excel";
-            this.btnXuatExcel.UseVisualStyleBackColor = false;
-            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // frmThongKeQL
             // 

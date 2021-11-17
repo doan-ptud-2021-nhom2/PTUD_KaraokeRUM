@@ -38,7 +38,6 @@ namespace KaraokeRUM
             this.label5 = new System.Windows.Forms.Label();
             this.txtSoLuongTon = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnView = new System.Windows.Forms.Button();
             this.cboLMH = new System.Windows.Forms.ComboBox();
             this.txtTenMH = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@ namespace KaraokeRUM
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTimKiemMatHang = new System.Windows.Forms.TextBox();
             this.btnTim = new System.Windows.Forms.Button();
@@ -150,20 +150,6 @@ namespace KaraokeRUM
             this.label2.TabIndex = 44;
             this.label2.Text = "Số lượng tồn :";
             // 
-            // btnView
-            // 
-            this.btnView.BackColor = System.Drawing.Color.Teal;
-            this.btnView.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnView.ForeColor = System.Drawing.Color.White;
-            this.btnView.Location = new System.Drawing.Point(608, 129);
-            this.btnView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(111, 45);
-            this.btnView.TabIndex = 8;
-            this.btnView.Text = "Làm mới";
-            this.btnView.UseVisualStyleBackColor = false;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
-            // 
             // cboLMH
             // 
             this.cboLMH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -248,6 +234,20 @@ namespace KaraokeRUM
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
+            // btnView
+            // 
+            this.btnView.BackColor = System.Drawing.Color.Teal;
+            this.btnView.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnView.ForeColor = System.Drawing.Color.White;
+            this.btnView.Location = new System.Drawing.Point(608, 129);
+            this.btnView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(111, 45);
+            this.btnView.TabIndex = 8;
+            this.btnView.Text = "Làm mới";
+            this.btnView.UseVisualStyleBackColor = false;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -269,7 +269,7 @@ namespace KaraokeRUM
             // btnTim
             // 
             this.btnTim.BackColor = System.Drawing.Color.Teal;
-            this.btnTim.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTim.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTim.ForeColor = System.Drawing.Color.White;
             this.btnTim.Location = new System.Drawing.Point(491, 129);
             this.btnTim.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
