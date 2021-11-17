@@ -55,6 +55,7 @@ namespace KaraokeRUM
             this.label3 = new System.Windows.Forms.Label();
             this.chrThongKeDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnXuatExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -110,6 +111,7 @@ namespace KaraokeRUM
             this.groupBox2.Controls.Add(this.cboNam);
             this.groupBox2.Controls.Add(this.cboThang);
             this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.btnXuatExcel);
             this.groupBox2.Controls.Add(this.btnTKDoanhThu);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.rdoHomNay);
@@ -156,10 +158,10 @@ namespace KaraokeRUM
             // 
             this.btnTKDoanhThu.BackColor = System.Drawing.Color.Teal;
             this.btnTKDoanhThu.ForeColor = System.Drawing.Color.White;
-            this.btnTKDoanhThu.Location = new System.Drawing.Point(108, 169);
+            this.btnTKDoanhThu.Location = new System.Drawing.Point(36, 165);
             this.btnTKDoanhThu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTKDoanhThu.Name = "btnTKDoanhThu";
-            this.btnTKDoanhThu.Size = new System.Drawing.Size(195, 39);
+            this.btnTKDoanhThu.Size = new System.Drawing.Size(122, 39);
             this.btnTKDoanhThu.TabIndex = 3;
             this.btnTKDoanhThu.Text = "Thống kê";
             this.btnTKDoanhThu.UseVisualStyleBackColor = false;
@@ -295,6 +297,19 @@ namespace KaraokeRUM
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Biểu đồ";
             // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.BackColor = System.Drawing.Color.Teal;
+            this.btnXuatExcel.ForeColor = System.Drawing.Color.White;
+            this.btnXuatExcel.Location = new System.Drawing.Point(181, 165);
+            this.btnXuatExcel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(122, 39);
+            this.btnXuatExcel.TabIndex = 3;
+            this.btnXuatExcel.Text = "Xuất Excel";
+            this.btnXuatExcel.UseVisualStyleBackColor = false;
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            // 
             // frmThongKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -346,5 +361,6 @@ namespace KaraokeRUM
         private System.Windows.Forms.ComboBox cboThang;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnXuatExcel;
     }
 }
