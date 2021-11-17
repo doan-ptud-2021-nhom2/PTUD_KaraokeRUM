@@ -453,7 +453,6 @@ namespace KaraokeRUM
             {
                 string maDDPTam = DONDATPHONG.TraTatCaDDP().Last().MaDDP.ToString();
                 int dem = Convert.ToInt32(maDDPTam.Split('D', 'P')[2]) + 1;
-                MessageBox.Show(dem.ToString());
                 if (dem < 10)
                 {
                     maDDP += "DP00" + dem;
