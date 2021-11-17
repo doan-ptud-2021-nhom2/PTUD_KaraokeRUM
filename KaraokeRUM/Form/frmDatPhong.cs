@@ -537,6 +537,7 @@ namespace KaraokeRUM
             KHACHHANG.SuaSoLanDen(kh);
             HoaDon hoaDon = TaoHoaDon();
             MAHD = hoaDon.MaHD;
+            /*hoaDon.GioVao = DateTime.Now.TimeOfDay;*/
             HOADON.ThemHoaDon(hoaDon);
             Phong phong = PHONG.TimMotPhongTheoTen(txtTenPhong.Text);
             MAPHONG = phong.MaPhong;
@@ -710,8 +711,9 @@ namespace KaraokeRUM
         {
             HoaDon hd = new HoaDon();
             hd.MaHD = TaoMaHD();
-            TimeSpan dt = TimeSpan.Parse(dtmGioDatPhong.Text);
-            hd.GioVao = dt;
+            DateTime dt = DateTime.Now;
+            TimeSpan tp = dt.TimeOfDay;
+            hd.GioVao = tp;
             hd.GioRa = null;
             hd.NgayLap = DateTime.Now;
             hd.TongTien = null;
@@ -933,14 +935,17 @@ namespace KaraokeRUM
             IEnumerable<DonDatPhong> dpTheoNgay = DONDATPHONG.TimDonDatPhongTheoNgay(ngay);
             foreach(DonDatPhong i in dpTheoNgay)
             {
+                Phong phong = PHONG.TimPhongTheoMa(i.MaPhong).First();
                 int thoiGian = (int)(i.GioDat - tp).TotalHours;
                 Console.WriteLine(thoiGian);
-                if(thoiGian <= 1)
+                if(phong.TrangThaiPhong != "Mở")
                 {
-                    Phong phong = PHONG.TimPhongTheoMa(i.MaPhong).First();
-                    phong.TrangThaiPhong = "Đặt";
-                    PHONG.SuaTrangThaiPhong(phong);
-                }                  
+                    if (thoiGian <= 1)
+                    {
+                        phong.TrangThaiPhong = "Đặt";
+                        PHONG.SuaTrangThaiPhong(phong);
+                    }
+                }                                   
             }    
         }
         /*Chức năng vào xem chi tiết của một phòng*/
