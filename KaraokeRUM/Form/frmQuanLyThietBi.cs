@@ -64,7 +64,15 @@ namespace KaraokeRUM
 
             AutoCompleteSearch();
         }
-
+        private void frmQuanLyThietBi_Click(object sender, EventArgs e)
+        {
+            btnThemTP.Enabled = true;
+            btnSuaTP.Enabled = true;
+            btnXoaTP.Enabled = true;
+            btnXoa.Enabled = true;
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+        }
         /*Hàm hỗ trợ tải dữ liệu vào các combobox*/
         private void LoadDuLieuVaoComboBox(IEnumerable<Phong> dsPhong, IEnumerable<TrangThietBi> dsThietBi)
         {

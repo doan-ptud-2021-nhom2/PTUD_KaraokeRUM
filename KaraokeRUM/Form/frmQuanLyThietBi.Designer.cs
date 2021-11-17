@@ -498,6 +498,7 @@ namespace KaraokeRUM
             this.Text = "-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmQuanLyThietBi_Load);
+            this.Click += new System.EventHandler(this.frmQuanLyThietBi_Click);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.txtID.ResumeLayout(false);
