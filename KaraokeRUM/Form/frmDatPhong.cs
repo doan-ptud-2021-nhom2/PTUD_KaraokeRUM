@@ -61,7 +61,8 @@ namespace KaraokeRUM
             IEnumerable<dynamic> dsDP;
             dsDP = HONLOAN.LayThongTinDonDatPhong();
             TaoListView(lstvDanhSachDP);
-            TaiDuLieuLenListView(lstvDanhSachDP, dsDP);           
+            string homNay = DateTime.Now.ToString("yyyy-MM-dd");
+            TaiDuLieuLenListView(lstvDanhSachDP, HONLOAN.LayThongTinDonDatPhongTheoNgay(homNay));
         }
         /* Mặc định thời gian cho ngày đặt phòng và ngày nhận phòng */
         private void MacDinhThoiGian()
@@ -428,7 +429,7 @@ namespace KaraokeRUM
             foreach (dynamic i in HONLOAN.LayThongTinDonDatPhongTheoMaPhong(maPhong))
             {                 
                 double xetGio = (double)(i.GioDat - gio).TotalHours;
-                MessageBox.Show(xetGio.ToString());
+                /*MessageBox.Show(xetGio.ToString());*/
                 if ((i.NgayNhan).Equals(ngay) && xetGio == 0)
                 {
                     return false ;
@@ -937,7 +938,7 @@ namespace KaraokeRUM
             {
                 Phong phong = PHONG.TimPhongTheoMa(i.MaPhong).First();
                 int thoiGian = (int)(i.GioDat - tp).TotalHours;
-                Console.WriteLine(thoiGian);
+ /*               Console.WriteLine(thoiGian);*/
                 if(phong.TrangThaiPhong != "Mở")
                 {
                     if (thoiGian <= 1)
