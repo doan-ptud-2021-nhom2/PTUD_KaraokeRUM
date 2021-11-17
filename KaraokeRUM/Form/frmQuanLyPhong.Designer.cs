@@ -116,7 +116,7 @@ namespace KaraokeRUM
             this.txtTimKiemThongTinPhong.Location = new System.Drawing.Point(228, 97);
             this.txtTimKiemThongTinPhong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTimKiemThongTinPhong.Name = "txtTimKiemThongTinPhong";
-            this.txtTimKiemThongTinPhong.Size = new System.Drawing.Size(391, 30);
+            this.txtTimKiemThongTinPhong.Size = new System.Drawing.Size(329, 30);
             this.txtTimKiemThongTinPhong.TabIndex = 0;
             // 
             // lblTimKiem
@@ -133,10 +133,10 @@ namespace KaraokeRUM
             this.btnTimKiemThongTinPhong.BackColor = System.Drawing.Color.Teal;
             this.btnTimKiemThongTinPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTimKiemThongTinPhong.ForeColor = System.Drawing.Color.Snow;
-            this.btnTimKiemThongTinPhong.Location = new System.Drawing.Point(637, 85);
+            this.btnTimKiemThongTinPhong.Location = new System.Drawing.Point(563, 88);
             this.btnTimKiemThongTinPhong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTimKiemThongTinPhong.Name = "btnTimKiemThongTinPhong";
-            this.btnTimKiemThongTinPhong.Size = new System.Drawing.Size(119, 45);
+            this.btnTimKiemThongTinPhong.Size = new System.Drawing.Size(104, 45);
             this.btnTimKiemThongTinPhong.TabIndex = 1;
             this.btnTimKiemThongTinPhong.Text = "Tìm";
             this.btnTimKiemThongTinPhong.UseVisualStyleBackColor = false;
@@ -240,7 +240,6 @@ namespace KaraokeRUM
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.btnTaiLai);
             this.groupBox1.Controls.Add(this.cboLoaiPhong);
             this.groupBox1.Controls.Add(this.cboTrangThai);
             this.groupBox1.Controls.Add(this.btnThemPhong);
@@ -267,10 +266,10 @@ namespace KaraokeRUM
             this.btnTaiLai.BackColor = System.Drawing.Color.Teal;
             this.btnTaiLai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaiLai.ForeColor = System.Drawing.Color.Snow;
-            this.btnTaiLai.Location = new System.Drawing.Point(531, 264);
+            this.btnTaiLai.Location = new System.Drawing.Point(673, 88);
             this.btnTaiLai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTaiLai.Name = "btnTaiLai";
-            this.btnTaiLai.Size = new System.Drawing.Size(147, 45);
+            this.btnTaiLai.Size = new System.Drawing.Size(104, 45);
             this.btnTaiLai.TabIndex = 7;
             this.btnTaiLai.Text = "Làm mới";
             this.btnTaiLai.UseVisualStyleBackColor = false;
@@ -302,7 +301,7 @@ namespace KaraokeRUM
             this.btnThemPhong.BackColor = System.Drawing.Color.Teal;
             this.btnThemPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemPhong.ForeColor = System.Drawing.Color.Snow;
-            this.btnThemPhong.Location = new System.Drawing.Point(11, 264);
+            this.btnThemPhong.Location = new System.Drawing.Point(49, 264);
             this.btnThemPhong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnThemPhong.Name = "btnThemPhong";
             this.btnThemPhong.Size = new System.Drawing.Size(147, 45);
@@ -376,7 +375,7 @@ namespace KaraokeRUM
             this.btnSua.BackColor = System.Drawing.Color.Teal;
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.Color.Snow;
-            this.btnSua.Location = new System.Drawing.Point(185, 264);
+            this.btnSua.Location = new System.Drawing.Point(238, 264);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(147, 45);
@@ -390,7 +389,7 @@ namespace KaraokeRUM
             this.btnXoa.BackColor = System.Drawing.Color.Teal;
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.Snow;
-            this.btnXoa.Location = new System.Drawing.Point(362, 264);
+            this.btnXoa.Location = new System.Drawing.Point(436, 264);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(147, 45);
@@ -413,6 +412,7 @@ namespace KaraokeRUM
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1731, 963);
+            this.Controls.Add(this.btnTaiLai);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);

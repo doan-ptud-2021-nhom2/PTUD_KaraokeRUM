@@ -67,11 +67,11 @@ namespace KaraokeRUM
         private void frmQuanLyThietBi_Click(object sender, EventArgs e)
         {
             btnThemTP.Enabled = true;
-            btnSuaTP.Enabled = true;
-            btnXoaTP.Enabled = true;
-            btnXoa.Enabled = true;
+            btnSuaTP.Enabled = false;
+            btnXoaTP.Enabled = false;
+            btnXoa.Enabled = false;
             btnThem.Enabled = true;
-            btnSua.Enabled = true;
+            btnSua.Enabled = false;
         }
         /*Hàm hỗ trợ tải dữ liệu vào các combobox*/
         private void LoadDuLieuVaoComboBox(IEnumerable<Phong> dsPhong, IEnumerable<TrangThietBi> dsThietBi)
@@ -316,10 +316,14 @@ namespace KaraokeRUM
                     {
                         index = lstvThietBi.SelectedIndices[i];
                         ttb = (TrangThietBi)lstvThietBi.Items[index].Tag;
-                        if(ttb.SoLuongTon > 0 || !KiemTraThietBiTrongPhong(ttb))
+                        if(ttb.SoLuongTon > 0)
                         {
                             MessageBox.Show("Số lượng tồn lớn hơn 0. Không được xóa! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }        
+                        }     
+                        else if(!KiemTraThietBiTrongPhong(ttb))
+                        {
+                            MessageBox.Show("Thiết bị đang sử dụng trong phòng không được xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }    
                         else if(ttb.SoLuongTon == 0)
                         {
                             ttb.TrangThai = "HET";
