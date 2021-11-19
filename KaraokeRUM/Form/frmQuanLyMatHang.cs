@@ -338,6 +338,14 @@ namespace KaraokeRUM
         private void txtGia_TextChanged(object sender, EventArgs e)
         {
             KiemTraTxtCbo();
+            if(txtTenMH.Enabled==false)
+            {
+                btnThem.Enabled = false;
+            }    
+            else
+            {
+                btnThem.Enabled = true;
+            }    
         }
 
         private void txtSoLuongTon_TextChanged(object sender, EventArgs e)
