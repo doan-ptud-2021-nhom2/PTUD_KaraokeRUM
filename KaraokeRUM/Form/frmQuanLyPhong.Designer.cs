@@ -46,7 +46,6 @@ namespace KaraokeRUM
             this.label6 = new System.Windows.Forms.Label();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnTaiLai = new System.Windows.Forms.Button();
             this.cboLoaiPhong = new System.Windows.Forms.ComboBox();
             this.cboTrangThai = new System.Windows.Forms.ComboBox();
             this.btnThemPhong = new System.Windows.Forms.Button();
@@ -58,6 +57,7 @@ namespace KaraokeRUM
             this.label3 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.btnTaiLai = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
@@ -77,7 +77,7 @@ namespace KaraokeRUM
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(1731, 50);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Phòng";
+            this.label11.Text = "Quản lý phòng";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox2
@@ -261,20 +261,6 @@ namespace KaraokeRUM
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Phòng";
             // 
-            // btnTaiLai
-            // 
-            this.btnTaiLai.BackColor = System.Drawing.Color.Teal;
-            this.btnTaiLai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaiLai.ForeColor = System.Drawing.Color.Snow;
-            this.btnTaiLai.Location = new System.Drawing.Point(673, 88);
-            this.btnTaiLai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnTaiLai.Name = "btnTaiLai";
-            this.btnTaiLai.Size = new System.Drawing.Size(104, 45);
-            this.btnTaiLai.TabIndex = 7;
-            this.btnTaiLai.Text = "Làm mới";
-            this.btnTaiLai.UseVisualStyleBackColor = false;
-            this.btnTaiLai.Click += new System.EventHandler(this.btnTaiLai_Click);
-            // 
             // cboLoaiPhong
             // 
             this.cboLoaiPhong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -397,6 +383,20 @@ namespace KaraokeRUM
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnTaiLai
+            // 
+            this.btnTaiLai.BackColor = System.Drawing.Color.Teal;
+            this.btnTaiLai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiLai.ForeColor = System.Drawing.Color.Snow;
+            this.btnTaiLai.Location = new System.Drawing.Point(673, 88);
+            this.btnTaiLai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTaiLai.Name = "btnTaiLai";
+            this.btnTaiLai.Size = new System.Drawing.Size(104, 45);
+            this.btnTaiLai.TabIndex = 7;
+            this.btnTaiLai.Text = "Làm mới";
+            this.btnTaiLai.UseVisualStyleBackColor = false;
+            this.btnTaiLai.Click += new System.EventHandler(this.btnTaiLai_Click);
             // 
             // errorProvider1
             // 

@@ -464,6 +464,8 @@ namespace KaraokeRUM
                 {
                     errorProvider1.SetError(txtCMND, null);
                     KiemTraTxtCbo();
+                   
+                    
                 }
                 
             }
@@ -499,9 +501,19 @@ namespace KaraokeRUM
 
                 }
             }
-            btnThem.Enabled = true;
-            btnSua.Enabled = true;
-            btnXoa.Enabled = true;
+            if (txtCMND.Enabled == false)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = true;
+                btnXoa.Enabled = true;
+            }
+            else
+            {
+
+                btnThem.Enabled = true;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void txtTen_TextChanged(object sender, EventArgs e)

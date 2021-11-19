@@ -323,7 +323,7 @@ namespace KaraokeRUM
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(1681, 50);
             this.label11.TabIndex = 3;
-            this.label11.Text = "Mặt hàng";
+            this.label11.Text = "Quản lý mặt hàng";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // errorProvider1
