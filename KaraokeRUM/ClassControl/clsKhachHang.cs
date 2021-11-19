@@ -192,7 +192,7 @@ namespace KaraokeRUM
         }
 
         /*Hàm cập nhập ghi chú của khách hàng*/
-        public bool CapNhatGhiChu(KhachHang kh)
+        public bool CapNhatGhiChuSDT(KhachHang kh)
         {
             using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
             {
@@ -203,6 +203,7 @@ namespace KaraokeRUM
                                                  where n.MaKH == kh.MaKH
                                                  select n);
                     tam.First().GhiChu = kh.GhiChu;
+                    tam.First().SDT = kh.SDT;
                     dt.SubmitChanges();
                     dt.Transaction.Commit();
                     return true;

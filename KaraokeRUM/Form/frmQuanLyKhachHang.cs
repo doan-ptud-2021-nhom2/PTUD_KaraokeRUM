@@ -236,7 +236,7 @@ namespace KaraokeRUM
             return loaiKhachHang;
         }
         /*Tìm kiếm loại khách hàng sau đó sửa chiết khấu theo mã loại*/
-        KhachHang SuaGhiChuKhach()
+        KhachHang SuaGhiChuSDTKhach()
         {
             KhachHang khachHang = new KhachHang();
             khachHang.MaKH = KH.TimKhachHangTheoMa(txtMaKhachHang.Text).First().MaKH;
@@ -247,7 +247,8 @@ namespace KaraokeRUM
             else
             {
                 khachHang.GhiChu = cboGhiChu.Text;
-            }    
+            }
+            khachHang.SDT = txtSDT.Text;
 
            
 
@@ -362,8 +363,8 @@ namespace KaraokeRUM
         {
             if (!string.IsNullOrEmpty(cboGhiChu.Text.Trim()))
             {
-                KhachHang suaKH = SuaGhiChuKhach();
-                KH.CapNhatGhiChu(suaKH);
+                KhachHang suaKH = SuaGhiChuSDTKhach();
+                KH.CapNhatGhiChuSDT(suaKH);
                 TaiDuLieu();
             }
             else
@@ -372,10 +373,7 @@ namespace KaraokeRUM
             }
         }
 
-        private void txtCKM_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
+      
 
         private void cboLoaiKhachHang_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -402,6 +400,30 @@ namespace KaraokeRUM
             txtCKC.Text = kh.First().ChietKhau.ToString();
 
 
+        }
+        private void txtCKM_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtSDT_TextChanged(object sender, EventArgs e)
+        {
+            string sdt = txtSDT.Text;
+            if (!clsKiemTra.KiemTraSDT(sdt))
+            {
+                txtSDT.Focus();
+                errorProvider1.SetError(txtSDT, "Số điện thoại phải bắt đầu từ đầu số hợp lệ. VD: 09XXXXXXXX");
+                btnCapNhap.Enabled = false;
+            }
+            else
+            {
+                errorProvider1.SetError(txtSDT, null);
+                btnCapNhap.Enabled = true;
+            }
         }
     }
 
