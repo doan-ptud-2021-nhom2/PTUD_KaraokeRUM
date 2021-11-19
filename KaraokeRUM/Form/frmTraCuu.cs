@@ -83,6 +83,7 @@ namespace KaraokeRUM
             IQueryable<KhachHang> khachHang = KHACHHANG.TimTenKhachHang(sdt);
             if(khachHang.Count() == 0)
             {
+                lstvKhachHang.Clear();
                 MessageBox.Show("Khách hàng này chưa từng đến cửa hàng. Vui lòng kiểm tra lại SĐT", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -106,6 +107,11 @@ namespace KaraokeRUM
                 errorProvider1.SetError(txtSDT, null);
                 btnTraCuu.Enabled = true;
             }
+        }
+
+        private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
