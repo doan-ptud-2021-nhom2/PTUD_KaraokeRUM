@@ -65,6 +65,16 @@ namespace KaraokeRUM
                                        select n;
             return nv;
         }
+        /**
+        * Tìm kiếm Nhân Viên
+        */
+        public NhanVien TimNhanVienTheoSDT(string sdt)
+        {
+            var nv = from n in dt.NhanViens
+                                       where n.CMND.Equals(sdt)
+                                       select n;
+            return nv.FirstOrDefault();
+        }
 
         /**
          * Sửa thông tin nhân viên 
@@ -82,6 +92,7 @@ namespace KaraokeRUM
                     tam.First().TenNV = nhanVien.TenNV;
                     tam.First().GioiTinh = nhanVien.GioiTinh;
                     tam.First().DiaChi = nhanVien.DiaChi;
+                    tam.First().SDT = nhanVien.SDT;
                     tam.First().TrangThai = nhanVien.TrangThai;
                     tam.First().MaLNV = nhanVien.MaLNV;
                     dt.SubmitChanges();

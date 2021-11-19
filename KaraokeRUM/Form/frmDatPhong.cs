@@ -258,8 +258,10 @@ namespace KaraokeRUM
             DANHSACHPHONGTHUONG = PHONG.LayDSPhongTheoLoai("LP002");
             TaoPhongThuong(DANHSACHPHONGTHUONG);
             IEnumerable<dynamic> danhsDP;
-            danhsDP = HONLOAN.LayThongTinDonDatPhong();
-            TaiDuLieuLenListView(lstvDanhSachDP, danhsDP);
+            /*danhsDP = HONLOAN.LayThongTinDonDatPhong();
+            TaiDuLieuLenListView(lstvDanhSachDP, danhsDP);*/
+            string homNay = DateTime.Now.ToString("yyyy-MM-dd");
+            TaiDuLieuLenListView(lstvDanhSachDP, HONLOAN.LayThongTinDonDatPhongTheoNgay(homNay));
         }
         /* Chức năng đặt phòng */
         private void btnDatPhong_Click(object sender, EventArgs e)

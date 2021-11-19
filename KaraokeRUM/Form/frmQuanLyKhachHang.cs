@@ -23,6 +23,7 @@ namespace KaraokeRUM
         private clsLoaiKhach LK;
         private IEnumerable<dynamic> DSKH;
         private int sortColumn = -1;
+        private string _SDT;
         private void frmQuanLyKhachHang_Load(object sender, EventArgs e)
         {
             TaiCombobox();
@@ -59,6 +60,7 @@ namespace KaraokeRUM
             LK = new clsLoaiKhach();
             IEnumerable<dynamic> dsKH = KH.LayKhachHangVaLoaiKhachHangTheoLoai("LKH01");
             IEnumerable<dynamic> dsKHD = KH.KhachHangVaLoaiKhachHangDanhSachDen();
+            btnCapNhapGhiChu.Enabled = false;
             TaiDuLieuLenListView(lstvDSKH, dsKH);
             TaiDuLieuLenListViewDanhSachDen(lstvDanhSachDen, dsKHD);
         }
@@ -162,7 +164,7 @@ namespace KaraokeRUM
             {
                 dsKH = (dynamic)lstvDSKH.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsKH);
-
+                _SDT = dsKH.SDT;
             }
         }
         void TaiDuLieuTuLstvDenTxtCbo(dynamic dsKH)
@@ -172,6 +174,8 @@ namespace KaraokeRUM
             txtMaKhachHang.Text = dsKH.MaKH;
             txtTenKhachHang.Text = dsKH.TenKhach;
             txtSDT.Text = dsKH.SDT;
+            cboGhiChu.SelectedIndex=0;
+            
             //cboLocTheoLoai.Text = DSKH.TenLoaiKH;
         }
         void TaiDuLieuTuLstvDSKHDenLenTxtCbo(dynamic dsKH)
@@ -361,16 +365,29 @@ namespace KaraokeRUM
 
         private void btnCapNhapGhiChu_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cboGhiChu.Text.Trim()))
+            KhachHang kh = KH.TimKhachHang(txtSDT.Text);
+            KhachHang suaKH = SuaGhiChuSDTKhach();
+            if(!suaKH.SDT.Equals(_SDT))
             {
-                KhachHang suaKH = SuaGhiChuSDTKhach();
-                KH.CapNhatGhiChuSDT(suaKH);
-                TaiDuLieu();
+                if(kh != null)
+                {
+                    
+                    MessageBox.Show("Lỗi! Số điện thoại này thuộc về 1 khách hàng khác, yêu cầu nhập lại !!!", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    KH.CapNhatGhiChuSDT(suaKH);
+                    TaiDuLieu();
+                }
             }
             else
             {
-                MessageBox.Show("Lỗi! Bạn chưa chọn ghi chú khách hàng !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                KH.CapNhatGhiChuSDT(suaKH);
+                TaiDuLieu();
             }
+            
+
         }
 
       
@@ -417,12 +434,12 @@ namespace KaraokeRUM
             {
                 txtSDT.Focus();
                 errorProvider1.SetError(txtSDT, "Số điện thoại phải bắt đầu từ đầu số hợp lệ. VD: 09XXXXXXXX");
-                btnCapNhap.Enabled = false;
+                btnCapNhapGhiChu.Enabled = false;
             }
             else
             {
                 errorProvider1.SetError(txtSDT, null);
-                btnCapNhap.Enabled = true;
+                btnCapNhapGhiChu.Enabled = true;
             }
         }
     }

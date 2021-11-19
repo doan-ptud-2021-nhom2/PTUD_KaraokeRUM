@@ -34,7 +34,7 @@ namespace KaraokeRUM
          */
         public static bool KiemTraSDT(this string sdt)
         {
-            Regex regex = new Regex(@"^((09(\d){8})|(08(\d){8})|(01(\d){9})|(03(\d){8})|(07(\d){8})|(05(\d){8}))$");
+            Regex regex = new Regex(@"^((09(\d){8})|(08(\d){8})|(03(\d){8})|(07(\d){8})|(05(\d){8}))$");
             Match match = regex.Match(sdt);
             return match.Success;
         }
