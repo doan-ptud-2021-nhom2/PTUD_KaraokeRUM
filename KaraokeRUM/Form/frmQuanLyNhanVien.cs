@@ -75,6 +75,7 @@ namespace KaraokeRUM
             btnThem.Enabled = false;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+            txtMucLuong.Enabled = false;
         }
         /** 
          * Tạo tiêu đề cột
@@ -163,6 +164,7 @@ namespace KaraokeRUM
             btnThem.Enabled = false;
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
+            txtMucLuong.Enabled = true;
         }
         void TaiDuLieuTuLstvDenTxtCbo(dynamic dsNV)
         {
@@ -573,6 +575,7 @@ namespace KaraokeRUM
             btnThem.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+            txtMucLuong.Enabled = false;
         }
     }
   
