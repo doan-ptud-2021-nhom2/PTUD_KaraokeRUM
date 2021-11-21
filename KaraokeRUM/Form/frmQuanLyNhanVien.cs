@@ -337,8 +337,7 @@ namespace KaraokeRUM
             LoaiNhanVien suaMucLuong = SuaMucLuong();
             LNV.SuaMucLuongLoaiNhanVien(suaMucLuong);
             
-            errorProvider1.SetError(txtSDT, null);
-            errorProvider1.SetError(txtCMND, null);
+           
 
             if (!suaNhanVien.SDT.Equals(_SDT))
             {
@@ -363,6 +362,8 @@ namespace KaraokeRUM
                 XoaCacTxtCbo();
                 TaiDuLieuLenListView(lstvDSNV, dsNV);
             }
+            errorProvider1.SetError(txtSDT, null);
+            errorProvider1.SetError(txtCMND, null);
 
         }
 
@@ -605,8 +606,8 @@ namespace KaraokeRUM
                 }
             }
             
-                string mucLuong = LNV.LayLoaiNhanVienTheoMa(maLoaiNhanVien).FirstOrDefault().MucLuong.ToString();
-                txtMucLuong.Text = mucLuong;
+                string mucLuong = LNV.LayLoaiNhanVienTheoMa(maLoaiNhanVien).FirstOrDefault().MucLuong.ToString("##,##");
+            txtMucLuong.Text = mucLuong;
 
 
         }
