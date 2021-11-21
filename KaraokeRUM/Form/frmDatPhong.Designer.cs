@@ -97,7 +97,7 @@ namespace KaraokeRUM
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
             this.groupBox3.Location = new System.Drawing.Point(12, 23);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(517, 170);
+            this.groupBox3.Size = new System.Drawing.Size(517, 186);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Phòng VIP";
@@ -107,7 +107,7 @@ namespace KaraokeRUM
             this.fpnlPhongVip.AutoScroll = true;
             this.fpnlPhongVip.Location = new System.Drawing.Point(6, 29);
             this.fpnlPhongVip.Name = "fpnlPhongVip";
-            this.fpnlPhongVip.Size = new System.Drawing.Size(505, 135);
+            this.fpnlPhongVip.Size = new System.Drawing.Size(505, 148);
             this.fpnlPhongVip.TabIndex = 0;
             // 
             // groupBOx
@@ -147,7 +147,7 @@ namespace KaraokeRUM
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1628, 46);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Phòng";
+            this.label1.Text = "Đặt Phòng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox1
@@ -178,17 +178,17 @@ namespace KaraokeRUM
             // dtmGioDatPhong
             // 
             this.dtmGioDatPhong.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtmGioDatPhong.Location = new System.Drawing.Point(234, 266);
+            this.dtmGioDatPhong.Location = new System.Drawing.Point(235, 266);
             this.dtmGioDatPhong.MinDate = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
             this.dtmGioDatPhong.Name = "dtmGioDatPhong";
-            this.dtmGioDatPhong.Size = new System.Drawing.Size(404, 34);
+            this.dtmGioDatPhong.Size = new System.Drawing.Size(403, 34);
             this.dtmGioDatPhong.TabIndex = 7;
             // 
             // rdoDatPhong
             // 
             this.rdoDatPhong.AutoSize = true;
             this.rdoDatPhong.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoDatPhong.Location = new System.Drawing.Point(291, 33);
+            this.rdoDatPhong.Location = new System.Drawing.Point(406, 33);
             this.rdoDatPhong.Name = "rdoDatPhong";
             this.rdoDatPhong.Size = new System.Drawing.Size(133, 31);
             this.rdoDatPhong.TabIndex = 1;
@@ -201,7 +201,7 @@ namespace KaraokeRUM
             // 
             this.rdoMoPhong.AutoSize = true;
             this.rdoMoPhong.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoMoPhong.Location = new System.Drawing.Point(32, 33);
+            this.rdoMoPhong.Location = new System.Drawing.Point(147, 33);
             this.rdoMoPhong.Name = "rdoMoPhong";
             this.rdoMoPhong.Size = new System.Drawing.Size(132, 31);
             this.rdoMoPhong.TabIndex = 0;
@@ -216,7 +216,7 @@ namespace KaraokeRUM
             this.txtSoDienThoai.Location = new System.Drawing.Point(235, 124);
             this.txtSoDienThoai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
-            this.txtSoDienThoai.Size = new System.Drawing.Size(404, 30);
+            this.txtSoDienThoai.Size = new System.Drawing.Size(403, 30);
             this.txtSoDienThoai.TabIndex = 3;
             this.txtSoDienThoai.Text = "0343220597";
             this.txtSoDienThoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoDienThoai_KeyPress);
@@ -227,7 +227,7 @@ namespace KaraokeRUM
             this.txtTenPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenPhong.Location = new System.Drawing.Point(235, 162);
             this.txtTenPhong.Name = "txtTenPhong";
-            this.txtTenPhong.Size = new System.Drawing.Size(404, 30);
+            this.txtTenPhong.Size = new System.Drawing.Size(403, 30);
             this.txtTenPhong.TabIndex = 4;
             // 
             // txtHoTen
@@ -236,7 +236,7 @@ namespace KaraokeRUM
             this.txtHoTen.Location = new System.Drawing.Point(235, 86);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(404, 30);
+            this.txtHoTen.Size = new System.Drawing.Size(403, 30);
             this.txtHoTen.TabIndex = 2;
             this.txtHoTen.Text = "Lê Tuấn";
             // 
@@ -256,7 +256,7 @@ namespace KaraokeRUM
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(207, 22);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Số điện thoại";
+            this.label8.Text = "Số điện thoại:";
             // 
             // label13
             // 
@@ -265,7 +265,7 @@ namespace KaraokeRUM
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(201, 35);
             this.label13.TabIndex = 0;
-            this.label13.Text = "Họ tên";
+            this.label13.Text = "Họ tên:";
             // 
             // label3
             // 
@@ -296,7 +296,7 @@ namespace KaraokeRUM
             this.dTimeNgayNhan.Location = new System.Drawing.Point(235, 232);
             this.dTimeNgayNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dTimeNgayNhan.Name = "dTimeNgayNhan";
-            this.dTimeNgayNhan.Size = new System.Drawing.Size(404, 30);
+            this.dTimeNgayNhan.Size = new System.Drawing.Size(403, 30);
             this.dTimeNgayNhan.TabIndex = 6;
             this.dTimeNgayNhan.Value = new System.DateTime(2021, 5, 21, 0, 0, 0, 0);
             // 
@@ -535,7 +535,7 @@ namespace KaraokeRUM
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDatPhong";
-            this.Text = "Phong";
+            this.Text = "Đặt Phòng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPhong_Load);
             this.groupBox3.ResumeLayout(false);
