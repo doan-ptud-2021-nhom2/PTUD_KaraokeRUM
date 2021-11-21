@@ -25,7 +25,16 @@ namespace KaraokeRUM
                      select n;
             return lnv;
         }
-
+        /**
+      * Lấy thông tin loại nhân viên
+      */
+        public IEnumerable<LoaiNhanVien> LayLoaiNhanVienTheoMa(string maLoaiNhanVien)
+        {
+            var lnv = from n in dt.LoaiNhanViens
+                      where n.MaLNV.Equals(maLoaiNhanVien)
+                      select n;
+            return lnv;
+        }
         /**
         * Lấy tất cả các loại nhân viên
         */

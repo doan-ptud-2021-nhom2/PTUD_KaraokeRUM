@@ -567,6 +567,48 @@ namespace KaraokeRUM
         private void cboLoaiNV_SelectedIndexChanged(object sender, EventArgs e)
         {
             KiemTraTxtCbo();
+            string maLoaiNhanVien;
+            if (cboLoaiNV.SelectedIndex == 0)
+            {
+                maLoaiNhanVien = "LNV01";
+            }
+            else
+            {
+                if (cboLoaiNV.SelectedIndex == 1)
+                {
+                    maLoaiNhanVien = "LNV02";
+                }
+                else
+                {
+                    if (cboLoaiNV.SelectedIndex == 2)
+                    {
+                        maLoaiNhanVien = "LNV03";
+                    }
+                    else
+                    {
+                        if (cboLoaiNV.SelectedIndex == 3)
+                        {
+                            maLoaiNhanVien = "LNV04";
+                        }
+                        else
+                        {
+                            if (cboLoaiNV.SelectedIndex == 4)
+                            {
+                                maLoaiNhanVien = "LNV05";
+                            }
+                            else
+                            {
+                                maLoaiNhanVien = "LNV01";
+                            }
+                        }
+                    }
+                }
+            }
+            
+                string mucLuong = LNV.LayLoaiNhanVienTheoMa(maLoaiNhanVien).FirstOrDefault().MucLuong.ToString();
+                txtMucLuong.Text = mucLuong;
+
+
         }
 
         private void frmQuanLyNhanVien_Click(object sender, EventArgs e)
