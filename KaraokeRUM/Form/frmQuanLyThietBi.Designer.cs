@@ -223,10 +223,10 @@ namespace KaraokeRUM
             this.btnLamMoi.BackColor = System.Drawing.Color.Teal;
             this.btnLamMoi.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLamMoi.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLamMoi.Location = new System.Drawing.Point(465, 66);
+            this.btnLamMoi.Location = new System.Drawing.Point(451, 66);
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(94, 45);
+            this.btnLamMoi.Size = new System.Drawing.Size(108, 45);
             this.btnLamMoi.TabIndex = 7;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = false;
@@ -263,7 +263,7 @@ namespace KaraokeRUM
             this.txtTimKiem.Location = new System.Drawing.Point(141, 75);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(236, 30);
+            this.txtTimKiem.Size = new System.Drawing.Size(222, 30);
             this.txtTimKiem.TabIndex = 0;
             this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
@@ -272,7 +272,7 @@ namespace KaraokeRUM
             this.btnTim.BackColor = System.Drawing.Color.Teal;
             this.btnTim.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTim.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnTim.Location = new System.Drawing.Point(383, 66);
+            this.btnTim.Location = new System.Drawing.Point(369, 66);
             this.btnTim.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(76, 45);
