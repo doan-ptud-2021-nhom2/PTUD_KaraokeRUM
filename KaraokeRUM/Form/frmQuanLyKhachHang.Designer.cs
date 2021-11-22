@@ -287,9 +287,9 @@ namespace KaraokeRUM
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(31, 93);
+            this.label1.Location = new System.Drawing.Point(64, 93);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 33);
+            this.label1.Size = new System.Drawing.Size(134, 33);
             this.label1.TabIndex = 69;
             this.label1.Text = "Tìm kiếm :";
             // 
