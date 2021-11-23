@@ -228,13 +228,13 @@ namespace KaraokeRUM
         private string taoMaTTB()
         {
             string maTTB = "";
-            if (THIETBI.LayToanBoTrangThietBis().Count() == 0)
+            if (THIETBI.DemDanhSachThietBi().Count() == 0)
             {
                 maTTB = "TB001";
             }
             else
             {
-                string maTTBTam = THIETBI.LayToanBoTrangThietBis().Last().MaTTB.ToString();
+                string maTTBTam = THIETBI.DemDanhSachThietBi().Last().MaTTB.ToString();
                 int dem = Convert.ToInt32(maTTBTam.Split('T','B')[2]) + 1;
                 if (dem < 10)
                 {
@@ -296,6 +296,7 @@ namespace KaraokeRUM
                     THIETBI.Them(ttb);
                     TaiDuLieuLenLstvThietBi(lstvThietBi, THIETBI.LayToanBoTrangThietBis());
                     XoaDuLieuTextBox();
+                    LoadDuLieuVaoComboBox(DANHSACHPHONG, DANHSACHTHIETBI);
                 }
             }    
         }
@@ -332,6 +333,7 @@ namespace KaraokeRUM
                     }
                     XoaDuLieuTextBox();
                     TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
+                    LoadDuLieuVaoComboBox(DANHSACHPHONG, DANHSACHTHIETBI);
                     btnXoa.Enabled = false;
                     btnSua.Enabled = false;
                 }

@@ -29,13 +29,20 @@ namespace KaraokeRUM
             }
         }
 
+        public IEnumerable<TrangThietBi> DemDanhSachThietBi()
+        {
+            IEnumerable<TrangThietBi> tb = from n in dt.TrangThietBis
+                                           select n;
+            return tb;
+        }
+
         /*Lấy tất cả trang thiết bị*/
-        public IEnumerable<TrangThietBi> LayToanBoTrangThietBiKhiThemVaoPhong()
+        /*public IEnumerable<TrangThietBi> LayToanBoTrangThietBiKhiThemVaoPhong()
         {
             IEnumerable<TrangThietBi> tb = from n in dt.TrangThietBis select n;
             dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tb);
             return tb;
-        }
+        }*/
 
         /*kiểm tra thiết bị theo ID*/
         public TrangThietBi KiemTra(string id)
@@ -69,7 +76,7 @@ namespace KaraokeRUM
 
 
         /*Xóa trang thiết bị*/
-        public int Xoa(TrangThietBi tb)
+        /*public int Xoa(TrangThietBi tb)
         {
             using(System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction())
             {
@@ -91,7 +98,7 @@ namespace KaraokeRUM
                     throw new Exception("Loi" + ex.Message);
                 }
             } 
-        }
+        }*/
 
         /* Sửa trang thiết bị */
         public int SuaTrangThietBi(TrangThietBi tb)

@@ -22,12 +22,12 @@ namespace KaraokeRUM
         /**
          * Class KiemTra tạo những hàm dùng để kiểm tra input.
          */
-        public static bool KiemTraSoTien(this string soTien)
+   /*     public static bool KiemTraSoTien(this string soTien)
         {
             Regex regex = new Regex(@"^[1-9]{1}[0-9]*$");
             Match match = regex.Match(soTien);
             return match.Success;
-        }
+        }*/
 
         /**
          * Class KiemTra tạo những hàm dùng để kiểm tra số điện thoại.
@@ -76,12 +76,12 @@ namespace KaraokeRUM
         /*
          * Kiểm tra số lượng mặt hàng trong phòng (phải là số)
          */
-        public static bool KiemTraSoLuongMatHangTrongPhong(this string soLuong)
+/*        public static bool KiemTraSoLuongMatHangTrongPhong(this string soLuong)
         {
             Regex regex = new Regex("^[0-9]+$");
             Match match = regex.Match(soLuong);
             return match.Success;
-        }
+        }*/
 
         /*
          * Kiểm tra Tên phòng theo định dạng: TXXX hoặc VXXX (X là số từ 0-9)

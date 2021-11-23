@@ -58,13 +58,13 @@ namespace KaraokeRUM
             return phong;
         }
         /*Lấy các phòng theo loại (VIP, THUONG)*/
-        public IEnumerable<Phong> LayTatCaTheoLoai(string maLoaiPhong)
+      /*  public IEnumerable<Phong> LayTatCaTheoLoai(string maLoaiPhong)
         {
             IEnumerable<Phong> q = from n in dt.Phongs
                                    where n.MaLoaiPhong.Equals(lp.TimLoaiPhong(maLoaiPhong).First().MaLoaiPhong)
                                    select n;
             return q;
-        }
+        }*/
         /*Lấy danh sách phòng theo loại*/
         public IEnumerable<Phong> LayDSPhongTheoLoai(string maLoaiPhong)
         {

@@ -29,7 +29,7 @@ namespace KaraokeRUM
         /**
         * Lấy tất cả các loại phòng
         */
-        public IEnumerable<LoaiKhachHang> LayTatCaLoaiKhach()
+        /*public IEnumerable<LoaiKhachHang> LayTatCaLoaiKhach()
         {
             IEnumerable<LoaiKhachHang> lk = from n in dt.LoaiKhachHangs
                                            select n;
@@ -41,7 +41,7 @@ namespace KaraokeRUM
                                        where n.TenLoaiKH.Equals(tenLoaiKhach)
                                        select n);
             return q;
-        }
+        }*/
         /*
       * tìm kiếm Loại khách hàng theo mã
       */
