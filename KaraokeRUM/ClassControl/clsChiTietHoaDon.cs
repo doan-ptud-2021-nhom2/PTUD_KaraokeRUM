@@ -28,13 +28,13 @@ namespace KaraokeRUM
         /**
         * Tìm kiếm Chi tiết hóa đơn theo mã.
         */
-        public IEnumerable<ChiTietHoaDon> TimChiTietHoaDonTheoMa(string maHoaDon)
+       /* public IEnumerable<ChiTietHoaDon> TimChiTietHoaDonTheoMa(string maHoaDon)
         {
             IEnumerable<ChiTietHoaDon> q = (from n in dt.ChiTietHoaDons
                                             where n.MaHD.Equals(maHoaDon)
                                             select n);
             return q;
-        }
+        }*/
 
         /**
         * Tìm kiếm Mã mặt hàng, Mã hóa đơn trong bảng Chi tiết hóa đơn.

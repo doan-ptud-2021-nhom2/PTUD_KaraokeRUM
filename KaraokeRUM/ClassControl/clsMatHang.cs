@@ -30,13 +30,13 @@ namespace KaraokeRUM
         * Lấy loại mặt hàng
         */
 
-        public MatHang LayDonViMatHang(string tenMatHang)
+/*        public MatHang LayDonViMatHang(string tenMatHang)
         {
             var loaiMatHang = from n in dt.MatHangs
                                  where n.TenMh.Equals(tenMatHang)
                                  select n;
             return loaiMatHang.First();
-        }
+        }*/
 
         /**
          * Lấy tên mặt hàng

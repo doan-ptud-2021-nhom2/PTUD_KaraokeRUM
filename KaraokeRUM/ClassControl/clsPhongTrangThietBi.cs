@@ -15,12 +15,12 @@ namespace KaraokeRUM
         }
 
         /*Lấy toàn bộ dữ liệu thiết bị trong phòng*/
-        public IEnumerable<Phong_TrangThietBi> TraTatCaDuLieu()
+        /*public IEnumerable<Phong_TrangThietBi> TraTatCaDuLieu()
         {
             var q = from d in dt.Phong_TrangThietBis
                     select d;
             return q;
-        }
+        }*/
 
         /*Chức năng thêm thiết bị vào phòng*/
         public int Them(dynamic ttb)

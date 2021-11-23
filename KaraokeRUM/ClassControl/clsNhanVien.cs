@@ -139,7 +139,7 @@ namespace KaraokeRUM
           * join 2 bảng: NhanVien với LoaiNhanVien 
           * Lấy nhân viên đang làm
           */
-        public IEnumerable<dynamic> LayNhanVienVaLoaiNhanVien(string MANVQL)
+      /*  public IEnumerable<dynamic> LayNhanVienVaLoaiNhanVien(string MANVQL)
         {
             //
             var nv = from n in dt.NhanViens
@@ -149,7 +149,7 @@ namespace KaraokeRUM
                      select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV, x.MucLuong };
 
             return nv;
-        }
+        }*/
 
         /** Hàm lấy dữ liệu ở Nhân viên và Loại Nhân Viên
           * join 2 bảng: NhanVien với LoaiNhanVien

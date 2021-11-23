@@ -13,14 +13,14 @@ namespace KaraokeRUM
         {
             dt = LayData();
         }
-        public IEnumerable<dynamic> TraSoPhong()
+        /*public IEnumerable<dynamic> TraSoPhong()
         {
             var q = from n in dt.DonDatPhongs
                     join m in dt.Phongs
                     on n.MaPhong equals m.MaPhong
                     select new { n.MaPhong, m.TenPhong };
             return q;
-        }
+        }*/
         /*Lấy trạng thái phòng*/
         public IEnumerable<Phong> LayTrangThaiPhong(string maLoaiPhong)
         {

@@ -257,7 +257,7 @@ namespace KaraokeRUM
             TaoPhongVip(DANHSACHPHONGVIP);
             DANHSACHPHONGTHUONG = PHONG.LayDSPhongTheoLoai("LP002");
             TaoPhongThuong(DANHSACHPHONGTHUONG);
-            IEnumerable<dynamic> danhsDP;
+/*            IEnumerable<dynamic> danhsDP;*/
             /*danhsDP = HONLOAN.LayThongTinDonDatPhong();
             TaiDuLieuLenListView(lstvDanhSachDP, danhsDP);*/
             string homNay = DateTime.Now.ToString("yyyy-MM-dd");

@@ -38,12 +38,12 @@ namespace KaraokeRUM
         /**
         * Lấy tất cả các loại nhân viên
         */
-        public IEnumerable<LoaiNhanVien> LayTatCaLoaiNhanVien()
+      /*  public IEnumerable<LoaiNhanVien> LayTatCaLoaiNhanVien()
         {
             IEnumerable<LoaiNhanVien> lnv = from n in dt.LoaiNhanViens
                                             select n;
             return lnv;
-        }
+        }*/
 
         /**
          * Tìm loại nhân viên theo mã

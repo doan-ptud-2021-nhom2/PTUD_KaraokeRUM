@@ -188,7 +188,7 @@ namespace KaraokeRUM
             // 
             this.rdoDatPhong.AutoSize = true;
             this.rdoDatPhong.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoDatPhong.Location = new System.Drawing.Point(406, 33);
+            this.rdoDatPhong.Location = new System.Drawing.Point(235, 33);
             this.rdoDatPhong.Name = "rdoDatPhong";
             this.rdoDatPhong.Size = new System.Drawing.Size(133, 31);
             this.rdoDatPhong.TabIndex = 1;
@@ -201,7 +201,7 @@ namespace KaraokeRUM
             // 
             this.rdoMoPhong.AutoSize = true;
             this.rdoMoPhong.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoMoPhong.Location = new System.Drawing.Point(147, 33);
+            this.rdoMoPhong.Location = new System.Drawing.Point(32, 33);
             this.rdoMoPhong.Name = "rdoMoPhong";
             this.rdoMoPhong.Size = new System.Drawing.Size(132, 31);
             this.rdoMoPhong.TabIndex = 0;

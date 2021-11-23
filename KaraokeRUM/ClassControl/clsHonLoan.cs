@@ -16,7 +16,7 @@ namespace KaraokeRUM
         }
 
        
-        public IEnumerable<dynamic> LayMatHangVaPhong()
+      /*  public IEnumerable<dynamic> LayMatHangVaPhong()
         {
             var q = from n in dt.MatHangs
                     join x in dt.ChiTietHoaDons on n.MaMH equals x.MaMH
@@ -31,7 +31,8 @@ namespace KaraokeRUM
                        join e in dt.Phongs on x.MaPhong equals e.MaPhong
                        select new { n.TenTTB, x.SoLuong, e.TenPhong };
             return pTTB;
-        }
+        }*/
+
         /**
         * join 3 bảng: Khách hàng và Đơn đặt phòng và Phòng
         * Lấy dữ liệu ở Khách hàng và Đơn đặt phòng và Phòng      
