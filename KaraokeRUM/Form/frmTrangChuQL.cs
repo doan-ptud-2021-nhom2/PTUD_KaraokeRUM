@@ -74,7 +74,7 @@ namespace KaraokeRUM
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Thông báo",
-                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                                   MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (luaChon == DialogResult.Yes)
             {
                 this.DialogResult = DialogResult.No;

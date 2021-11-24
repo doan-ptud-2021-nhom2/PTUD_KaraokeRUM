@@ -14,15 +14,7 @@ namespace KaraokeRUM
             dt = LayData();
         }
 
-        /*Lấy toàn bộ dữ liệu thiết bị trong phòng*/
-        /*public IEnumerable<Phong_TrangThietBi> TraTatCaDuLieu()
-        {
-            var q = from d in dt.Phong_TrangThietBis
-                    select d;
-            return q;
-        }*/
-
-        /*Chức năng thêm thiết bị vào phòng*/
+        /*Chức năng thêm thiết bị vào phòng - truyền vào một đối tượng phong_trangthietbi*/
         public int Them(dynamic ttb)
         {
             using (System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction())
@@ -42,7 +34,8 @@ namespace KaraokeRUM
                 }
             }
         }
-       /* Chức năng sửa thông tin thiết bị trong phòng*/
+
+       /* Chức năng sửa thông tin thiết bị trong phòng - truyền vào một đối tượng phong_trangthietbi*/
         public int SuaTrangThietBi(Phong_TrangThietBi tb)
         {
             using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
@@ -67,7 +60,7 @@ namespace KaraokeRUM
             } 
         }
 
-        /*Tìm thiết bị trong phòng theo tên thiết bị và mã phòng*/
+        /*Tìm thiết bị trong phòng theo tên thiết bị và mã phòng - truyền vào mã phòng và mã trang thiết bị*/
         public IEnumerable<Phong_TrangThietBi> TimTTBtrongPhongTheoTenVaMaTTB(string maPhong, string maTTB)
         {
             IEnumerable<Phong_TrangThietBi> q = from n in dt.Phong_TrangThietBis
@@ -76,7 +69,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /*Tìm thiết bị trong phòng theo mã phòng*/
+        /*Tìm thiết bị trong phòng theo mã phòng - truyền vào mã phòng*/
         public IEnumerable<Phong_TrangThietBi> TimPhongTTB(string maPhong)
         {
             IEnumerable<Phong_TrangThietBi> q = from n in dt.Phong_TrangThietBis
@@ -85,7 +78,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /*Chức năng xóa thiết bị ra khỏi phòng*/
+        /*Chức năng xóa thiết bị ra khỏi phòng - truyền vào một đối tượng phong_trangthietbi*/
         public int Xoa(Phong_TrangThietBi ttb)
         {
             using(System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction())

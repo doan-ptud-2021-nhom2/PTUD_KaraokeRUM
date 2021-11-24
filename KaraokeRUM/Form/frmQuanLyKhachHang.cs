@@ -12,6 +12,7 @@ namespace KaraokeRUM
         {
             InitializeComponent();
         }
+
         /** 
        * Các biến toàn cục.
        * KH: class khách hàng.
@@ -49,6 +50,7 @@ namespace KaraokeRUM
             }
             txtTimKiemKhachHang.AutoCompleteCustomSource = collection;
         }
+
         /*Làm mới lại toàn bộ list view và tải dữ liệu mới lên list view*/
         void TaiDuLieu()
         {
@@ -64,6 +66,7 @@ namespace KaraokeRUM
             TaiDuLieuLenListView(lstvDSKH, dsKH);
             TaiDuLieuLenListViewDanhSachDen(lstvDanhSachDen, dsKHD);
         }
+
         /* Tải thông tin vào combobox */
         void TaiCombobox()
         {
@@ -80,6 +83,7 @@ namespace KaraokeRUM
             cboGhiChu.Items.Add("Cảnh báo");
             cboGhiChu.Items.Add("Cấm");
         }
+
         /** 
          * Tạo tiêu đề cột
         */
@@ -106,6 +110,7 @@ namespace KaraokeRUM
             lsw.GridLines = true;
             lsw.FullRowSelect = true;
         }
+
         /** 
          * Load dữ liệu lên ListView
         */
@@ -120,6 +125,7 @@ namespace KaraokeRUM
             }
 
         }
+
         /** 
          * Load dữ liệu lên ListView
         */
@@ -134,6 +140,7 @@ namespace KaraokeRUM
             }
 
         }
+
         ListViewItem TaoItem(dynamic itemKH)
         {
             ListViewItem lstvItem;
@@ -146,6 +153,7 @@ namespace KaraokeRUM
             lstvItem.Tag = itemKH;
             return lstvItem;
         }
+
         ListViewItem TaoItemDanhSachDen(dynamic itemKH)
         {
             ListViewItem lstvItem;
@@ -157,6 +165,7 @@ namespace KaraokeRUM
             lstvItem.Tag = itemKH;
             return lstvItem;
         }
+
         private void lstvDSKH_SelectedIndexChanged(object sender, EventArgs e)
         {
             dynamic dsKH = null;
@@ -167,6 +176,7 @@ namespace KaraokeRUM
                 _SDT = dsKH.SDT;
             }
         }
+
         void TaiDuLieuTuLstvDenTxtCbo(dynamic dsKH)
         {
             cboLoaiKhachHang.Text = dsKH.TenLoaiKH;
@@ -174,10 +184,9 @@ namespace KaraokeRUM
             txtMaKhachHang.Text = dsKH.MaKH;
             txtTenKhachHang.Text = dsKH.TenKhach;
             txtSDT.Text = dsKH.SDT;
-            cboGhiChu.SelectedIndex=0;
-            
-            //cboLocTheoLoai.Text = DSKH.TenLoaiKH;
+            cboGhiChu.SelectedIndex = 0;
         }
+
         void TaiDuLieuTuLstvDSKHDenLenTxtCbo(dynamic dsKH)
         {
             
@@ -185,7 +194,6 @@ namespace KaraokeRUM
             txtTenKhachHang.Text = dsKH.TenKhach;
             txtSDT.Text = dsKH.SDT;
             cboGhiChu.Text = dsKH.GhiChu;
-            //cboLocTheoLoai.Text = DSKH.TenLoaiKH;
         }
 
         private void btnCapNhap_Click(object sender, EventArgs e)
@@ -203,16 +211,19 @@ namespace KaraokeRUM
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi! Bạn không được để trống chiết khấu mới !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Lỗi! Bạn không được để trống chiết khấu mới !!!", "Thông báo", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }    
             else
             {
-                MessageBox.Show("Lỗi! Bạn chưa chọn loại khách hàng !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Lỗi! Bạn chưa chọn loại khách hàng !!!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                
             }    
            
         }
+
         /*Tìm kiếm loại khách hàng sau đó sửa chiết khấu theo mã loại*/
         LoaiKhachHang SuaChietKhauLoaiKhach()
         {
@@ -239,6 +250,7 @@ namespace KaraokeRUM
 
             return loaiKhachHang;
         }
+
         /*Tìm kiếm loại khách hàng sau đó sửa chiết khấu theo mã loại*/
         KhachHang SuaGhiChuSDTKhach()
         {
@@ -258,6 +270,7 @@ namespace KaraokeRUM
 
             return khachHang;
         }
+
         /** 
        * Xóa trắng các ô textbox, combobox.
        */
@@ -272,6 +285,7 @@ namespace KaraokeRUM
             cboLocTheoLoai.Text = "";
             txtCKM.Text = "";
         }
+
         /*
         * sự kiện 
         */
@@ -309,11 +323,12 @@ namespace KaraokeRUM
 
 
         }
+
         /*
         * sự kiện click vào cột để sắp xếp
         */
          private void lstvDSKH_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
+         {
             if (e.Column != sortColumn)
             {
                 sortColumn = e.Column;
@@ -329,7 +344,8 @@ namespace KaraokeRUM
             lstvDSKH.Sort();
             this.lstvDSKH.ListViewItemSorter = new clsListViewItemComparer(e.Column,
                                                               lstvDSKH.Sorting);
-        }
+         }
+
         /*
          * Tim kiem
          */
@@ -352,6 +368,7 @@ namespace KaraokeRUM
             
             
         }
+
         private void lstvDanhSachDen_SelectedIndexChanged(object sender, EventArgs e)
         {
             dynamic dsKH = null;
@@ -390,8 +407,6 @@ namespace KaraokeRUM
 
         }
 
-      
-
         private void cboLoaiKhachHang_SelectedIndexChanged(object sender, EventArgs e)
         {
             string maLoaiKhachHang;
@@ -411,17 +426,16 @@ namespace KaraokeRUM
             {
                 maLoaiKhachHang = "LKH01";
             }
-           
-            
-                IEnumerable<LoaiKhachHang> kh = LK.TimLoaiKhachHangTheoMaLoai(maLoaiKhachHang);
+       
+            IEnumerable<LoaiKhachHang> kh = LK.TimLoaiKhachHangTheoMaLoai(maLoaiKhachHang);
             txtCKC.Text = kh.First().ChietKhau.ToString();
-
-
         }
+
         private void txtCKM_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
         private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
@@ -443,13 +457,4 @@ namespace KaraokeRUM
             }
         }
     }
-
-
-
-
-    
 }
-
-
-
-

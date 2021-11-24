@@ -32,7 +32,7 @@ namespace KaraokeRUM
             return null;
         }
 
-        /*Chức năng thêm đơn đặt phòng*/
+        /*Thêm đơn đặt phòng*/
         public int ThemDonDatPhong(DonDatPhong donDatPhong)
         {
             using(System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
@@ -71,7 +71,7 @@ namespace KaraokeRUM
             return temp;
         }
 
-        /*Chức năng xóa đơn đặt phòng*/
+        /*Xóa đơn đặt phòng*/
         public int Xoa(DonDatPhong ddp)
         {
             using (System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction())

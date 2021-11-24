@@ -42,18 +42,6 @@ namespace KaraokeRUM
             return hoaDon;
         }
 
-        /*
-         * Thay thế hàm Lấy chi tiết hóa đơn của chức năng Sửa
-         *//*
-        public IEnumerable<dynamic> LayChiTietHoaHoaTaiLenListView(string maHD)
-        {
-            var ds = from n in dt.ChiTietHoaDons
-                     join y in dt.HoaDons on n.MaHD equals y.MaHD
-                     where y.MaHD.Equals(maHD)
-                     select new { n.MaMH, n.SoLuong, n.ThanhTien };
-            return ds;
-        }*/
-
         /*Hàm lấy toàn bộ danh sách hóa đơn*/
         public IEnumerable<HoaDon> LayToanBoHoaDon()
         {
@@ -75,7 +63,7 @@ namespace KaraokeRUM
             }
         }
 
-        /*Hàm tính tổng tiền mặt hagf theo mã hóa đơn*/
+        /*Hàm tính tổng tiền mặt hàng theo mã hóa đơn*/
         public int TinhTongTienMatHang(string maHD)
         {
             var dsCTHD = from cthd in dt.ChiTietHoaDons
@@ -142,9 +130,7 @@ namespace KaraokeRUM
             }
         }
 
-        /*
-         * Cập nhật đổi phòng
-         */
+        /* Cập nhật đổi phòng*/
         public bool CapNhatDoiPhong(HoaDon hoaDon)
         {
             using(System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
@@ -177,9 +163,7 @@ namespace KaraokeRUM
             return kh.FirstOrDefault();
         }
 
-        /*
-        * Kiểm tra hóa đơn theo mã
-        */
+        /* Kiểm tra hóa đơn theo mã*/
         public HoaDon KiemTraMaHoaDon(string maHoaDon)
         {
             var q = (from hd in dt.HoaDons
@@ -188,9 +172,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /*
-         * Xóa hóa đơn
-         */
+        /*Hàm xóa hóa đơn - hỗ trợ cho việc đổi phòng*/
         public int XoaHoaDon(HoaDon hoaDon)
         {
             using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())

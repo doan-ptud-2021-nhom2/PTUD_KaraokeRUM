@@ -27,19 +27,7 @@ namespace KaraokeRUM
         }
 
         /**
-        * Lấy loại mặt hàng
-        */
-
-/*        public MatHang LayDonViMatHang(string tenMatHang)
-        {
-            var loaiMatHang = from n in dt.MatHangs
-                                 where n.TenMh.Equals(tenMatHang)
-                                 select n;
-            return loaiMatHang.First();
-        }*/
-
-        /**
-         * Lấy tên mặt hàng
+         * Lấy tên mặt hàng - truyền vào mã mặt hàng
          */
         public MatHang TimTheoMa(string maMH)
         {
@@ -48,8 +36,9 @@ namespace KaraokeRUM
                           select mh;
             return matHang.First();
         }
+
         /**
-         * Tìm mã mặt hàng
+         * Tìm mã mặt hàng - truyền vào tên mặt hàng
          */
         public MatHang TimMaTheoTen(string tenMH)
         {
@@ -58,6 +47,8 @@ namespace KaraokeRUM
                           select mh;
             return matHang.First();
         }
+
+        /*Tìm mặt hàng - truyền vào tên mặt hàng hoặc mã mặt hàng*/
         public IEnumerable<MatHang> TimMatHang(string timKiem)
         {
             IEnumerable<MatHang> nv = from n in dt.MatHangs
@@ -65,6 +56,8 @@ namespace KaraokeRUM
                                       select n;
             return nv;
         }
+
+        /*Thêm một mặt hàng - truyền vào một đối tượng mặt hàng*/
         public int ThemMatHang(MatHang matHang)
         {
             using(System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
@@ -85,9 +78,7 @@ namespace KaraokeRUM
             }
         }
 
-        /**
-         * Sửa thông tin mặt hàng
-         */
+        /*Sửa thông tin mặt hàng - truyền vào một đối tượng mặt hàng.*/
         public bool SuaMatHang(MatHang matHang)
         {
             using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
@@ -115,9 +106,8 @@ namespace KaraokeRUM
             }
         }
 
-        /**
-        * thay đổi trạng thái nhân viên thành đã nghỉ.
-        */
+
+        /*Xóa một mặt hàng(Cập nhật lại trạng thái) - truyền vào một đối tượng mặt hàng*/
         public bool XoaMatHang(MatHang matHang)
         {
             using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())

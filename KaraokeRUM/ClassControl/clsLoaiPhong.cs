@@ -17,7 +17,7 @@ namespace KaraokeRUM
         }
 
         /**
-        * Lấy thông tin loại phòng
+        * Lấy thông tin loại phòng - truyền vào mã loại phòng
         */
         public LoaiPhong LayLoaiPhong(string maLoaiPhong)
         {
@@ -38,7 +38,7 @@ namespace KaraokeRUM
         }
 
         /**
-        * Tìm kiếm loại phòng 
+        * Tìm kiếm loại phòng - truyền vào tên loại phòng
         */
         public IQueryable<LoaiPhong> TimLoaiPhong(string tenLoaiPhong)
         {
@@ -49,7 +49,7 @@ namespace KaraokeRUM
         }
 
         /**
-        * Cập nhật giá loại phòng
+        * Cập nhật giá loại phòng - truyền vào một đối tượng loại phòng
         */
         public bool CapNhatGiaLoaiPhong(LoaiPhong lp)
         {

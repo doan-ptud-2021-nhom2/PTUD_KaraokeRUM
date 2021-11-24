@@ -89,6 +89,7 @@ namespace KaraokeRUM
 
             txtGiaPhong.Text = giaPhong;
         }
+
         void XuLyGiaPhuHopVoiLoaiPhong2()
         {
             string loaiPhong = cboLoaiPhong2.Text;
@@ -126,6 +127,7 @@ namespace KaraokeRUM
                 lstv.Items.Add(itemPhong);
             }
         }
+
         ListViewItem TaoItem(dynamic itemP)
         {
             ListViewItem lstvItem;
@@ -152,6 +154,7 @@ namespace KaraokeRUM
                 TaiDuLieuTuLstvDenTxtCbo2(dsP);
             }
         }
+
         void TaiDuLieuTuLstvDenTxtCbo(dynamic dsP)
         {
             txtSoPhong.Text = dsP.TenPhong;
@@ -159,6 +162,7 @@ namespace KaraokeRUM
             cboLoaiPhong.Text = LOAIPHONG.LayLoaiPhong(dsP.MaLoaiPhong).TenLoaiPhong;
             txtGiaPhong.Text = LOAIPHONG.LayLoaiPhong(dsP.MaLoaiPhong).Gia.ToString("##,## VNĐ");
         }
+
         void TaiDuLieuTuLstvDenTxtCbo2(dynamic dsP)
         {
             cboLoaiPhong2.Text = LOAIPHONG.LayLoaiPhong(dsP.MaLoaiPhong).TenLoaiPhong;
@@ -186,14 +190,16 @@ namespace KaraokeRUM
         {
             if(TaoPhong() == null)
             {
-                MessageBox.Show("Bạn cần nhập, chọn đầy đủ các thông tin để thực hiện chức năng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn cần nhập, chọn đầy đủ các thông tin để thực hiện chức năng!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 Phong phong = TaoPhong();
                 if (PHONG.TimPhong(phong.TenPhong).Count() > 0)
                 {
-                    MessageBox.Show("Tên phòng đã tồn tại. Vui lòng nhập tên phòng khác để thực hiện chức năng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tên phòng đã tồn tại. Vui lòng nhập tên phòng khác để thực hiện chức năng!", "Thông báo", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -203,6 +209,7 @@ namespace KaraokeRUM
                 }
             }
         }
+
         /** 
         * Tạo mã phòng tự tăng
         */
@@ -233,6 +240,7 @@ namespace KaraokeRUM
 
             return maPhong;
         }
+
         /** 
         * Tạo phòng (số phòng là tên của phòng)
         */
@@ -259,7 +267,8 @@ namespace KaraokeRUM
         */
         dynamic SuaTenVaLoaiPhong()
         {
-            if(lstvDanhSachPhong.SelectedItems.Count > 0 && (cboLoaiPhong.Text == "VIP" || cboLoaiPhong.Text == "THƯỜNG") && txtSoPhong.Text != "" && KiemTraPhong())
+            if(lstvDanhSachPhong.SelectedItems.Count > 0 && (cboLoaiPhong.Text == "VIP" || cboLoaiPhong.Text == "THƯỜNG") 
+                && txtSoPhong.Text != "" && KiemTraPhong())
             {
                 ListViewItem item = lstvDanhSachPhong.SelectedItems[0];
                 Phong phong = new Phong();
@@ -273,18 +282,21 @@ namespace KaraokeRUM
 
             return null;
         }
+
         private void btnSua_Click(object sender, EventArgs e)
         {
             if(SuaTenVaLoaiPhong() == null)
             {
-                MessageBox.Show("Vui lòng chọn một phòng để chỉnh sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn một phòng để chỉnh sửa", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 Phong suaPhong = SuaTenVaLoaiPhong();
                 if (PHONG.TimPhong(suaPhong.TenPhong).Count() > 0)
                 {
-                    MessageBox.Show("Tên phòng đã tồn tại. Vui lòng nhập tên phòng khác để thực hiện chức năng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tên phòng đã tồn tại. Vui lòng nhập tên phòng khác để thực hiện chức năng!", "Thông báo", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -313,6 +325,7 @@ namespace KaraokeRUM
 
             return null;
         }
+
         /** 
         * Cập nhật giá phòng cũ thành giá phòng mới
         */
@@ -353,18 +366,21 @@ namespace KaraokeRUM
 
             if (lstvDanhSachPhong.SelectedItems.Count > 0 && (cboLoaiPhong.Text == "VIP" || cboLoaiPhong.Text == "THƯỜNG") && txtSoPhong.Text != "")
             {
-                hoiXoa = MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                hoiXoa = MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, 
+                                        MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
 
                 if(hoiXoa == DialogResult.Yes)
                 {
 
                     if (PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Mở" || PHONG.TimPhong(txtSoPhong.Text).First().TrangThaiPhong == "Đặt")
                     {
-                        MessageBox.Show("Phòng đang được sử dụng không được xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Phòng đang được sử dụng không được xóa!", "Thông báo", 
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } 
                     else if (HOADON.LayDanhSachHoaDonTheoMaPhong(PHONG.TimPhongTheoTen(txtSoPhong.Text).FirstOrDefault().MaPhong).Count() > 0)
                     {
-                        MessageBox.Show("Phòng đã được tạo hóa đơn không được xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Phòng đã được tạo hóa đơn không được xóa!", "Thông báo", 
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -379,7 +395,8 @@ namespace KaraokeRUM
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một phòng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn một phòng để xóa!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -414,8 +431,6 @@ namespace KaraokeRUM
             lstvDanhSachPhong.SelectedItems.Clear();
             txtSoPhong.Enabled = true;
         }
-
-        
 
         /**
         * Xử lý và kiểm tra tên Phòng (số phòng)

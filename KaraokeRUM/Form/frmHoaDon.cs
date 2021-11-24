@@ -390,7 +390,8 @@ namespace KaraokeRUM
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
             DialogResult hoiThanhToan;
-            hoiThanhToan = MessageBox.Show("Bạn có muốn thanh toán không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            hoiThanhToan = MessageBox.Show("Bạn có muốn thanh toán không?", "Thông báo", 
+                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if(hoiThanhToan == DialogResult.Yes)
             {
@@ -417,7 +418,8 @@ namespace KaraokeRUM
                 phong.TrangThaiPhong = "Đóng";
                 PHONG.SuaTrangThaiPhong(phong);
 
-                MessageBox.Show("Hoàn tất thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hoàn tất thanh toán", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //Tắt giao diện hóa đơn.
                 this.Close();
 

@@ -53,12 +53,12 @@ namespace KaraokeRUM
             else if (!tenDangNhap.Equals("") && sdt.Equals(""))
             {
                 MessageBox.Show("Số điện thoại không được để trống. Vui lòng nhập đầy đủ thông tin!!", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (tenDangNhap.Equals("") && sdt.Equals(""))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin để thực hiện chức năng!!", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -71,8 +71,8 @@ namespace KaraokeRUM
                 }
                 else
                 {
-                    MessageBox.Show("Thông tin nhập vào sai hoặc tài khoản người dùng này không tồn tại!",
-                        "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Thông tin nhập vào sai hoặc tài khoản người dùng này không tồn tại!","Thông báo", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -82,8 +82,8 @@ namespace KaraokeRUM
          */
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn thoát", "Thông báo"
-                                , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn thoát", "Thông báo", 
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (luaChon == DialogResult.Yes)
             {
                 this.DialogResult = DialogResult.Yes;
