@@ -26,7 +26,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /*Tìm một phòng theo mã*/
+        /*Tìm một phòng theo mã - truyền vào mã phòng*/
         public Phong TimMotPhongTheoMa(string maPhong)
         {
             foreach (Phong i in dt.Phongs)
@@ -37,10 +37,7 @@ namespace KaraokeRUM
             return null;
         }
 
-        /**
-        * Lấy tất cả các phòng
-        * fix load lên ListView (Trạng thái phòng đóng)
-        */
+        /*Lấy tất cả phòng có trạng thái đóng*/
         public IEnumerable<Phong> LayTatCaPhongDong()
         {
             IEnumerable<Phong> q = from n in dt.Phongs
@@ -49,7 +46,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /*Tìm kiếm theo mã phòng (trấn thêm)*/
+        /*Lấy thông tin phòng - truyền vào mã phòng(Trấn)*/
         public Phong LayThongTinPhong(string maPhong)
         {
             var phong = (from p in dt.Phongs
@@ -57,15 +54,8 @@ namespace KaraokeRUM
                           select p).First();
             return phong;
         }
-        /*Lấy các phòng theo loại (VIP, THUONG)*/
-      /*  public IEnumerable<Phong> LayTatCaTheoLoai(string maLoaiPhong)
-        {
-            IEnumerable<Phong> q = from n in dt.Phongs
-                                   where n.MaLoaiPhong.Equals(lp.TimLoaiPhong(maLoaiPhong).First().MaLoaiPhong)
-                                   select n;
-            return q;
-        }*/
-        /*Lấy danh sách phòng theo loại*/
+
+        /*Lấy danh sách phòng theo loại - truyền vào mã loại phòng*/
         public IEnumerable<Phong> LayDSPhongTheoLoai(string maLoaiPhong)
         {
             IEnumerable<Phong> q = from n in dt.Phongs
@@ -74,7 +64,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /*Thêm các thông tin Phòng*/
+        /*Thêm phòng - truyền vào một đối tượng phòng*/
         public int ThemPhong(Phong phong)
         {
             using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
@@ -96,7 +86,7 @@ namespace KaraokeRUM
             
         }
 
-        /*Sửa thông tin phòng (Trạng thái, Loại phòng)*/
+        /*Sửa thông tin phòng (Trạng thái, Loại phòng) - truyền vào một đối tượng phòng*/
         public bool SuaPhong(Phong phong)
         {
             using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
@@ -124,7 +114,7 @@ namespace KaraokeRUM
         }
 
 
-        /*Tìm kiếm phòng */
+        /*Tìm kiếm phòng - truyền vào tên phòng*/
         public IEnumerable<Phong> TimPhong(string tenPhong)
         {
             IEnumerable<Phong> q = from n in dt.Phongs
@@ -133,6 +123,7 @@ namespace KaraokeRUM
             return q;
         }
 
+        /*Tìm phòng theo mã phòng - truyền vào mã phòng*/
         public Phong TimMaPhong(string tenPhong)
         {
             Phong q = (from n in dt.Phongs
@@ -141,6 +132,7 @@ namespace KaraokeRUM
             return q;
         }
 
+        /*Tìm phòng theo tên - truyền vào tên phòng*/
         public Phong TimMotPhongTheoTen(string tenPhong)
         {
             Phong q = (from n in dt.Phongs
@@ -148,6 +140,8 @@ namespace KaraokeRUM
                        select n).FirstOrDefault();
             return q;
         }
+
+        /*Tìm phòng theo tên(hỗ trợ riêng chức năng xem phòng) - truyền vào tên phòng*/
         public Phong TimMotPhongTheoTen_XemPhong(string tenPhong)
         {
             Phong q = (from n in dt.Phongs
@@ -161,9 +155,7 @@ namespace KaraokeRUM
             }
         }
 
-        /**
-       * Tim ten phòng
-       */
+        /*Tìm một phòng theo tên - truyền vào tên phòng*/
         public IQueryable<Phong> TimPhongTheoTen(string tenPhong)
         {
             IQueryable<Phong> q = (from n in dt.Phongs
@@ -172,7 +164,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /*Hàm tìm phòng theo mã*/
+        /*Tìm phòng theo mã - truyền vào mã phòng*/
         public IQueryable<Phong> TimPhongTheoMa(string maPhong)
         {
             IQueryable<Phong> q = (from n in dt.Phongs
@@ -181,9 +173,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /**
-        * kiểm tra
-        */
+        /*Hàm lấy phòng phòng để hỗ trợ cho việc kiểm tra - truyền vào mã phòng*/
         public Phong KiemTra(string maPhong)
         {
             var q = (from x in dt.Phongs
@@ -192,10 +182,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /**
-        * Hàm xóa phòng
-        * Hàm xóa phòng là cập nhật lại trạng thái phòng = null.
-        */
+        /*Xóa phòng - truyền vào một đối tượng phòng*/
         public int XoaPhong(Phong p)
         {
             using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
@@ -221,7 +208,7 @@ namespace KaraokeRUM
             
         }
 
-        /*Hàm sửa trạng thái phòng*/
+        /*Hàm sửa trạng thái phòng - truyền vào một đối tượng phòng*/
         public int SuaTrangThaiPhong(Phong phong)
         {
             using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())

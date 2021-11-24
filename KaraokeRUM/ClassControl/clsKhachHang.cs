@@ -24,7 +24,7 @@ namespace KaraokeRUM
            
         }
 
-        /*Hàm tìm tên khách hàng bằng số điện thoại*/
+        /*Hàm tìm tên khách hàng - truyền vào chuỗi số điện thoại*/
         public IQueryable<KhachHang> TimTenKhachHang(string sdt)
         {
             IQueryable<KhachHang> q = (from n in dt.KhachHangs
@@ -32,15 +32,8 @@ namespace KaraokeRUM
                                        select n);
             return q;
         }
-      /*  public KhachHang TimKhachHangCu(string sdt)
-        {
-            KhachHang i = from kh in dt.KhachHangs
-                    where kh.SDT.Equals(sdt)
-                    select kh;
-            return i;
-        }*/
 
-        /*Hàm lấy thông tin khách hàng theo mã khách hàng*/
+        /*Hàm lấy thông tin khách hàng - truyền vào mã khách hàng*/
         public KhachHang LayThongTinKhach(string maKH)
         {
             var in4_kh = from kh in dt.KhachHangs
@@ -49,14 +42,14 @@ namespace KaraokeRUM
             return in4_kh.FirstOrDefault();
         }
 
-        /*Hàm tìm khách hàng theo số điện thoại*/
+        /*Hàm tìm khách hàng - truyền vào chuỗi số điện thoại*/
         public KhachHang TimKhachHang(string sdt)
         {
             KhachHang k = (from n in dt.KhachHangs where n.SDT == sdt select n).FirstOrDefault();
             return k;
         }
 
-        /*Hàm thêm khách hàng*/
+        /*Hàm thêm khách hàng - truyền vào một đối tượng khách hàng*/
         public int ThemKhachHang(KhachHang khach)
         {
             using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())

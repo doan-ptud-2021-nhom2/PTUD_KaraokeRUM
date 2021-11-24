@@ -56,7 +56,6 @@ namespace KaraokeRUM
             DANHSACHPHONGTHUONG = PHONG.LayDSPhongTheoLoai("LP002");
             TaoPhongVip(DANHSACHPHONGVIP);
             TaoPhongThuong(DANHSACHPHONGTHUONG);
-
         }
 
         /** 
@@ -148,7 +147,8 @@ namespace KaraokeRUM
             if (btn.BackColor == Color.Gray)
             {
                 DialogResult hoiChon;
-                hoiChon = MessageBox.Show("Bạn có muốn chuyển sang phòng này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                hoiChon = MessageBox.Show("Bạn có muốn chuyển sang phòng này không?", "Thông báo", 
+                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if(hoiChon == DialogResult.Yes)
                 {
@@ -165,7 +165,8 @@ namespace KaraokeRUM
                     PHONGCU.TrangThaiPhong = "Đóng";
                     PHONG.SuaTrangThaiPhong(PHONGCU);
 
-                    MessageBox.Show("Chuyển phòng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Chuyển phòng thành công.", "Thông báo", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //Thực hiển chuyển phòng và tắt 2 from
                     this.Close();
@@ -174,11 +175,13 @@ namespace KaraokeRUM
             }
             else if(btn.BackColor == Color.Teal)
             {
-                MessageBox.Show("Phòng đang mở, vui lòng chọn phòng khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Phòng đang mở, vui lòng chọn phòng khác!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if(btn.BackColor == Color.Orange)
             {
-                MessageBox.Show("Phòng đã đặt, vui lòng chọn phòng khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Phòng đã đặt, vui lòng chọn phòng khác!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }

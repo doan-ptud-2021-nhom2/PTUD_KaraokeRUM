@@ -20,7 +20,6 @@ namespace KaraokeRUM
             IEnumerable<TrangThietBi> tb = from n in dt.TrangThietBis 
                                            where n.TrangThai.Equals("DSD")
                                            select n;
-            //dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tb);
             using (System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
             {
                 dt.Transaction = br;
@@ -29,6 +28,7 @@ namespace KaraokeRUM
             }
         }
 
+        /*Lấy danh sách thiết bị để hỗ trợ cho việc đếm để tạo mã thiết bị*/
         public IEnumerable<TrangThietBi> DemDanhSachThietBi()
         {
             IEnumerable<TrangThietBi> tb = from n in dt.TrangThietBis
@@ -36,15 +36,7 @@ namespace KaraokeRUM
             return tb;
         }
 
-        /*Lấy tất cả trang thiết bị*/
-        /*public IEnumerable<TrangThietBi> LayToanBoTrangThietBiKhiThemVaoPhong()
-        {
-            IEnumerable<TrangThietBi> tb = from n in dt.TrangThietBis select n;
-            dt.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, tb);
-            return tb;
-        }*/
-
-        /*kiểm tra thiết bị theo ID*/
+        /*Kiểm tra thiết bị để hỗ trợ cho việc thêm - truyền vào mã thiết bị*/
         public TrangThietBi KiemTra(string id)
         {
             TrangThietBi temp = (from n in dt.TrangThietBis
@@ -53,7 +45,7 @@ namespace KaraokeRUM
             return temp;
         }
 
-        /*Thêm trang thiết bị*/
+        /*Thêm trang thiết bị - truyền vào một đối tượng trang thiết bị*/
         public int Them(TrangThietBi tb)
         {
             using(System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction())
@@ -74,33 +66,7 @@ namespace KaraokeRUM
             }    
         }
 
-
-        /*Xóa trang thiết bị*/
-        /*public int Xoa(TrangThietBi tb)
-        {
-            using(System.Data.Common.DbTransaction tran = dt.Connection.BeginTransaction())
-            {
-                try
-                {
-                    dt.Transaction = tran;
-                    if (KiemTra(tb.MaTTB) != null)
-                    {
-                        dt.TrangThietBis.DeleteOnSubmit(tb);
-                        dt.SubmitChanges();
-                        dt.Transaction.Commit();
-                        return 1;
-                    }
-                    return 0;
-                }
-                catch (Exception ex)
-                {
-                    dt.Transaction.Rollback();
-                    throw new Exception("Loi" + ex.Message);
-                }
-            } 
-        }*/
-
-        /* Sửa trang thiết bị */
+        /* Sửa trang thiết bị - truyền vào một đối tượng trang thiết bị*/
         public int SuaTrangThietBi(TrangThietBi tb)
         {
             using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
@@ -129,7 +95,7 @@ namespace KaraokeRUM
             } 
         }        
 
-        /*Hàm tìm danh sách thiết bị theo mã */
+        /*Hàm tìm danh sách thiết bị theo mã hoặc tên - truyền vào mã thiết bị hoặc tên thiết bị*/
         public IEnumerable<TrangThietBi> TimDSachTTBTheoMa(string timKiem)
         {
             IEnumerable<TrangThietBi> q = from n in dt.TrangThietBis
@@ -138,7 +104,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /*Tìm thiết bị theo mã*/ 
+        /*Tìm thiết bị theo mã - truyền vào mã thiết bị*/ 
         public TrangThietBi TimTTBTheoMa(string maTTB)
         {
             TrangThietBi q = (from n in dt.TrangThietBis
@@ -147,7 +113,7 @@ namespace KaraokeRUM
             return q;
         }
 
-        /* Tìm thiết bị theo tên */
+        /* Tìm thiết bị theo tên - truyền vào tên thiết bị*/
         public IQueryable<TrangThietBi> TimThietBiTheoTen(string tenTB)
         {
             IQueryable<TrangThietBi> q = (from n in dt.TrangThietBis

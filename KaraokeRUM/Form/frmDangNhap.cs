@@ -53,7 +53,8 @@ namespace KaraokeRUM
             if (TAIKHOAN.KiemTraTaiKhoan(taiKhoan))
             {
                 
-                if (TAIKHOAN.LayLoaiTaiKhoan(taiKhoan).Equals("LNV01") && NHANVIEN.TimNhanVienTheoMa(MAQL).TrangThai.Equals("Đang làm"))
+                if (TAIKHOAN.LayLoaiTaiKhoan(taiKhoan).Equals("LNV01") && 
+                    NHANVIEN.TimNhanVienTheoMa(MAQL).TrangThai.Equals("Đang làm"))
                 {
                     this.Hide();
 
@@ -66,7 +67,8 @@ namespace KaraokeRUM
                     }    
                 }
 
-                else if(TAIKHOAN.LayLoaiTaiKhoan(taiKhoan).Equals("LNV02") && NHANVIEN.TimNhanVienTheoMa(MAQL).TrangThai.Equals("Đang làm"))
+                else if(TAIKHOAN.LayLoaiTaiKhoan(taiKhoan).Equals("LNV02") && 
+                        NHANVIEN.TimNhanVienTheoMa(MAQL).TrangThai.Equals("Đang làm"))
                 {
                     this.Hide();
                     
@@ -155,8 +157,8 @@ namespace KaraokeRUM
          */
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn thoát", "Thông báo"
-                                , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult luaChon = MessageBox.Show("Bạn có chắc muốn thoát", 
+                                   "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (luaChon == DialogResult.Yes)
             {
                 this.Close();

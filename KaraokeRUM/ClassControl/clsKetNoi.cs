@@ -15,8 +15,7 @@ namespace KaraokeRUM
             qlKaraoke = new qlKaraokeDataContext(strKetNoi)
             {
                 CommandTimeout = 30000
-
-                         };
+            };
             qlKaraoke.Connection.Open();
             return qlKaraoke;
         }

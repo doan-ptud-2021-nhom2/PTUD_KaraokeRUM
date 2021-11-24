@@ -29,11 +29,13 @@ namespace KaraokeRUM
         {
             if (!KiemTraSoDienThoai())
             {
-                MessageBox.Show("Yêu cầu nhập đúng số điện thoại khách hàng ", "Thông báo", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Yêu cầu nhập đúng số điện thoại khách hàng ", "Thông báo",
+                                MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
             else if(txtSDT.Text=="")
             {
-                MessageBox.Show("Yêu cầu nhập số điện thoại khách hàng ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Yêu cầu nhập số điện thoại khách hàng ", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }    
             else
             {
@@ -50,7 +52,7 @@ namespace KaraokeRUM
                     if(hoaDon == null)
                     {
                         MessageBox.Show("Khách hàng hiện không sử dụng phòng nào!", "Thông tin tìm kiếm",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -91,7 +93,8 @@ namespace KaraokeRUM
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult res = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", 
+                                                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
                 errSoDienThoai.SetError(txtSDT, null);
