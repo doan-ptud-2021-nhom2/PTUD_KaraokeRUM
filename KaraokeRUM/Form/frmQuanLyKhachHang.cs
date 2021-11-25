@@ -376,7 +376,7 @@ namespace KaraokeRUM
             {
                 dsKH = (dynamic)lstvDanhSachDen.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDSKHDenLenTxtCbo(dsKH);
-
+                _SDT = dsKH.SDT;
             }
         }
 
