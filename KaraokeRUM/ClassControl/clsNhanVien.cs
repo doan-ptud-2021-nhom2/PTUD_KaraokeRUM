@@ -68,7 +68,7 @@ namespace KaraokeRUM
         public NhanVien TimNhanVienTheoSDT(string sdt)
         {
             var nv = from n in dt.NhanViens
-                     where n.CMND.Equals(sdt)
+                     where n.SDT.Equals(sdt)
                      select n;
             return nv.FirstOrDefault();
         }
