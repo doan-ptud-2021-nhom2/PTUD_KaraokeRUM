@@ -341,7 +341,7 @@ namespace KaraokeRUM
        
         private void btnSua_Click(object sender, EventArgs e)
         {
-            NhanVien nv = NV.TimNhanVienTheoSDT(txtCMND.Text);
+            NhanVien nv = NV.TimNhanVienTheoSDT(txtSDT.Text);
             NhanVien suaNhanVien = SuaThongTinNhanVien();
             LoaiNhanVien suaMucLuong = SuaMucLuong();
             LNV.SuaMucLuongLoaiNhanVien(suaMucLuong);
