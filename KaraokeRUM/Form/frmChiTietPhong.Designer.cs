@@ -462,6 +462,7 @@ namespace KaraokeRUM
             this.Text = "Chi tiết phòng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmChiTietPhong_Load);
+            this.Click += new System.EventHandler(this.frmChiTietPhong_Click);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel3.ResumeLayout(false);

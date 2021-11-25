@@ -147,6 +147,9 @@ namespace KaraokeRUM
                 dsMH = (dynamic)lstvDanhSachMatHang.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsMH);
                 cboMatHang.Enabled = false;
+            } else
+            {
+                cboMatHang.Enabled = true;
             }
         }
 
@@ -384,6 +387,15 @@ namespace KaraokeRUM
         private void txtSoLuong_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void frmChiTietPhong_Click(object sender, EventArgs e)
+        {
+            if(lstvDanhSachMatHang.SelectedItems.Count > 0)
+            {
+                lstvDanhSachMatHang.SelectedItems.Clear();
+                cboMatHang.Enabled = true;
+            }
         }
     }
 }
