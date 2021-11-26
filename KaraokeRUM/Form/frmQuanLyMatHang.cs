@@ -62,8 +62,8 @@ namespace KaraokeRUM
             lstv.Columns.Add("Mã MH", 100);
             lstv.Columns.Add("Tên Mặt Hàng", 200);
             lstv.Columns.Add("Số lượng", 100);
-            lstv.Columns.Add("Đơn vị", 100);
-            lstv.Columns.Add("Giá",160);
+            lstv.Columns.Add("Đơn vị", 90);
+            lstv.Columns.Add("Giá",150);
             lstv.View = View.Details;
             lstv.GridLines = true;
             lstv.FullRowSelect = true;

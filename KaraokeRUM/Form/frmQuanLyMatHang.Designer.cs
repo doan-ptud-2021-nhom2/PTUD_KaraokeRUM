@@ -75,7 +75,7 @@ namespace KaraokeRUM
             this.brbThongTinMatHang.Controls.Add(this.btnThem);
             this.brbThongTinMatHang.Controls.Add(this.btnSua);
             this.brbThongTinMatHang.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brbThongTinMatHang.Location = new System.Drawing.Point(56, 220);
+            this.brbThongTinMatHang.Location = new System.Drawing.Point(30, 220);
             this.brbThongTinMatHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.brbThongTinMatHang.Name = "brbThongTinMatHang";
             this.brbThongTinMatHang.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -237,7 +237,7 @@ namespace KaraokeRUM
             this.btnView.BackColor = System.Drawing.Color.Teal;
             this.btnView.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnView.ForeColor = System.Drawing.Color.White;
-            this.btnView.Location = new System.Drawing.Point(608, 129);
+            this.btnView.Location = new System.Drawing.Point(582, 128);
             this.btnView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(111, 45);
@@ -249,7 +249,7 @@ namespace KaraokeRUM
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 134);
+            this.label1.Location = new System.Drawing.Point(24, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 33);
             this.label1.TabIndex = 72;
@@ -258,7 +258,7 @@ namespace KaraokeRUM
             // txtTimKiemMatHang
             // 
             this.txtTimKiemMatHang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiemMatHang.Location = new System.Drawing.Point(191, 134);
+            this.txtTimKiemMatHang.Location = new System.Drawing.Point(165, 133);
             this.txtTimKiemMatHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTimKiemMatHang.Name = "txtTimKiemMatHang";
             this.txtTimKiemMatHang.Size = new System.Drawing.Size(294, 30);
@@ -269,7 +269,7 @@ namespace KaraokeRUM
             this.btnTim.BackColor = System.Drawing.Color.Teal;
             this.btnTim.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTim.ForeColor = System.Drawing.Color.White;
-            this.btnTim.Location = new System.Drawing.Point(491, 129);
+            this.btnTim.Location = new System.Drawing.Point(465, 128);
             this.btnTim.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(111, 44);
@@ -290,7 +290,7 @@ namespace KaraokeRUM
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(943, 603);
+            this.groupBox2.Size = new System.Drawing.Size(906, 603);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách mặt hàng";
@@ -302,10 +302,10 @@ namespace KaraokeRUM
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstvMatHang.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstvMatHang.HideSelection = false;
-            this.lstvMatHang.Location = new System.Drawing.Point(21, 44);
+            this.lstvMatHang.Location = new System.Drawing.Point(6, 36);
             this.lstvMatHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstvMatHang.Name = "lstvMatHang";
-            this.lstvMatHang.Size = new System.Drawing.Size(900, 532);
+            this.lstvMatHang.Size = new System.Drawing.Size(894, 532);
             this.lstvMatHang.TabIndex = 0;
             this.lstvMatHang.UseCompatibleStateImageBehavior = false;
             this.lstvMatHang.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstvMatHang_ColumnClick);
