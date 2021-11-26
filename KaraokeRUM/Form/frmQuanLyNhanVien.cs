@@ -164,8 +164,21 @@ namespace KaraokeRUM
                 dsNV = (dynamic)lstvDSNV.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsNV);
                 _SDT = dsNV.SDT;
-
+                cboTrangThai.Items.Clear();
+                if (dsNV.TrangThai.Equals("Đã nghỉ"))
+                {
+                    
+                    cboTrangThai.Items.Add("Đã nghỉ");
+                    cboTrangThai.Items.Add("Đang làm");
+                    cboTrangThai.SelectedIndex = 0;
+                }
+                else
+                {
+                    cboTrangThai.Items.Add("Đang làm");
+                    cboTrangThai.SelectedIndex = 0;
+                }
             }
+            
             txtCMND.Enabled = false;
             btnThem.Enabled = false;
             btnSua.Enabled = true;
@@ -262,7 +275,7 @@ namespace KaraokeRUM
             cboLoaiNV.SelectedIndex = -1;
             txtTimKiemNhanVien.Text = "";
             txtMucLuong.Text = "";
-            cboLocTheoLoai.SelectedIndex = -1;
+            
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -362,7 +375,7 @@ namespace KaraokeRUM
                     NV.SuaNhanVien(suaNhanVien);
                     IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
                     TaiDuLieuLenListView(lstvDSNV, dsNV);
-                    XoaCacTxtCbo();
+                    
                 }
             }
             else
@@ -370,8 +383,9 @@ namespace KaraokeRUM
                 NV.SuaNhanVien(suaNhanVien);
                 IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
                 TaiDuLieuLenListView(lstvDSNV, dsNV);
-                XoaCacTxtCbo();
+               
             }
+            XoaCacTxtCbo();
             errorProvider1.SetError(txtSDT, null);
             errorProvider1.SetError(txtCMND, null);
         }

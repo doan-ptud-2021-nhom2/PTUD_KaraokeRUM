@@ -221,6 +221,7 @@ namespace KaraokeRUM
             dynamic tb = null;
             if (lstvThietBi.SelectedItems.Count > 0)
             {
+                btnThem.Enabled = false;
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
                 txtTen.Enabled = false;
