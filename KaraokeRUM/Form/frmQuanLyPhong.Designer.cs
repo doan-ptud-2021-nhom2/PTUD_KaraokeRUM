@@ -287,7 +287,7 @@ namespace KaraokeRUM
             this.btnThemPhong.BackColor = System.Drawing.Color.Teal;
             this.btnThemPhong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemPhong.ForeColor = System.Drawing.Color.Snow;
-            this.btnThemPhong.Location = new System.Drawing.Point(94, 264);
+            this.btnThemPhong.Location = new System.Drawing.Point(49, 264);
             this.btnThemPhong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnThemPhong.Name = "btnThemPhong";
             this.btnThemPhong.Size = new System.Drawing.Size(147, 45);
@@ -375,7 +375,7 @@ namespace KaraokeRUM
             this.btnXoa.BackColor = System.Drawing.Color.Teal;
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.Snow;
-            this.btnXoa.Location = new System.Drawing.Point(481, 264);
+            this.btnXoa.Location = new System.Drawing.Point(511, 264);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(147, 45);

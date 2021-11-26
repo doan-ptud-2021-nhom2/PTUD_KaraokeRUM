@@ -482,7 +482,6 @@ namespace KaraokeRUM
             this.Name = "frmQuanLyNhanVien";
             this.Text = "Quản lý nhân viên";
             this.Load += new System.EventHandler(this.frmQuanLyNhanVien_Load);
-            this.Click += new System.EventHandler(this.frmQuanLyNhanVien_Click);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

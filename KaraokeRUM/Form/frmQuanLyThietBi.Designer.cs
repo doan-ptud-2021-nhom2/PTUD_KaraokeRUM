@@ -142,7 +142,7 @@ namespace KaraokeRUM
             this.btnThem.BackColor = System.Drawing.Color.Teal;
             this.btnThem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnThem.Location = new System.Drawing.Point(16, 231);
+            this.btnThem.Location = new System.Drawing.Point(10, 231);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(140, 45);
@@ -199,7 +199,7 @@ namespace KaraokeRUM
             this.btnXoa.BackColor = System.Drawing.Color.Teal;
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnXoa.Location = new System.Drawing.Point(382, 231);
+            this.btnXoa.Location = new System.Drawing.Point(386, 231);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(137, 45);
@@ -376,7 +376,7 @@ namespace KaraokeRUM
             this.btnThemTP.BackColor = System.Drawing.Color.Teal;
             this.btnThemTP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemTP.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnThemTP.Location = new System.Drawing.Point(16, 229);
+            this.btnThemTP.Location = new System.Drawing.Point(10, 229);
             this.btnThemTP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemTP.Name = "btnThemTP";
             this.btnThemTP.Size = new System.Drawing.Size(140, 45);
@@ -424,7 +424,7 @@ namespace KaraokeRUM
             this.btnXoaTP.BackColor = System.Drawing.Color.Teal;
             this.btnXoaTP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoaTP.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnXoaTP.Location = new System.Drawing.Point(382, 229);
+            this.btnXoaTP.Location = new System.Drawing.Point(386, 229);
             this.btnXoaTP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoaTP.Name = "btnXoaTP";
             this.btnXoaTP.Size = new System.Drawing.Size(137, 45);

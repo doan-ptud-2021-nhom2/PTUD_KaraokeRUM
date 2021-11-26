@@ -55,6 +55,10 @@ namespace KaraokeRUM
             txtTimKiemThongTinPhong.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtTimKiemThongTinPhong.AutoCompleteSource = AutoCompleteSource.CustomSource;
             TaiDuLieuVaoBoxTimKiem();
+
+            btnThemPhong.Enabled = true;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
         }
 
         /**
@@ -152,6 +156,9 @@ namespace KaraokeRUM
                 dsP = (dynamic)lstvDanhSachPhong.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsP);
                 TaiDuLieuTuLstvDenTxtCbo2(dsP);
+                btnThemPhong.Enabled = false;
+                btnSua.Enabled = true;
+                btnXoa.Enabled = true;
             }
         }
 
@@ -176,7 +183,6 @@ namespace KaraokeRUM
         {
             txtSoPhong.Text = "";
             cboLoaiPhong.Text = "";
-            txtGiaPhong.Text = "";
             cboLoaiPhong2.Text = "";
             txtGiaPhongCu.Text = "";
             txtGiaPhongMoi.Text = "";
@@ -430,6 +436,9 @@ namespace KaraokeRUM
             XoaCacTxtCbo();
             lstvDanhSachPhong.SelectedItems.Clear();
             txtSoPhong.Enabled = true;
+            btnThemPhong.Enabled = true;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
         }
 
         /**

@@ -174,11 +174,11 @@ namespace KaraokeRUM
         void XoaCacTxtCbo()
         {
             txtTenMH.Text = "";
-            cboDonVi.Text = "";
             txtSoLuongTon.Text = "";
-            cboLMH.Text = "";
             txtGia.Text = "";
             txtTimKiemMatHang.Text = "";
+            cboDonVi.SelectedIndex = -1;
+            cboLMH.SelectedIndex = -1;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -385,13 +385,18 @@ namespace KaraokeRUM
 
         private void frmQuanLyMatHang_Click(object sender, EventArgs e)
         {
-            XoaCacTxtCbo();
-            txtTenMH.Enabled = true;
-            cboLMH.Enabled = true;
-            txtSoLuongTon.Enabled = true;
-            cboDonVi.Enabled = true;
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
+            if (lstvMatHang.SelectedItems.Count > 0)
+            {
+                lstvMatHang.SelectedItems.Clear();
+                XoaCacTxtCbo();
+                txtTenMH.Enabled = true;
+                cboLMH.Enabled = true;
+                txtSoLuongTon.Enabled = true;
+                cboDonVi.Enabled = true;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                
+            }
         } 
     }
 }

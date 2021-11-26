@@ -67,17 +67,33 @@ namespace KaraokeRUM
 
         private void frmQuanLyThietBi_Click(object sender, EventArgs e)
         {
-            btnThemTP.Enabled = true;
-            btnSuaTP.Enabled = false;
-            btnXoaTP.Enabled = false;
-            btnXoa.Enabled = false;
-            btnThem.Enabled = true;
-            btnSua.Enabled = false;
+            if (lstvThietBi.SelectedItems.Count > 0 || lstvThietBiTrongPhong.SelectedItems.Count > 0)
+            {
+                lstvThietBi.SelectedItems.Clear();
+                txtTen.Enabled = true;
+                txtTen.Clear();
+                txtSoLuongTon.Enabled = true;
+                txtSoLuongTon.Clear();
+                txtDonGia.Enabled = true;
+                txtDonGia.Clear();
+                txtSoLuongTP.Clear();
+                btnThemTP.Enabled = true;
+                btnSuaTP.Enabled = false;
+                btnXoaTP.Enabled = false;
+                btnXoa.Enabled = false;
+                btnThem.Enabled = true;
+                btnSua.Enabled = false;
+                cboDonVi.SelectedIndex = -1;
+                cboTenTTB.SelectedIndex = -1;
+            }
         }
 
         /*Hàm hỗ trợ tải dữ liệu vào các combobox*/
         private void LoadDuLieuVaoComboBox(IEnumerable<Phong> dsPhong, IEnumerable<TrangThietBi> dsThietBi)
         {
+            cboDonVi.Items.Clear();
+            cboTenPhong.Items.Clear();
+            cboTenTTB.Items.Clear();
             cboDonVi.Items.Add("Cặp");
             cboDonVi.Items.Add("Cái");
 

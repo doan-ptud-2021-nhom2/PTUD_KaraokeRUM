@@ -153,6 +153,7 @@ namespace KaraokeRUM
             cboLocTheoLoai.Items.Add("Tất cả");
 
             cboTrangThai.Items.Add("Đang làm");
+
         }
 
         private void lstvDSNV_SelectedIndexChanged(object sender, EventArgs e)
@@ -253,19 +254,20 @@ namespace KaraokeRUM
         void XoaCacTxtCbo()
         {
             txtTen.Text = "";
-            cboGioiTinh.Text = "";
+            cboGioiTinh.SelectedIndex = -1;
             txtCMND.Text = "";
-            cboTrangThai.Text = "";
+            cboTrangThai.SelectedIndex = -1;
             txtSDT.Text = "";
             txtDiaChi.Text = "";
-            cboLoaiNV.Text = "";
+            cboLoaiNV.SelectedIndex = -1;
             txtTimKiemNhanVien.Text = "";
+            txtMucLuong.Text = "";
+            cboLocTheoLoai.SelectedIndex = -1;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             NhanVien nhanVien = ThemNhanVien();
-            
             if (NV.TimNhanVien(nhanVien.CMND, nhanVien.SDT).Count() > 0 )
             {
                 MessageBox.Show("Nhân viên này đã tồn tại. Vui lòng không nhập trùng !! ", "Thông báo", 
@@ -280,8 +282,9 @@ namespace KaraokeRUM
                         TK.ThemTaiKhoan(taiKhoan);
                     }
                     
-                    XoaCacTxtCbo();
+                    
                     TaiDuLieuLenListView(lstvDSNV, NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL));
+                    XoaCacTxtCbo();
                     errorProvider1.SetError(txtSDT, null);
                     errorProvider1.SetError(txtCMND, null);
 
@@ -358,16 +361,16 @@ namespace KaraokeRUM
                 {
                     NV.SuaNhanVien(suaNhanVien);
                     IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
-                    XoaCacTxtCbo();
                     TaiDuLieuLenListView(lstvDSNV, dsNV);
+                    XoaCacTxtCbo();
                 }
             }
             else
             {
                 NV.SuaNhanVien(suaNhanVien);
                 IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
-                XoaCacTxtCbo();
                 TaiDuLieuLenListView(lstvDSNV, dsNV);
+                XoaCacTxtCbo();
             }
             errorProvider1.SetError(txtSDT, null);
             errorProvider1.SetError(txtCMND, null);
@@ -425,8 +428,8 @@ namespace KaraokeRUM
                 NhanVien xoaNhanVien = XoaNhanVien();
                 NV.XoaNhanVien(xoaNhanVien);
                 IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
-                XoaCacTxtCbo();
                 TaiDuLieuLenListView(lstvDSNV, dsNV);
+                XoaCacTxtCbo();
                 errorProvider1.SetError(txtSDT, null);
                 errorProvider1.SetError(txtCMND, null);
             }
@@ -434,13 +437,18 @@ namespace KaraokeRUM
 
         private void btnViewList_Click(object sender, EventArgs e)
         {
+            txtCMND.Enabled = true;
+            btnThem.Enabled = false;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
             IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
-            XoaCacTxtCbo();
             lstvDSNV.Clear();
             TaoTieuDeCot(lstvDSNV);
             TaiDuLieuLenListView(lstvDSNV, dsNV);
+            XoaCacTxtCbo();
             errorProvider1.SetError(txtSDT, null);
             errorProvider1.SetError(txtCMND, null);
+
         }
 
         /*
@@ -621,14 +629,7 @@ namespace KaraokeRUM
             txtMucLuong.Text = mucLuong;
         }
 
-        private void frmQuanLyNhanVien_Click(object sender, EventArgs e)
-        {
-            txtCMND.Enabled = true;
-            btnThem.Enabled = true;
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
-            txtMucLuong.Enabled = false;
-        }
+
     }
   
 } 

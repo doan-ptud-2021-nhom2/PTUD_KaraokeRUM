@@ -80,6 +80,10 @@ namespace KaraokeRUM
             DANHSACHMATHANG = HOADON.LayChiTietHoaDon(MAHOADON);
             TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
 
+            btnThem.Enabled = true;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+
         }
 
         /** 
@@ -147,6 +151,9 @@ namespace KaraokeRUM
                 dsMH = (dynamic)lstvDanhSachMatHang.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsMH);
                 cboMatHang.Enabled = false;
+                btnThem.Enabled = false;
+                btnSua.Enabled = true;
+                btnXoa.Enabled = true;
             } else
             {
                 cboMatHang.Enabled = true;
@@ -395,6 +402,10 @@ namespace KaraokeRUM
             {
                 lstvDanhSachMatHang.SelectedItems.Clear();
                 cboMatHang.Enabled = true;
+                txtSoLuong.Clear();
+                btnThem.Enabled = true;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
             }
         }
     }
