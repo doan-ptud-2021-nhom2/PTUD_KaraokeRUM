@@ -88,11 +88,11 @@
     <Compile Include="Form\frmHoaDon.Designer.cs">
       <DependentUpon>frmHoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\frmHome.cs">
+    <Compile Include="Form\frmGioiThieu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\frmHome.Designer.cs">
-      <DependentUpon>frmHome.cs</DependentUpon>
+    <Compile Include="Form\frmGioiThieu.Designer.cs">
+      <DependentUpon>frmGioiThieu.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\frmChiTietPhong.cs">
       <SubType>Form</SubType>
@@ -213,8 +213,8 @@
     <EmbeddedResource Include="Form\frmDoiMatKhau.resx">
       <DependentUpon>frmDoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\frmHome.resx">
-      <DependentUpon>frmHome.cs</DependentUpon>
+    <EmbeddedResource Include="Form\frmGioiThieu.resx">
+      <DependentUpon>frmGioiThieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmDatPhong.resx">
       <DependentUpon>frmDatPhong.cs</DependentUpon>

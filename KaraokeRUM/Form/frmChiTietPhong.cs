@@ -80,6 +80,10 @@ namespace KaraokeRUM
             DANHSACHMATHANG = HOADON.LayChiTietHoaDon(MAHOADON);
             TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
 
+            btnThem.Enabled = true;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+
         }
 
         /** 
@@ -147,6 +151,12 @@ namespace KaraokeRUM
                 dsMH = (dynamic)lstvDanhSachMatHang.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsMH);
                 cboMatHang.Enabled = false;
+                btnThem.Enabled = false;
+                btnSua.Enabled = true;
+                btnXoa.Enabled = true;
+            } else
+            {
+                cboMatHang.Enabled = true;
             }
         }
 
@@ -207,15 +217,17 @@ namespace KaraokeRUM
 
                 if (CHITIETHOADON.TimChiTietHoaDon(MATHANG.TimMaTheoTen(cboMatHang.Text).MaMH, this.MAHOADON).Count() > 0)
                 {
-                    MessageBox.Show("Mặt hàng đã tồn tại!. Bạn có thể dùng chức năng sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mặt hàng đã tồn tại!. Bạn có thể dùng chức năng sửa.", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                     cboMatHang.Text = "";
                     txtSoLuong.Text = "";
                 }
                 else if (Convert.ToInt32(txtSoLuong.Text) > soLuongTon)
                 {
-                    string thongBao = "Số lượng tồn của mặt hàng không đủ. Số lượng hiện tại: " + soLuongTon + ". Vui lòng nhập số lượng phù hợp!";
+                    string thongBao = "Số lượng tồn của mặt hàng không đủ. Số lượng hiện tại: " + 
+                                       soLuongTon + ". Vui lòng nhập số lượng phù hợp!";
                     MessageBox.Show(thongBao, "Thông báo",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -285,7 +297,8 @@ namespace KaraokeRUM
             }
             else if(Convert.ToInt32(txtSoLuong.Text) > soLuongTon)
             {
-                string thongBao = "Số lượng tồn của mặt hàng không đủ. Số lượng hiện tại: " + soLuongTon + ". Vui lòng nhập số lượng phù hợp!";
+                string thongBao = "Số lượng tồn của mặt hàng không đủ. Số lượng hiện tại: " + 
+                                    soLuongTon + ". Vui lòng nhập số lượng phù hợp!";
                 MessageBox.Show(thongBao, "Thông báo", 
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -312,7 +325,8 @@ namespace KaraokeRUM
 
             if (lstvDanhSachMatHang.SelectedItems.Count > 0 && cboMatHang.Text != "" && txtSoLuong.Text != "")
             {
-                hoiXoa = MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                hoiXoa = MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", 
+                                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
 
                 if (hoiXoa == DialogResult.Yes)
                 {
@@ -328,7 +342,8 @@ namespace KaraokeRUM
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một mặt hàng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn một mặt hàng để xóa!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -341,13 +356,15 @@ namespace KaraokeRUM
             Phong phong = PHONG.LayThongTinPhong(hoaDon.MaPhong);
             //Phong tam = Phong.TimMotPhongTheoMa(hoaDon.MaPhong);
             DialogResult hoiHuy;
-            hoiHuy = MessageBox.Show("Bạn có muốn hủy phòng không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            hoiHuy = MessageBox.Show("Bạn có muốn hủy phòng không?", "Thông báo",
+                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
             if (hoiHuy == DialogResult.Yes)
             {
                 if(lstvDanhSachMatHang.Items.Count != 0)
                 {
-                    MessageBox.Show("Cần phải xóa các mặt hàng trước khi hủy!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Cần phải xóa các mặt hàng trước khi hủy!", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (txtTenPhong.Text == phong.TenPhong)
                 {
@@ -365,7 +382,8 @@ namespace KaraokeRUM
         private void btnThoat_Click(object sender, EventArgs e)
         {
             DialogResult hoiThoat;
-            hoiThoat = MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            hoiThoat = MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", 
+                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if(hoiThoat == DialogResult.Yes)
             {
@@ -376,6 +394,19 @@ namespace KaraokeRUM
         private void txtSoLuong_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void frmChiTietPhong_Click(object sender, EventArgs e)
+        {
+            if(lstvDanhSachMatHang.SelectedItems.Count > 0)
+            {
+                lstvDanhSachMatHang.SelectedItems.Clear();
+                cboMatHang.Enabled = true;
+                txtSoLuong.Clear();
+                btnThem.Enabled = true;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
     }
 }

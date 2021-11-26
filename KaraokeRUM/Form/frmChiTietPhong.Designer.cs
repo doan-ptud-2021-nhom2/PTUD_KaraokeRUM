@@ -280,7 +280,7 @@ namespace KaraokeRUM
             this.btnXoa.BackColor = System.Drawing.Color.Teal;
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(630, 188);
+            this.btnXoa.Location = new System.Drawing.Point(660, 188);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(192, 52);
             this.btnXoa.TabIndex = 4;
@@ -293,7 +293,7 @@ namespace KaraokeRUM
             this.btnThem.BackColor = System.Drawing.Color.Teal;
             this.btnThem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnThem.Location = new System.Drawing.Point(82, 188);
+            this.btnThem.Location = new System.Drawing.Point(43, 188);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(192, 52);
             this.btnThem.TabIndex = 2;
@@ -304,9 +304,9 @@ namespace KaraokeRUM
             // txtSoLuong
             // 
             this.txtSoLuong.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoLuong.Location = new System.Drawing.Point(203, 116);
+            this.txtSoLuong.Location = new System.Drawing.Point(229, 116);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(216, 34);
+            this.txtSoLuong.Size = new System.Drawing.Size(313, 34);
             this.txtSoLuong.TabIndex = 1;
             this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
             // 
@@ -366,9 +366,9 @@ namespace KaraokeRUM
             this.cboMatHang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMatHang.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMatHang.FormattingEnabled = true;
-            this.cboMatHang.Location = new System.Drawing.Point(203, 53);
+            this.cboMatHang.Location = new System.Drawing.Point(229, 53);
             this.cboMatHang.Name = "cboMatHang";
-            this.cboMatHang.Size = new System.Drawing.Size(216, 34);
+            this.cboMatHang.Size = new System.Drawing.Size(313, 34);
             this.cboMatHang.TabIndex = 0;
             // 
             // panel2
@@ -462,6 +462,7 @@ namespace KaraokeRUM
             this.Text = "Chi tiết phòng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmChiTietPhong_Load);
+            this.Click += new System.EventHandler(this.frmChiTietPhong_Click);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel3.ResumeLayout(false);

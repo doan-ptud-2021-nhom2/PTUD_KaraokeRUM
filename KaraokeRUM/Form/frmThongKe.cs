@@ -179,7 +179,8 @@ namespace KaraokeRUM
             string nam = cboNam.Text;
             if(!thang.Equals("") && nam.Equals(""))
             {
-                MessageBox.Show("Phải chọn đẩy đủ thông tin để thống kê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Phải chọn đẩy đủ thông tin để thống kê", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cboNam.Text = nam = DateTime.Now.Year.ToString();
             }
             //LoadBieuDo
@@ -215,7 +216,8 @@ namespace KaraokeRUM
             btnTKDoanhThu.Enabled = true;
             if(Convert.ToInt32(cboNam.Text) > Convert.ToInt32(DateTime.Now.Year.ToString()))
             {
-                MessageBox.Show("Không được chọn năm lớn hơn năm hiện tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Không được chọn năm lớn hơn năm hiện tại", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cboNam.Text = DateTime.Now.Year.ToString();
             }
         }
@@ -234,7 +236,8 @@ namespace KaraokeRUM
         {
             if(lstvDSHoaDon.Items.Count == 0)
             {
-                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -268,7 +271,8 @@ namespace KaraokeRUM
                                   XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing,
                                   Type.Missing);
                         app.Quit();
-                        MessageBox.Show("Xuất dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Xuất dữ liệu thành công!", "Thông báo", 
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }

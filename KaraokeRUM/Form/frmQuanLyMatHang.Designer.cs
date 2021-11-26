@@ -60,8 +60,6 @@ namespace KaraokeRUM
             // 
             // brbThongTinMatHang
             // 
-            this.brbThongTinMatHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.brbThongTinMatHang.BackColor = System.Drawing.Color.White;
             this.brbThongTinMatHang.Controls.Add(this.txtGia);
             this.brbThongTinMatHang.Controls.Add(this.label6);
@@ -197,7 +195,7 @@ namespace KaraokeRUM
             this.btnXoa.BackColor = System.Drawing.Color.Teal;
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(464, 333);
+            this.btnXoa.Location = new System.Drawing.Point(481, 333);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(143, 45);
@@ -211,7 +209,7 @@ namespace KaraokeRUM
             this.btnThem.BackColor = System.Drawing.Color.Teal;
             this.btnThem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Location = new System.Drawing.Point(53, 333);
+            this.btnThem.Location = new System.Drawing.Point(44, 333);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(143, 45);
@@ -251,7 +249,7 @@ namespace KaraokeRUM
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(69, 129);
+            this.label1.Location = new System.Drawing.Point(50, 134);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 33);
             this.label1.TabIndex = 72;
@@ -260,10 +258,10 @@ namespace KaraokeRUM
             // txtTimKiemMatHang
             // 
             this.txtTimKiemMatHang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiemMatHang.Location = new System.Drawing.Point(222, 134);
+            this.txtTimKiemMatHang.Location = new System.Drawing.Point(191, 134);
             this.txtTimKiemMatHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTimKiemMatHang.Name = "txtTimKiemMatHang";
-            this.txtTimKiemMatHang.Size = new System.Drawing.Size(263, 30);
+            this.txtTimKiemMatHang.Size = new System.Drawing.Size(294, 30);
             this.txtTimKiemMatHang.TabIndex = 0;
             // 
             // btnTim

@@ -15,8 +15,7 @@ namespace KaraokeRUM
             dt = LayData();
         }
 
-        /*Hàm lấy tài khoản, truyền vào tham số username: String
-        Trả về một tài khoản tồn tại.*/
+        /*Hàm lấy tài khoản, truyền vào tham số username: String -Trả về một tài khoản tồn tại.*/
         public TaiKhoan LayTaiKhoan(string tenDangNhap)
         {
             var taiKhoan = (from tk in dt.TaiKhoans
@@ -70,7 +69,7 @@ namespace KaraokeRUM
             return taiKhoan == null ? "" : taiKhoan.PassWord.Trim();
         }
 
-        /*Hàm tìm mật khẩu theo tên đăng nhập*/
+        /*Hàm tìm mật khẩu theo tên đăng nhập - truyền vào tên đăng nhập*/
         public String TimMatKhau(String tenDangNhap)
         {
             var taiKhoan = (from tk in dt.TaiKhoans
@@ -79,7 +78,7 @@ namespace KaraokeRUM
             return taiKhoan == null ? "" : taiKhoan.PassWord.Trim();
         }
 
-        /*Hàm đổi mật khẩu cho tài khoản*/
+        /*Hàm đổi mật khẩu cho tài khoản - truyền vào đối tượng tài khoản*/
         public int DoiMatKhau(TaiKhoan taiKhoan)
         {
             using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
@@ -104,9 +103,7 @@ namespace KaraokeRUM
             
         }
 
-        /**
-         * Thêm tài khoản mới
-         */
+        /*Thêm một tài khoản - truyền vào đối tượng tài khoản*/
         public int ThemTaiKhoan(TaiKhoan taiKhoan)
         {
             using(System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())

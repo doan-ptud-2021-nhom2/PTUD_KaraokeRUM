@@ -15,9 +15,7 @@ namespace KaraokeRUM
             dt = LayData();
         }
 
-        /**
-        * Lấy thông tin loại nhân viên
-        */
+        /*Lấy danh sách loại nhân viên theo tên nhân viên - truyền vào tên loại nhân viên*/
         public IEnumerable<LoaiNhanVien> LayLoaiNhanVien(string tenLoaiNhanVien)
         {
             var lnv = from n in dt.LoaiNhanViens
@@ -25,9 +23,8 @@ namespace KaraokeRUM
                      select n;
             return lnv;
         }
-        /**
-      * Lấy thông tin loại nhân viên
-      */
+
+        /*Lấy thông tin loại nhân viên - truyền vào mã loại nhân viên*/
         public IEnumerable<LoaiNhanVien> LayLoaiNhanVienTheoMa(string maLoaiNhanVien)
         {
             var lnv = from n in dt.LoaiNhanViens
@@ -35,20 +32,8 @@ namespace KaraokeRUM
                       select n;
             return lnv;
         }
-        /**
-        * Lấy tất cả các loại nhân viên
-        */
-        public IEnumerable<LoaiNhanVien> LayTatCaLoaiNhanVien()
-        {
-            IEnumerable<LoaiNhanVien> lnv = from n in dt.LoaiNhanViens
-                                            select n;
-            return lnv;
-        }
-
-        /**
-         * Tìm loại nhân viên theo mã
-         * - Tuấn
-         */
+        
+        /*Tìm loại nhân viên - truyền vào mã loại (Tuấn)*/
         public LoaiNhanVien TimLoaiNVTheoMa(string maLoai)
         {
             var loaiNV = from lnv in dt.LoaiNhanViens
@@ -57,9 +42,7 @@ namespace KaraokeRUM
             return loaiNV.FirstOrDefault();
         }
 
-        /**
-          * Sửa mức lương loại nhân viên 
-          */
+        /*Sửa mức lương của loại nhân viên - truyền vào loại nhân viên*/
         public bool SuaMucLuongLoaiNhanVien(LoaiNhanVien loaiNhanVien)
         {
            using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())

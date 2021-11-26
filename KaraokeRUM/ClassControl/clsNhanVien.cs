@@ -15,6 +15,7 @@ namespace KaraokeRUM
             dt = LayData();
         }
 
+        /*Lấy danh sách tất cả nhân viên trừ quản lý và nhân viên đã nghỉ - truyền vào mã quản lý*/
         public IEnumerable<NhanVien> LayDSNV(string MANVQL)
         {
             IEnumerable<NhanVien> nv = from n in dt.NhanViens
@@ -23,6 +24,7 @@ namespace KaraokeRUM
             return nv;
         }
 
+        /*Lấy tất cả danh sách nhân viên trừ quản lý*/
         public IEnumerable<NhanVien> LayDSNVFULL(string MANVQL)
         {
             IEnumerable<NhanVien> nv = from n in dt.NhanViens
@@ -32,9 +34,7 @@ namespace KaraokeRUM
 
         }
 
-        /**
-        * Thêm các thông tin Nhân Viên
-        */
+        /*Thêm vào một nhân viên - truyền vào một đối tượng nhân viên*/
         public int ThemNhanVien(NhanVien nhanVien)
         {
             using(System.Data.Common.DbTransaction br = dt.Connection.BeginTransaction())
@@ -55,30 +55,25 @@ namespace KaraokeRUM
             } 
         }
 
-        /**
-        * Tìm kiếm Nhân Viên
-        */
+        /*Tìm kiếm nhân viên - truyền vào chứng minh nhân dân và số điện thoại*/
         public IEnumerable<NhanVien> TimNhanVien(string cmnd , string sdt)
         {
             IEnumerable<NhanVien> nv = from n in dt.NhanViens
-                                   where n.CMND.Equals(cmnd) || n.SDT.Equals(sdt)
+                                       where n.CMND.Equals(cmnd) || n.SDT.Equals(sdt)
                                        select n;
             return nv;
         }
-        /**
-        * Tìm kiếm Nhân Viên
-        */
+
+        /*Tìm kiếm nhân viên - truyền vào số điện thoại*/
         public NhanVien TimNhanVienTheoSDT(string sdt)
         {
             var nv = from n in dt.NhanViens
-                                       where n.CMND.Equals(sdt)
-                                       select n;
+                     where n.SDT.Equals(sdt)
+                     select n;
             return nv.FirstOrDefault();
         }
 
-        /**
-         * Sửa thông tin nhân viên 
-         */
+        /*Sửa thông tin nhân viên - truyền vào một đối tượng nhân viên*/
         public bool SuaNhanVien(NhanVien nhanVien)
         {
             using (System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
@@ -108,9 +103,7 @@ namespace KaraokeRUM
             }
         }
 
-        /**
-         * thay đổi trạng thái nhân viên thành đã nghỉ.
-         */
+        /*Xóa một nhân viên(Đổi trạng thái thành đã nghỉ) - truyền vào một đối tượng nhân viên*/
         public bool XoaNhanVien(NhanVien nhanVien)
         {
             using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())
@@ -134,27 +127,8 @@ namespace KaraokeRUM
                 }
             }
         }
-
-        /** Hàm lấy dữ liệu ở Nhân viên và Loại Nhân Viên
-          * join 2 bảng: NhanVien với LoaiNhanVien 
-          * Lấy nhân viên đang làm
-          */
-        public IEnumerable<dynamic> LayNhanVienVaLoaiNhanVien(string MANVQL)
-        {
-            //
-            var nv = from n in dt.NhanViens
-                     join x in dt.LoaiNhanViens
-                     on n.MaLNV equals x.MaLNV
-                     where !n.MaNV.Contains(MANVQL) && !n.TrangThai.ToLower().Contains("đã nghỉ")
-                     select new { n.MaNV, n.TenNV, n.GioiTinh, n.CMND, n.SDT, n.DiaChi, n.TrangThai, x.TenLNV, x.MucLuong };
-
-            return nv;
-        }
-
-        /** Hàm lấy dữ liệu ở Nhân viên và Loại Nhân Viên
-          * join 2 bảng: NhanVien với LoaiNhanVien
-          * Lấy toàn bộ nhân viên
-          */
+        
+        /*Hàm lấy toàn bộ danh sách trừ nhân viên quản lý hiện tại - truyền vào mã nhân viên quản lý*/
         public IEnumerable<dynamic> LayToanBoNhanVienVaLoaiNhanVien(string MANVQL)
         {
             var nv = from n in dt.NhanViens
@@ -166,11 +140,7 @@ namespace KaraokeRUM
             return nv;
         }
 
-        /**
-          * join 2 bảng: NhanVien với LoaiNhanVien
-          * Lấy dữ liệu ở Nhân viên và Loại Nhân Viên
-          * Lấy nhân viên viên đã nghỉ
-          */
+        /*Lấy danh sách nhân viên đã nghỉ trừ nhân viên quản lý hiện tại - truyền vào mã nhân viên quản lý*/
         public IEnumerable<dynamic> LayNhanVienVaLoaiNhanVienDaNghi(string MANVQL)
         {
             var nv = from n in dt.NhanViens
@@ -182,10 +152,7 @@ namespace KaraokeRUM
             return nv;
         }
 
-        /**
-         * join 2 bảng: NhanVien với LoaiNhanVien
-         * Lấy dữ liệu ở Nhân viên và Loại Nhân Viên theo loại
-         */
+        /*Lấy danh sách nhân viên theo loại và không lấy nhân viên quản lý hiện tại - truyền vào loại nhân viên và mã quản lý*/
         public IEnumerable<dynamic> LayNhanVienVaLoaiNhanVienTheoLoai(string loaiNV, string MANVQL)
         {
             var nv = from n in dt.NhanViens
@@ -196,10 +163,7 @@ namespace KaraokeRUM
             return nv;
         }
 
-        /*
-         * join 2 bảng: NhanVien với LoaiNhanVien
-         * Tìm kiếm nhân viên
-         */
+        /*Lấy danh sách nhân viên theo loại và tên hoặc mã nhân viên - truyền vào tên hoặc mã nhân viên và mã nhân viên quản lý*/
         public IEnumerable<dynamic> TimNhanVienVaLoaiNhanVien(string timKiem, string MANVQL)
         {
             IEnumerable<dynamic> nv = from n in dt.NhanViens
@@ -210,11 +174,7 @@ namespace KaraokeRUM
             return nv;
         }
 
-        /**
-         * Tìm nhân viên theo mã
-         * Lấy trạng thái nhân viên
-         * -Tuấn
-         */
+        /* Tìm nhân viên theo mã - truyền vào mã nhân viên(Tuấn)*/
         public NhanVien TimNhanVienTheoMa(string maNV)
         {
             var nhanVien = from nv in dt.NhanViens

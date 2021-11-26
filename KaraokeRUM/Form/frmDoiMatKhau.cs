@@ -53,25 +53,30 @@ namespace KaraokeRUM
             string txtMatKhauMoi = txtMKM.Text.Trim();
             string txtMatKhauNhapLai = txtNLMK.Text.Trim();
 
-            if(String.IsNullOrEmpty(txtMatKhauHienTai) && !String.IsNullOrEmpty(txtMatKhauMoi) && !String.IsNullOrEmpty(txtMatKhauNhapLai))
+            if(String.IsNullOrEmpty(txtMatKhauHienTai) && !String.IsNullOrEmpty(txtMatKhauMoi) && 
+               !String.IsNullOrEmpty(txtMatKhauNhapLai))
             {
                 MessageBox.Show("Mật khẩu hiện tại không được để trống. Vui lòng nhập đẩy đủ thông tin!","Thông báo", 
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (!String.IsNullOrEmpty(txtMatKhauHienTai) && String.IsNullOrEmpty(txtMatKhauMoi) && !String.IsNullOrEmpty(txtMatKhauNhapLai))
+            else if (!String.IsNullOrEmpty(txtMatKhauHienTai) && String.IsNullOrEmpty(txtMatKhauMoi) && 
+                    !String.IsNullOrEmpty(txtMatKhauNhapLai))
             {
                 MessageBox.Show("Mật khẩu mới không được để trống. Vui lòng nhập đẩy đủ thông tin!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if(!String.IsNullOrEmpty(txtMatKhauHienTai) && !String.IsNullOrEmpty(txtMatKhauMoi) && String.IsNullOrEmpty(txtMatKhauNhapLai))
+            else if(!String.IsNullOrEmpty(txtMatKhauHienTai) && !String.IsNullOrEmpty(txtMatKhauMoi) && 
+                    String.IsNullOrEmpty(txtMatKhauNhapLai))
             {
                 MessageBox.Show("Mật khẩu nhập lại không được để trống. Vui lòng nhập đẩy đủ thông tin!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }else if(String.IsNullOrEmpty(txtMatKhauHienTai) && String.IsNullOrEmpty(txtMatKhauMoi) && String.IsNullOrEmpty(txtMatKhauNhapLai))
+            }else if(String.IsNullOrEmpty(txtMatKhauHienTai) && String.IsNullOrEmpty(txtMatKhauMoi) && 
+                    String.IsNullOrEmpty(txtMatKhauNhapLai))
             {
                 MessageBox.Show("Vui lòng nhập đẩy đủ thông tin để thực hiện chức năng!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }else if(String.IsNullOrEmpty(txtMatKhauHienTai) || String.IsNullOrEmpty(txtMatKhauMoi) || String.IsNullOrEmpty(txtMatKhauNhapLai))
+            }else if(String.IsNullOrEmpty(txtMatKhauHienTai) || String.IsNullOrEmpty(txtMatKhauMoi) || 
+                    String.IsNullOrEmpty(txtMatKhauNhapLai))
             {
                 MessageBox.Show("Vui lòng nhập đẩy đủ thông tin để thực hiện chức năng!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);

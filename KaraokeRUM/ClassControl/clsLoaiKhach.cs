@@ -15,9 +15,7 @@ namespace KaraokeRUM
             dt = LayData();
         }
 
-        /**
-        * Lấy thông tin loại khách
-        */
+        /*Hàm lấy loại khách hàng - truyền vào mã loại khách hàng*/
         public LoaiKhachHang LayLoaiKhach(string maLoaiKhach)
         {
             var lk = from n in dt.LoaiKhachHangs
@@ -26,25 +24,7 @@ namespace KaraokeRUM
             return lk.FirstOrDefault();
         }
 
-        /**
-        * Lấy tất cả các loại phòng
-        */
-        public IEnumerable<LoaiKhachHang> LayTatCaLoaiKhach()
-        {
-            IEnumerable<LoaiKhachHang> lk = from n in dt.LoaiKhachHangs
-                                           select n;
-            return lk;
-        }
-        public IQueryable<LoaiKhachHang> TimLoaiKhachHang(string tenLoaiKhach)
-        {
-            IQueryable<LoaiKhachHang> q = (from n in dt.LoaiKhachHangs
-                                       where n.TenLoaiKH.Equals(tenLoaiKhach)
-                                       select n);
-            return q;
-        }
-        /*
-      * tìm kiếm Loại khách hàng theo mã
-      */
+        /*Hàm lấy loại khách hàng - truyền vào mã loại khách hàng*/
         public IQueryable<LoaiKhachHang> TimLoaiKhachHangTheoMaLoai(string maLoai)
         {
             IQueryable<LoaiKhachHang> q = (from n in dt.LoaiKhachHangs
@@ -52,6 +32,8 @@ namespace KaraokeRUM
                                            select n);
             return q;
         }
+
+        /*Hàm cập nhật chiết khấu cho loại khách hàng - truyền vào đối tượng loại khách hàng*/
         public bool CapNhatChietKhau(LoaiKhachHang lk)
         {
             using(System.Data.Common.DbTransaction myTran = dt.Connection.BeginTransaction())

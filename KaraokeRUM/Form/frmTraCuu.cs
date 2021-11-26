@@ -72,7 +72,8 @@ namespace KaraokeRUM
         }
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult res = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", 
+                                                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
                 this.Close();
         }
@@ -84,7 +85,8 @@ namespace KaraokeRUM
             if(khachHang.Count() == 0)
             {
                 lstvKhachHang.Clear();
-                MessageBox.Show("Khách hàng này chưa từng đến cửa hàng. Vui lòng kiểm tra lại SĐT", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Khách hàng này chưa từng đến cửa hàng. Vui lòng kiểm tra lại SĐT", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

@@ -16,28 +16,7 @@ namespace KaraokeRUM
         }
 
         /**
-       * Lấy tất cả thông tin Chi tiết hóa đơn.
-       */
-        /*public IEnumerable<ChiTietHoaDon> LayChiTietHoaDon()
-        {
-            IEnumerable<ChiTietHoaDon> q = from n in dt.ChiTietHoaDons
-                                           select n;
-            return q;
-        }*/
-
-        /**
-        * Tìm kiếm Chi tiết hóa đơn theo mã.
-        */
-        public IEnumerable<ChiTietHoaDon> TimChiTietHoaDonTheoMa(string maHoaDon)
-        {
-            IEnumerable<ChiTietHoaDon> q = (from n in dt.ChiTietHoaDons
-                                            where n.MaHD.Equals(maHoaDon)
-                                            select n);
-            return q;
-        }
-
-        /**
-        * Tìm kiếm Mã mặt hàng, Mã hóa đơn trong bảng Chi tiết hóa đơn.
+        * Tìm kiếm chi danh sách chi tiết hóa đơn thông qua mã mặt hàng và mã hóa đơn
         */
         public IEnumerable<ChiTietHoaDon> TimChiTietHoaDon(string maMatHang, string maHoaDon)
         {
@@ -48,7 +27,7 @@ namespace KaraokeRUM
         }
 
         /**
-        * Thêm các thông tin
+        * Thêm một chi tiết hóa đơn vào hóa đơn
         */
         public int ThemChiTietHoaDon(ChiTietHoaDon chiTietHoaDon)
         {
@@ -71,7 +50,7 @@ namespace KaraokeRUM
         }
 
         /**
-        * Sửa thông tin Mặt hàng (số lượng).
+        * Sửa thông tin Mặt hàng (số lượng) trong chi tiết hóa đơn.
         */
         public bool SuaThongTinMatHang(ChiTietHoaDon chiTietHD)
         {
@@ -100,7 +79,8 @@ namespace KaraokeRUM
         }
 
         /**
-        * kiểm tra
+        * Kiểm tra chi tiết hóa đơn này đã tồn tại hay chưa.
+        * Dùng để tránh việc trùng key sinh ra bug.
         */
         public ChiTietHoaDon KiemTraMa(string maMatHang, string maHoaDon)
         {
@@ -111,7 +91,7 @@ namespace KaraokeRUM
         }
 
         /**
-        * Xóa thông tin trong danh sách Mặt hàng.
+        * Xóa chi tiết hóa đơn trong hóa đơn.
         */
         public int XoaChiTietHoaDon(ChiTietHoaDon chiTietHoaDon)
         {
