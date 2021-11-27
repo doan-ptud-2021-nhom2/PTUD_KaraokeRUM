@@ -21,6 +21,7 @@ namespace KaraokeRUM
         private clsHoaDon HOADON;
         private IEnumerable<Phong> DANHSACHPHONG;
         private IEnumerable<LoaiPhong> DANHSACHLOAIPHONG;
+        private clsPhongTrangThietBi PHONG_TRANGTHIETBI;
         private string MAQL;
 
         /** 
@@ -45,6 +46,7 @@ namespace KaraokeRUM
             PHONG = new clsPhong();
             LOAIPHONG = new clsLoaiPhong();
             HOADON = new clsHoaDon();
+            PHONG_TRANGTHIETBI = new clsPhongTrangThietBi();
 
             DANHSACHPHONG = PHONG.LayTatCaPhong();
             DANHSACHLOAIPHONG = LOAIPHONG.LayTatCaLoaiPhong();
@@ -387,6 +389,11 @@ namespace KaraokeRUM
                     {
                         MessageBox.Show("Phòng đã được tạo hóa đơn không được xóa!", "Thông báo", 
                                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (PHONG_TRANGTHIETBI.TimPhongTTB(PHONG.TimMaPhong(txtSoPhong.Text).MaPhong).Count() > 0)
+                    {
+                        MessageBox.Show("Trang thiết bị hiện đang tồn tại trong phòng. Vui lòng thu hồi rồi mới thực hiện chức năng!",
+                                        "Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
