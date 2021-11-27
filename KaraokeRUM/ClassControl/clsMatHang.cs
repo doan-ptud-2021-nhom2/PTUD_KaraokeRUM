@@ -52,7 +52,7 @@ namespace KaraokeRUM
         public IEnumerable<MatHang> TimMatHang(string timKiem)
         {
             IEnumerable<MatHang> nv = from n in dt.MatHangs
-                                      where n.MaMH.Contains(timKiem) || n.TenMh.Contains(timKiem)
+                                      where (n.MaMH.Contains(timKiem) || n.TenMh.Contains(timKiem) ) && n.TrangThai.Equals("DSD")
                                       select n;
             return nv;
         }
@@ -89,6 +89,7 @@ namespace KaraokeRUM
                     IQueryable<MatHang> tam = (from n in dt.MatHangs
                                                where n.MaMH == matHang.MaMH
                                                select n);
+                    tam.First().TenMh = matHang.TenMh;
                     tam.First().Loai = matHang.Loai;
                     tam.First().SoLuongTon = matHang.SoLuongTon;
                     tam.First().DonVi = matHang.DonVi;

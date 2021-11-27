@@ -104,10 +104,10 @@ namespace KaraokeRUM
                 dsMH = (MatHang)lstvMatHang.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsMH);
             }
-            txtTenMH.Enabled = false;
-            cboLMH.Enabled = false;
-            txtSoLuongTon.Enabled = false;
-            cboDonVi.Enabled = false;
+            txtTenMH.Enabled = true;
+            cboLMH.Enabled = true;
+            txtSoLuongTon.Enabled = true;
+            cboDonVi.Enabled = true;
             btnThem.Enabled = false;
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
@@ -186,7 +186,7 @@ namespace KaraokeRUM
             MatHang matHang = ThemMatHang();
             if (MH.TimMatHang(matHang.TenMh).Count() > 0)
             {
-                MessageBox.Show("Lỗi! đã tồn tại mặt hàng này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               
             }
             else
             {
@@ -253,6 +253,7 @@ namespace KaraokeRUM
         {
             MatHang matHang = new MatHang();
             matHang.MaMH = MH.TimMatHang(txtTenMH.Text).First().MaMH;
+            matHang.TenMh = txtTenMH.Text;
             matHang.Loai = cboLMH.Text;
             matHang.SoLuongTon = Convert.ToInt32(txtSoLuongTon.Text);
             matHang.DonVi = cboDonVi.Text;
@@ -337,8 +338,8 @@ namespace KaraokeRUM
 
                 }
             }
-            btnThem.Enabled = true;
-           
+
+
         }
 
         private void txtTenMH_TextChanged(object sender, EventArgs e)
@@ -349,14 +350,6 @@ namespace KaraokeRUM
         private void txtGia_TextChanged(object sender, EventArgs e)
         {
             KiemTraTxtCbo();
-            if(txtTenMH.Enabled==false)
-            {
-                btnThem.Enabled = false;
-            }    
-            else
-            {
-                btnThem.Enabled = true;
-            }    
         }
 
         private void txtSoLuongTon_TextChanged(object sender, EventArgs e)
@@ -393,6 +386,7 @@ namespace KaraokeRUM
                 cboLMH.Enabled = true;
                 txtSoLuongTon.Enabled = true;
                 cboDonVi.Enabled = true;
+                btnThem.Enabled = true;
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
                 
