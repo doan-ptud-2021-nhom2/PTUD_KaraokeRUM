@@ -172,6 +172,14 @@ namespace KaraokeRUM
             return q;
         }
 
+        public HoaDon KiemTraMaHoaDonHomNay(string maHoaDon, string homNay)
+        {
+            var q = (from hd in dt.HoaDons
+                     where hd.MaHD.Equals(maHoaDon) && hd.NgayLap.Equals(homNay)
+                     select hd).FirstOrDefault();
+            return q;
+        }
+
         /*Hàm xóa hóa đơn - hỗ trợ cho việc đổi phòng*/
         public int XoaHoaDon(HoaDon hoaDon)
         {
