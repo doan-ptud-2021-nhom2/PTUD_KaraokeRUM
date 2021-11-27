@@ -21,6 +21,7 @@ namespace KaraokeRUM
         private clsPhongTrangThietBi PHONGTRANGTHIETBI;
         private IEnumerable<Phong_TrangThietBi> DANHSACHPHONGTTB;
         private string MAQL;
+        private string TENTHIETBI;
 
         /*
          * Constructor
@@ -224,10 +225,9 @@ namespace KaraokeRUM
                 btnThem.Enabled = false;
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
-                txtTen.Enabled = false;
-                txtDonGia.Enabled = false;
                 tb = lstvThietBi.SelectedItems[0].Tag;
                 DuLieuLenTextBoxThietBi(tb);
+                TENTHIETBI = txtTen.Text;
             }
         }
 
@@ -318,6 +318,11 @@ namespace KaraokeRUM
             {
                 MessageBox.Show("Yêu cầu nhập đầy đủ thông tin", "Thông báo", 
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (txtSoLuongTon.Text.Equals("0"))
+            {
+                MessageBox.Show("Số lượng tồn không được nhập bằng 0. Vui lòng nhập lớn hơn 0!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }    
             else
             {
@@ -405,9 +410,28 @@ namespace KaraokeRUM
             else
             {
                 TrangThietBi tb = ThongTinMoiCuaThietBi();
-                THIETBI.SuaTrangThietBi(tb);
-                XoaDuLieuTextBox();
-                TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
+                if(!tb.TenTTB.Equals(TENTHIETBI))
+                {
+                    if (THIETBI.TimThietBiTheoTen(tb.TenTTB).Count() > 0)
+                    {
+                        MessageBox.Show("Tên thiết bị này đã tồn tại. Vui lòng nhập lại!", "Thông báo",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        THIETBI.SuaTrangThietBi(tb);
+                        XoaDuLieuTextBox();
+                        TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
+                        cboDonVi.SelectedIndex = -1;
+                    }
+                }
+                else
+                {
+                    THIETBI.SuaTrangThietBi(tb);
+                    XoaDuLieuTextBox();
+                    TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
+                    cboDonVi.SelectedIndex = -1;
+                }
             }    
             
         }
