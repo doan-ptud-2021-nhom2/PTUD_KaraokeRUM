@@ -103,6 +103,8 @@ namespace KaraokeRUM
                             MessageBox.Show("Mật khẩu được đổi thành công!", "Thông báo",
                                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LamMoiInput();
+                            Logger.LogWritter.Write("Nhân viên đổi mật khẩu");
+
                         }
                         else 
                         {

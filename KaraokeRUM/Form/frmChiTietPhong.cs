@@ -178,6 +178,7 @@ namespace KaraokeRUM
             phongCu = PHONG.TimPhong(txtTenPhong.Text).First();
             frmDanhSachPhong frm = new frmDanhSachPhong(MAHOADON, phongCu, this);
             frm.Show();
+            Logger.LogWritter.Write("Thu ngân thay đổi phòng cho khách");
         }
 
         /** 
@@ -192,6 +193,8 @@ namespace KaraokeRUM
             HOADON.CapNhapHoaDon(hoaDon);
 
             frmHoaDon frm = new frmHoaDon(this.MAHOADON, true, this);
+
+            Logger.LogWritter.Write("Thu ngân tạo hoá đơn");
             frm.Show();
         }
 
@@ -237,6 +240,8 @@ namespace KaraokeRUM
 
                     cboMatHang.Text = "";
                     txtSoLuong.Text = "";
+                    string logDetail = string.Format("mặt hàng [{0}] có số lượng [{1}] vào hoá đơn [{2}]", chiTietHoaDon.MaMH,chiTietHoaDon.SoLuong.ToString(),chiTietHoaDon.MaHD);
+                    Logger.LogWritter.Write("Thu ngân thêm "+logDetail +" - ChiTietHoaDon");
                 }
             }
 
@@ -308,6 +313,8 @@ namespace KaraokeRUM
                 CHITIETHOADON.SuaThongTinMatHang(suaSoLuong);
                 DANHSACHMATHANG = HOADON.LayChiTietHoaDon(MAHOADON);
                 TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
+                string logDetail = string.Format("số lượng mặt hàng [{0}] thành số lượng [{1}] vào hoá đơn [{2}]", suaSoLuong.MaMH, suaSoLuong.SoLuong.ToString(), suaSoLuong.MaHD);
+                Logger.LogWritter.Write("Thu ngân sửa " + logDetail + " - ChiTietHoaDon");
                 cboMatHang.Text = "";
                 txtSoLuong.Text = "";
             }
@@ -333,8 +340,9 @@ namespace KaraokeRUM
                     chiTietHoaDon = CHITIETHOADON.TimChiTietHoaDon(MATHANG.TimMaTheoTen(cboMatHang.Text).MaMH, this.MAHOADON).First();
                     CHITIETHOADON.XoaChiTietHoaDon(chiTietHoaDon);
                     DANHSACHMATHANG = HOADON.LayChiTietHoaDon(MAHOADON);
-                    TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG); 
-
+                    TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
+                    string logDetail = string.Format("mặt hàng [{0}] khỏi hoá đơn [{1}]", chiTietHoaDon.MaMH, chiTietHoaDon.MaHD);
+                    Logger.LogWritter.Write("Thu ngân xoá ");
                     cboMatHang.Text = "";
                     txtSoLuong.Text = "";
                     cboMatHang.Enabled = true;
@@ -371,7 +379,9 @@ namespace KaraokeRUM
                     phong.TrangThaiPhong = "Đóng";
                     PHONG.SuaTrangThaiPhong(phong);
                     HOADON.XoaHoaDon(hoaDon);
+                    Logger.LogWritter.Write("Thu ngân huỷ phòng đang mở");
                     this.Close();
+
                 }
             }
         }

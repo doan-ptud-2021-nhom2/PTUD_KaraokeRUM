@@ -269,6 +269,8 @@ namespace KaraokeRUM
             TaoPhongThuong(DANHSACHPHONGTHUONG);
             string homNay = DateTime.Now.ToString("yyyy-MM-dd");
             TaiDuLieuLenListView(lstvDanhSachDP, HONLOAN.LayThongTinDonDatPhongTheoNgay(homNay));
+            string LogDetail = string.Format("[{0}] cho khách [{1}] với mã đơn đặt phòng [{2}]", ddp.MaPhong, maKH, ddp.MaDDP);
+            Logger.LogWritter.Write(string.Format("Thu ngân đặt phòng {0} - DonDatPhong",LogDetail));
         }
 
         /* Chức năng đặt phòng */
@@ -372,6 +374,7 @@ namespace KaraokeRUM
                                 else
                                 {
                                     DatPhong(maKH);
+                                    
                                 }
                             }
                         }
@@ -385,6 +388,7 @@ namespace KaraokeRUM
                             else
                             {
                                 DatPhong(maKH);
+                                
                             }
                             XoaDuLieuTextBox();
                         }
@@ -398,6 +402,7 @@ namespace KaraokeRUM
                             else
                             {
                                 DatPhong(maKH);
+                                
                             }
                         }
                         XoaDuLieuTextBox();
@@ -456,6 +461,7 @@ namespace KaraokeRUM
                         else
                         {
                             DatPhong(maKH);
+                            Logger.LogWritter.Write("Thu ngân đặt phòng");
                         }                        
                         XoaDuLieuTextBox();
                     }    
@@ -578,6 +584,8 @@ namespace KaraokeRUM
             MAPHONG = phong.MaPhong;
             phong.TrangThaiPhong = "Mở";
             PHONG.SuaTrangThaiPhong(phong);
+            string LogDetail = string.Format("[{0}] cho khách [{1}]", hoaDon.MaPhong, kh.MaKH);
+            Logger.LogWritter.Write(string.Format("Thu ngân mở phòng {0} - HoaDon",LogDetail));
         }
 
         /*Sự kiện mở phòng bằng đơn đặt phòng*/
@@ -677,6 +685,7 @@ namespace KaraokeRUM
                                 }
                                 MoPhongTrucTiep(khc);
                                 KetThucMoPhong();
+                                
                             } 
                         }            
                     }
@@ -688,6 +697,7 @@ namespace KaraokeRUM
                         khm.SoLanDen = 1;                        
                         MoPhongTrucTiep(khm);
                         KetThucMoPhong();
+                        
                     }                    
                 }
                 else if (trangThaiPhong == "Đặt")
@@ -759,6 +769,7 @@ namespace KaraokeRUM
                                 TaiDuLieuLenListView(lstvDanhSachDP, HONLOAN.LayThongTinDonDatPhong());
                             }
                             KetThucMoPhong();
+                            
                         }
                         else
                         {
@@ -961,6 +972,8 @@ namespace KaraokeRUM
                         {
                             phong.TrangThaiPhong = "Đóng";
                             PHONG.SuaTrangThaiPhong(phong);
+                            string LogDetail = string.Format("[{0}]",phong.MaPhong);
+                            Logger.LogWritter.Write("Thu ngân huỷ đặt phòng "+ LogDetail);
                         }
                     }
                     TaiDuLieuLenListView(lstvDanhSachDP, HONLOAN.LayThongTinDonDatPhong());

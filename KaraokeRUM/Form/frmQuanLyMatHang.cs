@@ -19,6 +19,7 @@ namespace KaraokeRUM
         private int SORTCOLUMN = -1;
         private clsChiTietHoaDon CTHD;
         private clsHoaDon HD;
+        private string _TENMH;
         private void frmQuanLyMatHang_Load(object sender, EventArgs e)
         {
             loadCombobox();
@@ -105,6 +106,7 @@ namespace KaraokeRUM
             {
                 dsMH = (MatHang)lstvMatHang.SelectedItems[0].Tag;
                 TaiDuLieuTuLstvDenTxtCbo(dsMH);
+                _TENMH = dsMH.TenMh;
             }
             txtTenMH.Enabled = true;
             cboLMH.Enabled = true;
@@ -113,6 +115,7 @@ namespace KaraokeRUM
             btnThem.Enabled = false;
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
+            
         }
 
         /*
@@ -200,6 +203,9 @@ namespace KaraokeRUM
                     MH.ThemMatHang(matHang);
                     XoaCacTxtCbo();
                     TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
+                    string LogDetail = string.Format(" với tên [{0}] loại mặt hàng [{1}] số lượng tồn [{2}] đơn vị [{3}] đơn giá [{4}]", 
+                                                     matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
+                    Logger.LogWritter.Write("Thu ngân thêm mặt hàng mới"+ LogDetail);
                 }
             }
             
@@ -253,11 +259,36 @@ namespace KaraokeRUM
         {
             if (KiemTraTxtCbo() == 1)
             {
-                
                 MatHang matHang = SuaMatHang();
-                MH.SuaMatHang(matHang);
-                XoaCacTxtCbo();
-                TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
+               
+                if (!matHang.TenMh.Equals(_TENMH))
+                {
+                    if (MH.TimMatHangTenChinhXac(matHang.TenMh).Count() > 0)
+                    {
+
+                        MessageBox.Show("Lỗi! Mặt hàng này đã tồn tại, yêu cầu nhập lại !!!", "Thông báo",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MH.SuaMatHang(matHang);
+                        XoaCacTxtCbo();
+                        TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
+                        string LogDetail = string.Format(" với tên [{0}] loại mặt hàng [{1}] số lượng tồn [{2}] đơn vị [{3}] đơn giá [{4}]",
+                                                     matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
+                        Logger.LogWritter.Write("Thu ngân sửa mặt hàng" + LogDetail);
+                    }
+                }
+                else 
+                {
+                    MH.SuaMatHang(matHang);
+                    XoaCacTxtCbo();
+                    TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
+                    string LogDetail = string.Format(" với tên [{0}] loại mặt hàng [{1}] số lượng tồn [{2}] đơn vị [{3}] đơn giá [{4}]",
+                                                     matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
+                    Logger.LogWritter.Write("Thu ngân sửa mặt hàng" + LogDetail);
+                }
+                
             }
 
         }
@@ -325,6 +356,8 @@ namespace KaraokeRUM
                         MH.XoaMatHang(xoaMatHang);
                         XoaCacTxtCbo();
                         TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
+                        string LogDetail = string.Format("[{0}] ", xoaMatHang.TenMh);
+                        Logger.LogWritter.Write("Thu ngân xoá mặt hàng" + LogDetail);
                     }
                 }
                 else

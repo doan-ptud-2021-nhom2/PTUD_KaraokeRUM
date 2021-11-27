@@ -206,6 +206,8 @@ namespace KaraokeRUM
                     LoaiKhachHang suaLk = SuaChietKhauLoaiKhach();
                     LK.CapNhatChietKhau(suaLk);
                     TaiDuLieu();
+                    string LogDetail = string.Format("loại chiết khấu khách hàng [{0}] thành [{1}] ",suaLk.MaLoaiKH,txtCKM.Text);
+                    Logger.LogWritter.Write("Quản lý cập nhập " + LogDetail);
                     txtCKC.Text = "";
                     txtCKM.Text = "";
                 }
@@ -396,12 +398,17 @@ namespace KaraokeRUM
                 {
                     KH.CapNhatGhiChuSDT(suaKH);
                     TaiDuLieu();
+                    string LogDetail = string.Format("số điện thoại [{0}] và ghi chú [{1}] của khách hàng [{2}]",suaKH.SDT,suaKH.GhiChu,suaKH.MaKH);
+                    Logger.LogWritter.Write("Quản lý cập nhập "+ LogDetail);
+
                 }
             }
             else
             {
                 KH.CapNhatGhiChuSDT(suaKH);
                 TaiDuLieu();
+                string LogDetail = string.Format("số điện thoại [{0}] và ghi chú [{1}] của khách hàng [{2}]", suaKH.SDT, suaKH.GhiChu, suaKH.MaKH);
+                Logger.LogWritter.Write("Quản lý cập nhập " + LogDetail);
             }
             
 

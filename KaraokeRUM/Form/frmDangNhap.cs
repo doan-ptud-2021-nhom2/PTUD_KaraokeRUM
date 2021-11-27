@@ -58,7 +58,7 @@ namespace KaraokeRUM
                     NHANVIEN.TimNhanVienTheoMa(MAQL).TrangThai.Equals("Đang làm"))
                 {
                     this.Hide();
-                    Logger.LogWritter.Write("Quan ly loggin vao he thong");
+                    Logger.LogWritter.Write("Quản lý đăng nhập vào hệ thống");
                     if (frmQL.ShowDialog() == DialogResult.Yes) 
                         this.Close(); 
                     else
@@ -72,7 +72,7 @@ namespace KaraokeRUM
                         NHANVIEN.TimNhanVienTheoMa(MAQL).TrangThai.Equals("Đang làm"))
                 {
                     this.Hide();
-                    Logger.LogWritter.Write("Thu ngan loggin vao he thong");
+                    Logger.LogWritter.Write("Thu ngân đăng nhập vào hệ thống");
                     if (frmNV.ShowDialog() == DialogResult.Yes)
                         this.Close();
                     else
