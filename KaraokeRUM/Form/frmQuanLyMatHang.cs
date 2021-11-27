@@ -289,6 +289,21 @@ namespace KaraokeRUM
             return matHang;
         }
 
+        private Boolean KiemTraMatHang()
+        {
+            MatHang mh = MH.TimMaTheoTen(txtTenMH.Text);
+            IEnumerable<ChiTietHoaDon> cthd = CTHD.TimChiTietHoaDonTheoMaMH(mh.MaMH);
+            DateTime date = DateTime.Now;
+            string homNay = date.Date.ToString("yyyy-MM-dd");
+
+            foreach(var i in cthd)
+            {
+                if (HD.KiemTraMaHoaDonHomNay(i.MaHD, homNay).TongTien == null)
+                    return false;
+            }
+            return true;
+        }
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             DialogResult hoiXoa;
@@ -298,13 +313,11 @@ namespace KaraokeRUM
             {
                 if (txtSoLuongTon.Text.Equals("0"))
                 {
-                    MatHang mh = MH.TimMaTheoTen(txtTenMH.Text);
-                    ChiTietHoaDon cthd = CTHD.TimChiTietHoaDonTheoMaMH(mh.MaMH).LastOrDefault();
-                    HoaDon hd = HD.KiemTraMaHoaDon(cthd.MaHD);
-                    if (hd.TongTien == null)
+                    
+                    if (!KiemTraMatHang())
                     {
-                        MessageBox.Show("Lỗi! Mặt hàng này đang được sử dụng trong phòng, không xoá được!", "Thông báo",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Lỗi! Mặt hàng này đang được sử dụng không thể xóa. Hoàn tất thanh toán mới xóa được!",
+                                        "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
