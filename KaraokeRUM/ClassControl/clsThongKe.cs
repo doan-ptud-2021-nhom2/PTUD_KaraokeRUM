@@ -30,7 +30,6 @@ namespace KaraokeRUM
                            MatHang = g.Key,
                            SoLuong = g.Sum(),
                        };
-            
             return sltk;
         }
 

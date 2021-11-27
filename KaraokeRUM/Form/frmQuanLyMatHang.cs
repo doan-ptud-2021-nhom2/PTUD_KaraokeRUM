@@ -17,7 +17,8 @@ namespace KaraokeRUM
         private string MAQL;
         private clsMatHang MH;
         private int SORTCOLUMN = -1;
-
+        private clsChiTietHoaDon CTHD;
+        private clsHoaDon HD;
         private void frmQuanLyMatHang_Load(object sender, EventArgs e)
         {
             loadCombobox();
@@ -47,7 +48,8 @@ namespace KaraokeRUM
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             MH = new clsMatHang();
-
+            CTHD = new clsChiTietHoaDon();
+            HD = new clsHoaDon();
             IEnumerable<MatHang> dsMH = MH.LayTatCaMatHang();
             TaiDuLieuLenListView(lstvMatHang, dsMH);
             txtTimKiemMatHang.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -63,7 +65,7 @@ namespace KaraokeRUM
             lstv.Columns.Add("Tên Mặt Hàng", 200);
             lstv.Columns.Add("Số lượng", 100);
             lstv.Columns.Add("Đơn vị", 90);
-            lstv.Columns.Add("Giá",150);
+            lstv.Columns.Add("Giá", 150);
             lstv.View = View.Details;
             lstv.GridLines = true;
             lstv.FullRowSelect = true;
@@ -156,8 +158,8 @@ namespace KaraokeRUM
                     lstvMatHang.Sorting = SortOrder.Ascending;
             }
             lstvMatHang.Sort();
-            this.lstvMatHang.ListViewItemSorter = new clsListViewItemComparer(e.Column,lstvMatHang.Sorting);
-        }   
+            this.lstvMatHang.ListViewItemSorter = new clsListViewItemComparer(e.Column, lstvMatHang.Sorting);
+        }
 
         /*
          * Tim kiem
@@ -183,17 +185,24 @@ namespace KaraokeRUM
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            MatHang matHang = ThemMatHang();
-            if (MH.TimMatHang(matHang.TenMh).Count() > 0)
+            
+            if(KiemTraTxtCbo()==1)
             {
-               
+                MatHang matHang = ThemMatHang();
+                if (MH.TimMatHangTenChinhXac(matHang.TenMh).Count() > 0)
+                {
+                    MessageBox.Show("Mặt hàng này đã tồn tại, vui lòng thực hiện chức năng sửa !", "Thông báo",
+                                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                }
+                else
+                {
+                    
+                    MH.ThemMatHang(matHang);
+                    XoaCacTxtCbo();
+                    TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
+                }
             }
-            else
-            {
-                MH.ThemMatHang(matHang);
-                XoaCacTxtCbo();
-                TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
-            }
+            
         }
 
         /** 
@@ -242,17 +251,21 @@ namespace KaraokeRUM
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            MatHang matHang = SuaMatHang();
+            if (KiemTraTxtCbo() == 1)
+            {
+                
+                MatHang matHang = SuaMatHang();
                 MH.SuaMatHang(matHang);
                 XoaCacTxtCbo();
                 TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
- 
+            }
+
         }
 
         dynamic SuaMatHang()
         {
             MatHang matHang = new MatHang();
-            matHang.MaMH = MH.TimMatHang(txtTenMH.Text).First().MaMH;
+            matHang.MaMH = MH.TimMatHangTenChinhXac(txtTenMH.Text).First().MaMH;
             matHang.TenMh = txtTenMH.Text;
             matHang.Loai = cboLMH.Text;
             matHang.SoLuongTon = Convert.ToInt32(txtSoLuongTon.Text);
@@ -260,7 +273,7 @@ namespace KaraokeRUM
             string gia = txtGia.Text.Replace("VNĐ", String.Empty).Replace(",", String.Empty);
             gia.Trim();
             matHang.Gia = Convert.ToInt64(gia);
-           
+
             return matHang;
         }
 
@@ -280,21 +293,32 @@ namespace KaraokeRUM
         {
             DialogResult hoiXoa;
             hoiXoa = MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-
+            
             if (hoiXoa == DialogResult.Yes)
             {
-                if(txtSoLuongTon.Text.Equals("0"))
+                if (txtSoLuongTon.Text.Equals("0"))
                 {
-                    MatHang xoaMatHang = XoaMatHang();
-                    MH.XoaMatHang(xoaMatHang);
-                    XoaCacTxtCbo();
-                    TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
+                    MatHang mh = MH.TimMaTheoTen(txtTenMH.Text);
+                    ChiTietHoaDon cthd = CTHD.TimChiTietHoaDonTheoMaMH(mh.MaMH).LastOrDefault();
+                    HoaDon hd = HD.KiemTraMaHoaDon(cthd.MaHD);
+                    if (hd.TongTien == null)
+                    {
+                        MessageBox.Show("Lỗi! Mặt hàng này đang được sử dụng trong phòng, không xoá được!", "Thông báo",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MatHang xoaMatHang = XoaMatHang();
+                        MH.XoaMatHang(xoaMatHang);
+                        XoaCacTxtCbo();
+                        TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Lỗi! số lượng mặt hàng này vẫn còn, không xoá được", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                
+
             }
         }
 
@@ -309,61 +333,23 @@ namespace KaraokeRUM
         }
 
         /*Kiểm tra xem các thành phần trong text box có rỗng k*/
-        private void KiemTraTxtCbo()
+        private int  KiemTraTxtCbo()
         {
-            foreach (Control c in brbThongTinMatHang.Controls)
+            if (txtTenMH.Text.Trim().Equals("") || txtGia.Text.Trim().Equals("") || cboDonVi.Text.Trim().Equals("") || cboLMH.Text.Trim().Equals("") || txtSoLuongTon.Text.Trim().Equals(""))
             {
-                if (c is TextBox)
-                {
-                    var a = c as TextBox;
-                    if (a.Text == "")
-                    {
-                        btnThem.Enabled = false;
-                        btnSua.Enabled = false;
-                        btnXoa.Enabled = false;
-                        return;
-                    }
-
-                }
-                if (c is ComboBox)
-                {
-                    var a = c as ComboBox;
-                    if (a.Text == "")
-                    {
-                        btnThem.Enabled = false;
-                        btnSua.Enabled = false;
-                        btnXoa.Enabled = false;
-                        return;
-                    }
-
-                }
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return 0;
             }
+            if (txtSoLuongTon.Text.Equals("0"))
+            {
 
-
-        }
-
-        private void txtTenMH_TextChanged(object sender, EventArgs e)
-        {
-            KiemTraTxtCbo();
-        }
-
-        private void txtGia_TextChanged(object sender, EventArgs e)
-        {
-            KiemTraTxtCbo();
+                MessageBox.Show("Số lượng tồn không được nhập bằng 0 !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return 0;
+            }
+            return 1;
+            
         }
 
-        private void txtSoLuongTon_TextChanged(object sender, EventArgs e)
-        {
-            KiemTraTxtCbo();
-        }
-        private void cboLMH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            KiemTraTxtCbo();
-        }
-        private void cboDonVi_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            KiemTraTxtCbo();
-        }
 
         /*Chặn không cho nhập chữ */
         private void txtSoLuongTon_KeyPress(object sender, KeyPressEventArgs e)

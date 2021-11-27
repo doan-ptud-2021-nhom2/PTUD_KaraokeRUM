@@ -21,7 +21,7 @@ namespace KaraokeRUM
         public IEnumerable<MatHang> LayTatCaMatHang()
         {
             IEnumerable<MatHang> q = from n in dt.MatHangs
-                                     where !n.TrangThai.Contains("KSD")
+                                     where !n.TrangThai.Equals("KSD")
                                    select n;
             return q;
         }
@@ -43,7 +43,7 @@ namespace KaraokeRUM
         public MatHang TimMaTheoTen(string tenMH)
         {
             var matHang = from mh in dt.MatHangs
-                          where mh.TenMh.Equals(tenMH)
+                          where mh.TenMh.Equals(tenMH) && !mh.TrangThai.Equals("KSD")
                           select mh;
             return matHang.First();
         }
@@ -53,6 +53,15 @@ namespace KaraokeRUM
         {
             IEnumerable<MatHang> nv = from n in dt.MatHangs
                                       where (n.MaMH.Contains(timKiem) || n.TenMh.Contains(timKiem) ) && n.TrangThai.Equals("DSD")
+                                      select n;
+            return nv;
+        }
+
+        /*Tìm mặt hàng - truyền vào tên mặt hàng hoặc mã mặt hàng để thực hiện chức năng thêm*/
+        public IEnumerable<MatHang> TimMatHangTenChinhXac(string timKiem)
+        {
+            IEnumerable<MatHang> nv = from n in dt.MatHangs
+                                      where n.TenMh.Equals(timKiem) && n.TrangThai.Equals("DSD")
                                       select n;
             return nv;
         }

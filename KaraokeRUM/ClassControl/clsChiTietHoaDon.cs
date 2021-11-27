@@ -119,5 +119,17 @@ namespace KaraokeRUM
             
         }
 
+        /**
+        * Tìm chi tiết hoá đơn theo mã mặt hàng
+        * Tránh bug nếu lữo xoá 1 mặt hàng đang được đặt
+        */
+        public  IEnumerable<ChiTietHoaDon> TimChiTietHoaDonTheoMaMH(string maMatHang)
+        {
+            var q = (from x in dt.ChiTietHoaDons
+                     where x.MaMH.Equals(maMatHang)
+                     select x);
+            return q;
+        }
+
     }
 }

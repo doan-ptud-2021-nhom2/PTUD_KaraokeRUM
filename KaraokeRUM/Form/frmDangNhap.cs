@@ -52,12 +52,13 @@ namespace KaraokeRUM
 
             if (TAIKHOAN.KiemTraTaiKhoan(taiKhoan))
             {
-                
+
+                Logger.LogWritter.Admin = taiKhoan.UserName;
                 if (TAIKHOAN.LayLoaiTaiKhoan(taiKhoan).Equals("LNV01") && 
                     NHANVIEN.TimNhanVienTheoMa(MAQL).TrangThai.Equals("Đang làm"))
                 {
                     this.Hide();
-
+                    Logger.LogWritter.Write("Quan ly loggin vao he thong");
                     if (frmQL.ShowDialog() == DialogResult.Yes) 
                         this.Close(); 
                     else
@@ -71,7 +72,7 @@ namespace KaraokeRUM
                         NHANVIEN.TimNhanVienTheoMa(MAQL).TrangThai.Equals("Đang làm"))
                 {
                     this.Hide();
-                    
+                    Logger.LogWritter.Write("Thu ngan loggin vao he thong");
                     if (frmNV.ShowDialog() == DialogResult.Yes)
                         this.Close();
                     else

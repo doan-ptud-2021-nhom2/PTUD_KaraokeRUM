@@ -191,6 +191,7 @@
       <DependentUpon>frmThongKe.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassControl\clsListViewItemComparer.cs" />
+    <Compile Include="Logger\LogWritter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="qlKaraoke.designer.cs">
