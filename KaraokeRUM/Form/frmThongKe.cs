@@ -278,5 +278,11 @@ namespace KaraokeRUM
             }
             
         }
+
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            frmTraCuu frm = new frmTraCuu();
+            frm.Show();
+        }
     }
 }
