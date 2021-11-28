@@ -43,7 +43,7 @@ namespace KaraokeRUM
             btnSuaTP.Enabled = false;
             btnXoa.Enabled = false;
             btnXoaTP.Enabled = false;
-
+            btnThem.Enabled = true;
             TaoListViewThietBi(lstvThietBi);
             TaoListViewPhongTrangThietBi(lstvThietBiTrongPhong);
 
@@ -323,7 +323,12 @@ namespace KaraokeRUM
             {
                 MessageBox.Show("Số lượng tồn không được nhập bằng 0. Vui lòng nhập lớn hơn 0!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }    
+            }
+            else if (txtDonGia.Text.Equals("0"))
+            {
+                MessageBox.Show("Đơn giá không được nhập bằng 0. Vui lòng nhập lớn hơn 0!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             else
             {
                 string ten = txtTen.Text + " đã tồn tại!";
@@ -414,34 +419,47 @@ namespace KaraokeRUM
             }
             else
             {
-                TrangThietBi tb = ThongTinMoiCuaThietBi();
-                if(!tb.TenTTB.Equals(TENTHIETBI))
+                if (Convert.ToInt32(txtSoLuongTon.Text) == 0)
                 {
-                    if (THIETBI.TimThietBiTheoTen(tb.TenTTB).Count() > 0)
+                    MessageBox.Show("Số lượng phải lớn hơn 0!", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (txtDonGia.Text.Equals("0"))
+                {
+                    MessageBox.Show("Đơn giá không được nhập bằng 0. Vui lòng nhập lớn hơn 0!", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    TrangThietBi tb = ThongTinMoiCuaThietBi();
+                    if (!tb.TenTTB.Equals(TENTHIETBI))
                     {
-                        MessageBox.Show("Tên thiết bị này đã tồn tại. Vui lòng nhập lại!", "Thông báo",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        if (THIETBI.TimThietBiTheoTen(tb.TenTTB).Count() > 0)
+                        {
+                            MessageBox.Show("Tên thiết bị này đã tồn tại. Vui lòng nhập lại!", "Thông báo",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            THIETBI.SuaTrangThietBi(tb);
+                            string LogDetail = string.Format(" với tên [{0}]  số lượng tồn [{1}] đơn vị [{2}] đơn giá [{3}]",
+                                                        tb.TenTTB, tb.SoLuongTon, tb.DonVi, tb.Gia);
+                            Logger.LogWritter.Write("Thu ngân cập nhập thông tin thiết bị " + LogDetail + "- TrangThietBi");
+                            XoaDuLieuTextBox();
+                            TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
+                            cboDonVi.SelectedIndex = -1;
+                        }
                     }
                     else
                     {
                         THIETBI.SuaTrangThietBi(tb);
                         string LogDetail = string.Format(" với tên [{0}]  số lượng tồn [{1}] đơn vị [{2}] đơn giá [{3}]",
-                                                    tb.TenTTB, tb.SoLuongTon, tb.DonVi, tb.Gia);
+                                                        tb.TenTTB, tb.SoLuongTon, tb.DonVi, tb.Gia);
                         Logger.LogWritter.Write("Thu ngân cập nhập thông tin thiết bị " + LogDetail + "- TrangThietBi");
                         XoaDuLieuTextBox();
                         TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
                         cboDonVi.SelectedIndex = -1;
                     }
-                }
-                else
-                {
-                    THIETBI.SuaTrangThietBi(tb);
-                    string LogDetail = string.Format(" với tên [{0}]  số lượng tồn [{1}] đơn vị [{2}] đơn giá [{3}]",
-                                                    tb.TenTTB, tb.SoLuongTon, tb.DonVi, tb.Gia);
-                    Logger.LogWritter.Write("Thu ngân cập nhập thông tin thiết bị " + LogDetail + "- TrangThietBi");
-                    XoaDuLieuTextBox();
-                    TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
-                    cboDonVi.SelectedIndex = -1;
                 }
             }    
             
@@ -520,6 +538,11 @@ namespace KaraokeRUM
             if (pTTB.SoLuong > (THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().SoLuongTon + ttbTam.SoLuong))
             {
                 MessageBox.Show("Số lượng vượt quá số lượng tồn. Không thể sửa!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (txtSoLuongTP.Text.Equals("0"))
+            {
+                MessageBox.Show("Số lượng tồn không được nhập bằng 0. Vui lòng nhập lớn hơn 0!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else

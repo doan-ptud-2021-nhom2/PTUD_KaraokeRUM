@@ -363,15 +363,32 @@ namespace KaraokeRUM
             NhanVien nv = NV.TimNhanVienTheoSDT(txtSDT.Text);
             NhanVien suaNhanVien = SuaThongTinNhanVien();
             LoaiNhanVien suaMucLuong = SuaMucLuong();
-            LNV.SuaMucLuongLoaiNhanVien(suaMucLuong);
-            
-            if (!suaNhanVien.SDT.Equals(_SDT))
+            if (Convert.ToInt32(txtMucLuong.Text) == 0)
             {
-                if (nv != null)
-                {
+                MessageBox.Show("Lương phải lớn hơn 0!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                LNV.SuaMucLuongLoaiNhanVien(suaMucLuong);
 
-                    MessageBox.Show("Lỗi! Số điện thoại này thuộc về 1 nhân viên khác, yêu cầu nhập lại !!!", "Thông báo",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (!suaNhanVien.SDT.Equals(_SDT))
+                {
+                    if (nv != null)
+                    {
+
+                        MessageBox.Show("Số điện thoại này thuộc về 1 nhân viên khác, yêu cầu nhập lại !!!", "Thông báo",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        NV.SuaNhanVien(suaNhanVien);
+                        IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
+                        TaiDuLieuLenListView(lstvDSNV, dsNV);
+                        string LogDetail = string.Format(" với tên [{0}] CMND [{1}] SDT [{2}] Địa chỉ [{3}] Giới tính [{4}] Trạng thái [{5}] Chức vụ [{6}] Mức lương [{7}] ",
+                                                         suaNhanVien.TenNV, suaNhanVien.CMND, suaNhanVien.SDT, suaNhanVien.DiaChi, suaNhanVien.GioiTinh, suaNhanVien.TrangThai, suaNhanVien.LoaiNhanVien, suaMucLuong.MucLuong);
+                        Logger.LogWritter.Write("Quản lý cập nhập thông tin nhân viên" + LogDetail + "- NhanVien");
+                    }
                 }
                 else
                 {
@@ -379,22 +396,13 @@ namespace KaraokeRUM
                     IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
                     TaiDuLieuLenListView(lstvDSNV, dsNV);
                     string LogDetail = string.Format(" với tên [{0}] CMND [{1}] SDT [{2}] Địa chỉ [{3}] Giới tính [{4}] Trạng thái [{5}] Chức vụ [{6}] Mức lương [{7}] ",
-                                                     suaNhanVien.TenNV, suaNhanVien.CMND, suaNhanVien.SDT, suaNhanVien.DiaChi, suaNhanVien.GioiTinh, suaNhanVien.TrangThai, suaNhanVien.LoaiNhanVien, suaMucLuong.MucLuong);
+                                                         suaNhanVien.TenNV, suaNhanVien.CMND, suaNhanVien.SDT, suaNhanVien.DiaChi, suaNhanVien.GioiTinh, suaNhanVien.TrangThai, suaNhanVien.LoaiNhanVien, suaMucLuong.MucLuong);
                     Logger.LogWritter.Write("Quản lý cập nhập thông tin nhân viên" + LogDetail + "- NhanVien");
                 }
+                XoaCacTxtCbo();
+                errorProvider1.SetError(txtSDT, null);
+                errorProvider1.SetError(txtCMND, null);
             }
-            else
-            {
-                NV.SuaNhanVien(suaNhanVien);
-                IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
-                TaiDuLieuLenListView(lstvDSNV, dsNV);
-                string LogDetail = string.Format(" với tên [{0}] CMND [{1}] SDT [{2}] Địa chỉ [{3}] Giới tính [{4}] Trạng thái [{5}] Chức vụ [{6}] Mức lương [{7}] ",
-                                                     suaNhanVien.TenNV, suaNhanVien.CMND, suaNhanVien.SDT, suaNhanVien.DiaChi, suaNhanVien.GioiTinh, suaNhanVien.TrangThai, suaNhanVien.LoaiNhanVien, suaMucLuong.MucLuong);
-                Logger.LogWritter.Write("Quản lý cập nhập thông tin nhân viên" + LogDetail + "- NhanVien");
-            }
-            XoaCacTxtCbo();
-            errorProvider1.SetError(txtSDT, null);
-            errorProvider1.SetError(txtCMND, null);
         }
 
         /** 

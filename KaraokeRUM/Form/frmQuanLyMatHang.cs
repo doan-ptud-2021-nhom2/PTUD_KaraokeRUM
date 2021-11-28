@@ -197,6 +197,16 @@ namespace KaraokeRUM
                     MessageBox.Show("Mặt hàng này đã tồn tại, vui lòng thực hiện chức năng sửa !", "Thông báo",
                                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 }
+                else if (Convert.ToInt32(txtSoLuongTon.Text) == 0)
+                {
+                    MessageBox.Show("Số lượng nhập phải lớn hơn 0!", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (Convert.ToInt32(txtGia.Text) == 0)
+                {
+                    MessageBox.Show("Đơn giá phải lớn hơn 0!", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 else
                 {
                     
@@ -257,17 +267,39 @@ namespace KaraokeRUM
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (KiemTraTxtCbo() == 1)
+            if (Convert.ToInt32(txtSoLuongTon.Text) == 0)
             {
-                MatHang matHang = SuaMatHang();
-               
-                if (!matHang.TenMh.Equals(_TENMH))
+                MessageBox.Show("Số lượng phải lớn hơn 0!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (Convert.ToInt32(txtGia.Text) == 0)
+            {
+                MessageBox.Show("Đơn giá phải lớn hơn 0!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (KiemTraTxtCbo() == 1)
                 {
-                    if (MH.TimMatHangTenChinhXac(matHang.TenMh).Count() > 0)
-                    {
+                    MatHang matHang = SuaMatHang();
 
-                        MessageBox.Show("Lỗi! Mặt hàng này đã tồn tại, yêu cầu nhập lại !!!", "Thông báo",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (!matHang.TenMh.Equals(_TENMH))
+                    {
+                        if (MH.TimMatHangTenChinhXac(matHang.TenMh).Count() > 0)
+                        {
+
+                            MessageBox.Show("Mặt hàng này đã tồn tại, yêu cầu nhập lại !!!", "Thông báo",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            MH.SuaMatHang(matHang);
+                            XoaCacTxtCbo();
+                            TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
+                            string LogDetail = string.Format(" với tên [{0}] loại mặt hàng [{1}] số lượng tồn [{2}] đơn vị [{3}] đơn giá [{4}]",
+                                                         matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
+                            Logger.LogWritter.Write("Thu ngân sửa mặt hàng" + LogDetail + "- MatHang");
+                        }
                     }
                     else
                     {
@@ -275,18 +307,9 @@ namespace KaraokeRUM
                         XoaCacTxtCbo();
                         TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
                         string LogDetail = string.Format(" với tên [{0}] loại mặt hàng [{1}] số lượng tồn [{2}] đơn vị [{3}] đơn giá [{4}]",
-                                                     matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
-                        Logger.LogWritter.Write("Thu ngân sửa mặt hàng" + LogDetail +"- MatHang");
+                                                         matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
+                        Logger.LogWritter.Write("Thu ngân sửa mặt hàng" + LogDetail + "- MatHang");
                     }
-                }
-                else 
-                {
-                    MH.SuaMatHang(matHang);
-                    XoaCacTxtCbo();
-                    TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
-                    string LogDetail = string.Format(" với tên [{0}] loại mặt hàng [{1}] số lượng tồn [{2}] đơn vị [{3}] đơn giá [{4}]",
-                                                     matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
-                    Logger.LogWritter.Write("Thu ngân sửa mặt hàng" + LogDetail +"- MatHang");
                 }
                 
             }
@@ -423,7 +446,7 @@ namespace KaraokeRUM
                 btnXoa.Enabled = false;
                 
             }
-        } 
+        }
     }
 }
 

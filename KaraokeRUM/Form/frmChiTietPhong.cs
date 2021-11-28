@@ -203,46 +203,48 @@ namespace KaraokeRUM
         {
             if (cboMatHang.Text == "" || txtSoLuong.Text == "")
             {
-                MessageBox.Show("Bạn cần phải nhập, chọn đầy đủ thông tin để thực hiện chức năng!", "Thông báo", 
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (Convert.ToInt32(txtSoLuong.Text) < 0)
-            {
-                MessageBox.Show("Số lượng phải lớn hơn 0!", "Thông báo",
+                MessageBox.Show("Bạn cần phải nhập, chọn đầy đủ thông tin để thực hiện chức năng!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                ChiTietHoaDon chiTietHoaDon = TaoChiTietHoaDon();
-                int soLuongTon = MATHANG.TimMaTheoTen(cboMatHang.Text).SoLuongTon;
-
-                if (CHITIETHOADON.TimChiTietHoaDon(MATHANG.TimMaTheoTen(cboMatHang.Text).MaMH, this.MAHOADON).Count() > 0)
+                if (Convert.ToInt32(txtSoLuong.Text) == 0)
                 {
-                    MessageBox.Show("Mặt hàng đã tồn tại!. Bạn có thể dùng chức năng sửa.", "Thông báo",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    cboMatHang.Text = "";
-                    txtSoLuong.Text = "";
-                }
-                else if (Convert.ToInt32(txtSoLuong.Text) > soLuongTon)
-                {
-                    string thongBao = "Số lượng tồn của mặt hàng không đủ. Số lượng hiện tại: " + 
-                                       soLuongTon + ". Vui lòng nhập số lượng phù hợp!";
-                    MessageBox.Show(thongBao, "Thông báo",
+                    MessageBox.Show("Số lượng phải lớn hơn 0!", "Thông báo",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    CHITIETHOADON.ThemChiTietHoaDon(chiTietHoaDon);
-                    DANHSACHMATHANG = HOADON.LayChiTietHoaDon(MAHOADON);
-                    TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
+                    ChiTietHoaDon chiTietHoaDon = TaoChiTietHoaDon();
+                    int soLuongTon = MATHANG.TimMaTheoTen(cboMatHang.Text).SoLuongTon;
 
-                    cboMatHang.Text = "";
-                    txtSoLuong.Text = "";
-                    string logDetail = string.Format("mặt hàng [{0}] có số lượng [{1}] vào hoá đơn [{2}]", chiTietHoaDon.MaMH,chiTietHoaDon.SoLuong.ToString(),chiTietHoaDon.MaHD);
-                    Logger.LogWritter.Write("Thu ngân thêm "+logDetail +" - ChiTietHoaDon");
+                    if (CHITIETHOADON.TimChiTietHoaDon(MATHANG.TimMaTheoTen(cboMatHang.Text).MaMH, this.MAHOADON).Count() > 0)
+                    {
+                        MessageBox.Show("Mặt hàng đã tồn tại!. Bạn có thể dùng chức năng sửa.", "Thông báo",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cboMatHang.Text = "";
+                        txtSoLuong.Text = "";
+                    }
+                    else if (Convert.ToInt32(txtSoLuong.Text) > soLuongTon)
+                    {
+                        string thongBao = "Số lượng tồn của mặt hàng không đủ. Số lượng hiện tại: " +
+                                           soLuongTon + ". Vui lòng nhập số lượng phù hợp!";
+                        MessageBox.Show(thongBao, "Thông báo",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        CHITIETHOADON.ThemChiTietHoaDon(chiTietHoaDon);
+                        DANHSACHMATHANG = HOADON.LayChiTietHoaDon(MAHOADON);
+                        TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
+
+                        cboMatHang.Text = "";
+                        txtSoLuong.Text = "";
+                        string logDetail = string.Format("mặt hàng [{0}] có số lượng [{1}] vào hoá đơn [{2}]", chiTietHoaDon.MaMH, chiTietHoaDon.SoLuong.ToString(), chiTietHoaDon.MaHD);
+                        Logger.LogWritter.Write("Thu ngân thêm " + logDetail + " - ChiTietHoaDon");
+                    }
                 }
             }
-
             cboMatHang.Enabled = true;
         }
 
@@ -304,6 +306,11 @@ namespace KaraokeRUM
                                     soLuongTon + ". Vui lòng nhập số lượng phù hợp!";
                 MessageBox.Show(thongBao, "Thông báo", 
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (Convert.ToInt32(txtSoLuong.Text) == 0)
+            {
+                MessageBox.Show("Số lượng phải lớn hơn 0!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {

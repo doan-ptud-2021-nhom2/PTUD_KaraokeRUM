@@ -7,3 +7,23 @@
 [28/11/2021 07:39:31](NV002)Thu ngân đăng nhập vào hệ thống
 [28/11/2021 07:40:45](NV002)Thu ngân đăng nhập vào hệ thống
 [28/11/2021 07:41:02](NV002)Thu ngân xoá thiết bị  với tên [Loa Bose 301 serie V] ra khỏi phòng [V001]- Phong_TrangThietBi
+[28/11/2021 08:36:27](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 08:36:32](NV002)Thu ngân mở phòng [P008 ] cho khách [KH001] - HoaDon
+[28/11/2021 08:36:36](NV002)Thu ngân thêm mặt hàng [MH003] có số lượng [0] vào hoá đơn [HD0000200] - ChiTietHoaDon
+[28/11/2021 08:36:41](NV002)Thu ngân sửa số lượng mặt hàng [MH003] thành số lượng [0] vào hoá đơn [HD0000200] - ChiTietHoaDon
+[28/11/2021 08:39:31](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 08:39:42](NV002)Thu ngân xoá mặt hàng [MH003] khỏi hoá đơn [HD0000200 ]- ChiTietHoaDon
+[28/11/2021 08:39:58](NV002)Thu ngân thêm mặt hàng [MH001] có số lượng [0] vào hoá đơn [HD0000200 ] - ChiTietHoaDon
+[28/11/2021 08:40:34](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 08:46:13](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 08:46:33](NV002)Thu ngân sửa số lượng mặt hàng [MH001] thành số lượng [0] vào hoá đơn [HD0000200 ] - ChiTietHoaDon
+[28/11/2021 08:46:36](NV002)Thu ngân xoá mặt hàng [MH001] khỏi hoá đơn [HD0000200 ]- ChiTietHoaDon
+[28/11/2021 08:46:56](NV002)Thu ngân thêm mặt hàng [MH002] có số lượng [5] vào hoá đơn [HD0000200 ] - ChiTietHoaDon
+[28/11/2021 08:47:04](NV002)Thu ngân sửa số lượng mặt hàng [MH002] thành số lượng [0] vào hoá đơn [HD0000200 ] - ChiTietHoaDon
+[28/11/2021 08:47:45](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 08:47:57](NV002)Thu ngân sửa số lượng mặt hàng [MH002] thành số lượng [2] vào hoá đơn [HD0000200 ] - ChiTietHoaDon
+[28/11/2021 08:48:31](NV002)Thu ngân thêm thiết bị mới  với tên [7]  số lượng tồn [7] đơn vị [Cặp] đơn giá [0]- TrangThietBi
+[28/11/2021 08:49:15](NV002)Thu ngân cập nhập thiết bị  với tên [Micro Suntech] ở phòng [V001] với số lượng [0]- Phong_TrangThietBi
+[28/11/2021 08:50:17](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 08:50:25](NV002)Thu ngân cập nhập thiết bị  với tên [Micro Suntech] ở phòng [V001] với số lượng [4]- Phong_TrangThietBi
+[28/11/2021 08:50:37](NV002)Thu ngân thêm thiết bị  với tên [Đầu VietKTV] vào phòng [V001] với số lượng [3]- Phong_TrangThietBi
