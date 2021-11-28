@@ -84,7 +84,7 @@ namespace KaraokeRUM
             IQueryable<KhachHang> khachHang = KHACHHANG.TimTenKhachHang(sdt);
             if(khachHang.Count() == 0)
             {
-                lstvKhachHang.Clear();
+                lstvKhachHang.Items.Clear();
                 MessageBox.Show("Khách hàng này chưa từng đến cửa hàng. Vui lòng kiểm tra lại SĐT", "Thông báo", 
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

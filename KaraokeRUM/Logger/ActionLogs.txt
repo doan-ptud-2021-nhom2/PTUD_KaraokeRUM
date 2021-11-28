@@ -1,0 +1,9 @@
+[28/11/2021 07:35:06](NV001)Quản lý đăng nhập vào hệ thống
+[28/11/2021 07:36:04](NV001)Quản lý đăng nhập vào hệ thống
+[28/11/2021 07:36:31](NV001)Quản lý đăng nhập vào hệ thống
+[28/11/2021 07:37:13](NV001)Quản lý đăng nhập vào hệ thống
+[28/11/2021 07:37:45](NV001)Quản lý đăng nhập vào hệ thống
+[28/11/2021 07:38:46](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 07:39:31](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 07:40:45](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 07:41:02](NV002)Thu ngân xoá thiết bị  với tên [Loa Bose 301 serie V] ra khỏi phòng [V001]- Phong_TrangThietBi
