@@ -68,7 +68,14 @@ namespace KaraokeRUM
                                                 select n;
             return q;
         }
-
+        /*Tìm thiết bị trong phòng theo tên thiết bị và mã phòng - truyền vào mã phòng và mã trang thiết bị*/
+        public Phong_TrangThietBi TimTTBtrongPhongTheoTenVaMaTTB2(string maPhong, string maTTB)
+        {
+            Phong_TrangThietBi q = (from n in dt.Phong_TrangThietBis
+                                    where n.MaPhong.Equals(maPhong) && n.MaTTB.Equals(maTTB)
+                                    select n).FirstOrDefault();
+            return q;
+        }
         /*Tìm thiết bị trong phòng theo mã phòng - truyền vào mã phòng*/
         public IEnumerable<Phong_TrangThietBi> TimPhongTTB(string maPhong)
         {
