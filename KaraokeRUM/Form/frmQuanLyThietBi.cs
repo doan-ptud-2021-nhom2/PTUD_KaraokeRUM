@@ -509,16 +509,19 @@ namespace KaraokeRUM
         private void btnSuaTP_Click(object sender, EventArgs e)
         {
             Phong_TrangThietBi pTTB = TaoPTTB();
-            if (pTTB.SoLuong > THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().SoLuongTon && )
+            string maPhong = PHONG.TimMotPhongTheoTen(cboTenPhong.Text).MaPhong;
+            string maTTB = THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().MaTTB;
+            Phong_TrangThietBi ttbTam = PHONGTRANGTHIETBI.TimTTBtrongPhongTheoTenVaMaTTB2(maPhong, maTTB);
+            if (pTTB.SoLuong > (THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().SoLuongTon + ttbTam.SoLuong))
             {
-                MessageBox.Show("Số lượng vượt quá số lượng tồn. Không thể sửa!", "Thông báo", 
+                MessageBox.Show("Số lượng vượt quá số lượng tồn. Không thể sửa!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 PHONGTRANGTHIETBI.SuaTrangThietBi(pTTB);
                 TaiDuLieuLenLstvPhongTrangThietBi(lstvThietBiTrongPhong,
-                     PHONGTRANGTHIETBI.TimPhongTTB(PHONG.TimMotPhongTheoTen(cboTenPhong.Text).MaPhong));
+                PHONGTRANGTHIETBI.TimPhongTTB(PHONG.TimMotPhongTheoTen(cboTenPhong.Text).MaPhong));
                 DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
                 TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
                 string LogDetail = string.Format(" với tên [{0}] ở phòng [{1}] với số lượng [{2}]", cboTenTTB, cboTenPhong, pTTB.SoLuong);
