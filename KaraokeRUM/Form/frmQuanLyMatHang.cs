@@ -45,7 +45,7 @@ namespace KaraokeRUM
 
         private void TaiDuLieu()
         {
-            btnThem.Enabled = false;
+            btnThem.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             MH = new clsMatHang();
@@ -376,7 +376,7 @@ namespace KaraokeRUM
                     
                     if (!KiemTraMatHang())
                     {
-                        MessageBox.Show("Lỗi! Mặt hàng này đang được sử dụng không thể xóa. Hoàn tất thanh toán mới xóa được!",
+                        MessageBox.Show("Mặt hàng này đang được sử dụng không thể xóa. Hoàn tất thanh toán mới xóa được!",
                                         "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
@@ -391,7 +391,7 @@ namespace KaraokeRUM
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi! số lượng mặt hàng này vẫn còn, không xoá được", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Số lượng mặt hàng này vẫn còn, không xoá được", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }

@@ -1,0 +1,7 @@
+[28/11/2021 09:35:03](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 09:38:28](NV002)Thu ngân đăng xuất
+[28/11/2021 10:59:31](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 11:00:11](NV002)Thu ngân đăng xuất
+[28/11/2021 11:00:50](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 11:09:18](NV002)Thu ngân thêm mặt hàng mới với tên [444] loại mặt hàng [Thức ăn] số lượng tồn [44] đơn vị [Hộp] đơn giá [Hộp]- MatHang
+[28/11/2021 11:13:54](NV002)Thu ngân đăng xuất
