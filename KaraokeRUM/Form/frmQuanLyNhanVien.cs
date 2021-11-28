@@ -363,7 +363,7 @@ namespace KaraokeRUM
             NhanVien nv = NV.TimNhanVienTheoSDT(txtSDT.Text);
             NhanVien suaNhanVien = SuaThongTinNhanVien();
             LoaiNhanVien suaMucLuong = SuaMucLuong();
-            if (Convert.ToInt32(txtMucLuong.Text) == 0)
+            if (txtMucLuong.Text.Equals("0"))
             {
                 MessageBox.Show("Lương phải lớn hơn 0!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);

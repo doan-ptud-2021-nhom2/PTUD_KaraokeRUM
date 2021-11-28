@@ -96,6 +96,7 @@ namespace KaraokeRUM
                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(luaChon == DialogResult.Yes)
             {
+                Logger.LogWritter.Write("Thu ngân đăng xuất");
                 this.DialogResult = DialogResult.No;
             }
         }

@@ -273,12 +273,12 @@ namespace KaraokeRUM
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(txtSoLuongTon.Text) == 0)
+            if (txtSoLuongTon.Text.Equals("0"))
             {
                 MessageBox.Show("Số lượng phải lớn hơn 0!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (Convert.ToInt32(txtGia.Text) == 0)
+            else if (txtGia.Text.Equals("0"))
             {
                 MessageBox.Show("Đơn giá phải lớn hơn 0!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
