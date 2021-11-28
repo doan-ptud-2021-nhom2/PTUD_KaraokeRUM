@@ -509,7 +509,7 @@ namespace KaraokeRUM
         private void btnSuaTP_Click(object sender, EventArgs e)
         {
             Phong_TrangThietBi pTTB = TaoPTTB();
-            if (pTTB.SoLuong > THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().SoLuongTon && )
+            if (pTTB.SoLuong > THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().SoLuongTon)
             {
                 MessageBox.Show("Số lượng vượt quá số lượng tồn. Không thể sửa!", "Thông báo", 
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
