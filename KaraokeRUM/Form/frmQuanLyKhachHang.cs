@@ -400,7 +400,7 @@ namespace KaraokeRUM
                     TaiDuLieu();
                     string LogDetail = string.Format("số điện thoại [{0}] và ghi chú [{1}] của khách hàng [{2}]",suaKH.SDT,suaKH.GhiChu,suaKH.MaKH);
                     Logger.LogWritter.Write("Quản lý cập nhập "+ LogDetail);
-
+                    
                 }
             }
             else

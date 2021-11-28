@@ -152,11 +152,11 @@ namespace KaraokeRUM
             this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.lstvDSKH);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(679, 75);
+            this.groupBox2.Location = new System.Drawing.Point(643, 75);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(1401, 477);
+            this.groupBox2.Size = new System.Drawing.Size(1470, 477);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách khách hàng";
@@ -170,7 +170,7 @@ namespace KaraokeRUM
             this.lstvDSKH.Location = new System.Drawing.Point(23, 40);
             this.lstvDSKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstvDSKH.Name = "lstvDSKH";
-            this.lstvDSKH.Size = new System.Drawing.Size(1023, 417);
+            this.lstvDSKH.Size = new System.Drawing.Size(1426, 417);
             this.lstvDSKH.TabIndex = 0;
             this.lstvDSKH.UseCompatibleStateImageBehavior = false;
             this.lstvDSKH.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstvDSKH_ColumnClick);
@@ -279,7 +279,7 @@ namespace KaraokeRUM
             this.label11.ForeColor = System.Drawing.SystemColors.Window;
             this.label11.Location = new System.Drawing.Point(0, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(1748, 50);
+            this.label11.Size = new System.Drawing.Size(2125, 50);
             this.label11.TabIndex = 0;
             this.label11.Text = "Quản lý khách hàng";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -428,11 +428,11 @@ namespace KaraokeRUM
             this.groupBox5.BackColor = System.Drawing.Color.White;
             this.groupBox5.Controls.Add(this.lstvDanhSachDen);
             this.groupBox5.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(679, 591);
+            this.groupBox5.Location = new System.Drawing.Point(643, 591);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Size = new System.Drawing.Size(1401, 480);
+            this.groupBox5.Size = new System.Drawing.Size(1470, 480);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Danh sách đen";
@@ -446,7 +446,7 @@ namespace KaraokeRUM
             this.lstvDanhSachDen.Location = new System.Drawing.Point(23, 40);
             this.lstvDanhSachDen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstvDanhSachDen.Name = "lstvDanhSachDen";
-            this.lstvDanhSachDen.Size = new System.Drawing.Size(1023, 419);
+            this.lstvDanhSachDen.Size = new System.Drawing.Size(1426, 419);
             this.lstvDanhSachDen.TabIndex = 0;
             this.lstvDanhSachDen.UseCompatibleStateImageBehavior = false;
             this.lstvDanhSachDen.SelectedIndexChanged += new System.EventHandler(this.lstvDanhSachDen_SelectedIndexChanged);
@@ -456,7 +456,7 @@ namespace KaraokeRUM
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1748, 1102);
+            this.ClientSize = new System.Drawing.Size(2125, 1102);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
