@@ -524,7 +524,7 @@ namespace KaraokeRUM
                 PHONGTRANGTHIETBI.TimPhongTTB(PHONG.TimMotPhongTheoTen(cboTenPhong.Text).MaPhong));
                 DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
                 TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
-                string LogDetail = string.Format(" với tên [{0}] ở phòng [{1}] với số lượng [{2}]", cboTenTTB, cboTenPhong, pTTB.SoLuong);
+                string LogDetail = string.Format(" với tên [{0}] ở phòng [{1}] với số lượng [{2}]", cboTenTTB.Text, cboTenPhong.Text, pTTB.SoLuong);
                 Logger.LogWritter.Write("Thu ngân cập nhập thiết bị " + LogDetail + "- Phong_TrangThietBi");
                 XoaDuLieuTextBox();
                 btnSuaTP.Enabled = false;
