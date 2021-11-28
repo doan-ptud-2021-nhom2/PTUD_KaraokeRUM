@@ -27,3 +27,6 @@
 [28/11/2021 08:50:17](NV002)Thu ngân đăng nhập vào hệ thống
 [28/11/2021 08:50:25](NV002)Thu ngân cập nhập thiết bị  với tên [Micro Suntech] ở phòng [V001] với số lượng [4]- Phong_TrangThietBi
 [28/11/2021 08:50:37](NV002)Thu ngân thêm thiết bị  với tên [Đầu VietKTV] vào phòng [V001] với số lượng [3]- Phong_TrangThietBi
+[28/11/2021 08:58:17](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 09:00:23](NV002)Thu ngân đăng nhập vào hệ thống
+[28/11/2021 09:00:57](NV001)Quản lý đăng nhập vào hệ thống

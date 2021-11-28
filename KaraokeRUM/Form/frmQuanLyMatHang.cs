@@ -197,25 +197,31 @@ namespace KaraokeRUM
                     MessageBox.Show("Mặt hàng này đã tồn tại, vui lòng thực hiện chức năng sửa !", "Thông báo",
                                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 }
-                else if (Convert.ToInt32(txtSoLuongTon.Text) == 0)
-                {
-                    MessageBox.Show("Số lượng nhập phải lớn hơn 0!", "Thông báo",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (Convert.ToInt32(txtGia.Text) == 0)
-                {
-                    MessageBox.Show("Đơn giá phải lớn hơn 0!", "Thông báo",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
                 else
                 {
-                    
-                    MH.ThemMatHang(matHang);
-                    XoaCacTxtCbo();
-                    TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
-                    string LogDetail = string.Format(" với tên [{0}] loại mặt hàng [{1}] số lượng tồn [{2}] đơn vị [{3}] đơn giá [{4}]", 
-                                                     matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
-                    Logger.LogWritter.Write("Thu ngân thêm mặt hàng mới"+ LogDetail+"- MatHang");
+                    if (Convert.ToInt32(txtSoLuongTon.Text) == 0)
+                    {
+                        MessageBox.Show("Số lượng nhập phải lớn hơn 0!", "Thông báo",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        if (Convert.ToInt32(txtGia.Text) == 0)
+                        {
+                            MessageBox.Show("Đơn giá phải lớn hơn 0!", "Thông báo",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+
+                            MH.ThemMatHang(matHang);
+                            XoaCacTxtCbo();
+                            TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
+                            string LogDetail = string.Format(" với tên [{0}] loại mặt hàng [{1}] số lượng tồn [{2}] đơn vị [{3}] đơn giá [{4}]",
+                                                             matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
+                            Logger.LogWritter.Write("Thu ngân thêm mặt hàng mới" + LogDetail + "- MatHang");
+                        }
+                    }
                 }
             }
             
