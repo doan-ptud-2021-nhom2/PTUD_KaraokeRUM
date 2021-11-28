@@ -167,8 +167,8 @@ namespace KaraokeRUM
 
                     MessageBox.Show("Chuyển phòng thành công.", "Thông báo", 
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    string LogDetail = string.Format("từ phòng [{0}] dang phòng [{1}]",ph)
-                    Logger.LogWritter.Write("Thu ngân thay đổi phòng cho khách");
+                    string LogDetail = string.Format("từ phòng [{0}] dang phòng [{1}]", PHONGCU.MaPhong, phong.MaPhong);
+                    Logger.LogWritter.Write("Thu ngân thay đổi phòng cho khách "+LogDetail+"- Phong, HoaDon");
                     //Thực hiển chuyển phòng và tắt 2 from
                     this.Close();
                     frmCTP.Close();

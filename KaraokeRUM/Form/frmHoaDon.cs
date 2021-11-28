@@ -423,7 +423,7 @@ namespace KaraokeRUM
                 MessageBox.Show("Hoàn tất thanh toán", "Thông báo", 
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 string LogDetail = string.Format("[{0}]", phong.MaPhong);
-                Logger.LogWritter.Write("Thu ngân thanh toán phòng "+ LogDetail);
+                Logger.LogWritter.Write("Thu ngân thanh toán phòng "+ LogDetail + "- HoaDon");
 
                 //Tắt giao diện hóa đơn.
                 this.Close();

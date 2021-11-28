@@ -214,6 +214,10 @@ namespace KaraokeRUM
                     PHONG.ThemPhong(phong);
                     XoaCacTxtCbo();
                     TaiDuLieuLenListView(lstvDanhSachPhong, PHONG.LayTatCaPhongDong());
+                    string LogDetail = string.Format(" với tên [{0}] trạng thái [{1}] và loại phòng [{2}]",
+                                                     phong.TenPhong, phong.TrangThaiPhong, phong.LoaiPhong);
+                    Logger.LogWritter.Write("Thu ngân thêm 1 phòng mới" + LogDetail +"- Phong");
+
                 }
             }
         }
@@ -312,6 +316,9 @@ namespace KaraokeRUM
                     XoaCacTxtCbo();
                     DANHSACHPHONG = PHONG.LayTatCaPhongDong();
                     TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);
+                    string LogDetail = string.Format(" với tên [{0}] và loại phòng [{1}]",
+                                                     suaPhong.TenPhong, suaPhong.LoaiPhong);
+                    Logger.LogWritter.Write("Thu ngân sửa phòng " + LogDetail + "- Phong");
                 }
             }
             
@@ -350,6 +357,9 @@ namespace KaraokeRUM
                 if(suaLP.Gia > 100000)
                 {
                     LOAIPHONG.CapNhatGiaLoaiPhong(suaLP);
+                    string LogDetail = string.Format(" với tên [{0}] và giá loại phòng mới [{1}]",
+                                                    suaLP.TenLoaiPhong, suaLP.Gia);
+                    Logger.LogWritter.Write("Thu ngân cập nhập loại phòng " + LogDetail + "- Phong");
                     DANHSACHPHONG = PHONG.LayTatCaPhongDong();
                     XoaCacTxtCbo();
                     TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);
@@ -399,7 +409,9 @@ namespace KaraokeRUM
                     {
                         phong = PHONG.TimPhong(txtSoPhong.Text).First();
                         PHONG.XoaPhong(phong);
-
+                        string LogDetail = string.Format(" với tên [{0}] và loại phòng [{1}]",
+                                                    phong.TenPhong, phong.LoaiPhong);
+                        Logger.LogWritter.Write("Thu ngân xoá phòng " + LogDetail + "- Phong");
                         DANHSACHPHONG = PHONG.LayTatCaPhongDong();
                         XoaCacTxtCbo();
                         TaiDuLieuLenListView(lstvDanhSachPhong, DANHSACHPHONG);

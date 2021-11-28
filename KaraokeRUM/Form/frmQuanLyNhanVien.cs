@@ -297,6 +297,9 @@ namespace KaraokeRUM
                     
                     
                     TaiDuLieuLenListView(lstvDSNV, NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL));
+                    string LogDetail = string.Format(" với tên [{0}] CMND [{1}] SDT [{2}] Địa chỉ [{3}] Giới tính [{4}] Trạng thái [{5}] Chức vụ [{6}] ",
+                                                     nhanVien.TenNV, nhanVien.CMND, nhanVien.SDT, nhanVien.DiaChi, nhanVien.GioiTinh, nhanVien.TrangThai, cboLoaiNV.Text);
+                    Logger.LogWritter.Write("Quản lý thêm nhân viên mới"+ LogDetail +"- NhanVien");
                     XoaCacTxtCbo();
                     errorProvider1.SetError(txtSDT, null);
                     errorProvider1.SetError(txtCMND, null);
@@ -375,7 +378,9 @@ namespace KaraokeRUM
                     NV.SuaNhanVien(suaNhanVien);
                     IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
                     TaiDuLieuLenListView(lstvDSNV, dsNV);
-                    
+                    string LogDetail = string.Format(" với tên [{0}] CMND [{1}] SDT [{2}] Địa chỉ [{3}] Giới tính [{4}] Trạng thái [{5}] Chức vụ [{6}] Mức lương [{7}] ",
+                                                     suaNhanVien.TenNV, suaNhanVien.CMND, suaNhanVien.SDT, suaNhanVien.DiaChi, suaNhanVien.GioiTinh, suaNhanVien.TrangThai, suaNhanVien.LoaiNhanVien, suaMucLuong.MucLuong);
+                    Logger.LogWritter.Write("Quản lý cập nhập thông tin nhân viên" + LogDetail + "- NhanVien");
                 }
             }
             else
@@ -383,7 +388,9 @@ namespace KaraokeRUM
                 NV.SuaNhanVien(suaNhanVien);
                 IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
                 TaiDuLieuLenListView(lstvDSNV, dsNV);
-               
+                string LogDetail = string.Format(" với tên [{0}] CMND [{1}] SDT [{2}] Địa chỉ [{3}] Giới tính [{4}] Trạng thái [{5}] Chức vụ [{6}] Mức lương [{7}] ",
+                                                     suaNhanVien.TenNV, suaNhanVien.CMND, suaNhanVien.SDT, suaNhanVien.DiaChi, suaNhanVien.GioiTinh, suaNhanVien.TrangThai, suaNhanVien.LoaiNhanVien, suaMucLuong.MucLuong);
+                Logger.LogWritter.Write("Quản lý cập nhập thông tin nhân viên" + LogDetail + "- NhanVien");
             }
             XoaCacTxtCbo();
             errorProvider1.SetError(txtSDT, null);
@@ -443,6 +450,9 @@ namespace KaraokeRUM
                 NV.XoaNhanVien(xoaNhanVien);
                 IEnumerable<dynamic> dsNV = NV.LayNhanVienVaLoaiNhanVienTheoLoai(cboLoaiNV.Text, MANVQL);
                 TaiDuLieuLenListView(lstvDSNV, dsNV);
+                string LogDetail = string.Format(" với tên [{0}] CMND [{1}] SDT [{2}]",
+                                                     txtTen.Text, txtCMND.Text, txtSDT.Text);
+                Logger.LogWritter.Write("Quản lý cho nghỉ một nhân viên" + LogDetail +"- NhanVien");
                 XoaCacTxtCbo();
                 errorProvider1.SetError(txtSDT, null);
                 errorProvider1.SetError(txtCMND, null);

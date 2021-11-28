@@ -8,7 +8,8 @@ namespace KaraokeRUM.Logger
 {
     class LogWritter
     {
-        public static string LogPath = Path.Combine(Directory.GetCurrentDirectory(), "ActionLogs.txt");
+        public static string _path = @"..\..\Logger";
+        public static string LogPath = Path.Combine(_path, "ActionLogs.txt");
         public static string Admin = string.Empty;
         public static void Write(string message)
         {

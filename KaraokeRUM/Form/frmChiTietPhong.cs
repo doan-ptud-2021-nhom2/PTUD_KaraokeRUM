@@ -187,14 +187,12 @@ namespace KaraokeRUM
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
             HoaDon hoaDon = HOADON.LayHoaDon(MAHOADON);
+            Logger.LogWritter.Write("Thu ngân tạo hoá đơn" + hoaDon.MaHD );
             DateTime dt = DateTime.Now;
             TimeSpan tp = (TimeSpan)dt.TimeOfDay;
             hoaDon.GioRa = tp;
             HOADON.CapNhapHoaDon(hoaDon);
-
             frmHoaDon frm = new frmHoaDon(this.MAHOADON, true, this);
-
-            Logger.LogWritter.Write("Thu ngân tạo hoá đơn");
             frm.Show();
         }
 
@@ -342,7 +340,7 @@ namespace KaraokeRUM
                     DANHSACHMATHANG = HOADON.LayChiTietHoaDon(MAHOADON);
                     TaiDuLieuLenListView(lstvDanhSachMatHang, DANHSACHMATHANG);
                     string logDetail = string.Format("mặt hàng [{0}] khỏi hoá đơn [{1}]", chiTietHoaDon.MaMH, chiTietHoaDon.MaHD);
-                    Logger.LogWritter.Write("Thu ngân xoá ");
+                    Logger.LogWritter.Write("Thu ngân xoá "+logDetail+"- ChiTietHoaDon");
                     cboMatHang.Text = "";
                     txtSoLuong.Text = "";
                     cboMatHang.Enabled = true;
@@ -379,7 +377,8 @@ namespace KaraokeRUM
                     phong.TrangThaiPhong = "Đóng";
                     PHONG.SuaTrangThaiPhong(phong);
                     HOADON.XoaHoaDon(hoaDon);
-                    Logger.LogWritter.Write("Thu ngân huỷ phòng đang mở");
+                    string LogDetail = string.Format("[{0}]", phong.MaPhong);
+                    Logger.LogWritter.Write("Thu ngân huỷ phòng " + LogDetail);
                     this.Close();
 
                 }

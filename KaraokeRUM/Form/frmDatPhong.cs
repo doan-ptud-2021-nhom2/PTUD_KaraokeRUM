@@ -973,7 +973,7 @@ namespace KaraokeRUM
                             phong.TrangThaiPhong = "Đóng";
                             PHONG.SuaTrangThaiPhong(phong);
                             string LogDetail = string.Format("[{0}]",phong.MaPhong);
-                            Logger.LogWritter.Write("Thu ngân huỷ đặt phòng "+ LogDetail);
+                            Logger.LogWritter.Write("Thu ngân huỷ đặt phòng "+ LogDetail+ "- Phong");
                         }
                     }
                     TaiDuLieuLenListView(lstvDanhSachDP, HONLOAN.LayThongTinDonDatPhong());

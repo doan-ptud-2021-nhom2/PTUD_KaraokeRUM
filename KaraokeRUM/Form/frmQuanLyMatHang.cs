@@ -205,7 +205,7 @@ namespace KaraokeRUM
                     TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
                     string LogDetail = string.Format(" với tên [{0}] loại mặt hàng [{1}] số lượng tồn [{2}] đơn vị [{3}] đơn giá [{4}]", 
                                                      matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
-                    Logger.LogWritter.Write("Thu ngân thêm mặt hàng mới"+ LogDetail);
+                    Logger.LogWritter.Write("Thu ngân thêm mặt hàng mới"+ LogDetail+"- MatHang");
                 }
             }
             
@@ -276,7 +276,7 @@ namespace KaraokeRUM
                         TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
                         string LogDetail = string.Format(" với tên [{0}] loại mặt hàng [{1}] số lượng tồn [{2}] đơn vị [{3}] đơn giá [{4}]",
                                                      matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
-                        Logger.LogWritter.Write("Thu ngân sửa mặt hàng" + LogDetail);
+                        Logger.LogWritter.Write("Thu ngân sửa mặt hàng" + LogDetail +"- MatHang");
                     }
                 }
                 else 
@@ -286,7 +286,7 @@ namespace KaraokeRUM
                     TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
                     string LogDetail = string.Format(" với tên [{0}] loại mặt hàng [{1}] số lượng tồn [{2}] đơn vị [{3}] đơn giá [{4}]",
                                                      matHang.TenMh, matHang.Loai, matHang.SoLuongTon, matHang.DonVi, matHang.DonVi);
-                    Logger.LogWritter.Write("Thu ngân sửa mặt hàng" + LogDetail);
+                    Logger.LogWritter.Write("Thu ngân sửa mặt hàng" + LogDetail +"- MatHang");
                 }
                 
             }
@@ -357,7 +357,7 @@ namespace KaraokeRUM
                         XoaCacTxtCbo();
                         TaiDuLieuLenListView(lstvMatHang, MH.LayTatCaMatHang());
                         string LogDetail = string.Format("[{0}] ", xoaMatHang.TenMh);
-                        Logger.LogWritter.Write("Thu ngân xoá mặt hàng" + LogDetail);
+                        Logger.LogWritter.Write("Thu ngân xoá mặt hàng" + LogDetail + "- MatHang");
                     }
                 }
                 else

@@ -336,6 +336,9 @@ namespace KaraokeRUM
                 {
                     THIETBI.Them(ttb);
                     TaiDuLieuLenLstvThietBi(lstvThietBi, THIETBI.LayToanBoTrangThietBis());
+                    string LogDetail = string.Format(" với tên [{0}]  số lượng tồn [{1}] đơn vị [{2}] đơn giá [{3}]",
+                                                    ttb.TenTTB, ttb.SoLuongTon, ttb.DonVi, ttb.Gia);
+                    Logger.LogWritter.Write("Thu ngân thêm thiết bị mới " + LogDetail + "- TrangThietBi");
                     XoaDuLieuTextBox();
                     LoadDuLieuVaoComboBox(DANHSACHPHONG, DANHSACHTHIETBI);
                 }
@@ -374,6 +377,8 @@ namespace KaraokeRUM
                         {
                             ttb.TrangThai = "HET";
                             THIETBI.SuaTrangThietBi(ttb);
+                            string LogDetail = string.Format(" với tên [{0}]  ",ttb.TenTTB);
+                            Logger.LogWritter.Write("Thu ngân xoá trang thiết bị " + LogDetail + "- TrangThietBi");
                         }   
                     }
 
@@ -420,6 +425,9 @@ namespace KaraokeRUM
                     else
                     {
                         THIETBI.SuaTrangThietBi(tb);
+                        string LogDetail = string.Format(" với tên [{0}]  số lượng tồn [{1}] đơn vị [{2}] đơn giá [{3}]",
+                                                    tb.TenTTB, tb.SoLuongTon, tb.DonVi, tb.Gia);
+                        Logger.LogWritter.Write("Thu ngân cập nhập thông tin thiết bị " + LogDetail + "- TrangThietBi");
                         XoaDuLieuTextBox();
                         TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
                         cboDonVi.SelectedIndex = -1;
@@ -428,6 +436,9 @@ namespace KaraokeRUM
                 else
                 {
                     THIETBI.SuaTrangThietBi(tb);
+                    string LogDetail = string.Format(" với tên [{0}]  số lượng tồn [{1}] đơn vị [{2}] đơn giá [{3}]",
+                                                    tb.TenTTB, tb.SoLuongTon, tb.DonVi, tb.Gia);
+                    Logger.LogWritter.Write("Thu ngân cập nhập thông tin thiết bị " + LogDetail + "- TrangThietBi");
                     XoaDuLieuTextBox();
                     TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
                     cboDonVi.SelectedIndex = -1;
@@ -484,10 +495,12 @@ namespace KaraokeRUM
                 {
                     PHONGTRANGTHIETBI.Them(pTTB);
                     DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
+                    string LogDetail = string.Format(" với tên [{0}] vào phòng [{1}] với số lượng [{2}]", cboTenTTB.Text, cboTenPhong.Text, pTTB.SoLuong);
+                    Logger.LogWritter.Write("Thu ngân thêm thiết bị " + LogDetail + "- Phong_TrangThietBi");
                     XoaDuLieuTextBox();
                     TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
                     TaiDuLieuLenLstvPhongTrangThietBi(lstvThietBiTrongPhong, 
-                         PHONGTRANGTHIETBI.TimPhongTTB(PHONG.TimMotPhongTheoTen(cboTenPhong.Text).MaPhong));
+                    PHONGTRANGTHIETBI.TimPhongTTB(PHONG.TimMotPhongTheoTen(cboTenPhong.Text).MaPhong));
                 }                   
             }               
         }
@@ -496,7 +509,7 @@ namespace KaraokeRUM
         private void btnSuaTP_Click(object sender, EventArgs e)
         {
             Phong_TrangThietBi pTTB = TaoPTTB();
-            if (pTTB.SoLuong > THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().SoLuongTon)
+            if (pTTB.SoLuong > THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().SoLuongTon && )
             {
                 MessageBox.Show("Số lượng vượt quá số lượng tồn. Không thể sửa!", "Thông báo", 
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -508,6 +521,8 @@ namespace KaraokeRUM
                      PHONGTRANGTHIETBI.TimPhongTTB(PHONG.TimMotPhongTheoTen(cboTenPhong.Text).MaPhong));
                 DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
                 TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
+                string LogDetail = string.Format(" với tên [{0}] ở phòng [{1}] với số lượng [{2}]", cboTenTTB, cboTenPhong, pTTB.SoLuong);
+                Logger.LogWritter.Write("Thu ngân cập nhập thiết bị " + LogDetail + "- Phong_TrangThietBi");
                 XoaDuLieuTextBox();
                 btnSuaTP.Enabled = false;
                 btnXoaTP.Enabled = false;
@@ -538,6 +553,8 @@ namespace KaraokeRUM
                 TaiDuLieuLenLstvPhongTrangThietBi(lstvThietBiTrongPhong,
                                                       PHONGTRANGTHIETBI.TimPhongTTB(PHONG.TimMotPhongTheoTen(cboTenPhong.Text).MaPhong));
                 DANHSACHTHIETBI = THIETBI.LayToanBoTrangThietBis();
+                string LogDetail = string.Format(" với tên [{0}] ra khỏi phòng [{1}]", cboTenTTB.Text, cboTenPhong.Text);
+                Logger.LogWritter.Write("Thu ngân xoá thiết bị " + LogDetail + "- Phong_TrangThietBi");
                 XoaDuLieuTextBox();
                 TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
             }
