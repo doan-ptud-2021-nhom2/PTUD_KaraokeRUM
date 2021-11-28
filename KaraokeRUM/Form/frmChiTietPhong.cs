@@ -178,7 +178,7 @@ namespace KaraokeRUM
             phongCu = PHONG.TimPhong(txtTenPhong.Text).First();
             frmDanhSachPhong frm = new frmDanhSachPhong(MAHOADON, phongCu, this);
             frm.Show();
-            Logger.LogWritter.Write("Thu ngân thay đổi phòng cho khách");
+            
         }
 
         /** 

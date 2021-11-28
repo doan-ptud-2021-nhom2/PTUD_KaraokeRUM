@@ -147,8 +147,6 @@ namespace KaraokeRUM
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.lstvDSKH);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -156,7 +154,7 @@ namespace KaraokeRUM
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(1470, 477);
+            this.groupBox2.Size = new System.Drawing.Size(1000, 477);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách khách hàng";
@@ -170,7 +168,7 @@ namespace KaraokeRUM
             this.lstvDSKH.Location = new System.Drawing.Point(23, 40);
             this.lstvDSKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstvDSKH.Name = "lstvDSKH";
-            this.lstvDSKH.Size = new System.Drawing.Size(1426, 417);
+            this.lstvDSKH.Size = new System.Drawing.Size(956, 417);
             this.lstvDSKH.TabIndex = 0;
             this.lstvDSKH.UseCompatibleStateImageBehavior = false;
             this.lstvDSKH.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstvDSKH_ColumnClick);
@@ -422,9 +420,6 @@ namespace KaraokeRUM
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.BackColor = System.Drawing.Color.White;
             this.groupBox5.Controls.Add(this.lstvDanhSachDen);
             this.groupBox5.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -432,7 +427,7 @@ namespace KaraokeRUM
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Size = new System.Drawing.Size(1470, 480);
+            this.groupBox5.Size = new System.Drawing.Size(1000, 295);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Danh sách đen";
@@ -446,7 +441,7 @@ namespace KaraokeRUM
             this.lstvDanhSachDen.Location = new System.Drawing.Point(23, 40);
             this.lstvDanhSachDen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstvDanhSachDen.Name = "lstvDanhSachDen";
-            this.lstvDanhSachDen.Size = new System.Drawing.Size(1426, 419);
+            this.lstvDanhSachDen.Size = new System.Drawing.Size(956, 227);
             this.lstvDanhSachDen.TabIndex = 0;
             this.lstvDanhSachDen.UseCompatibleStateImageBehavior = false;
             this.lstvDanhSachDen.SelectedIndexChanged += new System.EventHandler(this.lstvDanhSachDen_SelectedIndexChanged);
@@ -514,11 +509,11 @@ namespace KaraokeRUM
         private System.Windows.Forms.TextBox txtTenKhachHang;
         private System.Windows.Forms.Button btnCapNhapGhiChu;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ListView lstvDanhSachDen;
         private System.Windows.Forms.TextBox txtMaKhachHang;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboGhiChu;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }
