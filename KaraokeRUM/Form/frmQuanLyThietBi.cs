@@ -482,6 +482,11 @@ namespace KaraokeRUM
                 MessageBox.Show("Yêu cầu nhập đầy đủ thông tin!", "Thông báo", 
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            else if (txtSoLuongTP.Text.Equals("0"))
+            {
+                MessageBox.Show("Số lượng không được nhập bằng 0. Vui lòng nhập lớn hơn 0!", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             else
             {
                 Phong_TrangThietBi pTTB = TaoPTTB();

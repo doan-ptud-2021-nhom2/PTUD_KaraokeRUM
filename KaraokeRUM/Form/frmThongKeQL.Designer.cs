@@ -82,7 +82,7 @@ namespace KaraokeRUM
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(759, 418);
+            this.groupBox4.Size = new System.Drawing.Size(759, 425);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Biểu đồ thống kê mặt hàng";
@@ -265,7 +265,7 @@ namespace KaraokeRUM
             this.lstvDSHoaDon.Location = new System.Drawing.Point(5, 32);
             this.lstvDSHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstvDSHoaDon.Name = "lstvDSHoaDon";
-            this.lstvDSHoaDon.Size = new System.Drawing.Size(805, 372);
+            this.lstvDSHoaDon.Size = new System.Drawing.Size(805, 386);
             this.lstvDSHoaDon.TabIndex = 0;
             this.lstvDSHoaDon.UseCompatibleStateImageBehavior = false;
             this.lstvDSHoaDon.DoubleClick += new System.EventHandler(this.lstvDSHoaDon_DoubleClick);
@@ -278,7 +278,7 @@ namespace KaraokeRUM
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(817, 418);
+            this.groupBox1.Size = new System.Drawing.Size(817, 425);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách khách hàng ";
@@ -357,7 +357,7 @@ namespace KaraokeRUM
             this.chrPhong.Location = new System.Drawing.Point(7, 29);
             this.chrPhong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chrPhong.Name = "chrPhong";
-            this.chrPhong.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            this.chrPhong.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series2.Legend = "Legend1";
