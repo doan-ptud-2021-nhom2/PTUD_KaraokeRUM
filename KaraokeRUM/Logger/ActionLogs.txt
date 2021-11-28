@@ -1,3 +1,0 @@
-[28/11/2021 04:00:36](NV002)Thu ngân đăng nhập vào hệ thống
-[28/11/2021 04:00:44](NV002)Thu ngân cập nhập thiết bị  với tên [System.Windows.Forms.ComboBox, Items.Count: 30] ở phòng [System.Windows.Forms.ComboBox, Items.Count: 25] với số lượng [4]- Phong_TrangThietBi
-[28/11/2021 04:00:48](NV002)Thu ngân cập nhập thiết bị  với tên [System.Windows.Forms.ComboBox, Items.Count: 30] ở phòng [System.Windows.Forms.ComboBox, Items.Count: 25] với số lượng [5]- Phong_TrangThietBi
