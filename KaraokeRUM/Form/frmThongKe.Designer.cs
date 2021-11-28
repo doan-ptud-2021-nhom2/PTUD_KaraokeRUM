@@ -51,12 +51,12 @@ namespace KaraokeRUM
             this.txtSMH = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTDT = new System.Windows.Forms.TextBox();
+            this.btnTraCuu = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSKH = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.chrThongKeDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnTraCuu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -90,7 +90,7 @@ namespace KaraokeRUM
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(817, 300);
+            this.groupBox1.Size = new System.Drawing.Size(817, 312);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách hóa đơn";
@@ -102,7 +102,7 @@ namespace KaraokeRUM
             this.lstvDSHoaDon.Location = new System.Drawing.Point(5, 32);
             this.lstvDSHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstvDSHoaDon.Name = "lstvDSHoaDon";
-            this.lstvDSHoaDon.Size = new System.Drawing.Size(805, 254);
+            this.lstvDSHoaDon.Size = new System.Drawing.Size(805, 264);
             this.lstvDSHoaDon.TabIndex = 0;
             this.lstvDSHoaDon.UseCompatibleStateImageBehavior = false;
             this.lstvDSHoaDon.DoubleClick += new System.EventHandler(this.lstvDSHoaDon_DoubleClick);
@@ -249,6 +249,19 @@ namespace KaraokeRUM
             this.txtTDT.TabIndex = 2;
             this.txtTDT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // btnTraCuu
+            // 
+            this.btnTraCuu.BackColor = System.Drawing.Color.Teal;
+            this.btnTraCuu.ForeColor = System.Drawing.Color.White;
+            this.btnTraCuu.Location = new System.Drawing.Point(184, 165);
+            this.btnTraCuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTraCuu.Name = "btnTraCuu";
+            this.btnTraCuu.Size = new System.Drawing.Size(186, 39);
+            this.btnTraCuu.TabIndex = 3;
+            this.btnTraCuu.Text = "Tra cứu";
+            this.btnTraCuu.UseVisualStyleBackColor = false;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -311,19 +324,6 @@ namespace KaraokeRUM
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Biểu đồ";
-            // 
-            // btnTraCuu
-            // 
-            this.btnTraCuu.BackColor = System.Drawing.Color.Teal;
-            this.btnTraCuu.ForeColor = System.Drawing.Color.White;
-            this.btnTraCuu.Location = new System.Drawing.Point(184, 165);
-            this.btnTraCuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTraCuu.Name = "btnTraCuu";
-            this.btnTraCuu.Size = new System.Drawing.Size(186, 39);
-            this.btnTraCuu.TabIndex = 3;
-            this.btnTraCuu.Text = "Tra cứu";
-            this.btnTraCuu.UseVisualStyleBackColor = false;
-            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // frmThongKe
             // 
