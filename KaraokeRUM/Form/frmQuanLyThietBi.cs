@@ -313,6 +313,7 @@ namespace KaraokeRUM
             txtTen.Enabled = true;
             txtSoLuongTon.Enabled = true;
             cboDonVi.Enabled = true;
+           
             if (string.IsNullOrEmpty(txtTen.Text) || string.IsNullOrEmpty(txtDonGia.Text) 
                 || string.IsNullOrEmpty(txtSoLuongTon.Text))
             {
@@ -336,7 +337,8 @@ namespace KaraokeRUM
                 if (!KiemTraTonTaiTenThietBi(ttb))
                 {
                     MessageBox.Show(ten, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }    
+                }
+                
                 else
                 {
                     THIETBI.Them(ttb);
@@ -491,6 +493,19 @@ namespace KaraokeRUM
             return pTTB;
         }
 
+        /*kiểm tra tên thiết bị trong phòng*/
+        private bool KiemTraTonTaiTenThietBiTrongPhong(string maTTB , string maPhong)
+        {
+            foreach (Phong_TrangThietBi i in PHONGTRANGTHIETBI.LayToanBoTrangThietBiTrongPhong(maPhong, maTTB))
+            {
+                if (maTTB.Equals(i.MaTTB))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         /* Chức năng thêm thiết bị vào phòng*/
         private void btnThemTP_Click(object sender, EventArgs e)
         {
@@ -507,13 +522,22 @@ namespace KaraokeRUM
             }
             else
             {
+                Phong_TrangThietBi pTTBTam = new Phong_TrangThietBi(); ;
+                pTTBTam.MaPhong = PHONG.TimPhongTheoTen(cboTenPhong.Text).First().MaPhong;
+                pTTBTam.MaTTB = THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().MaTTB;
                 Phong_TrangThietBi pTTB = TaoPTTB();
                 btnThemTP.Enabled = true;
                 if(pTTB.SoLuong > THIETBI.TimThietBiTheoTen(cboTenTTB.Text).First().SoLuongTon)
                 {
                     MessageBox.Show("Số lượng vượt quá số lượng tồn. Không thể thêm!", "Thông báo", 
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }    
+                }
+
+                else if (!KiemTraTonTaiTenThietBiTrongPhong(pTTBTam.MaTTB, pTTBTam.MaPhong))
+                {
+                    MessageBox.Show("Thiết bị này đã tồn tại trong phòng, vui lòng thực hiện chức năng sửa !", "Thông báo",
+                                     MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                }
                 else
                 {
                     PHONGTRANGTHIETBI.Them(pTTB);

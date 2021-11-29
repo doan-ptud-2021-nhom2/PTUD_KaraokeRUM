@@ -195,7 +195,7 @@ namespace KaraokeRUM
                 if (MH.TimMatHangTenChinhXac(matHang.TenMh).Count() > 0)
                 {
                     MessageBox.Show("Mặt hàng này đã tồn tại, vui lòng thực hiện chức năng sửa !", "Thông báo",
-                                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                                     MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 }
                 else
                 {

@@ -5,3 +5,10 @@
 [28/11/2021 11:00:50](NV002)Thu ngân đăng nhập vào hệ thống
 [28/11/2021 11:09:18](NV002)Thu ngân thêm mặt hàng mới với tên [444] loại mặt hàng [Thức ăn] số lượng tồn [44] đơn vị [Hộp] đơn giá [Hộp]- MatHang
 [28/11/2021 11:13:54](NV002)Thu ngân đăng xuất
+[29/11/2021 02:48:46](NV002)Thu ngân đăng nhập vào hệ thống
+[29/11/2021 02:49:19](NV002)Thu ngân đăng xuất
+[29/11/2021 03:06:15](NV002)Thu ngân đăng nhập vào hệ thống
+[29/11/2021 03:06:51](NV002)Thu ngân cập nhập thiết bị  với tên [Đầu VietKTV] ở phòng [V001] với số lượng [2]- Phong_TrangThietBi
+[29/11/2021 03:07:40](NV002)Thu ngân đăng xuất
+[29/11/2021 03:08:36](NV002)Thu ngân đăng nhập vào hệ thống
+[29/11/2021 03:10:03](NV002)Thu ngân đăng xuất

@@ -105,5 +105,14 @@ namespace KaraokeRUM
                 }
             }
         }
+
+        /*Lấy tất cả trang thiết bị trong phòng*/
+        public IEnumerable<Phong_TrangThietBi> LayToanBoTrangThietBiTrongPhong(string maPhong, string maTTB)
+        {
+            IEnumerable<Phong_TrangThietBi> tbp = from n in dt.Phong_TrangThietBis
+                                           where n.MaPhong.Equals(maPhong) && n.MaTTB.Equals(maTTB)
+                                           select n;
+            return tbp;
+        }
     }
 }
