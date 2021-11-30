@@ -68,25 +68,23 @@ namespace KaraokeRUM
 
         private void frmQuanLyThietBi_Click(object sender, EventArgs e)
         {
-            if (lstvThietBi.SelectedItems.Count > 0 || lstvThietBiTrongPhong.SelectedItems.Count > 0)
-            {
-                lstvThietBi.SelectedItems.Clear();
-                txtTen.Enabled = true;
-                txtTen.Clear();
-                txtSoLuongTon.Enabled = true;
-                txtSoLuongTon.Clear();
-                txtDonGia.Enabled = true;
-                txtDonGia.Clear();
-                txtSoLuongTP.Clear();
-                btnThemTP.Enabled = true;
-                btnSuaTP.Enabled = false;
-                btnXoaTP.Enabled = false;
-                btnXoa.Enabled = false;
-                btnThem.Enabled = true;
-                btnSua.Enabled = false;
-                cboDonVi.SelectedIndex = -1;
-                cboTenTTB.SelectedIndex = -1;
-            }
+            lstvThietBi.SelectedItems.Clear();
+            lstvThietBiTrongPhong.SelectedItems.Clear();
+            txtTen.Enabled = true;
+            txtTen.Clear();
+            txtSoLuongTon.Enabled = true;
+            txtSoLuongTon.Clear();
+            txtDonGia.Enabled = true;
+            txtDonGia.Clear();
+            txtSoLuongTP.Clear();
+            btnThemTP.Enabled = true;
+            btnSuaTP.Enabled = false;
+            btnXoaTP.Enabled = false;
+            btnXoa.Enabled = false;
+            btnThem.Enabled = true;
+            btnSua.Enabled = false;
+            cboDonVi.SelectedIndex = -1;
+            cboTenTTB.SelectedIndex = -1;
         }
 
         /*Hàm hỗ trợ tải dữ liệu vào các combobox*/
@@ -421,47 +419,34 @@ namespace KaraokeRUM
             }
             else
             {
-                if (Convert.ToInt32(txtSoLuongTon.Text) == 0)
+                TrangThietBi tb = ThongTinMoiCuaThietBi();
+                if (!tb.TenTTB.Equals(TENTHIETBI))
                 {
-                    MessageBox.Show("Số lượng phải lớn hơn 0!", "Thông báo",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (txtDonGia.Text.Equals("0"))
-                {
-                    MessageBox.Show("Đơn giá không được nhập bằng 0. Vui lòng nhập lớn hơn 0!", "Thông báo",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    TrangThietBi tb = ThongTinMoiCuaThietBi();
-                    if (!tb.TenTTB.Equals(TENTHIETBI))
+                    if (THIETBI.TimThietBiTheoTen(tb.TenTTB).Count() > 0)
                     {
-                        if (THIETBI.TimThietBiTheoTen(tb.TenTTB).Count() > 0)
-                        {
-                            MessageBox.Show("Tên thiết bị này đã tồn tại. Vui lòng nhập lại!", "Thông báo",
-                                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else
-                        {
-                            THIETBI.SuaTrangThietBi(tb);
-                            string LogDetail = string.Format(" với tên [{0}]  số lượng tồn [{1}] đơn vị [{2}] đơn giá [{3}]",
-                                                        tb.TenTTB, tb.SoLuongTon, tb.DonVi, tb.Gia);
-                            Logger.LogWritter.Write("Thu ngân cập nhập thông tin thiết bị " + LogDetail + "- TrangThietBi");
-                            XoaDuLieuTextBox();
-                            TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
-                            cboDonVi.SelectedIndex = -1;
-                        }
+                        MessageBox.Show("Tên thiết bị này đã tồn tại. Vui lòng nhập lại!", "Thông báo",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
                         THIETBI.SuaTrangThietBi(tb);
                         string LogDetail = string.Format(" với tên [{0}]  số lượng tồn [{1}] đơn vị [{2}] đơn giá [{3}]",
-                                                        tb.TenTTB, tb.SoLuongTon, tb.DonVi, tb.Gia);
+                                                    tb.TenTTB, tb.SoLuongTon, tb.DonVi, tb.Gia);
                         Logger.LogWritter.Write("Thu ngân cập nhập thông tin thiết bị " + LogDetail + "- TrangThietBi");
                         XoaDuLieuTextBox();
                         TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
                         cboDonVi.SelectedIndex = -1;
                     }
+                }
+                else
+                {
+                    THIETBI.SuaTrangThietBi(tb);
+                    string LogDetail = string.Format(" với tên [{0}]  số lượng tồn [{1}] đơn vị [{2}] đơn giá [{3}]",
+                                                    tb.TenTTB, tb.SoLuongTon, tb.DonVi, tb.Gia);
+                    Logger.LogWritter.Write("Thu ngân cập nhập thông tin thiết bị " + LogDetail + "- TrangThietBi");
+                    XoaDuLieuTextBox();
+                    TaiDuLieuLenLstvThietBi(lstvThietBi, DANHSACHTHIETBI);
+                    cboDonVi.SelectedIndex = -1;
                 }
             }    
             

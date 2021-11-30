@@ -357,9 +357,7 @@ namespace KaraokeRUM
             this.chrPhong.Location = new System.Drawing.Point(7, 29);
             this.chrPhong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chrPhong.Name = "chrPhong";
-            this.chrPhong.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series2.Legend = "Legend1";
             series2.Name = "Phong";
             this.chrPhong.Series.Add(series2);

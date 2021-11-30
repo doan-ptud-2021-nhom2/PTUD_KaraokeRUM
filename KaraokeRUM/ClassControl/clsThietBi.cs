@@ -99,8 +99,8 @@ namespace KaraokeRUM
         public IEnumerable<TrangThietBi> TimDSachTTBTheoMa(string timKiem)
         {
             IEnumerable<TrangThietBi> q = from n in dt.TrangThietBis
-                                          where n.MaTTB.Equals(timKiem) || n.TenTTB.Equals(timKiem)
-                                   select n;
+                                          where (n.MaTTB.Equals(timKiem) || n.TenTTB.Equals(timKiem)) && n.TrangThai.Equals("DSD")
+                                          select n;
             return q;
         }
 
@@ -117,7 +117,7 @@ namespace KaraokeRUM
         public IQueryable<TrangThietBi> TimThietBiTheoTen(string tenTB)
         {
             IQueryable<TrangThietBi> q = (from n in dt.TrangThietBis
-                                          where n.TenTTB.Equals(tenTB)
+                                          where n.TenTTB.Equals(tenTB) && n.TrangThai.Equals("DSD")
                                           select n);
             return q;
         }
