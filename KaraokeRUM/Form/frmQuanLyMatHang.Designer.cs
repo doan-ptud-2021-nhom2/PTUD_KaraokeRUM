@@ -246,17 +246,17 @@ namespace KaraokeRUM
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(24, 133);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 33);
+            this.label1.Size = new System.Drawing.Size(155, 33);
             this.label1.TabIndex = 72;
             this.label1.Text = "Tìm kiếm :";
             // 
             // txtTimKiemMatHang
             // 
             this.txtTimKiemMatHang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiemMatHang.Location = new System.Drawing.Point(165, 133);
+            this.txtTimKiemMatHang.Location = new System.Drawing.Point(185, 133);
             this.txtTimKiemMatHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTimKiemMatHang.Name = "txtTimKiemMatHang";
-            this.txtTimKiemMatHang.Size = new System.Drawing.Size(294, 30);
+            this.txtTimKiemMatHang.Size = new System.Drawing.Size(274, 30);
             this.txtTimKiemMatHang.TabIndex = 0;
             // 
             // btnTim
