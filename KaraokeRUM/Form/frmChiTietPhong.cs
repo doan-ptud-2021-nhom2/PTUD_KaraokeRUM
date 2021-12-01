@@ -187,7 +187,8 @@ namespace KaraokeRUM
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
             HoaDon hoaDon = HOADON.LayHoaDon(MAHOADON);
-            Logger.LogWritter.Write("Thu ngân tạo hoá đơn" + hoaDon.MaHD );
+            string LogDetail = string.Format("[{0}]", hoaDon.MaHD);
+            Logger.LogWritter.Write("Thu ngân tạo hoá đơn "+LogDetail+"- HoaDon");
             DateTime dt = DateTime.Now;
             TimeSpan tp = (TimeSpan)dt.TimeOfDay;
             hoaDon.GioRa = tp;
